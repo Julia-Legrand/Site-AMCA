@@ -43,7 +43,7 @@ class PresentationsController extends AbstractController
                     $newFilename
                 );
         
-                $presentations->setPresentationPicture($newFilename);
+                $presentation->setPresentationPicture($newFilename);
             }
             $imageFile = $form->get('logo')->getData();
             if ($imageFile) {
@@ -56,7 +56,7 @@ class PresentationsController extends AbstractController
                     $newFilename
                 );
         
-                $presentations->setLogo($newFilename);
+                $presentation->setLogo($newFilename);
             }
             $imageFile = $form->get('statutesDoc')->getData();
             if ($imageFile) {
@@ -69,7 +69,7 @@ class PresentationsController extends AbstractController
                     $newFilename
                 );
         
-                $presentations->setStatutesDoc($newFilename);
+                $presentation->setStatutesDoc($newFilename);
             }
             $imageFile = $form->get('internalRulesDoc')->getData();
             if ($imageFile) {
@@ -82,7 +82,7 @@ class PresentationsController extends AbstractController
                     $newFilename
                 );
         
-                $presentations->setInternalRulesDoc($newFilename);
+                $presentation->setInternalRulesDoc($newFilename);
             }
 
             $entityManager->persist($presentation);
@@ -116,7 +116,7 @@ class PresentationsController extends AbstractController
                     $newFilename
                 );
         
-                $presentations->setPresentationPicture($newFilename);
+                $presentation->setPresentationPicture($newFilename);
             }
             $imageFile = $form->get('logo')->getData();
             if ($imageFile) {
@@ -129,7 +129,7 @@ class PresentationsController extends AbstractController
                     $newFilename
                 );
         
-                $presentations->setLogo($newFilename);
+                $presentation->setLogo($newFilename);
             }
             $imageFile = $form->get('statutesDoc')->getData();
             if ($imageFile) {
@@ -142,7 +142,7 @@ class PresentationsController extends AbstractController
                     $newFilename
                 );
         
-                $presentations->setStatutesDoc($newFilename);
+                $presentation->setStatutesDoc($newFilename);
             }
             $imageFile = $form->get('internalRulesDoc')->getData();
             if ($imageFile) {
@@ -155,7 +155,7 @@ class PresentationsController extends AbstractController
                     $newFilename
                 );
         
-                $presentations->setInternalRulesDoc($newFilename);
+                $presentation->setInternalRulesDoc($newFilename);
             }
 
             $entityManager->flush();

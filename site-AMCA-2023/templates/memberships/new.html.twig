@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle information d'adhésion{% endblock %}
+
+{% block body %}
+    <h1>Nouvelle information d'adhésion</h1>
+
+    {{ include('memberships/_form.html.twig') }}
+
+    <a href="{{ path('app_memberships_index') }}">Retour</a>
+{% endblock %}

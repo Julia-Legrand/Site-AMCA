@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle raison d'être{% endblock %}
+
+{% block body %}
+    <h1>Nouvelle raison d'être</h1>
+
+    {{ include('purposes/_form.html.twig') }}
+
+    <a href="{{ path('app_purposes_index') }}">Retour</a>
+{% endblock %}

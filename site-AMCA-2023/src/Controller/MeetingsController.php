@@ -41,13 +41,13 @@ class MeetingsController extends AbstractController
                 $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $safeFilename = $slugger->slug($originalFilename);
                 $newFilename = $safeFilename . '.' . $imageFile->guessExtension();
-        
+
                 $imageFile->move(
                     $this->getParameter('images_directory'),
                     $newFilename
                 );
-        
-                $meetings->setMeetingPicture($newFilename);
+
+                $meeting->setMeetingPicture($newFilename);
             }
 
             $entityManager->persist($meeting);
@@ -79,13 +79,13 @@ class MeetingsController extends AbstractController
                 $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $safeFilename = $slugger->slug($originalFilename);
                 $newFilename = $safeFilename . '.' . $imageFile->guessExtension();
-        
+
                 $imageFile->move(
                     $this->getParameter('images_directory'),
                     $newFilename
                 );
-        
-                $meetings->setMeetingPicture($newFilename);
+
+                $meeting->setMeetingPicture($newFilename);
             }
 
             $entityManager->flush();
