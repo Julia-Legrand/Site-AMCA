@@ -16,6 +16,9 @@ class Images
     #[ORM\Column(length: 255)]
     private ?string $image = null;
 
+    #[ORM\ManyToOne(inversedBy: 'images')]
+    private ?PreviousTrips $previoustrips = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -29,6 +32,18 @@ class Images
     public function setImage(string $image): static
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getPrevioustrips(): ?PreviousTrips
+    {
+        return $this->previoustrips;
+    }
+
+    public function setPrevioustrips(?PreviousTrips $previoustrips): static
+    {
+        $this->previoustrips = $previoustrips;
 
         return $this;
     }

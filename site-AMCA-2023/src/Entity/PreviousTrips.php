@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\PreviousTripsRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -22,6 +24,14 @@ class PreviousTrips
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $previousTripContent = null;
+
+    #[ORM\OneToMany(mappedBy: 'previoustrips', targetEntity: Images::class)]
+    private Collection $images;
+
+    public function __construct()
+    {
+        $this->images = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -60,6 +70,36 @@ class PreviousTrips
     public function setPreviousTripContent(string $previousTripContent): static
     {
         $this->previousTripContent = $previousTripContent;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Images>
+     */
+    public function getImages(): Collection
+    {
+        return $this->images;
+    }
+
+    public function addImage(Images $image): static
+    {
+        if (!$this->images->contains($image)) {
+            $this->images->add($image);
+            $image->setPrevioustrips($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImage(Images $image): static
+    {
+        if ($this->images->removeElement($image)) {
+            // set the owning side to null (unless already changed)
+            if ($image->getPrevioustrips() === $this) {
+                $image->setPrevioustrips(null);
+            }
+        }
 
         return $this;
     }

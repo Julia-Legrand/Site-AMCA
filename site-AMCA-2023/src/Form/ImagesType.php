@@ -29,6 +29,12 @@ class ImagesType extends AbstractType
                     ])
                 ],
             ])
+            ->add('previoustrips', EntityType::class, [
+                'class' => PreviousTrips::class,
+                'label' => 'Sortie',
+                'choice_label' => 'previousTripName',
+                'attr' => ['class' => 'custom-form'],
+            ])
         ;
     }
 
