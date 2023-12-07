@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Meetings index{% endblock %}
+
+{% block body %}
+    <h1>Meetings index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date et Heure</th>
+                <th>Photo de la salle</th>
+                <th>Adresse</th>
+                <th>Longitude</th>
+                <th>Latitude</th>
+                <th>Description</th>
+                <th>Modifier</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for meeting in meetings %}
+            <tr>
+                <td>{{ meeting.meetingDate ? meeting.meetingDate|date('d-m-Y H:i:s') : '' }}</td>
+                <td><img src="{{ asset('uploads/images/' ~ meeting.meetingPicture) }}"></td>
+                <td>{{ meeting.meetingAddress }}</td>
+                <td>{{ meeting.meetingLon }}</td>
+                <td>{{ meeting.meetingLat }}</td>
+                <td>{{ meeting.meetingContent }}</td>
+                <td>
+                    <a href="{{ path('app_meetings_edit', {'id': meeting.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">Donnée vide</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_meetings_new') }}">Ajouter</a>
+{% endblock %}

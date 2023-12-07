@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\MeetingsRepository;
 use App\Repository\PresentationsRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -10,18 +11,20 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class MainController extends AbstractController
 {
     #[Route('/', name: 'home')]
-    public function index(PresentationsRepository $presentationsRepository): Response
+    public function index(PresentationsRepository $presentationsRepository, MeetingsRepository $meetingsRepository): Response
     {
         return $this->render('main/index.html.twig', [
             'presentations' => $presentationsRepository->findAll(),
+            'meetings' => $meetingsRepository->findAll(),
         ]);
     }
 
     #[Route('/admin', name: 'admin')]
-    public function admin(PresentationsRepository $presentationsRepository): Response
+    public function admin(PresentationsRepository $presentationsRepository, MeetingsRepository $meetingsRepository): Response
     {
         return $this->render('main/admin.html.twig', [
             'presentations' => $presentationsRepository->findAll(),
+            'meetings' => $meetingsRepository->findAll(),
         ]);
     }
 
