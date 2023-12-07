@@ -2,8 +2,17 @@
 
 namespace App\Controller;
 
+use App\Entity\Contacts;
+use App\Form\ContactsType;
+use App\Repository\ImagesRepository;
+use App\Repository\ContactsRepository;
 use App\Repository\MeetingsRepository;
+use App\Repository\PurposesRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\MembershipsRepository;
 use App\Repository\PresentationsRepository;
+use App\Repository\PreviousTripsRepository;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -11,32 +20,36 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class MainController extends AbstractController
 {
     #[Route('/', name: 'home')]
-    public function index(PresentationsRepository $presentationsRepository, MeetingsRepository $meetingsRepository,PurposesRepository $purposesRepository): Response
+    public function index(PresentationsRepository $presentationsRepository, PurposesRepository $purposesRepository, PreviousTripsRepository $previousTripsRepository, ImagesRepository $imagesRepository): Response
     {
         return $this->render('main/index.html.twig', [
             'presentations' => $presentationsRepository->findAll(),
-            'meetings' => $meetingsRepository->findAll(),
             'purposes' => $purposesRepository->findAll(),
+            'previous_trips' => $previousTripsRepository->findAll(),
+            'images' => $imagesRepository->findAll(),
         ]);
     }
 
     #[IsGranted('ROLE_ADMIN')]
     #[Route('/admin', name: 'admin')]
-    public function admin(PresentationsRepository $presentationsRepository, MeetingsRepository $meetingsRepository, PurposesRepository $purposesRepository, MembershipsRepository $membershipsRepository): Response
+    public function admin(PresentationsRepository $presentationsRepository, MeetingsRepository $meetingsRepository, PurposesRepository $purposesRepository, MembershipsRepository $membershipsRepository, ContactsRepository $contactsRepository, PreviousTripsRepository $previousTripsRepository, ImagesRepository $imagesRepository): Response
     {
         return $this->render('main/admin.html.twig', [
             'presentations' => $presentationsRepository->findAll(),
             'meetings' => $meetingsRepository->findAll(),
             'purposes' => $purposesRepository->findAll(),
             'memberships' => $membershipsRepository->findAll(),
+            'contacts' => $contactsRepository->findAll(),
+            'previous_trips' => $previousTripsRepository->findAll(),
+            'images' => $imagesRepository->findAll(),
         ]);
     }
 
     #[Route('/vie-association', name: 'asso')]
-    public function asso(): Response
+    public function asso(MeetingsRepository $meetingsRepository): Response
     {
         return $this->render('main/asso.html.twig', [
-            'controller_name' => 'MainController',
+            'meetings' => $meetingsRepository->findAll(),
         ]);
     }
 

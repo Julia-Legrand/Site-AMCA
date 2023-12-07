@@ -9,6 +9,7 @@ use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class PresentationsType extends AbstractType
 {
@@ -34,7 +35,7 @@ class PresentationsType extends AbstractType
                     ])
                 ],
             ])
-            ->add('presentationContent', TextType::class, [
+            ->add('presentationContent', TextareaType::class, [
                 'label' => 'Texte de présentation',
                 'attr' => ['class' => 'custom-form'],
             ])

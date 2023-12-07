@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bibliothèque de photos{% endblock %}
+
+{% block body %}
+    <h1>Bibliothèque de photos</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Modifier</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for image in images %}
+            <tr>
+                <td><img src="{{ asset('uploads/images/' ~ image.image) }}"></td>
+                <td>
+                    <a href="{{ path('app_images_edit', {'id': image.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Donnée vide</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_images_new') }}">Ajouter</a>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Précédentes sorties{% endblock %}
+
+{% block body %}
+    <h1>Précédentes sorties</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom de la sortie</th>
+                <th>Photo principale</th>
+                <th>Description</th>
+                <th>Modifier</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for previous_trip in previous_trips %}
+            <tr>
+                <td>{{ previous_trip.previousTripName }}</td>
+                <td><img src="{{ asset('uploads/images/' ~ previous_trip.previousTripPicture) }}"></td>
+                <td>{{ previous_trip.previousTripContent }}</td>
+                <td>
+                    <a href="{{ path('app_previous_trips_edit', {'id': previous_trip.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Donnée vide</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_previous_trips_new') }}">Ajouter</a>
+{% endblock %}
