@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Présentation{% endblock %}
+
+{% block body %}
+    <h1>Présentation</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Image</th>
+                <th>Contenu</th>
+                <th>Logo</th>
+                <th>Statuts</th>
+                <th>Règlement intérieur</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for presentation in presentations %}
+            <tr>
+                <td>{{ presentation.presentationTitle }}</td>
+                <td><img src="{{ asset('uploads/images/' ~ presentation.presentationPicture) }}"></td>
+                <td>{{ presentation.presentationContent }}</td>
+                <td><img src="{{ asset('uploads/images/' ~ presentation.logo) }}"></td>
+                <td><img src="{{ asset('uploads/images/' ~ presentation.statutesDoc) }}"></td>
+                <td><img src="{{ asset('uploads/images/' ~ presentation.internalRulesDoc) }}"></td>
+                <td>
+                    <a href="{{ path('app_presentations_edit', {'id': presentation.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">Donnée vide</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_presentations_new') }}">Ajouter</a>
+{% endblock %}
