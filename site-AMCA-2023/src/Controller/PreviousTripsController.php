@@ -4,12 +4,13 @@ namespace App\Controller;
 
 use App\Entity\PreviousTrips;
 use App\Form\PreviousTripsType;
-use App\Repository\PreviousTripsRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\PreviousTripsRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/previous/trips')]
 class PreviousTripsController extends AbstractController
@@ -23,7 +24,7 @@ class PreviousTripsController extends AbstractController
     }
 
     #[Route('/new', name: 'app_previous_trips_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
         $previousTrip = new PreviousTrips();
         $form = $this->createForm(PreviousTripsType::class, $previousTrip);
@@ -58,7 +59,7 @@ class PreviousTripsController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_previous_trips_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, PreviousTrips $previousTrip, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, PreviousTrips $previousTrip, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
         $form = $this->createForm(PreviousTripsType::class, $previousTrip);
         $form->handleRequest($request);

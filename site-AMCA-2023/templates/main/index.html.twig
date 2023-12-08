@@ -5,23 +5,4 @@
 {% block body %}
 
 
-    <div id="map"></div>
-
-
-
-    <script>
-        // Generating map
-        var map = L.map('map').setView([0, 0], 2); // Default settings to adjust
-
-        // Adding a background with OpenStreetMap
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
-
-        // Adding markers for each meeting
-        {% for meeting in meetings %}
-            var marker = L.marker([{{ meeting.meetingLat }}, {{ meeting.meetingLon }}]).addTo(map);
-            marker.bindPopup("Réunion le {{ meeting.meetingDate | date('d-m-Y H:i') }} à {{ meeting.meetingAddress }}");
-        {% endfor %}
-    </script>
 {% endblock %}

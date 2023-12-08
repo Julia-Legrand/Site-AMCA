@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Futures sorties{% endblock %}
+
+{% block body %}
+    <h1>Futures sorties</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom de la sortie</th>
+                <th>Photo principale</th>
+                <th>Date de départ</th>
+                <th>Date de retour</th>
+                <th>Budget à prévoir</th>
+                <th>Description</th>
+                <th>Nb de places</th>
+                <th>Longitude</th>
+                <th>Latitude</th>
+                <th>Modifier</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for future_trip in future_trips %}
+            <tr>
+                <td>{{ future_trip.futureTripName }}</td>
+                <td><img src="{{ asset('uploads/images/' ~ future_trip.futureTripPicture) }}"></td>
+                <td>{{ future_trip.startDate ? future_trip.startDate|date('d-m-Y' à 'H:i:s') : '' }}</td>
+                <td>{{ future_trip.endDate ? future_trip.endDate|date('d-m-Y' à 'H:i:s') : '' }}</td>
+                <td>{{ future_trip.budget }}</td>
+                <td>{{ future_trip.futureTripContent }}</td>
+                <td>{{ future_trip.numberOfPlaces }}</td>
+                <td>{{ future_trip.futureTripLon }}</td>
+                <td>{{ future_trip.futureTripLat }}</td>
+                <td>
+                    <a href="{{ path('app_future_trips_edit', {'id': future_trip.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">Donnée vide</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_future_trips_new') }}">Ajouter</a>
+{% endblock %}
