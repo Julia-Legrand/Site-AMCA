@@ -66,9 +66,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToMany(targetEntity: FutureTrips::class, mappedBy: 'users')]
     private Collection $futureTrips;
 
+    #[ORM\OneToMany(mappedBy: 'users', targetEntity: Themes::class)]
+    private Collection $themes;
+
     public function __construct() {
         $this->roles = [self::ROLE_USER];
         $this->futureTrips = new ArrayCollection();
+        $this->themes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -271,6 +275,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if ($this->futureTrips->removeElement($futureTrip)) {
             $futureTrip->removeUser($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Themes>
+     */
+    public function getThemes(): Collection
+    {
+        return $this->themes;
+    }
+
+    public function addTheme(Themes $theme): static
+    {
+        if (!$this->themes->contains($theme)) {
+            $this->themes->add($theme);
+            $theme->setUsers($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTheme(Themes $theme): static
+    {
+        if ($this->themes->removeElement($theme)) {
+            // set the owning side to null (unless already changed)
+            if ($theme->getUsers() === $this) {
+                $theme->setUsers(null);
+            }
         }
 
         return $this;

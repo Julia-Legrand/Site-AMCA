@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Rédiger un post{% endblock %}
+
+{% block body %}
+    <h1>Rédiger un post</h1>
+
+    {{ include('posts/_form.html.twig') }}
+
+    <a href="{{ path('app_posts_index') }}">Retour</a>
+{% endblock %}

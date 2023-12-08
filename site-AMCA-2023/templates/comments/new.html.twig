@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Rédiger un commentaire{% endblock %}
+
+{% block body %}
+    <h1>Rédiger un commentaire</h1>
+
+    {{ include('comments/_form.html.twig') }}
+
+    <a href="{{ path('app_comments_index') }}">Retour</a>
+{% endblock %}

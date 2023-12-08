@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Commentaires{% endblock %}
+
+{% block body %}
+    <h1>Commentaires</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Contenu</th>
+                <th>Créé le</th>
+                <th>Modifier</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for comment in comments %}
+            <tr>
+                <td>{{ comment.commentContent }}</td>
+                <td>{{ comment.createdAt ? comment.createdAt|date('d-m-Y H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_comments_edit', {'id': comment.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">Donnée vide</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_comments_new') }}">Rédiger un commentaire</a>
+{% endblock %}

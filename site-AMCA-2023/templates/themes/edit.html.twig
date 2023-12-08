@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier le thème{% endblock %}
+
+{% block body %}
+    <h1>Modifierle thème</h1>
+
+    {{ include('themes/_form.html.twig', {'button_label': 'Valider'}) }}
+
+    <a href="{{ path('app_themes_index') }}">Retour</a>
+
+    {{ include('themes/_delete_form.html.twig') }}
+{% endblock %}
