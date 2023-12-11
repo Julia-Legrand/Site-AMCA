@@ -9,6 +9,7 @@
         <thead>
             <tr>
                 <th>Titre du thème</th>
+                <th>Créé par</th>
                 <th>Modifier</th>
             </tr>
         </thead>
@@ -16,6 +17,7 @@
         {% for theme in themes %}
             <tr>
                 <td>{{ theme.themeTitle }}</td>
+                <td>{{ theme.user.firstName ~ ' ' ~ theme.user.lastName }}</td>
                 <td>
                     <a href="{{ path('app_themes_edit', {'id': theme.id}) }}">Modifier</a>
                 </td>

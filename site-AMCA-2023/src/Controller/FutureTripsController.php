@@ -100,4 +100,30 @@ class FutureTripsController extends AbstractController
 
         return $this->redirectToRoute('app_future_trips_index', [], Response::HTTP_SEE_OTHER);
     }
+
+    #[Route('/{id}/register', name: 'app_future_trips_register', methods: ['POST'])]
+    public function register(Request $request, FutureTrips $futureTrip, EntityManagerInterface $entityManager): Response
+    {
+        $user = $this->getUser();
+
+        if ($user && $futureTrip->hasAvailablePlaces()) {
+            $futureTrip->addUserIfAvailable($user);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('app_future_trips_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/{id}/unregister', name: 'app_future_trips_unregister', methods: ['POST'])]
+    public function unregister(Request $request, FutureTrips $futureTrip, EntityManagerInterface $entityManager): Response
+    {
+        $user = $this->getUser();
+
+        if ($user) {
+            $futureTrip->removeUser($user);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('app_future_trips_index', [], Response::HTTP_SEE_OTHER);
+    }
 }

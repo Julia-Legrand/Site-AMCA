@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\User;
 use App\Entity\Posts;
 use App\Entity\Themes;
 use Symfony\Component\Form\AbstractType;
@@ -37,6 +38,14 @@ class PostsType extends AbstractType
                 },
                 'attr' => ['class' => 'custom-form'],
                 'label' => 'Thème',
+            ])
+            ->add('user', EntityType::class, [
+                'class' => User::class,
+                'choice_label' => function (User $user) {
+                    return $user->getFirstName() . ' ' . $user->getLastName();
+                },
+                'attr' => ['class' => 'custom-form'],
+                'label' => 'Auteur',
             ])
         ;
     }

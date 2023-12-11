@@ -17,6 +17,8 @@
                 <th>Nb de places</th>
                 <th>Longitude</th>
                 <th>Latitude</th>
+                <th>S'inscrire</th>
+                <th>Adhérents inscrits</th>
                 <th>Modifier</th>
             </tr>
         </thead>
@@ -33,7 +35,29 @@
                 <td>{{ future_trip.futureTripLon }}</td>
                 <td>{{ future_trip.futureTripLat }}</td>
                 <td>
-                    <a href="{{ path('app_future_trips_edit', {'id': future_trip.id}) }}">edit</a>
+                    {% if future_trip.hasAvailablePlaces() %}
+                        {% if future_trip.users.contains(app.user) %}
+                            <form method="post" action="{{ path('app_future_trips_unregister', {'id': future_trip.id}) }}">
+                                <button type="submit">Se désinscrire</button>
+                            </form>
+                        {% else %}
+                            <form method="post" action="{{ path('app_future_trips_register', {'id': future_trip.id}) }}">
+                                <button type="submit">S'inscrire</button>
+                            </form>
+                        {% endif %}
+                    {% else %}
+                        Complet
+                    {% endif %}
+                </td>
+                <td>
+                    <ul>
+                        {% for user in future_trip.users %}
+                            <li>{{ user.firstName ~ ' ' ~ user.lastName }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+                <td>
+                    <a href="{{ path('app_future_trips_edit', {'id': future_trip.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
@@ -44,5 +68,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_future_trips_new') }}">Ajouter</a>
+    <a href="{{ path('app_future_trips_new') }}">Créer une sortie</a>
 {% endblock %}

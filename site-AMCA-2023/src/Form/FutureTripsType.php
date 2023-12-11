@@ -2,9 +2,11 @@
 
 namespace App\Form;
 
+use App\Entity\User;
 use App\Entity\FutureTrips;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -66,6 +68,15 @@ class FutureTripsType extends AbstractType
             ->add('futureTripLat', NumberType::class, [
                 'label' => 'Latitude',
                 'attr' => ['class' => 'custom-form'],
+            ])
+            ->add('users', EntityType::class, [
+                'class' => User::class,
+                'label' => 'Adhérents :',
+                'choice_label' => function (User $user) {
+                    return $user->getFirstName() . ' ' . $user->getLastName();
+                },
+                'multiple' => true,
+                'expanded' => true,
             ])
         ;
     }

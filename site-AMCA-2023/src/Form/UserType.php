@@ -23,6 +23,15 @@ class UserType extends AbstractType
                 'label' => 'Numéro adhérent',
                 'attr' => ['class' => 'custom-form'],
             ])
+            ->add('assignment', ChoiceType::class, [
+                'label' => 'Attribution',
+                'choices' => [
+                    'Conducteur' => 'Conducteur',
+                    'Passager' => 'Passager',
+                ],
+                'multiple' => true,
+                'expanded' => true,
+            ])
             ->add('firstName', TextType::class, [
                 'label' => 'Prénom',
                 'attr' => ['class' => 'custom-form'],

@@ -11,6 +11,8 @@
                 <th>Titre du post</th>
                 <th>Texte</th>
                 <th>Créé le</th>
+                <th>Thème</th>
+                <th>Auteur</th>
                 <th>Modifier</th>
             </tr>
         </thead>
@@ -19,7 +21,9 @@
             <tr>
                 <td>{{ post.postTitle }}</td>
                 <td>{{ post.postContent }}</td>
-                <td>{{ post.createdAt ? post.createdAt|date('d-m-Y H:i:s') : '' }}</td>
+                <td>{{ post.createdAt ? post.createdAt|date('d-m-Y' à 'H:i:s') : '' }}</td>
+                <td>{{ post.theme.themeTitle }}</td>
+                <td>{{ theme.user.firstName ~ ' ' ~ theme.user.lastName }}</td>
                 <td>
                     <a href="{{ path('app_posts_edit', {'id': post.id}) }}">Modifier</a>
                 </td>

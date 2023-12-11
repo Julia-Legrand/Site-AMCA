@@ -69,10 +69,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'users', targetEntity: Themes::class)]
     private Collection $themes;
 
+    #[ORM\Column(length: 100)]
+    private ?string $assigment = null;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Posts::class)]
+    private Collection $posts;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Comments::class)]
+    private Collection $comments;
+
     public function __construct() {
         $this->roles = [self::ROLE_USER];
         $this->futureTrips = new ArrayCollection();
         $this->themes = new ArrayCollection();
+        $this->posts = new ArrayCollection();
+        $this->comments = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -292,7 +303,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if (!$this->themes->contains($theme)) {
             $this->themes->add($theme);
-            $theme->setUsers($this);
+            $theme->setUser($this);
         }
 
         return $this;
@@ -302,8 +313,80 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if ($this->themes->removeElement($theme)) {
             // set the owning side to null (unless already changed)
-            if ($theme->getUsers() === $this) {
-                $theme->setUsers(null);
+            if ($theme->getUser() === $this) {
+                $theme->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getAssigment(): ?string
+    {
+        return $this->assigment;
+    }
+
+    public function setAssigment(string $assigment): static
+    {
+        $this->assigment = $assigment;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Posts>
+     */
+    public function getPosts(): Collection
+    {
+        return $this->posts;
+    }
+
+    public function addPost(Posts $post): static
+    {
+        if (!$this->posts->contains($post)) {
+            $this->posts->add($post);
+            $post->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removePost(Posts $post): static
+    {
+        if ($this->posts->removeElement($post)) {
+            // set the owning side to null (unless already changed)
+            if ($post->getUser() === $this) {
+                $post->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Comments>
+     */
+    public function getComments(): Collection
+    {
+        return $this->comments;
+    }
+
+    public function addComment(Comments $comment): static
+    {
+        if (!$this->comments->contains($comment)) {
+            $this->comments->add($comment);
+            $comment->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComment(Comments $comment): static
+    {
+        if ($this->comments->removeElement($comment)) {
+            // set the owning side to null (unless already changed)
+            if ($comment->getUser() === $this) {
+                $comment->setUser(null);
             }
         }
 
