@@ -1,34 +1,38 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Précédentes sorties{% endblock %}
+{% block title %}Sorties précédentes{% endblock %}
 
 {% block body %}
-    <h1>Précédentes sorties</h1>
+    <h1>Sorties précédentes</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Nom de la sortie</th>
-                <th>Photo principale</th>
+                <th>Photos</th>
                 <th>Description</th>
                 <th>Modifier</th>
             </tr>
         </thead>
         <tbody>
-        {% for previous_trip in previous_trips %}
-            <tr>
-                <td>{{ previous_trip.previousTripName }}</td>
-                <td><img src="{{ asset('uploads/images/' ~ previous_trip.previousTripPicture) }}"></td>
-                <td>{{ previous_trip.previousTripContent }}</td>
-                <td>
-                    <a href="{{ path('app_previous_trips_edit', {'id': previous_trip.id}) }}">Modifier</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">Donnée vide</td>
-            </tr>
-        {% endfor %}
+            {% for previous_trip in previous_trips %}
+                <tr>
+                    <td>{{ previous_trip.previousTripName }}</td>
+                    <td>
+                        {% for picture in previous_trip.getPictures() %}
+                            <img src="{{ asset('uploads/images/' ~ picture.picture) }}" alt="Photo de la sortie" width="200px">
+                        {% endfor %}
+                    </td>
+                    <td>{{ previous_trip.previousTripContent }}</td>
+                    <td>
+                        <a href="{{ path('app_previous_trips_edit', {'id': previous_trip.id}) }}">Modifier</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">Donnée vide</td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
 

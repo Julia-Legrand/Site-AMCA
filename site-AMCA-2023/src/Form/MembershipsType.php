@@ -35,7 +35,7 @@ class MembershipsType extends AbstractType
                 'attr' => ['class' => 'custom-form'],
             ])
             ->add('passengerFee', NumberType::class, [
-                'label' => 'Cotisation passagers',
+                'label' => 'Cotisation passager',
                 'attr' => ['class' => 'custom-form'],
             ])
         ;

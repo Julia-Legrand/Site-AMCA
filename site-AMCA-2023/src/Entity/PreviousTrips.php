@@ -2,11 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\PreviousTripsRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Entity\TripPictures;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\PreviousTripsRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity(repositoryClass: PreviousTripsRepository::class)]
 class PreviousTrips
@@ -19,18 +20,15 @@ class PreviousTrips
     #[ORM\Column(length: 100)]
     private ?string $previousTripName = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $previousTripPicture = null;
-
     #[ORM\Column(type: Types::TEXT)]
     private ?string $previousTripContent = null;
 
-    #[ORM\OneToMany(mappedBy: 'previoustrips', targetEntity: Images::class)]
-    private Collection $images;
+    #[ORM\OneToMany(mappedBy: 'previousTrips', targetEntity: TripPictures::class, orphanRemoval: true, cascade: ['persist'])]
+    private Collection $pictures;
 
     public function __construct()
     {
-        $this->images = new ArrayCollection();
+        $this->pictures = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -50,18 +48,6 @@ class PreviousTrips
         return $this;
     }
 
-    public function getPreviousTripPicture(): ?string
-    {
-        return $this->previousTripPicture;
-    }
-
-    public function setPreviousTripPicture(string $previousTripPicture): static
-    {
-        $this->previousTripPicture = $previousTripPicture;
-
-        return $this;
-    }
-
     public function getPreviousTripContent(): ?string
     {
         return $this->previousTripContent;
@@ -75,29 +61,29 @@ class PreviousTrips
     }
 
     /**
-     * @return Collection<int, Images>
+     * @return Collection<int, TripPictures>
      */
-    public function getImages(): Collection
+    public function getPictures(): Collection
     {
-        return $this->images;
+        return $this->pictures;
     }
 
-    public function addImage(Images $image): static
+    public function addPicture(TripPictures $picture): static
     {
-        if (!$this->images->contains($image)) {
-            $this->images->add($image);
-            $image->setPrevioustrips($this);
+        if (!$this->pictures->contains($picture)) {
+            $this->pictures->add($picture);
+            $picture->setPreviousTrips($this);
         }
 
         return $this;
     }
 
-    public function removeImage(Images $image): static
+    public function removePicture(TripPictures $picture): static
     {
-        if ($this->images->removeElement($image)) {
+        if ($this->pictures->removeElement($picture)) {
             // set the owning side to null (unless already changed)
-            if ($image->getPrevioustrips() === $this) {
-                $image->setPrevioustrips(null);
+            if ($picture->getPreviousTrips() === $this) {
+                $picture->setPreviousTrips(null);
             }
         }
 

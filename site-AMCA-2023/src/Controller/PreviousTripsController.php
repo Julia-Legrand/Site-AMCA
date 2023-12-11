@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Service\PictureService;
+use App\Entity\TripPictures;
 use App\Entity\PreviousTrips;
 use App\Form\PreviousTripsType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -9,10 +11,10 @@ use App\Repository\PreviousTripsRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-#[Route('/previous/trips')]
+#[Route('/previous_trips')]
 class PreviousTripsController extends AbstractController
 {
     #[Route('/', name: 'app_previous_trips_index', methods: ['GET'])]
@@ -24,28 +26,22 @@ class PreviousTripsController extends AbstractController
     }
 
     #[Route('/new', name: 'app_previous_trips_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, PictureService $pictureService): Response
     {
         $previousTrip = new PreviousTrips();
         $form = $this->createForm(PreviousTripsType::class, $previousTrip);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // Handling files uploading
-            $imageFile = $form->get('previousTripPicture')->getData();
-            if ($imageFile) {
-                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
-                $safeFilename = $slugger->slug($originalFilename);
-                $newFilename = $safeFilename . '.' . $imageFile->guessExtension();
-        
-                $imageFile->move(
-                    $this->getParameter('images_directory'),
-                    $newFilename
-                );
-        
-                $previousTrip->setPreviousTripPicture($newFilename);
-            }
+            // Gestion des fichiers uploadés
+            $tripPictures = $form->get('pictures')->getData();
             
+            foreach ($tripPictures as $tripPicture) {
+                $newTripPicture = new TripPictures();
+                $newTripPicture->setPicture($this->uploadPicture($tripPicture, $pictureService));
+                $previousTrip->addPicture($newTripPicture);
+            }
+
             $entityManager->persist($previousTrip);
             $entityManager->flush();
 
@@ -58,28 +54,18 @@ class PreviousTripsController extends AbstractController
         ]);
     }
 
+    private function uploadPicture(UploadedFile $file, PictureService $pictureService)
+    {
+        return $pictureService->add($file);
+    }
+
     #[Route('/{id}/edit', name: 'app_previous_trips_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, PreviousTrips $previousTrip, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
+    public function edit(Request $request, PreviousTrips $previousTrip, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(PreviousTripsType::class, $previousTrip);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // Handling files uploading
-            $imageFile = $form->get('previousTripPicture')->getData();
-            if ($imageFile) {
-                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
-                $safeFilename = $slugger->slug($originalFilename);
-                $newFilename = $safeFilename . '.' . $imageFile->guessExtension();
-        
-                $imageFile->move(
-                    $this->getParameter('images_directory'),
-                    $newFilename
-                );
-        
-                $previousTrip->setPreviousTripPicture($newFilename);
-            }
-
             $entityManager->flush();
 
             return $this->redirectToRoute('app_previous_trips_index', [], Response::HTTP_SEE_OTHER);

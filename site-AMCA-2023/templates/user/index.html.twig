@@ -28,7 +28,7 @@
         {% for user in users %}
             <tr>
                 <td>{{ user.memberNumber }}</td>
-                <td>{{ user.assigment }}</td>
+                <td>{{ user.assignment ? user.assignment|json_encode : '' }}</td>
                 <td>{{ user.firstName }}</td>
                 <td>{{ user.lastName }}</td>
                 <td>{{ user.email }}</td>
@@ -41,7 +41,7 @@
                 <td>{{ user.bike }}</td>
                 <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
                 <td>
-                    <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
+                    <a href="{{ path('app_user_edit', {'id': user.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
@@ -52,5 +52,4 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_user_new') }}">Ajouter</a>
 {% endblock %}

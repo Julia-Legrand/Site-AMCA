@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter une photo{% endblock %}
+
+{% block body %}
+    <h1>Ajouter une photo</h1>
+
+    {{ include('trip_pictures/_form.html.twig') }}
+
+    <a href="{{ path('app_trip_pictures_index') }}">Retour</a>
+{% endblock %}

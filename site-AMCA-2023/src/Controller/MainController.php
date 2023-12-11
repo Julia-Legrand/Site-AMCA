@@ -6,7 +6,6 @@ use App\Entity\Contacts;
 use App\Form\ContactsType;
 use App\Repository\UserRepository;
 use App\Repository\PostsRepository;
-use App\Repository\ImagesRepository;
 use App\Repository\ThemesRepository;
 use App\Repository\CommentsRepository;
 use App\Repository\ContactsRepository;
@@ -16,7 +15,6 @@ use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\FutureTripsRepository;
 use App\Repository\MembershipsRepository;
 use App\Repository\PresentationsRepository;
-use App\Repository\PreviousTripsRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -26,19 +24,19 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class MainController extends AbstractController
 {
     #[Route('/', name: 'home')]
-    public function index(PresentationsRepository $presentationsRepository, PurposesRepository $purposesRepository, PreviousTripsRepository $previousTripsRepository, ImagesRepository $imagesRepository): Response
+    public function index(PresentationsRepository $presentationsRepository, PurposesRepository $purposesRepository, PreviousTripsRepository $previousTripsRepository, TripPicturesRepository $tripPicturesRepository): Response
     {
         return $this->render('main/index.html.twig', [
             'presentations' => $presentationsRepository->findAll(),
             'purposes' => $purposesRepository->findAll(),
             'previous_trips' => $previousTripsRepository->findAll(),
-            'images' => $imagesRepository->findAll(),
+            'trip_pictures' => $tripPicturesRepository->findAll(),
         ]);
     }
 
     #[IsGranted('ROLE_ADMIN')]
     #[Route('/admin', name: 'admin')]
-    public function admin(PresentationsRepository $presentationsRepository, MeetingsRepository $meetingsRepository, PurposesRepository $purposesRepository, MembershipsRepository $membershipsRepository, ContactsRepository $contactsRepository, PreviousTripsRepository $previousTripsRepository, ImagesRepository $imagesRepository, FutureTripsRepository $futureTripsRepository, UserRepository $userRepository, ThemesRepository $themesRepository, PostsRepository $postsRepository, CommentsRepository $commentsRepository): Response
+    public function admin(PresentationsRepository $presentationsRepository, MeetingsRepository $meetingsRepository, PurposesRepository $purposesRepository, MembershipsRepository $membershipsRepository, ContactsRepository $contactsRepository, PreviousTripsRepository $previousTripsRepository, TripPicturesRepository $tripPicturesRepository, FutureTripsRepository $futureTripsRepository, UserRepository $userRepository, ThemesRepository $themesRepository, PostsRepository $postsRepository, CommentsRepository $commentsRepository): Response
     {
         return $this->render('main/admin.html.twig', [
             'presentations' => $presentationsRepository->findAll(),
@@ -47,7 +45,7 @@ class MainController extends AbstractController
             'memberships' => $membershipsRepository->findAll(),
             'contacts' => $contactsRepository->findAll(),
             'previous_trips' => $previousTripsRepository->findAll(),
-            'images' => $imagesRepository->findAll(),
+            'trip_pictures' => $tripPicturesRepository->findAll(),
             'future_trips' => $futureTripsRepository->findAll(),
             'users' => $userRepository->findAll(),
             'themes' => $themesRepository->findAll(),

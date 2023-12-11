@@ -1,19 +1,43 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Créer un adhérent{% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
+	<div class="loginForm">
+		<h2>Créer un adhérent</h2>
 
-    {{ form_errors(registrationForm) }}
+		{{ form_errors(registrationForm) }}
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
+		{{ form_start(registrationForm) }}
+
+		<div class="bloc">
+			<label for="inputEmail">Email</label>
+        </div>
+        <div class="bloc">
+			{{ form_widget(registrationForm.email, {
+            attr: {
+                'id': 'email',
+				'class': 'input'
+            }
         }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+		</div>
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+		<div class="bloc">
+			<label for="inputPassword">Mot de passe</label>
+        </div>
+        <div class="bloc">
+			{{ form_widget(registrationForm.plainPassword, {
+            attr: {
+                'id': 'plainPassword',
+				'class': 'input'
+            }
+        }) }}
+		</div>
+
+		<div class="bloc">
+			<button type="submit" class="button">Valider</button>
+		</div>
+
+			{{ form_end(registrationForm) }}
+	</div>
 {% endblock %}

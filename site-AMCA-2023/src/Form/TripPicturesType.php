@@ -2,19 +2,21 @@
 
 namespace App\Form;
 
-use App\Entity\Images;
+use App\Entity\TripPictures;
+use App\Entity\PreviousTrips;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 
-class ImagesType extends AbstractType
+class TripPicturesType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('image', FileType::class, [
+            ->add('picture', FileType::class, [
                 'label' => 'Photo de la sortie',
                 'attr' => ['class' => 'custom-form'],
                 'mapped' => false,
@@ -29,11 +31,13 @@ class ImagesType extends AbstractType
                     ])
                 ],
             ])
-            ->add('previoustrips', EntityType::class, [
+            ->add('previousTrips', EntityType::class, [
                 'class' => PreviousTrips::class,
-                'label' => 'Sortie',
-                'choice_label' => 'previousTripName',
+                'choice_label' => function (PreviousTrips $previousTrips) {
+                    return $previousTrips->getPreviousTripName();
+                },
                 'attr' => ['class' => 'custom-form'],
+                'label' => 'Sortie',
             ])
         ;
     }
@@ -41,7 +45,7 @@ class ImagesType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Images::class,
+            'data_class' => TripPictures::class,
         ]);
     }
 }

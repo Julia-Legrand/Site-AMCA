@@ -21,11 +21,11 @@
         {% for presentation in presentations %}
             <tr>
                 <td>{{ presentation.presentationTitle }}</td>
-                <td><img src="{{ asset('uploads/images/' ~ presentation.presentationPicture) }}"></td>
+                <td><img src="{{ asset('uploads/images/' ~ presentation.presentationPicture) }}" alt="Photo des membres fondateurs" width="200px"></td>
                 <td>{{ presentation.presentationContent }}</td>
-                <td><img src="{{ asset('uploads/images/' ~ presentation.logo) }}"></td>
-                <td><img src="{{ asset('uploads/images/' ~ presentation.statutesDoc) }}"></td>
-                <td><img src="{{ asset('uploads/images/' ~ presentation.internalRulesDoc) }}"></td>
+                <td><img src="{{ asset('uploads/images/' ~ presentation.logo) }}" alt="Logo de l'association" width="200px"></td>
+                <td><embed src="{{ asset('uploads/images/' ~ presentation.statutesDoc) }}" height="300px" type="application/pdf"></td>
+                <td><embed src="{{ asset('uploads/images/' ~ presentation.internalRulesDoc) }}" height="300px" type="application/pdf"></td>
                 <td>
                     <a href="{{ path('app_presentations_edit', {'id': presentation.id}) }}">Modifier</a>
                 </td>

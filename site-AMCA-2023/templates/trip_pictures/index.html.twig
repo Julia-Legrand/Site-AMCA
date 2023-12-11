@@ -8,16 +8,18 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Image</th>
+                <th>Photo</th>
+                <th>Sortie liée</th>
                 <th>Modifier</th>
             </tr>
         </thead>
         <tbody>
-        {% for image in images %}
+        {% for trip_picture in trip_pictures %}
             <tr>
-                <td><img src="{{ asset('uploads/images/' ~ image.image) }}"></td>
+                <td><img src="{{ asset('uploads/images/' ~ trip_picture.picture) }}" alt="Photo de la sortie" width="200px"></td>
+                <td>{{ trip_picture.previous_trips.previousTripName }}</td>
                 <td>
-                    <a href="{{ path('app_images_edit', {'id': image.id}) }}">Modifier</a>
+                    <a href="{{ path('app_trip_pictures_edit', {'id': trip_picture.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
@@ -28,5 +30,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_images_new') }}">Ajouter</a>
+    <a href="{{ path('app_trip_pictures_new') }}">Ajouter</a>
 {% endblock %}

@@ -32,8 +32,8 @@ class MeetingsController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             // Handling latitude and longitude values
-            $meeting->setMeetingLon($request->request->get('meetings')['meetingLon']);
-            $meeting->setMeetingLat($request->request->get('meetings')['meetingLat']);
+            $meeting->setMeetingLon($form->get('meetingLon')->getData());
+            $meeting->setMeetingLat($form->get('meetingLat')->getData());
 
             // Handling files uploading
             $imageFile = $form->get('meetingPicture')->getData();
@@ -52,10 +52,10 @@ class MeetingsController extends AbstractController
 
             $entityManager->persist($meeting);
             $entityManager->flush();
-
+    
             return $this->redirectToRoute('app_meetings_index', [], Response::HTTP_SEE_OTHER);
         }
-
+    
         return $this->renderForm('meetings/new.html.twig', [
             'meeting' => $meeting,
             'form' => $form,

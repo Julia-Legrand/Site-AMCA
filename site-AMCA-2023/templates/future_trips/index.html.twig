@@ -9,7 +9,7 @@
         <thead>
             <tr>
                 <th>Nom de la sortie</th>
-                <th>Photo principale</th>
+                <th>Photo</th>
                 <th>Date de départ</th>
                 <th>Date de retour</th>
                 <th>Budget à prévoir</th>
@@ -26,10 +26,10 @@
         {% for future_trip in future_trips %}
             <tr>
                 <td>{{ future_trip.futureTripName }}</td>
-                <td><img src="{{ asset('uploads/images/' ~ future_trip.futureTripPicture) }}"></td>
-                <td>{{ future_trip.startDate ? future_trip.startDate|date('d-m-Y' à 'H:i:s') : '' }}</td>
-                <td>{{ future_trip.endDate ? future_trip.endDate|date('d-m-Y' à 'H:i:s') : '' }}</td>
-                <td>{{ future_trip.budget }}</td>
+                <td><img src="{{ asset('uploads/images/' ~ future_trip.futureTripPicture) }}" alt="Photo de la sortie" width="200px"></td>
+                <td>{{ future_trip.startDate ? future_trip.startDate|date('d-m-Y à H:i') : '' }}</td>
+                <td>{{ future_trip.endDate ? future_trip.endDate|date('d-m-Y à H:i') : '' }}</td>
+                <td>{{ future_trip.budget }} euros</td>
                 <td>{{ future_trip.futureTripContent }}</td>
                 <td>{{ future_trip.numberOfPlaces }}</td>
                 <td>{{ future_trip.futureTripLon }}</td>

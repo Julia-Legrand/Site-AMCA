@@ -72,7 +72,6 @@ class UserType extends AbstractType
                 'label' => 'Date de naissance',
                 'attr' => ['class' => 'custom-form'],
                 'widget' => 'single_text',
-                'format' => 'dd-MM-yyyy',
             ])
             ->add('bike', TextType::class, [
                 'label' => 'Moto',

@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-#[Route('/future/trips')]
+#[Route('/future_trips')]
 class FutureTripsController extends AbstractController
 {
     #[Route('/', name: 'app_future_trips_index', methods: ['GET'])]
@@ -102,28 +102,26 @@ class FutureTripsController extends AbstractController
     }
 
     #[Route('/{id}/register', name: 'app_future_trips_register', methods: ['POST'])]
-    public function register(Request $request, FutureTrips $futureTrip, EntityManagerInterface $entityManager): Response
-    {
-        $user = $this->getUser();
-
-        if ($user && $futureTrip->hasAvailablePlaces()) {
-            $futureTrip->addUserIfAvailable($user);
-            $entityManager->flush();
-        }
-
-        return $this->redirectToRoute('app_future_trips_index', [], Response::HTTP_SEE_OTHER);
-    }
-
     #[Route('/{id}/unregister', name: 'app_future_trips_unregister', methods: ['POST'])]
-    public function unregister(Request $request, FutureTrips $futureTrip, EntityManagerInterface $entityManager): Response
+    public function handleRegistration(Request $request, FutureTrips $futureTrip, EntityManagerInterface $entityManager): Response
     {
         $user = $this->getUser();
 
         if ($user) {
-            $futureTrip->removeUser($user);
-            $entityManager->flush();
+            if ($request->get('_route') === 'app_future_trips_register') {
+                $success = $futureTrip->addUserIfAvailable($user);
+            } elseif ($request->get('_route') === 'app_future_trips_unregister') {
+                $success = $futureTrip->removeUser($user);
+            }
+
+            if ($success) {
+                $entityManager->flush();
+                $this->addFlash('success', 'Votre inscription a été enregistrée avec succès.');
+            } else {
+                $this->addFlash('warning', 'Impossible de traiter votre inscription.');
+            }
         }
 
         return $this->redirectToRoute('app_future_trips_index', [], Response::HTTP_SEE_OTHER);
-    }
+    }   
 }

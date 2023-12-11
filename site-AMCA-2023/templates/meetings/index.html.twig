@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Meetings index{% endblock %}
+{% block title %}Prochaine réunion{% endblock %}
 
 {% block body %}
-    <h1>Meetings index</h1>
+    <h1>Prochaine réunion</h1>
 
     <table class="table">
         <thead>
@@ -20,8 +20,8 @@
         <tbody>
         {% for meeting in meetings %}
             <tr>
-                <td>{{ meeting.meetingDate ? meeting.meetingDate|date('d-m-Y' à 'H:i:s') : '' }}</td>
-                <td><img src="{{ asset('uploads/images/' ~ meeting.meetingPicture) }}"></td>
+                <td>{{ meeting.meetingDate ? meeting.meetingDate|date('d-m-Y à H:i') : '' }}</td>
+                <td><img src="{{ asset('uploads/images/' ~ meeting.meetingPicture) }}" alt="Photo de la salle de réunion" width="200px"></td>
                 <td>{{ meeting.meetingAddress }}</td>
                 <td>{{ meeting.meetingLon }}</td>
                 <td>{{ meeting.meetingLat }}</td>

@@ -17,7 +17,9 @@
         <tbody>
         {% for membership in memberships %}
             <tr>
-                <td><img src="{{ asset('uploads/images/' ~ membership.membershipForm) }}"></td>
+                <td>
+                    <embed src="{{ asset('uploads/images/' ~ membership.membershipForm) }}" height="300px" type="application/pdf">
+                </td>
                 <td>{{ membership.driverFee }} euros</td>
                 <td>{{ membership.passengerFee }} euros</td>
                 <td>

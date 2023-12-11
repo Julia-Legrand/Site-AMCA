@@ -2,17 +2,21 @@
 
 namespace App\Entity;
 
-use App\Repository\UserRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Entity\Posts;
+use App\Entity\Themes;
+use App\Entity\Comments;
+use App\Entity\FutureTrips;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\UserRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
-use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-#[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
+#[UniqueEntity(fields: ['email'], message: 'Il existe déjà un compte avec cet email')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
 
@@ -69,8 +73,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'users', targetEntity: Themes::class)]
     private Collection $themes;
 
-    #[ORM\Column(length: 100)]
-    private ?string $assigment = null;
+    #[ORM\Column(type: "json")]
+    private array $assignment = [];
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Posts::class)]
     private Collection $posts;
@@ -321,14 +325,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getAssigment(): ?string
+    // Getter
+    public function getAssignment(): ?array
     {
-        return $this->assigment;
+        return $this->assignment;
     }
 
-    public function setAssigment(string $assigment): static
+    // Setter
+    public function setAssignment(array $assignment): static
     {
-        $this->assigment = $assigment;
+        $this->assignment = $assignment;
 
         return $this;
     }
