@@ -14,50 +14,38 @@
                 <th>Date de retour</th>
                 <th>Budget à prévoir</th>
                 <th>Description</th>
-                <th>Nb de places</th>
                 <th>Longitude</th>
                 <th>Latitude</th>
+                <th>Nb de places</th>
                 <th>S'inscrire</th>
                 <th>Adhérents inscrits</th>
                 <th>Modifier</th>
             </tr>
         </thead>
         <tbody>
-        {% for future_trip in future_trips %}
+        {% for futureTrip in futureTrips %}
             <tr>
-                <td>{{ future_trip.futureTripName }}</td>
-                <td><img src="{{ asset('uploads/images/' ~ future_trip.futureTripPicture) }}" alt="Photo de la sortie" width="200px"></td>
-                <td>{{ future_trip.startDate ? future_trip.startDate|date('d-m-Y à H:i') : '' }}</td>
-                <td>{{ future_trip.endDate ? future_trip.endDate|date('d-m-Y à H:i') : '' }}</td>
-                <td>{{ future_trip.budget }} euros</td>
-                <td>{{ future_trip.futureTripContent }}</td>
-                <td>{{ future_trip.numberOfPlaces }}</td>
-                <td>{{ future_trip.futureTripLon }}</td>
-                <td>{{ future_trip.futureTripLat }}</td>
+                <td>{{ futureTrip.futureTripName }}</td>
+                <td><img src="{{ asset('uploads/images/' ~ futureTrip.futureTripPicture) }}" alt="Photo de la sortie" width="200px"></td>
+                <td>{{ futureTrip.startDate ? futureTrip.startDate|date('d-m-Y à H:i') : '' }}</td>
+                <td>{{ futureTrip.endDate ? futureTrip.endDate|date('d-m-Y à H:i') : '' }}</td>
+                <td>{{ futureTrip.budget }} euros</td>
+                <td>{{ futureTrip.futureTripContent }}</td>
+                <td>{{ futureTrip.futureTripLon }}</td>
+                <td>{{ futureTrip.futureTripLat }}</td>
+                <td>{{ futureTrip.numberOfPlaces }}</td>
                 <td>
-                    {% if future_trip.hasAvailablePlaces() %}
-                        {% if future_trip.users.contains(app.user) %}
-                            <form method="post" action="{{ path('app_future_trips_unregister', {'id': future_trip.id}) }}">
-                                <button type="submit">Se désinscrire</button>
-                            </form>
-                        {% else %}
-                            <form method="post" action="{{ path('app_future_trips_register', {'id': future_trip.id}) }}">
-                                <button type="submit">S'inscrire</button>
-                            </form>
-                        {% endif %}
-                    {% else %}
-                        Complet
-                    {% endif %}
+                    <!--S'inscrire-->
                 </td>
                 <td>
                     <ul>
-                        {% for user in future_trip.users %}
+                        {% for user in futureTrip.users %}
                             <li>{{ user.firstName ~ ' ' ~ user.lastName }}</li>
                         {% endfor %}
                     </ul>
                 </td>
                 <td>
-                    <a href="{{ path('app_future_trips_edit', {'id': future_trip.id}) }}">Modifier</a>
+                    <a href="{{ path('app_future_trips_edit', {'id': futureTrip.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}

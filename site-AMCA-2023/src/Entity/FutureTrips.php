@@ -180,26 +180,4 @@ class FutureTrips
 
         return $this;
     }
-
-    public function hasAvailablePlaces(): bool
-    {
-        return $this->numberOfPlaces > count($this->users);
-    }
-
-    public function addUserIfAvailable(User $user): bool
-    {
-        if ($this->hasAvailablePlaces() && !$this->users->contains($user)) {
-            $this->users->add($user);
-            return true;
-        }
-
-        return false;
-    }
-
-    public function removeUser(User $user): static
-    {
-        $this->users->removeElement($user);
-
-        return $this;
-    }
 }

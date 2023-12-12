@@ -69,8 +69,8 @@ class FutureTripsController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             // Handling latitude and longitude values
-            $futureTrip->setFutureTripLon($request->request->get('futureTrips')['futureTripLon']);
-            $futureTrip->setFutureTripLat($request->request->get('futureTrips')['futureTripLat']);
+            $futureTrip->setFutureTripLon($form->get('futureTripLon')->getData());
+            $futureTrip->setFutureTripLat($form->get('futureTripLat')->getData());
 
             // Handling files uploading
             $imageFile = $form->get('futureTripPicture')->getData();
@@ -108,28 +108,4 @@ class FutureTripsController extends AbstractController
 
         return $this->redirectToRoute('app_future_trips_index', [], Response::HTTP_SEE_OTHER);
     }
-
-    #[Route('/{id}/register', name: 'app_future_trips_register', methods: ['POST'])]
-    #[Route('/{id}/unregister', name: 'app_future_trips_unregister', methods: ['POST'])]
-    public function handleRegistration(Request $request, FutureTrips $futureTrip, EntityManagerInterface $entityManager): Response
-    {
-        $user = $this->getUser();
-
-        if ($user) {
-            if ($request->isMethod('POST') && $request->request->has('register')) {
-                $success = $futureTrip->addUserIfAvailable($user);
-            } elseif ($request->isMethod('POST') && $request->request->has('unregister')) {
-                $success = $futureTrip->removeUser($user);
-            }
-
-            if ($success) {
-                $entityManager->flush();
-                $this->addFlash('success', 'Votre inscription a été enregistrée avec succès.');
-            } else {
-                $this->addFlash('warning', 'Impossible de traiter votre inscription.');
-            }
-        }
-
-        return $this->redirectToRoute('app_future_trips_index', [], Response::HTTP_SEE_OTHER);
-    }   
 }
