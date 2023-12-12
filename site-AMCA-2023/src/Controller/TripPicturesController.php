@@ -4,12 +4,13 @@ namespace App\Controller;
 
 use App\Entity\TripPictures;
 use App\Form\TripPicturesType;
-use App\Repository\TripPicturesRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\TripPicturesRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/trip_pictures')]
 class TripPicturesController extends AbstractController
@@ -23,10 +24,10 @@ class TripPicturesController extends AbstractController
     }
 
     #[Route('/new', name: 'app_trip_pictures_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
-        $tripPicture = new TripPictures();
-        $form = $this->createForm(TripPicturesType::class, $tripPicture);
+        $picture = new TripPictures();
+        $form = $this->createForm(TripPicturesType::class, $picture);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -42,22 +43,22 @@ class TripPicturesController extends AbstractController
                     $newFilename
                 );
 
-                $tripPicture->setTripPicture($newFilename);
+                $picture->setPicture($newFilename);
             }
-            $entityManager->persist($tripPicture);
+            $entityManager->persist($picture);
             $entityManager->flush();
 
             return $this->redirectToRoute('app_trip_pictures_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('trip_pictures/new.html.twig', [
-            'trip_picture' => $tripPicture,
+            'trip_picture' => $picture,
             'form' => $form,
         ]);
     }
 
     #[Route('/{id}/edit', name: 'app_trip_pictures_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, TripPictures $tripPicture, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, TripPictures $tripPicture, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
         $form = $this->createForm(TripPicturesType::class, $tripPicture);
         $form->handleRequest($request);
@@ -75,7 +76,7 @@ class TripPicturesController extends AbstractController
                     $newFilename
                 );
 
-                $tripPicture->setTripPicture($newFilename);
+                $tripPicture->setPicture($newFilename);
             }
             $entityManager->flush();
 
@@ -91,7 +92,7 @@ class TripPicturesController extends AbstractController
     #[Route('/{id}', name: 'app_trip_pictures_delete', methods: ['POST'])]
     public function delete(Request $request, TripPictures $tripPicture, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$tripPicture->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $tripPicture->getId(), $request->request->get('_token'))) {
             $entityManager->remove($tripPicture);
             $entityManager->flush();
         }

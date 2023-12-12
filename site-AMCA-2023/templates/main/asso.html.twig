@@ -1,46 +1,36 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Association AMCA 44{% endblock %}
+{% block title %}Association AMCA 44
+{% endblock %}
+
 
 {% block body %}
 
+	<div id="mapMeetings"></div>
 
-    <div id="mapMeetings"></div>
-
-
-    <div id="mapFutureTrips"></div>
+	<div id="mapFutureTrips"></div>
 
 
+	<script>
+		{% for meeting in meetings %}
+        var mapMeetings = L.map('mapMeetings').setView([{{ meeting.meetingLon }}, {{ meeting.meetingLat }}], 15);
 
-    <script>
-        // Generating map for meetings
-        var map = L.map('mapMeetings').setView([0, 0], 2); // Default settings to adjust
+        var meetingMarker = L.marker([{{ meeting.meetingLon }}, {{ meeting.meetingLat }}]).addTo(mapMeetings);
 
-        // Adding a background with OpenStreetMap
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
-
-        // Adding markers for each meeting
-        {% for meeting in meetings %}
-            var marker = L.marker([{{ meeting.meetingLat }}, {{ meeting.meetingLon }}]).addTo(map);
-            marker.bindPopup("Réunion le {{ meeting.meetingDate | date('d-m-Y H:i') }} à {{ meeting.meetingAddress }}");
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(mapMeetings);
+        
+        meetingMarker.bindPopup("Réunion le  {{ meeting.meetingDate | date('d-m-Y H:i') }}à  {{ meeting.meetingAddress }}");
         {% endfor %}
 
-        // Generating map for future trips
-        var futureTripsMap = L.map('mapFutureTrips').setView([0, 0], 2); // Default settings to adjust
-
-        // Adding a background with OpenStreetMap
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(futureTripsMap);
-
-        // Adding markers for each future trip
         {% for futureTrip in futureTrips %}
-            var futureTripMarker = L.marker([{{ futureTrip.futureTripLat }}, {{ futureTrip.futureTripLon }}]).addTo(futureTripsMap);
-            futureTripMarker.bindPopup("Voyage prévu : {{ futureTrip.futureTripName }} du {{ futureTrip.startDate | date('d-m-Y') }} au {{ futureTrip.endDate | date('d-m-Y') }}");
+        var mapFutureTrips = L.map('mapFutureTrips').setView([{{ futureTrip.futureTripLon }}, {{ futureTrip.futureTripLat }}], 8);
+
+        var futureTripMarker = L.marker([{{ futureTrip.futureTripLon }}, {{ futureTrip.futureTripLat }}]).addTo(mapFutureTrips);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(mapFutureTrips);
+        
+        futureTripMarker.bindPopup("Voyage prévu :  {{ futureTrip.futureTripName }}du  {{ futureTrip.startDate | date('d-m-Y') }}au  {{ futureTrip.endDate | date('d-m-Y') }}");
         {% endfor %}
-    </script>
+	</script>
 
 {% endblock %}
-

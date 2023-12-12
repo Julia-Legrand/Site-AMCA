@@ -16,8 +16,20 @@
         <tbody>
         {% for trip_picture in trip_pictures %}
             <tr>
-                <td><img src="{{ asset('uploads/images/' ~ trip_picture.picture) }}" alt="Photo de la sortie" width="200px"></td>
-                <td>{{ trip_picture.previous_trips.previousTripName }}</td>
+                <td>
+                    {% if trip_picture.picture is defined %}
+                        <img src="{{ asset('uploads/images/' ~ trip_picture.picture) }}" alt="Photo de la sortie" width="200px">
+                    {% else %}
+                        <em>Photo non disponible</em>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if trip_picture.previousTrips is defined and trip_picture.previousTrips is not empty %}
+                        {{ trip_picture.previousTrips.previousTripName }}
+                    {% else %}
+                        <em>Sortie non liée</em>
+                    {% endif %}
+                </td>
                 <td>
                     <a href="{{ path('app_trip_pictures_edit', {'id': trip_picture.id}) }}">Modifier</a>
                 </td>

@@ -14,7 +14,9 @@ use App\Repository\PurposesRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\FutureTripsRepository;
 use App\Repository\MembershipsRepository;
+use App\Repository\TripPicturesRepository;
 use App\Repository\PresentationsRepository;
+use App\Repository\PreviousTripsRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -46,7 +48,7 @@ class MainController extends AbstractController
             'contacts' => $contactsRepository->findAll(),
             'previous_trips' => $previousTripsRepository->findAll(),
             'trip_pictures' => $tripPicturesRepository->findAll(),
-            'future_trips' => $futureTripsRepository->findAll(),
+            'futureTrips' => $futureTripsRepository->findAll(),
             'users' => $userRepository->findAll(),
             'themes' => $themesRepository->findAll(),
             'posts' => $postsRepository->findAll(),
@@ -59,7 +61,7 @@ class MainController extends AbstractController
     {
         return $this->render('main/asso.html.twig', [
             'meetings' => $meetingsRepository->findAll(),
-            'future_trips' => $futureTripsRepository->findAll(),
+            'futureTrips' => $futureTripsRepository->findAll(),
         ]);
     }
 

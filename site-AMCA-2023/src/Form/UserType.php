@@ -18,6 +18,25 @@ class UserType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        // Ajoutez plainPassword uniquement si l'utilisateur est créé
+        if ($options['data']->getId() === null) {
+            $builder->add('plainPassword', PasswordType::class, [
+                'mapped' => false,
+                'required' => true,
+                'label' => 'Mot de passe',
+                'attr' => ['autocomplete' => 'new-password', 'class' => 'custom-form'],
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Veuillez entrer un mot de passe',
+                    ]),
+                    new Length([
+                        'min' => 6,
+                        'minMessage' => 'Votre mot de passe doit comporter au moins {{ limit }} caractères',
+                        'max' => 4096,
+                    ]),
+                ],
+            ]);
+        }
         $builder
             ->add('memberNumber', TextType::class, [
                 'label' => 'Numéro adhérent',
@@ -47,10 +66,6 @@ class UserType extends AbstractType
                     new NotBlank(),
                     new Email(),
                 ],
-            ])
-            ->add('password', PasswordType::class, [
-                'label' => 'Mot de passe',
-                'attr' => ['class' => 'custom-form'],
             ])
             ->add('phoneNumber', TextType::class, [
                 'label' => 'Téléphone',

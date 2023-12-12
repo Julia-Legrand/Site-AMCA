@@ -8,22 +8,22 @@
     <table class="table">
         <thead>
             <tr>
+                <th>Thème</th>
                 <th>Titre du post</th>
                 <th>Texte</th>
                 <th>Créé le</th>
-                <th>Thème</th>
-                <th>Auteur</th>
+                <th>Par</th>
                 <th>Modifier</th>
             </tr>
         </thead>
         <tbody>
         {% for post in posts %}
             <tr>
+                <td>{{ post.themes.themeTitle }}</td>
                 <td>{{ post.postTitle }}</td>
                 <td>{{ post.postContent }}</td>
-                <td>{{ post.createdAt ? post.createdAt|date('d-m-Y à H:i:s') : '' }}</td>
-                <td>{{ post.theme.themeTitle }}</td>
-                <td>{{ theme.user.firstName ~ ' ' ~ theme.user.lastName }}</td>
+                <td>{{ post.createdAt ? post.createdAt|date('d-m-Y à H:i') : '' }}</td>
+                <td>{{ post.themes.user.firstName ~ ' ' ~ post.themes.user.lastName }}</td>
                 <td>
                     <a href="{{ path('app_posts_edit', {'id': post.id}) }}">Modifier</a>
                 </td>

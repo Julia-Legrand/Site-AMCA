@@ -19,7 +19,7 @@ class FutureTripsController extends AbstractController
     public function index(FutureTripsRepository $futureTripsRepository): Response
     {
         return $this->render('future_trips/index.html.twig', [
-            'future_trips' => $futureTripsRepository->findAll(),
+            'futureTrips' => $futureTripsRepository->findAll(),
         ]);
     }
 
@@ -31,6 +31,10 @@ class FutureTripsController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // Handling latitude and longitude values
+            $futureTrip->setFutureTripLon($form->get('futureTripLon')->getData());
+            $futureTrip->setFutureTripLat($form->get('futureTripLat')->getData());
+
             // Handling files uploading
             $imageFile = $form->get('futureTripPicture')->getData();
             if ($imageFile) {
@@ -52,7 +56,7 @@ class FutureTripsController extends AbstractController
         }
 
         return $this->renderForm('future_trips/new.html.twig', [
-            'future_trip' => $futureTrip,
+            'futureTrip' => $futureTrip,
             'form' => $form,
         ]);
     }
@@ -64,6 +68,10 @@ class FutureTripsController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // Handling latitude and longitude values
+            $futureTrip->setFutureTripLon($request->request->get('futureTrips')['futureTripLon']);
+            $futureTrip->setFutureTripLat($request->request->get('futureTrips')['futureTripLat']);
+
             // Handling files uploading
             $imageFile = $form->get('futureTripPicture')->getData();
             if ($imageFile) {
@@ -85,7 +93,7 @@ class FutureTripsController extends AbstractController
         }
 
         return $this->renderForm('future_trips/edit.html.twig', [
-            'future_trip' => $futureTrip,
+            'futureTrip' => $futureTrip,
             'form' => $form,
         ]);
     }
@@ -108,9 +116,9 @@ class FutureTripsController extends AbstractController
         $user = $this->getUser();
 
         if ($user) {
-            if ($request->get('_route') === 'app_future_trips_register') {
+            if ($request->isMethod('POST') && $request->request->has('register')) {
                 $success = $futureTrip->addUserIfAvailable($user);
-            } elseif ($request->get('_route') === 'app_future_trips_unregister') {
+            } elseif ($request->isMethod('POST') && $request->request->has('unregister')) {
                 $success = $futureTrip->removeUser($user);
             }
 
