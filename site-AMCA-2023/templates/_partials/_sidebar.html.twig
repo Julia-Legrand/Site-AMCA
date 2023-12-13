@@ -1,0 +1,37 @@
+<aside class="col-md-2 pr-0 h-100" style="background-color:#343A40;">
+	<nav class="navbar navbar-expand-md flex-md-column flex-row align-items-start navbar-dark bg-dark">
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarNav" aria-controls="sidebarNav" aria-expanded="false" aria-label="Menu pour mobile">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="sidebarNav">
+			<ul class="flex-md-column flex-row navbar-nav w-100 justify-content-between">
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('admin') }}">
+						<i class="fa-solid fa-house"></i>
+						Accueil</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('app_user_index') }}">
+						<i class="fa-solid fa-user"></i>
+						Utilisateurs</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('app_categories_index') }}">
+						<i class="fa-solid fa-list"></i>
+						Catégories</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('app_articles_index') }}">
+						<i class="fa-regular fa-file-lines"></i>
+						Articles</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('app_contacts_index') }}">
+						<i class="fa-regular fa-message"></i>
+						Contact</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+</aside>

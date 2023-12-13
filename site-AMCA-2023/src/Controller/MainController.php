@@ -84,26 +84,6 @@ class MainController extends AbstractController
         ]);
     }
 
-    #[Route('/contact', name: 'contact', methods: ['GET', 'POST'])]
-    public function contact(Request $request, EntityManagerInterface $entityManager,): Response
-    {
-        $contacts = new Contacts();
-        $form = $this->createForm(ContactsType::class, $contacts);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($contacts);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('contact', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->render('main/contact.html.twig', [
-            'contacts' => $contacts,
-            'form' => $form,
-        ]);
-    }
-
     #[Route('/politique-de-confidentialite', name: 'confid')]
     public function confid(): Response
     {

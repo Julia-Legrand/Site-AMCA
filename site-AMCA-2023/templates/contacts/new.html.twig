@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Association AMCA 44{% endblock %}
+
+{% block body %}
+    <h2>Contactez-nous !</h2>
+    {{ include('contacts/_form.html.twig') }}
+    
+    <a href="{{ path('home') }}">Retour</a>
+{% endblock %}

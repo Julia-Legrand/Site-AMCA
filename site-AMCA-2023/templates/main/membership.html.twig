@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Association AMCA 44
+{% endblock %}
+
+{% block body %}
+
+	<h1>Devenir membre</h1>
+	<p>Faire de la moto c'est bien, le faire à plusieurs, c'est mieux !</p>
+	<p>Vous souhaitez nous rejoindre ? Prenez contact avec nous via le
+		<a href="{{ path('app_contacts_new') }}">formulaire</a>.
+	</p>
+	<p>Venez nous rencontrer lors de notre
+		<a href="/vie-association">prochaine réunion mensuelle</a>.
+	</p>
+	<p>Nous recommandons de faire quelques sorties avec nous avant d'adhérer. Vous retrouverez l'agenda de l'association
+		<a href="/vie-association">
+			<i class="fa-regular fa-arrow-right"></i>ici</a>.</p>
+
+	<p>Une fois votre adhésion validée par les membres du bureau, téléchargez le formulaire ci-dessous, complétez-le et amenez-le, avec votre cotisation :</p>
+
+	<h2>Bulletin d'adhésion</h2>
+	{% for membership in memberships %}
+		<embed src="{{ asset('uploads/images/' ~ membership.membershipForm) }}" height="300px" type="application/pdf">
+
+		<h2>Montant de la cotisation 2024</h2>
+		<p>Cotisation conducteur :
+			{{ membership.driverFee }}
+			euros</p>
+		<p>Cotisation passager :
+			{{ membership.passengerFee }}
+			euros</p>
+	{% endfor %}
+
+{% endblock %}

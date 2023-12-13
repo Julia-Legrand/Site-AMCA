@@ -4,14 +4,15 @@ namespace App\Controller;
 
 use App\Entity\Comments;
 use App\Form\CommentsType;
+use App\Repository\PostsRepository;
 use App\Repository\CommentsRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-#[Route('/comments')]
+#[Route('/commentaires')]
 class CommentsController extends AbstractController
 {
     #[Route('/', name: 'app_comments_index', methods: ['GET'])]
@@ -22,10 +23,18 @@ class CommentsController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_comments_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    #[Route('/new/{postId}', name: 'app_comments_new', methods: ['GET', 'POST'])]
+    public function new(Request $request, EntityManagerInterface $entityManager, PostsRepository $postsRepository, $postId): Response
     {
+        $post = $postsRepository->find($postId);
+
+        if (!$post) {
+            throw $this->createNotFoundException('Post not found');
+        }
+
         $comment = new Comments();
+        $comment->setPost($post);
+
         $form = $this->createForm(CommentsType::class, $comment);
         $form->handleRequest($request);
 

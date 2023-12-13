@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-#[Route('/memberships')]
+#[Route('/devenir-membre')]
 class MembershipsController extends AbstractController
 {
     #[Route('/', name: 'app_memberships_index', methods: ['GET'])]

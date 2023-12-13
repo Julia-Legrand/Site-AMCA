@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Association AMCA 44{% endblock %}
+
+{% block body %}
+
+    <h1>Forum de l'association</h1>
+    <section class="forum">
+
+        {% for post in posts %}
+            <h2>{{ post.themes.themeTitle }}<a href="{{ path('app_themes_edit', {'id': post.themes.id}) }}"><i class="fa-solid fa-pencil"></i></a></h2>
+            <h4>{{ post.postTitle }}<a href="{{ path('app_posts_edit', {'id': post.id}) }}"><i class="fa-solid fa-pencil"></i></a></h4>
+            <small>Rédigé par
+                {{ post.themes.user.firstName ~ ' ' ~ post.themes.user.lastName }}
+                le
+                {{ post.createdAt ? post.createdAt|date('d-m-Y à H:i') : '' }}</small>
+            <p><i class="fa-solid fa-quote-left"></i>{{ post.postContent }}</p>
+            <p><a href="{{ path('app_comments_new', {'postId': post.id}) }}">Un commentaire ?</a></p>
+        {% endfor %}
+        
+    </section>
+
+{% endblock %}

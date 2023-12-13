@@ -13,7 +13,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-#[Route('/themes')]
+#[Route('/thèmes')]
 class ThemesController extends AbstractController
 {
     #[Route('/', name: 'app_themes_index', methods: ['GET'])]

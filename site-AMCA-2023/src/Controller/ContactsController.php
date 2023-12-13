@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/contacts')]
+#[Route('/contact')]
 class ContactsController extends AbstractController
 {
     #[Route('/', name: 'app_contacts_index', methods: ['GET'])]
@@ -22,7 +22,7 @@ class ContactsController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_contacts_new', methods: ['GET', 'POST'])]
+    #[Route('/nouveau-message', name: 'app_contacts_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $contact = new Contacts();
@@ -33,7 +33,7 @@ class ContactsController extends AbstractController
             $entityManager->persist($contact);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_contacts_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('home', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('contacts/new.html.twig', [

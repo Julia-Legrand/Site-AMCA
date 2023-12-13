@@ -1,0 +1,16 @@
+<header class="headerAdmin">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark d-flex justify-content-between">
+        <div class="bloc-logo">
+            <a href="{{ path('home') }}">
+                <img src="{{ asset('images/logo-noir-transparent.png') }}" alt="logo AMCA">
+            </a>
+        </div>
+        <div class="bloc-icon">
+            {% if app.user %}
+                <a class="nav-link" href="{{ path('app_logout') }}">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                </a>
+            {% endif %}
+        </div>
+    </nav>
+</header>

@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-#[Route('/trip_pictures')]
+#[Route('/photos-sorties')]
 class TripPicturesController extends AbstractController
 {
     #[Route('/', name: 'app_trip_pictures_index', methods: ['GET'])]

@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-#[Route('/future_trips')]
+#[Route('/futures-sorties')]
 class FutureTripsController extends AbstractController
 {
     #[Route('/', name: 'app_future_trips_index', methods: ['GET'])]
@@ -95,6 +95,14 @@ class FutureTripsController extends AbstractController
         return $this->renderForm('future_trips/edit.html.twig', [
             'futureTrip' => $futureTrip,
             'form' => $form,
+        ]);
+    }
+
+    #[Route('/{id}', name: 'app_future_trips_show', methods: ['GET'])]
+    public function show(FutureTrips $futureTrip): Response
+    {
+        return $this->render('future_trips/show.html.twig', [
+            'futureTrip' => $futureTrip,
         ]);
     }
 
