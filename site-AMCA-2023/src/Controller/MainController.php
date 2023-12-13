@@ -57,27 +57,30 @@ class MainController extends AbstractController
     }
 
     #[Route('/vie-association', name: 'asso')]
-    public function asso(MeetingsRepository $meetingsRepository, FutureTripsRepository $futureTripsRepository): Response
+    public function asso(PresentationsRepository $presentationsRepository, MeetingsRepository $meetingsRepository, FutureTripsRepository $futureTripsRepository): Response
     {
         return $this->render('main/asso.html.twig', [
+            'presentations' => $presentationsRepository->findAll(),
             'meetings' => $meetingsRepository->findAll(),
             'futureTrips' => $futureTripsRepository->findAll(),
         ]);
     }
 
     #[Route('/devenir-membre', name: 'membership')]
-    public function membership(MembershipsRepository $membershipsRepository): Response
+    public function membership(PresentationsRepository $presentationsRepository, MembershipsRepository $membershipsRepository): Response
     {
         return $this->render('main/membership.html.twig', [
+            'presentations' => $presentationsRepository->findAll(),
             'memberships' => $membershipsRepository->findAll(),
         ]);
     }
 
     #[IsGranted('ROLE_USER')]
     #[Route('/forum', name: 'forum')]
-    public function forum(ThemesRepository $themesRepository, PostsRepository $postsRepository, CommentsRepository $commentsRepository): Response
+    public function forum(PresentationsRepository $presentationsRepository, ThemesRepository $themesRepository, PostsRepository $postsRepository, CommentsRepository $commentsRepository): Response
     {
         return $this->render('main/forum.html.twig', [
+            'presentations' => $presentationsRepository->findAll(),
             'themes' => $themesRepository->findAll(),
             'posts' => $postsRepository->findAll(),
             'comments' => $commentsRepository->findAll(),

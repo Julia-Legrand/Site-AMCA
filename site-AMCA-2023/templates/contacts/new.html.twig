@@ -3,8 +3,13 @@
 {% block title %}Association AMCA 44{% endblock %}
 
 {% block body %}
-    <h2>Contactez-nous !</h2>
-    {{ include('contacts/_form.html.twig') }}
-    
-    <a href="{{ path('home') }}">Retour</a>
+<header class="headerPages">
+		<h1>Contact</h1>
+		{% include "_partials/_navbar.html.twig" %}
+	</header>
+	
+    <main>
+        <h2>Contactez-nous !</h2>
+        {{ include('contacts/_form.html.twig') }}
+    </main>
 {% endblock %}
