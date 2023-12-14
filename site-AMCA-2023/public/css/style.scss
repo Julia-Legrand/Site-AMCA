@@ -57,21 +57,21 @@ a:hover {
 }
 
 .button {
-    color: $dark;
+    color: $light;
+    background-color: $dark;
     padding: 10px 20px;
     border-radius: 10px;
     border: none;
     margin-top: 20px;
     margin-bottom: 20px;
-    font-family: 'Montserrat', sans-serif;
-    opacity: 0.9;
+    font-family: 'Anton', sans-serif;
+    font-size: 20px;
+    text-decoration: none;
 }
 
 .button:hover {
-    color: $dark;
     text-decoration: none;
-    box-shadow: $light 1px 0 5px;
-    opacity: 1;
+    box-shadow: $dark 1px 0 5px;
 }
 
 .navbar {
@@ -230,7 +230,7 @@ footer {
         opacity: 1 !important;
         transform: translateX(10%) !important;
     }
-    
+
     .story-text.animated {
         transform: translateX(-10%) !important;
     }
@@ -354,15 +354,134 @@ footer {
 
 /********** ASSO **********/
 /*** MONTHLY MEETING ***/
-#mapMeetings {
-    height: 300px;
-    width: 300px;
+#monthly-meeting {
+    background-color: $darker;
+    color: $light;
+    padding: 80px 0;
+
+    .our-meeting {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    .meetingLeft {
+        img {
+            width: 500px;
+            margin: 40px 0;
+        }
+
+        #mapMeetings {
+            height: 300px;
+            width: 500px;
+        }
+    }
+
+    .meetingRight {
+        width: 700px;
+
+        p {
+            font-size: 30px;
+            text-align: center;
+        }
+
+        i {
+            margin-right: 10px;
+        }
+    }
+
+    .meetingRight,
+    .meetingLeft {
+        opacity: 0;
+        transform: translateX(100);
+        /* Initial position */
+        transition: opacity 0.8s ease, transform 1s ease;
+    }
+
+    .animate-from-left {
+        transform-origin: left center;
+    }
+
+    .animate-from-right {
+        transform-origin: right center;
+    }
+
+    .animated {
+        opacity: 1 !important;
+        transform: translateX(10%) !important;
+    }
+
+    .meetingRight.animated {
+        transform: translateX(-10%) !important;
+    }
 }
 
 /*** AGENDA ***/
-
+#agenda {
+    background-color: $dark;
+    color: $light;
+    padding: 80px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
 /*** FUTURE TRIPS ***/
+#futures-sorties {
+    background-color: $darker;
+    color: $light;
+    padding: 80px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .all-trips {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        .each-trip {
+            width: 600px;
+            height: 700px;
+            background-color: $light;
+            box-shadow: $light 0px 0px 8px 2px;
+            margin: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            color: $darker;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s, transform 0.5s;
+        }
+
+        .each-trip.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h4::after {
+            background-color: $darker;
+            box-shadow: $darker 1px 0 5px;
+        }
+
+        img {
+            width: 500px;
+            height: 350px;
+            margin-bottom: 30px;
+        }
+
+        small {
+            font-size: 18px;
+        }
+    }
+}
+
+
 #mapFutureTrip {
     height: 300px;
     width: 300px;
