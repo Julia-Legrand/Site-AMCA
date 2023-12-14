@@ -46,6 +46,10 @@ small {
     @include paragraph;
 }
 
+p {
+    font-size: 20px;
+}
+
 a:hover {
     color: $light;
     text-decoration: none;
@@ -174,7 +178,8 @@ footer {
         align-items: center;
         background-color: $darker;
 
-        .legals, .brand {
+        .legals,
+        .brand {
             color: $light;
             margin: 20px;
         }
@@ -182,11 +187,182 @@ footer {
 }
 
 /********** INDEX **********/
+/*** OUR STORY ***/
+#our-story {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 80vh;
+    background-color: $brown;
+    color: $light;
+
+    .story-picture img {
+        width: 450px;
+        box-shadow: $darker 0px 0px 20px 10px;
+        border-radius: 10px;
+    }
+
+    .story-text {
+        width: 700px;
+
+        p {
+            text-align: center;
+        }
+    }
+
+    .story-text,
+    .story-picture {
+        opacity: 0;
+        transform: translateX(100);
+        /* Initial position */
+        transition: opacity 0.8s ease, transform 1s ease;
+    }
+
+    .animate-from-left {
+        transform-origin: left center;
+    }
+
+    .animate-from-right {
+        transform-origin: right center;
+    }
+
+    .animated {
+        opacity: 1 !important;
+        transform: translateX(10%) !important;
+    }
+    
+    .story-text.animated {
+        transform: translateX(-10%) !important;
+    }
+}
+
+/*** OUR PURPOSES ***/
+#our-purposes {
+    height: 80vh;
+    background-image: linear-gradient(rgb(1, 1, 1, 0.7), rgba(1, 1, 1, 0.7)), url(../images/photo-de-groupe.jpeg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: $light;
+
+    .our-purposes {
+        display: flex;
+        align-items: center;
+
+        .purpose {
+            height: 400px;
+            width: 400px;
+            background-color: $light;
+            opacity: 0.8;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            color: $darker;
+            margin: 60px;
+        }
+
+        p {
+            text-align: center;
+            font-size: 25px;
+            margin: 0;
+        }
+    }
+}
+
+/*** PREVIOUS TRIPS ***/
+#our-previous-trips {
+    background-color: $dark;
+    color: $light;
+    padding: 80px 0;
+
+    .previous-trips {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .previous-trip {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        margin: 60px;
+        width: 80%;
+
+        &:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+
+        .previous-trip-picture {
+            width: 500px;
+            height: 370px;
+            box-shadow: $light 0px 0px 10px 5px;
+
+            img {
+                width: 500px;
+                height: 370px;
+            }
+        }
+
+        .previous-trip-text {
+            width: 600px;
+            text-align: center;
+        }
+    }
+}
+
+/*** CONTACT ***/
+#contact-us {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(rgb(1, 1, 1, 0.7), rgba(1, 1, 1, 0.7)), url(../images/wallpaper2.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 40vh;
+
+    h1 {
+        font-size: 60px;
+        color: $light;
+    }
+
+    .button {
+        color: $light;
+        background-color: lightgrey;
+        font-size: 60px;
+        font-family: 'Anton', sans-serif;
+        padding: 10px 40px;
+        border-radius: 10px;
+        border: none;
+        margin: 60px;
+        text-decoration: none;
+        opacity: 1;
+    }
+
+    .button:hover {
+        box-shadow: $light 1px 0 5px;
+    }
+}
+
+/********** ASSO **********/
+/*** MONTHLY MEETING ***/
 #mapMeetings {
     height: 300px;
     width: 300px;
 }
 
+/*** AGENDA ***/
+
+
+/*** FUTURE TRIPS ***/
 #mapFutureTrip {
     height: 300px;
     width: 300px;

@@ -16,10 +16,10 @@
         <!--OUR STORY-->
         <section id="our-story">
             {% for presentation in presentations %}
-            <div class="story-picture">
-                <img src="{{ asset('uploads/images/' ~ presentation.presentationPicture) }}" alt="Photo des membres fondateurs" width="200px">
+            <div class="story-picture animate-from-left">
+                <img src="{{ asset('uploads/images/' ~ presentation.presentationPicture) }}" alt="Photo des membres fondateurs">
             </div>
-            <div class="story-text">
+            <div class="story-text animate-from-right">
                 <h2>Notre histoire</h2>
                 <p>{{ presentation.presentationContent }}</p>
             </div>
@@ -29,32 +29,36 @@
         <!--OUR PURPOSES-->
         <section id="our-purposes">
             <h2>Nos raisons d'être</h2>
-            {% for purpose in purposes %}
-            <div class="purpose">
-                <p><strong>{{ purpose.purposeContent }}</strong></p>
+            <div class="our-purposes">
+                {% for purpose in purposes %}
+                <div class="purpose">
+                    <p><strong>{{ purpose.purposeContent }}</strong></p>
+                </div>
+                {% endfor %}
             </div>
-            {% endfor %}
         </section>
 
         <!--PREVIOUS TRIPS-->
         <section id="our-previous-trips">
-            <h2>Petit aperçu de nos précédentes sorties</h2>
-            <div class="previous-trip">
+            <h2>Nos précédentes sorties</h2>
+            <div class="previous-trips">
                 {% for previous_trip in previous_trips %}
-                    <div class="previous-trip-picture">
-                        <div id="carousel{{ loop.index }}" class="carousel slide" data-bs-ride="carousel">
-                            <div class="carousel-inner">
-                                {% for picture in previous_trip.getPictures() %}
-                                    <div class="carousel-item{% if loop.first %} active{% endif %}">
-                                        <img src="{{ asset('uploads/images/' ~ picture.picture) }}" class="d-block" alt="Photo de la sortie" width="200px" height="140px">
-                                    </div>
-                                {% endfor %}
+                    <div class="previous-trip">
+                        <div class="previous-trip-picture">
+                            <div id="carousel{{ loop.index }}" class="carousel slide" data-bs-ride="carousel">
+                                <div class="carousel-inner">
+                                    {% for picture in previous_trip.getPictures() %}
+                                        <div class="carousel-item{% if loop.first %} active{% endif %}">
+                                            <img src="{{ asset('uploads/images/' ~ picture.picture) }}" class="d-block" alt="Photo de la sortie" width="200px" height="140px">
+                                        </div>
+                                    {% endfor %}
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="previous-trip-text">
-                        <h4>{{ previous_trip.previousTripName }}</h4>
-                        <p>{{ previous_trip.previousTripContent }}</p>
+                        <div class="previous-trip-text">
+                            <h4>{{ previous_trip.previousTripName }}</h4>
+                            <p>{{ previous_trip.previousTripContent }}</p>
+                        </div>
                     </div>
                 {% endfor %}
             </div>
@@ -62,8 +66,8 @@
 
         <!--CONTACT-->
         <section id="contact-us">
-            <p>Envie de nous rejoindre ?</p>
-            <a href="{{ path('app_contacts_new') }}" class="btn btn-primary">Contactez-nous</a>
+            <h1>Envie de nous rejoindre ?</h1>
+            <a href="{{ path('app_contacts_new') }}" class="button">Contactez-nous !</a>
         </section>
 
     </main>

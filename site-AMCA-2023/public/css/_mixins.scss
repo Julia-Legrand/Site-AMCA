@@ -6,17 +6,16 @@
 
 @mixin title2 {
     font-family: 'Over the Rainbow', cursive;
-    font-size: 40px;
+    font-size: 50px;
     text-align: center;
 }
 
 @mixin title4 {
     font-family: 'Over the Rainbow', cursive;
-    font-size: 25px;
+    font-size: 30px;
     text-align: center;
 }
 
 @mixin paragraph {
     font-family: 'Montserrat', sans-serif;
-    text-align: justify;
 }
