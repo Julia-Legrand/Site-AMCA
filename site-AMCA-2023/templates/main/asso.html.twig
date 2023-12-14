@@ -49,7 +49,7 @@
 						<h4>{{ futureTrip.futureTripName }}</h4>
                         <img src="{{ asset('uploads/images/' ~ futureTrip.futureTripPicture) }}" alt="Photo de la sortie">
                         <small>Dates : du {{ futureTrip.startDate ? futureTrip.startDate|date('d-m-Y à H:i') : '' }} au {{ futureTrip.endDate ? futureTrip.endDate|date('d-m-Y à H:i') : '' }}</small>
-                        <a href="{{ path('app_future_trips_show', {'id': futureTrip.id}) }}" class="button">Plus d'infos</a>
+                        <a href="{{ path('app_future_trips_show', {'id': futureTrip.id}) }}" class="button" target="_blank">Plus d'infos</a>
                     </div>
 				{% endfor %}
 			</div>

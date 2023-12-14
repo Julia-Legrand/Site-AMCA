@@ -119,6 +119,29 @@ a:hover {
   margin: 70px 0;
 }
 
+.headerShow {
+  background-image: linear-gradient(rgba(1, 1, 1, 0.6), rgba(1, 1, 1, 0.6)), url(../images/wallpaper4.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 60vh;
+  color: #F3F4F7;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.headerShow h1 {
+  margin: 70px 0;
+}
+.headerShow h2::after, .headerShow h4::after {
+  display: none;
+}
+.headerShow h4 {
+  margin: 40px;
+}
+
 .headerAdmin img {
   height: 70px;
   margin-left: 10px;
@@ -363,10 +386,10 @@ footer .footerBloc2 .brand {
 }
 #monthly-meeting .animated {
   opacity: 1 !important;
-  transform: translateX(10%) !important;
+  transform: translateX(5%) !important;
 }
 #monthly-meeting .meetingRight.animated {
-  transform: translateX(-10%) !important;
+  transform: translateX(-5%) !important;
 }
 
 /*** AGENDA ***/
@@ -380,7 +403,7 @@ footer .footerBloc2 .brand {
   align-items: center;
 }
 
-/*** FUTURE TRIPS ***/
+/*** FUTURE TRIPS INDEX ***/
 #futures-sorties {
   background-color: #16171A;
   color: #F3F4F7;
@@ -428,7 +451,61 @@ footer .footerBloc2 .brand {
   font-size: 18px;
 }
 
-#mapFutureTrip {
-  height: 300px;
-  width: 300px;
+/*** FUTURE TRIPS SHOW ***/
+.mainShow {
+  background-color: #16171A;
+  color: #F3F4F7;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 60px;
+}
+.mainShow .showLeft {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.mainShow .showLeft img {
+  width: 600px;
+  height: 450px;
+  margin-bottom: 30px;
+}
+.mainShow .showLeft #mapFutureTrip {
+  width: 600px;
+  height: 450px;
+}
+.mainShow .showRight {
+  width: 700px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.mainShow .showRight p {
+  text-align: center;
+}
+.mainShow .showRight h4 {
+  margin-top: 40px;
+}
+
+/********** MEMBERSHIP **********/
+.mainMembership {
+  background-color: #16171A;
+  color: #F3F4F7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 60px;
+}
+.mainMembership h2 {
+  margin-top: 60px;
+}
+.mainMembership a {
+  text-decoration: none;
+  color: #F3F4F7;
+  text-transform: uppercase;
+}
+.mainMembership embed {
+  height: 480px;
 }/*# sourceMappingURL=style.css.map */

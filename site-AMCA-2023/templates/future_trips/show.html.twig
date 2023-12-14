@@ -3,22 +3,28 @@
 {% block title %}{{ futureTrip.futureTripName }} - Association AMCA 44{% endblock %}
 
 {% block body %}
-    <main>
-        <h2>{{ futureTrip.futureTripName }}</h2>
-        <img src="{{ asset('uploads/images/' ~ futureTrip.futureTripPicture) }}" alt="Photo de la sortie" width="200px">
-        <small>Dates : du {{ futureTrip.startDate ? futureTrip.startDate|date('d-m-Y à H:i') : '' }} au {{ futureTrip.endDate ? futureTrip.endDate|date('d-m-Y à H:i') : '' }}</small>
-        <small>Budget à prévoir : {{ futureTrip.budget }} euros</small>
-        <p>{{ futureTrip.futureTripContent }}</p>
-        <div id="mapFutureTrip" class="mapFutureTrip"></div>
-        <small>Nombre de places: {{ futureTrip.numberOfPlaces }}</small>
-        <a href="{{ path('app_contacts_new') }}" class="btn btn-primary">S'inscrire</a>
-        <h4>Adhérents inscrits</h4>
-        <ul>
-            {% for user in futureTrip.users %}
-                <li>{{ user.firstName ~ ' ' ~ user.lastName }}</li>
-            {% endfor %}
-        </ul>
-        <a href="{{ path('asso') }}" class="btn btn-primary">Retour</a>
+    <header class="headerShow">
+		<h1>{{ futureTrip.futureTripName }}</h1>
+        <h2>Du {{ futureTrip.startDate ? futureTrip.startDate|date('d-m-Y') : '' }} au {{ futureTrip.endDate ? futureTrip.endDate|date('d-m-Y') : '' }}</h2>
+        <h4 style="margin-bottom: 60px;">Budget à prévoir : {{ futureTrip.budget }} euros</h4>
+    </header>
+
+    <main class="mainShow">
+        <div class="showLeft">
+            <img src="{{ asset('uploads/images/' ~ futureTrip.futureTripPicture) }}" alt="Photo de la sortie">
+            <div id="mapFutureTrip" class="mapFutureTrip"></div>
+        </div>
+        <div class="showRight">
+            <p>{{ futureTrip.futureTripContent }}</p>
+            <h4>Inscription</h4>
+            <p>Nombre de places : {{ futureTrip.numberOfPlaces }}</p>
+            <ul>
+                {% for user in futureTrip.users %}
+                    <li>{{ user.firstName ~ ' ' ~ user.lastName }}</li>
+                {% endfor %}
+            </ul>
+            <a href="{{ path('app_contacts_new') }}" class="button">S'inscrire</a>
+        </div>
     </main>
 
     <!--JAVASCRIPT-->

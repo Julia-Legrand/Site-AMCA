@@ -82,23 +82,18 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('resize', updateOnResize);
 });
 
-// Animation to display "each-trip" elements on scroll
 document.addEventListener("DOMContentLoaded", function() {
     var tripElements = document.querySelectorAll('.each-trip');
-    
-    function isInViewport(element) {
-        var rect = element.getBoundingClientRect();
-        return (
-            rect.top >= 0 &&
-            rect.left >= 0 &&
-            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-        );
-    }
 
     function showTripsOnScroll() {
         tripElements.forEach(function(tripElement) {
-            if (isInViewport(tripElement) && !tripElement.classList.contains('visible')) {
+            var rect = tripElement.getBoundingClientRect();
+            var windowHeight = window.innerHeight || document.documentElement.clientHeight;
+            
+            // Vous pouvez ajuster cette valeur (0.5) pour déterminer quand les éléments devraient apparaître
+            var isVisible = rect.top <= windowHeight * 0.5 && rect.bottom >= 0;
+
+            if (isVisible && !tripElement.classList.contains('visible')) {
                 tripElement.classList.add('visible');
             }
         });

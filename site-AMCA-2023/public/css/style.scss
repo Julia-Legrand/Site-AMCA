@@ -120,6 +120,32 @@ a:hover {
     }
 }
 
+.headerShow {
+    background-image: linear-gradient(rgb(1, 1, 1, 0.6), rgba(1, 1, 1, 0.6)), url(../images/wallpaper4.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 60vh;
+    color: $light;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+        margin: 70px 0;
+    }
+
+    h2::after, h4::after {
+        display: none;
+    }
+
+    h4 {
+        margin: 40px;
+    }
+}
+
 .headerAdmin {
     img {
         height: 70px;
@@ -408,11 +434,11 @@ footer {
 
     .animated {
         opacity: 1 !important;
-        transform: translateX(10%) !important;
+        transform: translateX(5%) !important;
     }
 
     .meetingRight.animated {
-        transform: translateX(-10%) !important;
+        transform: translateX(-5%) !important;
     }
 }
 
@@ -427,7 +453,7 @@ footer {
     align-items: center;
 }
 
-/*** FUTURE TRIPS ***/
+/*** FUTURE TRIPS INDEX ***/
 #futures-sorties {
     background-color: $darker;
     color: $light;
@@ -481,8 +507,68 @@ footer {
     }
 }
 
+/*** FUTURE TRIPS SHOW ***/
+.mainShow {
+    background-color: $darker;
+    color: $light;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 60px;
 
-#mapFutureTrip {
-    height: 300px;
-    width: 300px;
+    .showLeft {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        img {
+            width: 600px;
+            height: 450px;
+            margin-bottom: 30px;
+        }
+        #mapFutureTrip {
+            width: 600px;
+            height: 450px;
+        }
+    }
+
+    .showRight {
+        width: 700px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        p {
+            text-align: center;
+        }
+
+        h4 {
+            margin-top: 40px;
+        }
+    }
+}
+
+/********** MEMBERSHIP **********/
+.mainMembership {
+    background-color: $darker;
+    color: $light;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 60px;
+
+    h2 {
+        margin-top: 60px;
+    }
+
+    a {
+        text-decoration: none;
+        color: $light;
+        text-transform: uppercase;
+    }
+
+    embed {
+        height: 480px;
+    }
 }
