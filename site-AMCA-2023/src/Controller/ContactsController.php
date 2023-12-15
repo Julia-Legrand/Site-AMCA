@@ -6,10 +6,11 @@ use App\Entity\Contacts;
 use App\Form\ContactsType;
 use App\Repository\ContactsRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\PresentationsRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/contact')]
 class ContactsController extends AbstractController
@@ -23,7 +24,7 @@ class ContactsController extends AbstractController
     }
 
     #[Route('/nouveau-message', name: 'app_contacts_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, PresentationsRepository $presentationsRepository): Response
     {
         $contact = new Contacts();
         $form = $this->createForm(ContactsType::class, $contact);
@@ -39,6 +40,7 @@ class ContactsController extends AbstractController
         return $this->renderForm('contacts/new.html.twig', [
             'contact' => $contact,
             'form' => $form,
+            'presentations' => $presentationsRepository->findAll(),
         ]);
     }
 

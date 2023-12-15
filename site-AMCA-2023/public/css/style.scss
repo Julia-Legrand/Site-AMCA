@@ -635,3 +635,76 @@ footer {
         }
     }
 }
+
+/********** CONTACT **********/
+.mainContact {
+    background-color: $darker;
+    color: $light;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h2 {
+        margin-top: 20px;
+    }
+
+    .custom-form {
+        background-color: $light;
+        opacity: 0.7;
+        border: 1px solid $light;
+        border-radius: 5px;
+        margin-bottom: 40px;
+        display: block;
+        width: 800px;
+        padding: 10px;
+    }
+
+    #contacts_agreeTerms {
+        margin-left: 5px;
+    }
+}
+
+/********** LOGIN & REGISTER **********/
+.loginForm {
+    background-color: $darker;
+    color: $light;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+
+    h2 {
+        margin-top: 60px;
+        text-align: center;
+    }
+
+    .custom-form {
+        background-color: $light;
+        opacity: 0.7;
+        border: 1px solid $light;
+        border-radius: 5px;
+        display: block;
+        width: 400px;
+        padding: 10px;
+    }
+
+    label {
+        margin-top: 10px;
+    }
+
+    .bloc {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 40px;
+
+        #registration_form_assignment_0, #registration_form_assignment_1 {
+            margin-right: 5px;
+            margin-left: 15px;
+        }
+    }
+
+    .button:hover {
+        box-shadow: $light 1px 0 5px;
+    }
+}

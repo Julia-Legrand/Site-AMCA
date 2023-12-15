@@ -19,8 +19,8 @@
                 <tr>
                     <td>{{ previous_trip.previousTripName }}</td>
                     <td>
-                        {% for picture in previous_trip.getPictures() %}
-                            <img src="{{ asset('uploads/images/' ~ picture.picture) }}" alt="Photo de la sortie" width="200px">
+                        {% for picture in previous_trip.getTripPictures() %}
+                            <img src="{{ asset('uploads/images/' ~ tripPicture.tripPicture) }}" alt="Photo de la sortie" width="200px">
                         {% endfor %}
                     </td>
                     <td>{{ previous_trip.previousTripContent }}</td>

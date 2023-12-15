@@ -14,24 +14,24 @@
             </tr>
         </thead>
         <tbody>
-        {% for trip_picture in trip_pictures %}
+        {% for tripPicture in tripPictures %}
             <tr>
                 <td>
-                    {% if trip_picture.picture is defined %}
-                        <img src="{{ asset('uploads/images/' ~ trip_picture.picture) }}" alt="Photo de la sortie" width="200px">
+                    {% if tripPicture.tripPicture is defined %}
+                        <img src="{{ asset('uploads/images/' ~ tripPicture.tripPicture) }}" alt="Photo de la sortie" width="200px">
                     {% else %}
                         <em>Photo non disponible</em>
                     {% endif %}
                 </td>
                 <td>
-                    {% if trip_picture.previousTrips is defined and trip_picture.previousTrips is not empty %}
-                        {{ trip_picture.previousTrips.previousTripName }}
+                    {% if tripPicture.previousTrips is defined and tripPicture.previousTrips is not empty %}
+                        {{ tripPicture.previousTrips.previousTripName }}
                     {% else %}
                         <em>Sortie non liée</em>
                     {% endif %}
                 </td>
                 <td>
-                    <a href="{{ path('app_trip_pictures_edit', {'id': trip_picture.id}) }}">Modifier</a>
+                    <a href="{{ path('app_trip_pictures_edit', {'id': tripPicture.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}

@@ -16,7 +16,7 @@ class TripPicturesType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('picture', FileType::class, [
+            ->add('tripPicture', FileType::class, [
                 'label' => 'Photo de la sortie',
                 'attr' => ['class' => 'custom-form'],
                 'mapped' => false,

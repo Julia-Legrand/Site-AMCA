@@ -1,3 +1,11 @@
 controllers:
     resource: ../src/Controller/
     type: attribute
+
+app_comments_edit:
+    path: '/commentaires/{id}/edit/{postId}'
+    controller: 'App\Controller\CommentsController::edit'
+    methods: ['GET', 'POST']
+    requirements:
+        id: '\d+'
+        postId: '.+'

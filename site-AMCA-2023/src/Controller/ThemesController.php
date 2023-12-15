@@ -25,9 +25,15 @@ class ThemesController extends AbstractController
     }
 
     #[IsGranted('ROLE_ADMIN')]
-    #[Route('/new', name: 'app_themes_new', methods: ['GET', 'POST'])]
+    #[Route('/nouveau', name: 'app_themes_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
+        $user = $this->getUser();
+        // Check if the user is the administrator
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            throw $this->createAccessDeniedException('Vous n\'avez pas la permission de créer un nouveau thème.');
+        }
+
         $theme = new Themes();
         $form = $this->createForm(ThemesType::class, $theme);
         $form->handleRequest($request);
@@ -46,9 +52,15 @@ class ThemesController extends AbstractController
     }
 
     #[IsGranted('ROLE_ADMIN')]
-    #[Route('/{id}/edit', name: 'app_themes_edit', methods: ['GET', 'POST'])]
+    #[Route('/{id}/modifier', name: 'app_themes_edit', methods: ['GET', 'POST'])]
     public function edit(UserInterface $user, Request $request, Themes $theme, EntityManagerInterface $entityManager,ThemesRepository $themesRepository): Response
     {
+        $user = $this->getUser();
+        // Check if the user is the administrator
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            throw $this->createAccessDeniedException('Vous n\'avez pas la permission de modifier ce thème.');
+        }
+
         $form = $this->createForm(ThemesType::class, $theme);
         $form->handleRequest($request);
 
@@ -57,9 +69,6 @@ class ThemesController extends AbstractController
 
             return $this->redirectToRoute('app_themes_index', [], Response::HTTP_SEE_OTHER);
         }
-
-        // Editing themes only by the owner user
-        $userThemes = $themesRepository->findBy(['user' => $user]);
 
         return $this->renderForm('themes/edit.html.twig', [
             'theme' => $theme,
@@ -71,6 +80,12 @@ class ThemesController extends AbstractController
     #[Route('/{id}', name: 'app_themes_delete', methods: ['POST'])]
     public function delete(Request $request, Themes $theme, EntityManagerInterface $entityManager): Response
     {
+        $user = $this->getUser();
+        // Check if the user is the administrator
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            throw $this->createAccessDeniedException('Vous n\'avez pas la permission de supprimer ce thème.');
+        }
+
         if ($this->isCsrfTokenValid('delete'.$theme->getId(), $request->request->get('_token'))) {
             $entityManager->remove($theme);
             $entityManager->flush();

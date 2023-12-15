@@ -4,7 +4,7 @@
 
 {% block body %}
 {% include "_partials/_headerAdmin.html.twig" %}
-	<div class="loginForm">
+	<div class="loginForm" style="height: 90vh;">
 		<h2>Se connecter</h2>
 		<form method="post">
     {% if error %}
@@ -24,6 +24,6 @@
 
     <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-    <button class="btn btn-lg btn-primary" type="submit">Valider</button>
+    <button class="button" type="submit">Valider</button>
 </form>
 {% endblock %}

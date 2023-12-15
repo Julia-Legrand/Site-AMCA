@@ -24,11 +24,11 @@ class PreviousTrips
     private ?string $previousTripContent = null;
 
     #[ORM\OneToMany(mappedBy: 'previousTrips', targetEntity: TripPictures::class, orphanRemoval: true, cascade: ['persist'])]
-    private Collection $pictures;
+    private Collection $tripPictures;
 
     public function __construct()
     {
-        $this->pictures = new ArrayCollection();
+        $this->tripPictures = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -63,27 +63,27 @@ class PreviousTrips
     /**
      * @return Collection<int, TripPictures>
      */
-    public function getPictures(): Collection
+    public function getTripPictures(): Collection
     {
-        return $this->pictures;
+        return $this->tripPictures;
     }
 
-    public function addPicture(TripPictures $picture): static
+    public function addTripPicture(TripPictures $tripPicture): static
     {
-        if (!$this->pictures->contains($picture)) {
-            $this->pictures->add($picture);
-            $picture->setPreviousTrips($this);
+        if (!$this->tripPictures->contains($tripPicture)) {
+            $this->tripPictures->add($tripPicture);
+            $tripPicture->setPreviousTrips($this);
         }
 
         return $this;
     }
 
-    public function removePicture(TripPictures $picture): static
+    public function removeTripPicture(TripPictures $tripPicture): static
     {
-        if ($this->pictures->removeElement($picture)) {
+        if ($this->tripPictures->removeElement($tripPicture)) {
             // set the owning side to null (unless already changed)
-            if ($picture->getPreviousTrips() === $this) {
-                $picture->setPreviousTrips(null);
+            if ($tripPicture->getPreviousTrips() === $this) {
+                $tripPicture->setPreviousTrips(null);
             }
         }
 

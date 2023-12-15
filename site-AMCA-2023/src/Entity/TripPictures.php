@@ -14,9 +14,9 @@ class TripPictures
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $picture = null;
+    private ?string $tripPicture = null;
 
-    #[ORM\ManyToOne(inversedBy: 'pictures')]
+    #[ORM\ManyToOne(inversedBy: 'tripPictures')]
     private ?PreviousTrips $previousTrips = null;
 
     public function getId(): ?int
@@ -24,14 +24,14 @@ class TripPictures
         return $this->id;
     }
 
-    public function getPicture(): ?string
+    public function getTripPicture(): ?string
     {
-        return $this->picture;
+        return $this->tripPicture;
     }
 
-    public function setPicture(string $picture): static
+    public function setTripPicture(string $tripPicture): static
     {
-        $this->picture = $picture;
+        $this->tripPicture = $tripPicture;
 
         return $this;
     }

@@ -5,7 +5,7 @@
 {% block body %}
     <h1>Rédiger un commentaire</h1>
 
-    {{ include('comments/_form.html.twig') }}
+    {{ include('comments/_form.html.twig', {'postId': app.request.attributes.get('postId')}) }}
 
     <a href="{{ path('forum') }}">Retour</a>
 {% endblock %}

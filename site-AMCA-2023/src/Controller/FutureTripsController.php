@@ -6,6 +6,7 @@ use App\Entity\FutureTrips;
 use App\Form\FutureTripsType;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\FutureTripsRepository;
+use App\Repository\PresentationsRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -99,10 +100,11 @@ class FutureTripsController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_future_trips_show', methods: ['GET'])]
-    public function show(FutureTrips $futureTrip): Response
+    public function show(FutureTrips $futureTrip, PresentationsRepository $presentationsRepository): Response
     {
         return $this->render('future_trips/show.html.twig', [
             'futureTrip' => $futureTrip,
+            'presentations' => $presentationsRepository->findAll(),
         ]);
     }
 

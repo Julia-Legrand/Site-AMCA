@@ -22,7 +22,7 @@ class PostsController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_posts_new', methods: ['GET', 'POST'])]
+    #[Route('/nouveau', name: 'app_posts_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $post = new Posts();
@@ -33,9 +33,7 @@ class PostsController extends AbstractController
             $entityManager->persist($post);
             $entityManager->flush();
 
-            $this->addFlash('success', 'Post créé avec succès');
-
-            return $this->redirectToRoute('app_posts_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('forum', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('posts/new.html.twig', [
@@ -44,7 +42,7 @@ class PostsController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_posts_edit', methods: ['GET', 'POST'])]
+    #[Route('/{id}/modifier', name: 'app_posts_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Posts $post, EntityManagerInterface $entityManager): Response
     {
         $user = $this->getUser();
@@ -60,9 +58,10 @@ class PostsController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            $this->addFlash('success', 'Post modifié avec succès');
-
-            return $this->redirectToRoute('app_posts_index', [], Response::HTTP_SEE_OTHER);
+            if ($this->isGranted('ROLE_ADMIN')) {
+                return $this->redirectToRoute('app_posts_index', [], Response::HTTP_SEE_OTHER);
+                }
+                return $this->redirectToRoute('forum', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('posts/edit.html.twig', [
@@ -83,8 +82,6 @@ class PostsController extends AbstractController
         if ($this->isCsrfTokenValid('delete'.$post->getId(), $request->request->get('_token'))) {
             $entityManager->remove($post);
             $entityManager->flush();
-
-            $this->addFlash('success', 'Post supprimé avec succès');
         }
 
         return $this->redirectToRoute('app_posts_index', [], Response::HTTP_SEE_OTHER);

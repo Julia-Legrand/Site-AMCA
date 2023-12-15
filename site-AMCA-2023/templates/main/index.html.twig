@@ -46,9 +46,9 @@
                         <div class="previous-trip-picture">
                             <div id="carousel{{ loop.index }}" class="carousel slide" data-bs-ride="carousel">
                                 <div class="carousel-inner">
-                                    {% for picture in previous_trip.getPictures() %}
+                                    {% for tripPicture in previous_trip.getTripPictures() %}
                                         <div class="carousel-item{% if loop.first %} active{% endif %}">
-                                            <img src="{{ asset('uploads/images/' ~ picture.picture) }}" class="d-block" alt="Photo de la sortie" width="200px" height="140px">
+                                            <img src="{{ asset('uploads/images/' ~ tripPicture.tripPicture) }}" class="d-block" alt="Photo de la sortie" width="200px" height="140px">
                                         </div>
                                     {% endfor %}
                                 </div>

@@ -560,4 +560,68 @@ footer .footerBloc2 .brand {
   margin-left: 5px;
   vertical-align: top;
   font-size: 10px;
+}
+
+/********** CONTACT **********/
+.mainContact {
+  background-color: #16171A;
+  color: #F3F4F7;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.mainContact h2 {
+  margin-top: 20px;
+}
+.mainContact .custom-form {
+  background-color: #F3F4F7;
+  opacity: 0.7;
+  border: 1px solid #F3F4F7;
+  border-radius: 5px;
+  margin-bottom: 40px;
+  display: block;
+  width: 800px;
+  padding: 10px;
+}
+.mainContact #contacts_agreeTerms {
+  margin-left: 5px;
+}
+
+/********** LOGIN & REGISTER **********/
+.loginForm {
+  background-color: #16171A;
+  color: #F3F4F7;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+}
+.loginForm h2 {
+  margin-top: 60px;
+  text-align: center;
+}
+.loginForm .custom-form {
+  background-color: #F3F4F7;
+  opacity: 0.7;
+  border: 1px solid #F3F4F7;
+  border-radius: 5px;
+  display: block;
+  width: 400px;
+  padding: 10px;
+}
+.loginForm label {
+  margin-top: 10px;
+}
+.loginForm .bloc {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40px;
+}
+.loginForm .bloc #registration_form_assignment_0, .loginForm .bloc #registration_form_assignment_1 {
+  margin-right: 5px;
+  margin-left: 15px;
+}
+.loginForm .button:hover {
+  box-shadow: #F3F4F7 1px 0 5px;
 }/*# sourceMappingURL=style.css.map */

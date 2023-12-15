@@ -19,15 +19,15 @@ class TripPicturesController extends AbstractController
     public function index(TripPicturesRepository $tripPicturesRepository): Response
     {
         return $this->render('trip_pictures/index.html.twig', [
-            'trip_pictures' => $tripPicturesRepository->findAll(),
+            'tripPictures' => $tripPicturesRepository->findAll(),
         ]);
     }
 
     #[Route('/new', name: 'app_trip_pictures_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
-        $picture = new TripPictures();
-        $form = $this->createForm(TripPicturesType::class, $picture);
+        $tripPicture = new TripPictures();
+        $form = $this->createForm(TripPicturesType::class, $tripPicture);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -43,16 +43,16 @@ class TripPicturesController extends AbstractController
                     $newFilename
                 );
 
-                $picture->setPicture($newFilename);
+                $tripPicture->setTripPicture($newFilename);
             }
-            $entityManager->persist($picture);
+            $entityManager->persist($tripPicture);
             $entityManager->flush();
 
             return $this->redirectToRoute('app_trip_pictures_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('trip_pictures/new.html.twig', [
-            'trip_picture' => $picture,
+            'tripPicture' => $tripPicture,
             'form' => $form,
         ]);
     }
@@ -76,7 +76,7 @@ class TripPicturesController extends AbstractController
                     $newFilename
                 );
 
-                $tripPicture->setPicture($newFilename);
+                $tripPicture->setTripPicture($newFilename);
             }
             $entityManager->flush();
 
@@ -84,7 +84,7 @@ class TripPicturesController extends AbstractController
         }
 
         return $this->renderForm('trip_pictures/edit.html.twig', [
-            'trip_picture' => $tripPicture,
+            'tripPicture' => $tripPicture,
             'form' => $form,
         ]);
     }
