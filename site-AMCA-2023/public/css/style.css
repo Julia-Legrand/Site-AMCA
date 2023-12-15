@@ -135,7 +135,8 @@ a:hover {
 .headerShow h1 {
   margin: 70px 0;
 }
-.headerShow h2::after, .headerShow h4::after {
+.headerShow h2::after,
+.headerShow h4::after {
   display: none;
 }
 .headerShow h4 {
@@ -508,4 +509,55 @@ footer .footerBloc2 .brand {
 }
 .mainMembership embed {
   height: 480px;
+}
+
+/********** FORUM **********/
+.mainForum {
+  background-color: #16171A;
+  color: #F3F4F7;
+  padding: 40px;
+}
+.mainForum .forum {
+  background-color: #25262A;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  padding: 40px 100px;
+  margin: 60px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s, transform 0.5s;
+}
+.mainForum .forum.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.mainForum h2 {
+  margin-top: 20px;
+}
+.mainForum h4 {
+  margin-top: 40px;
+}
+.mainForum i {
+  text-decoration: none;
+  color: #F3F4F7;
+  font-size: 20px;
+}
+.mainForum a {
+  text-decoration: none;
+  color: #F3F4F7;
+}
+.mainForum p {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.mainForum .comment-container {
+  margin: 20px;
+}
+.mainForum .comment-container i {
+  margin-right: 5px;
+  margin-left: 5px;
+  vertical-align: top;
+  font-size: 10px;
 }/*# sourceMappingURL=style.css.map */

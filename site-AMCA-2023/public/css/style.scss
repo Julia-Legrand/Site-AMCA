@@ -137,7 +137,8 @@ a:hover {
         margin: 70px 0;
     }
 
-    h2::after, h4::after {
+    h2::after,
+    h4::after {
         display: none;
     }
 
@@ -520,11 +521,13 @@ footer {
         display: flex;
         flex-direction: column;
         align-items: center;
+
         img {
             width: 600px;
             height: 450px;
             margin-bottom: 30px;
         }
+
         #mapFutureTrip {
             width: 600px;
             height: 450px;
@@ -570,5 +573,65 @@ footer {
 
     embed {
         height: 480px;
+    }
+}
+
+/********** FORUM **********/
+.mainForum {
+    background-color: $darker;
+    color: $light;
+    padding: 40px;
+
+    .forum {
+        background-color: $dark;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 10px;
+        padding: 40px 100px;
+        margin: 60px;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s, transform 0.5s;
+    }
+
+    .forum.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    h2 {
+        margin-top: 20px;
+    }
+
+    h4 {
+        margin-top: 40px;
+    }
+
+    i {
+        text-decoration: none;
+        color: $light;
+        font-size: 20px;
+    }
+
+    a {
+        text-decoration: none;
+        color: $light;
+    }
+
+    p {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .comment-container {
+        margin: 20px;
+
+        i {
+            margin-right: 5px;
+            margin-left: 5px;
+            vertical-align: top;
+            font-size: 10px;
+        }
     }
 }
