@@ -8,6 +8,7 @@ use App\Repository\PostsRepository;
 use App\Repository\ThemesRepository;
 use App\Repository\CommentsRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\PresentationsRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -19,18 +20,19 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class ThemesController extends AbstractController
 {
     #[Route('/', name: 'app_themes_index', methods: ['GET'])]
-    public function index(ThemesRepository $themesRepository, PostsRepository $postsRepository, CommentsRepository $commentsRepository,): Response
+    public function index(ThemesRepository $themesRepository, PostsRepository $postsRepository, CommentsRepository $commentsRepository, PresentationsRepository $presentationsRepository): Response
     {
         return $this->render('themes/index.html.twig', [
             'themes' => $themesRepository->findAll(),
             'posts' => $postsRepository->findAll(),
             'comments' => $commentsRepository->findAll(),
+            'presentations' => $presentationsRepository->findAll(),
         ]);
     }
 
     #[IsGranted('ROLE_ADMIN')]
     #[Route('/nouveau', name: 'app_themes_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, PresentationsRepository $presentationsRepository): Response
     {
         $user = $this->getUser();
         // Check if the user is the administrator
@@ -52,12 +54,13 @@ class ThemesController extends AbstractController
         return $this->renderForm('themes/new.html.twig', [
             'theme' => $theme,
             'form' => $form,
+            'presentations' => $presentationsRepository->findAll(),
         ]);
     }
 
     #[IsGranted('ROLE_ADMIN')]
     #[Route('/{id}/modifier', name: 'app_themes_edit', methods: ['GET', 'POST'])]
-    public function edit(UserInterface $user, Request $request, Themes $theme, EntityManagerInterface $entityManager, ThemesRepository $themesRepository): Response
+    public function edit(UserInterface $user, Request $request, Themes $theme, EntityManagerInterface $entityManager, ThemesRepository $themesRepository, PresentationsRepository $presentationsRepository): Response
     {
         $user = $this->getUser();
         // Check if the user is the administrator
@@ -77,6 +80,7 @@ class ThemesController extends AbstractController
         return $this->renderForm('themes/edit.html.twig', [
             'theme' => $theme,
             'form' => $form,
+            'presentations' => $presentationsRepository->findAll(),
         ]);
     }
 

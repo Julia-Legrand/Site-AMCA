@@ -6,24 +6,26 @@ use App\Entity\Posts;
 use App\Form\PostsType;
 use App\Repository\PostsRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\PresentationsRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/posts')]
 class PostsController extends AbstractController
 {
     #[Route('/', name: 'app_posts_index', methods: ['GET'])]
-    public function index(PostsRepository $postsRepository): Response
+    public function index(PostsRepository $postsRepository, PresentationsRepository $presentationsRepository): Response
     {
         return $this->render('posts/index.html.twig', [
             'posts' => $postsRepository->findAll(),
+            'presentations' => $presentationsRepository->findAll(),
         ]);
     }
 
     #[Route('/nouveau', name: 'app_posts_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, PresentationsRepository $presentationsRepository): Response
     {
         $post = new Posts();
         $form = $this->createForm(PostsType::class, $post);
@@ -39,11 +41,12 @@ class PostsController extends AbstractController
         return $this->renderForm('posts/new.html.twig', [
             'post' => $post,
             'form' => $form,
+            'presentations' => $presentationsRepository->findAll(),
         ]);
     }
 
     #[Route('/{id}/modifier', name: 'app_posts_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Posts $post, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, Posts $post, EntityManagerInterface $entityManager, PresentationsRepository $presentationsRepository): Response
     {
         $user = $this->getUser();
 
@@ -60,13 +63,14 @@ class PostsController extends AbstractController
 
             if ($this->isGranted('ROLE_ADMIN')) {
                 return $this->redirectToRoute('app_posts_index', [], Response::HTTP_SEE_OTHER);
-                }
-                return $this->redirectToRoute('forum', [], Response::HTTP_SEE_OTHER);
+            }
+            return $this->redirectToRoute('forum', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('posts/edit.html.twig', [
             'post' => $post,
             'form' => $form,
+            'presentations' => $presentationsRepository->findAll(),
         ]);
     }
 
@@ -79,7 +83,7 @@ class PostsController extends AbstractController
             throw $this->createAccessDeniedException('Vous n\'avez pas la permission de supprimer ce post.');
         }
 
-        if ($this->isCsrfTokenValid('delete'.$post->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $post->getId(), $request->request->get('_token'))) {
             $entityManager->remove($post);
             $entityManager->flush();
         }

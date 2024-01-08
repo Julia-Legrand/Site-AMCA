@@ -4,11 +4,24 @@
 {% endblock %}
 
 {% block body %}
-	<h1>Modifier le commentaire</h1>
+	<header class="headerPages">
+		<h1>Modifier le commentaire</h1>
+		{% include "_partials/_navbar.html.twig" %}
+	</header>
 
-	{{ include('comments/_form.html.twig', {'button_label': 'Valider'}) }}
+	<div class="editForm">
 
-	<a class="button" href="{{ path('forum') }}">Retour</a>
+		{{ include('comments/_form.html.twig') }}
+		<div class="bloc">
+			<button class="button" id="customSubmitButton">Valider</button>
+			<a class="button" href="{{ path('forum') }}">Retour</a>
+		</div>
 
-	{{ include('comments/_delete_form.html.twig') }}
+	</div>
+	{% include "_partials/_footer.html.twig" %}
+	<script>
+		document.getElementById('customSubmitButton').addEventListener('click', function () {
+document.querySelector('.submit-button').click();
+});
+	</script>
 {% endblock %}

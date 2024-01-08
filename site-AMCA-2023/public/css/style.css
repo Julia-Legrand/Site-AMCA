@@ -524,6 +524,16 @@ footer .footerBloc2 .brand {
   background-color: #16171A;
   color: #F3F4F7;
   padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.mainForum .newTheme {
+  margin-top: 20px;
+  width: 500px;
+  display: flex;
+  justify-content: space-evenly;
 }
 .mainForum .forum {
   background-color: #25262A;

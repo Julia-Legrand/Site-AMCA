@@ -589,6 +589,17 @@ footer {
     background-color: $darker;
     color: $light;
     padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .newTheme {
+        margin-top: 20px;
+        width: 500px;
+        display: flex;
+        justify-content: space-evenly
+    }
 
     .forum {
         background-color: $dark;
