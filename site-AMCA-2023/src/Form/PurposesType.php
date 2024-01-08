@@ -14,10 +14,9 @@ class PurposesType extends AbstractType
     {
         $builder
             ->add('purposeContent', TextType::class, [
-                'label' => 'Texte de présentation',
+                'label' => 'Contenu',
                 'attr' => ['class' => 'custom-form'],
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

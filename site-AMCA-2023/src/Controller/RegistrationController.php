@@ -15,7 +15,7 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 class RegistrationController extends AbstractController
 {
     #[IsGranted('ROLE_ADMIN')]
-    #[Route('/créer-un-adhérent', name: 'app_register')]
+    #[Route('/nouvel-adhérent', name: 'app_register')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
         $user = new User();

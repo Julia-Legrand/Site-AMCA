@@ -56,6 +56,7 @@ class PresentationsType extends AbstractType
             ])
             ->add('statutesDoc', FileType::class, [
                 'label' => 'Statuts de l\'association',
+                'attr' => ['class' => 'custom-form'],
                 'mapped' => false,
                 'required' => false,
                 'constraints' => [
@@ -84,8 +85,7 @@ class PresentationsType extends AbstractType
                         'mimeTypesMessage' => 'Document ne répondant pas aux contraintes.',
                     ])
                 ]
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

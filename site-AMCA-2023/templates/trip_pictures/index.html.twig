@@ -1,46 +1,57 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Bibliothèque de photos{% endblock %}
+{% block title %}Bibliothèque de photos
+{% endblock %}
 
 {% block body %}
-    <h1>Bibliothèque de photos</h1>
+	{% include "_partials/_headerAdmin.html.twig" %}
+	<main>
+		<section class="row m-0">
+			{% include "_partials/_sidebar.html.twig" %}
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Photo</th>
-                <th>Sortie liée</th>
-                <th>Modifier</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for tripPicture in tripPictures %}
-            <tr>
-                <td>
-                    {% if tripPicture.tripPicture is defined %}
-                        <img src="{{ asset('uploads/images/' ~ tripPicture.tripPicture) }}" alt="Photo de la sortie" width="200px">
-                    {% else %}
-                        <em>Photo non disponible</em>
-                    {% endif %}
-                </td>
-                <td>
-                    {% if tripPicture.previousTrips is defined and tripPicture.previousTrips is not empty %}
-                        {{ tripPicture.previousTrips.previousTripName }}
-                    {% else %}
-                        <em>Sortie non liée</em>
-                    {% endif %}
-                </td>
-                <td>
-                    <a href="{{ path('app_trip_pictures_edit', {'id': tripPicture.id}) }}">Modifier</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">Donnée vide</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+			<div class="col-md-10 editForm">
+				<h2>Bibliothèque de photos</h2>
+				<a class="button" href="{{ path('app_trip_pictures_new') }}">Ajouter une photo à une sortie</a>
 
-    <a href="{{ path('app_trip_pictures_new') }}">Ajouter</a>
+				<table class="table-responsive">
+					<thead>
+						<tr>
+							<th>Photo</th>
+							<th>Sortie liée</th>
+							<th>Modifier</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for tripPicture in tripPictures %}
+							<tr>
+								<td>
+									{% if tripPicture.tripPicture is defined %}
+										<img src="{{ asset('uploads/images/' ~ tripPicture.tripPicture) }}" alt="Photo de la sortie" width="200px">
+									{% else %}
+										<em>Photo non disponible</em>
+									{% endif %}
+								</td>
+								<td>
+									{% if tripPicture.previousTrips is defined and tripPicture.previousTrips is not empty %}
+										{{ tripPicture.previousTrips.previousTripName }}
+									{% else %}
+										<em>Sortie non liée</em>
+									{% endif %}
+								</td>
+								<td>
+									<a href="{{ path('app_trip_pictures_edit', {'id': tripPicture.id}) }}">
+										<i class="fa-solid fa-pencil"></i>
+									</a>
+								</td>
+							</tr>
+						{% else %}
+							<tr>
+								<td colspan="3">Donnée vide</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</section>
+	</main>
 {% endblock %}

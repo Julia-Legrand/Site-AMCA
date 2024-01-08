@@ -1,116 +1,120 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Créer un adhérent{% endblock %}
+{% block title %}Créer un adhérent
+{% endblock %}
 
 {% block body %}
-    {% include "_partials/_headerAdmin.html.twig" %}
-    <div class="loginForm">
-        <h2>Créer un adhérent</h2>
+	{% include "_partials/_headerAdmin.html.twig" %}
+	<section class="row m-0" style="background-color:#343A40;">
+		{% include "_partials/_sidebar.html.twig" %}
+		<div class="col-md-10 loginForm">
+			<h2>Créer un adhérent</h2>
 
-        {{ form_errors(registrationForm) }}
+			{{ form_errors(registrationForm) }}
 
-        {{ form_start(registrationForm) }}
+			{{ form_start(registrationForm) }}
 
-        <div class="bloc">
-            <label for="{{ registrationForm.memberNumber.vars.id }}">Numéro adhérent</label>
-            {{ form_widget(registrationForm.memberNumber, {
+			<div class="bloc">
+				<label for="{{ registrationForm.memberNumber.vars.id }}">Numéro adhérent</label>
+				{{ form_widget(registrationForm.memberNumber, {
                 attr: {
                     'class': 'custom-form',
 					'placeholder': '2024/01'
                 }
             }) }}
 
-            <label for="{{ registrationForm.assignment.vars.id }}">Attribution</label>
-            {{ form_widget(registrationForm.assignment, {
+				<label for="{{ registrationForm.assignment.vars.id }}">Attribution</label>
+				{{ form_widget(registrationForm.assignment, {
             }) }}
-        </div>
+			</div>
 
-        <div class="bloc">
-            <label for="{{ registrationForm.firstName.vars.id }}">Prénom</label>
-            {{ form_widget(registrationForm.firstName, {
+			<div class="bloc">
+				<label for="{{ registrationForm.firstName.vars.id }}">Prénom</label>
+				{{ form_widget(registrationForm.firstName, {
                 attr: {
                     'class': 'custom-form'
                 }
             }) }}
 
-            <label for="{{ registrationForm.lastName.vars.id }}">Nom</label>
-            {{ form_widget(registrationForm.lastName, {
+				<label for="{{ registrationForm.lastName.vars.id }}">Nom</label>
+				{{ form_widget(registrationForm.lastName, {
                 attr: {
                     'class': 'custom-form'
                 }
             }) }}
-        </div>
+			</div>
 
-        <div class="bloc">
-            <label for="{{ registrationForm.email.vars.id }}">Email</label>
-            {{ form_widget(registrationForm.email, {
+			<div class="bloc">
+				<label for="{{ registrationForm.email.vars.id }}">Email</label>
+				{{ form_widget(registrationForm.email, {
                 attr: {
                     'class': 'custom-form'
                 }
             }) }}
 
-            <label for="{{ registrationForm.plainPassword.vars.id }}">Mot de passe</label>
-            {{ form_widget(registrationForm.plainPassword, {
+				<label for="{{ registrationForm.plainPassword.vars.id }}">Mot de passe</label>
+				{{ form_widget(registrationForm.plainPassword, {
                 attr: {
                     'class': 'custom-form',
 					'placeholder': '6 caractères minimum'
                 }
             }) }}
-        </div>
+			</div>
 
-        <div class="bloc">
-            <label for="{{ registrationForm.phoneNumber.vars.id }}">Téléphone</label>
-            {{ form_widget(registrationForm.phoneNumber, {
+			<div class="bloc">
+				<label for="{{ registrationForm.phoneNumber.vars.id }}">Téléphone</label>
+				{{ form_widget(registrationForm.phoneNumber, {
                 attr: {
                     'class': 'custom-form',
 					'placeholder': '10 chiffres'
                 }
             }) }}
-        </div>
+			</div>
 
-        <div class="bloc">
-            <label for="{{ registrationForm.address.vars.id }}">Adresse</label>
-            {{ form_widget(registrationForm.address, {
+			<div class="bloc">
+				<label for="{{ registrationForm.address.vars.id }}">Adresse</label>
+				{{ form_widget(registrationForm.address, {
                 attr: {
                     'class': 'custom-form'
                 }
             }) }}
 
-            <label for="{{ registrationForm.postCode.vars.id }}">Code Postal</label>
-            {{ form_widget(registrationForm.postCode, {
+				<label for="{{ registrationForm.postCode.vars.id }}">Code Postal</label>
+				{{ form_widget(registrationForm.postCode, {
                 attr: {
                     'class': 'custom-form'
                 }
             }) }}
 
-            <label for="{{ registrationForm.city.vars.id }}">Ville</label>
-            {{ form_widget(registrationForm.city, {
+				<label for="{{ registrationForm.city.vars.id }}">Ville</label>
+				{{ form_widget(registrationForm.city, {
                 attr: {
                     'class': 'custom-form'
                 }
             }) }}
-        </div>
+			</div>
 
-        <div class="bloc">
-            <label for="{{ registrationForm.birthdate.vars.id }}">Date de naissance</label>
-            {{ form_widget(registrationForm.birthdate, {
+			<div class="bloc">
+				<label for="{{ registrationForm.birthdate.vars.id }}">Date de naissance</label>
+				{{ form_widget(registrationForm.birthdate, {
                 attr: {
                     'class': 'custom-form'
                 }
             }) }}
-        </div>
+			</div>
 
-        <div class="bloc">
-            <label for="{{ registrationForm.bike.vars.id }}">Moto</label>
-            {{ form_widget(registrationForm.bike, {
+			<div class="bloc">
+				<label for="{{ registrationForm.bike.vars.id }}">Moto</label>
+				{{ form_widget(registrationForm.bike, {
                 attr: {
                     'class': 'custom-form'
                 }
             }) }}
-        </div>
+			</div>
 
-        <button type="submit" class="button">Valider</button>
+			<button type="submit" class="button">Valider</button>
 
-        {{ form_end(registrationForm) }}
-    </div>
+			{{ form_end(registrationForm) }}
+		</div>
+	</section>
 {% endblock %}

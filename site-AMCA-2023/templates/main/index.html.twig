@@ -1,74 +1,77 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Association AMCA 44{% endblock %}
+{% block title %}Association AMCA 44
+{% endblock %}
 
 {% block body %}
-    <header class="headerIndex">
-        {% for presentation in presentations %}
-            <h1>{{ presentation.presentationTitle }}</h1>
-        {% endfor %}
-        {% include "_partials/_navbar.html.twig" %}
-    </header>
+	<header class="headerIndex">
+		{% for presentation in presentations %}
+			<h1>{{ presentation.presentationTitle }}</h1>
+		{% endfor %}
+		{% include "_partials/_navbar.html.twig" %}
+	</header>
 
-    <main>
+	<main>
 
-        <!--OUR STORY-->
-        <section id="our-story">
-            {% for presentation in presentations %}
-            <div class="story-picture animate-from-left">
-                <img src="{{ asset('uploads/images/' ~ presentation.presentationPicture) }}" alt="Photo des membres fondateurs">
-            </div>
-            <div class="story-text animate-from-right">
-                <h2>Notre histoire</h2>
-                <p>{{ presentation.presentationContent }}</p>
-            </div>
-            {% endfor %}
-        </section>
+		<!--OUR STORY-->
+		<section id="our-story">
+			{% for presentation in presentations %}
+				<div class="story-picture animate-from-left">
+					<img src="{{ asset('uploads/images/' ~ presentation.presentationPicture) }}" alt="Photo des membres fondateurs">
+				</div>
+				<div class="story-text animate-from-right">
+					<h2>Notre histoire</h2>
+					<p>{{ presentation.presentationContent }}</p>
+				</div>
+			{% endfor %}
+		</section>
 
-        <!--OUR PURPOSES-->
-        <section id="our-purposes">
-            <h2>Nos raisons d'être</h2>
-            <div class="our-purposes">
-                {% for purpose in purposes %}
-                <div class="purpose">
-                    <p><strong>{{ purpose.purposeContent }}</strong></p>
-                </div>
-                {% endfor %}
-            </div>
-        </section>
+		<!--OUR PURPOSES-->
+		<section id="our-purposes">
+			<h2>Nos raisons d'être</h2>
+			<div class="our-purposes">
+				{% for purpose in purposes %}
+					<div class="purpose">
+						<p>
+							<strong>{{ purpose.purposeContent }}</strong>
+						</p>
+					</div>
+				{% endfor %}
+			</div>
+		</section>
 
-        <!--PREVIOUS TRIPS-->
-        <section id="our-previous-trips">
-            <h2>Nos précédentes sorties</h2>
-            <div class="previous-trips">
-                {% for previous_trip in previous_trips %}
-                    <div class="previous-trip">
-                        <div class="previous-trip-picture">
-                            <div id="carousel{{ loop.index }}" class="carousel slide" data-bs-ride="carousel">
-                                <div class="carousel-inner">
-                                    {% for tripPicture in previous_trip.getTripPictures() %}
-                                        <div class="carousel-item{% if loop.first %} active{% endif %}">
-                                            <img src="{{ asset('uploads/images/' ~ tripPicture.tripPicture) }}" class="d-block" alt="Photo de la sortie" width="200px" height="140px">
-                                        </div>
-                                    {% endfor %}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="previous-trip-text">
-                            <h4>{{ previous_trip.previousTripName }}</h4>
-                            <p>{{ previous_trip.previousTripContent }}</p>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-        </section>
+		<!--PREVIOUS TRIPS-->
+		<section id="our-previous-trips">
+			<h2>Nos précédentes sorties</h2>
+			<div class="previous-trips">
+				{% for previous_trip in previous_trips %}
+					<div class="previous-trip">
+						<div class="previous-trip-picture">
+							<div id="carousel{{ loop.index }}" class="carousel slide" data-bs-ride="carousel">
+								<div class="carousel-inner">
+									{% for tripPicture in previous_trip.getTripPictures() %}
+										<div class="carousel-item{% if loop.first %} active{% endif %}">
+											<img src="{{ asset('uploads/images/' ~ tripPicture.tripPicture) }}" class="d-block" alt="Photo de la sortie" width="200px" height="140px">
+										</div>
+									{% endfor %}
+								</div>
+							</div>
+						</div>
+						<div class="previous-trip-text">
+							<h4>{{ previous_trip.previousTripName }}</h4>
+							<p>{{ previous_trip.previousTripContent }}</p>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</section>
 
-        <!--CONTACT-->
-        <section id="contact-us">
-            <h1>Envie de nous rejoindre ?</h1>
-            <a href="{{ path('app_contacts_new') }}" class="button">Contactez-nous !</a>
-        </section>
+		<!--CONTACT-->
+		<section id="contact-us">
+			<h1>Envie de nous rejoindre ?</h1>
+			<a href="{{ path('app_contacts_new') }}" class="buttonIndex">Contactez-nous !</a>
+		</section>
 
-    </main>
-    {% include "_partials/_footer.html.twig" %}
+	</main>
+	{% include "_partials/_footer.html.twig" %}
 {% endblock %}

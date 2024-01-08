@@ -4,7 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Themes;
 use App\Form\ThemesType;
+use App\Repository\PostsRepository;
 use App\Repository\ThemesRepository;
+use App\Repository\CommentsRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,10 +19,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class ThemesController extends AbstractController
 {
     #[Route('/', name: 'app_themes_index', methods: ['GET'])]
-    public function index(ThemesRepository $themesRepository): Response
+    public function index(ThemesRepository $themesRepository, PostsRepository $postsRepository, CommentsRepository $commentsRepository,): Response
     {
         return $this->render('themes/index.html.twig', [
             'themes' => $themesRepository->findAll(),
+            'posts' => $postsRepository->findAll(),
+            'comments' => $commentsRepository->findAll(),
         ]);
     }
 
@@ -53,7 +57,7 @@ class ThemesController extends AbstractController
 
     #[IsGranted('ROLE_ADMIN')]
     #[Route('/{id}/modifier', name: 'app_themes_edit', methods: ['GET', 'POST'])]
-    public function edit(UserInterface $user, Request $request, Themes $theme, EntityManagerInterface $entityManager,ThemesRepository $themesRepository): Response
+    public function edit(UserInterface $user, Request $request, Themes $theme, EntityManagerInterface $entityManager, ThemesRepository $themesRepository): Response
     {
         $user = $this->getUser();
         // Check if the user is the administrator
@@ -86,7 +90,7 @@ class ThemesController extends AbstractController
             throw $this->createAccessDeniedException('Vous n\'avez pas la permission de supprimer ce thème.');
         }
 
-        if ($this->isCsrfTokenValid('delete'.$theme->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $theme->getId(), $request->request->get('_token'))) {
             $entityManager->remove($theme);
             $entityManager->flush();
         }

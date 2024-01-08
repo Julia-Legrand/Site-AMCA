@@ -32,6 +32,9 @@ class RegistrationFormType extends AbstractType
                 ],
                 'multiple' => true,
                 'expanded' => true,
+                'choice_attr' => function ($choice, $key, $value) {
+                    return ['style' => 'margin-right: 5px; margin-left: 20px;'];
+                },
             ])
             ->add('firstName', TextType::class, [
                 'label' => 'Prénom',
@@ -48,7 +51,7 @@ class RegistrationFormType extends AbstractType
                     new NotBlank(),
                     new Email(),
                 ],
-            ])          
+            ])
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
@@ -91,8 +94,7 @@ class RegistrationFormType extends AbstractType
             ->add('bike', TextType::class, [
                 'label' => 'Moto',
                 'attr' => ['class' => 'custom-form'],
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

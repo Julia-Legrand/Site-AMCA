@@ -51,6 +51,9 @@ class UserType extends AbstractType
                 ],
                 'multiple' => true,
                 'expanded' => true,
+                'choice_attr' => function ($choice, $key, $value) {
+                    return ['style' => 'margin-right: 5px; margin-left: 20px;'];
+                },
             ])
             ->add('firstName', TextType::class, [
                 'label' => 'Prénom',
@@ -100,9 +103,11 @@ class UserType extends AbstractType
                     'Administrateur' => 'ROLE_ADMIN',
                 ],
                 'multiple' => true,
-                'expanded' => true, // pour afficher les choix sous forme de cases à cocher
-            ])
-        ;
+                'expanded' => true,
+                'choice_attr' => function ($choice, $key, $value) {
+                    return ['style' => 'margin-right: 5px; margin-left: 20px;'];
+                },
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

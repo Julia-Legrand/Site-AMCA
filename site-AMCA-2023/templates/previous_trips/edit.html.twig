@@ -1,13 +1,30 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Modifier la sortie{% endblock %}
+{% block title %}Modifier la sortie
+{% endblock %}
 
 {% block body %}
-    <h1>Modifier</h1>
+	{% include "_partials/_headerAdmin.html.twig" %}
+	<main>
+		<section class="row m-0">
+			{% include "_partials/_sidebar.html.twig" %}
 
-    {{ include('previous_trips/_form.html.twig', {'button_label': 'Valider'}) }}
+			<div class="col-md-10 editForm">
+				<h2>Modifier la sortie</h2>
 
-    <a href="{{ path('app_previous_trips_index') }}">Retour</a>
+				{{ include('previous_trips/_form.html.twig') }}
+				<div class="bloc">
+					<button class="button" id="customSubmitButton">Valider</button>
+					{{ include('previous_trips/_delete_form.html.twig') }}
+					<a class="button" href="{{ path('app_previous_trips_index') }}">Retour</a>
+				</div>
+			</div>
+		</section>
+	</main>
 
-    {{ include('previous_trips/_delete_form.html.twig') }}
+	<script>
+		document.getElementById('customSubmitButton').addEventListener('click', function () {
+document.querySelector('.submit-button').click();
+});
+	</script>
 {% endblock %}

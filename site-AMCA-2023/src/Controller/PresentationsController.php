@@ -23,79 +23,79 @@ class PresentationsController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_presentations_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
-    {
-        $presentation = new Presentations();
-        $form = $this->createForm(PresentationsType::class, $presentation);
-        $form->handleRequest($request);
+    // #[Route('/new', name: 'app_presentations_new', methods: ['GET', 'POST'])]
+    // public function new(Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
+    // {
+    //     $presentation = new Presentations();
+    //     $form = $this->createForm(PresentationsType::class, $presentation);
+    //     $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            // Handling files uploading
-            $imageFile = $form->get('presentationPicture')->getData();
-            if ($imageFile) {
-                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
-                $safeFilename = $slugger->slug($originalFilename);
-                $newFilename = $safeFilename . '.' . $imageFile->guessExtension();
-        
-                $imageFile->move(
-                    $this->getParameter('images_directory'),
-                    $newFilename
-                );
-        
-                $presentation->setPresentationPicture($newFilename);
-            }
-            $imageFile = $form->get('logo')->getData();
-            if ($imageFile) {
-                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
-                $safeFilename = $slugger->slug($originalFilename);
-                $newFilename = $safeFilename . '.' . $imageFile->guessExtension();
-        
-                $imageFile->move(
-                    $this->getParameter('images_directory'),
-                    $newFilename
-                );
-        
-                $presentation->setLogo($newFilename);
-            }
-            $imageFile = $form->get('statutesDoc')->getData();
-            if ($imageFile) {
-                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
-                $safeFilename = $slugger->slug($originalFilename);
-                $newFilename = $safeFilename . '.' . $imageFile->guessExtension();
-        
-                $imageFile->move(
-                    $this->getParameter('images_directory'),
-                    $newFilename
-                );
-        
-                $presentation->setStatutesDoc($newFilename);
-            }
-            $imageFile = $form->get('internalRulesDoc')->getData();
-            if ($imageFile) {
-                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
-                $safeFilename = $slugger->slug($originalFilename);
-                $newFilename = $safeFilename . '.' . $imageFile->guessExtension();
-        
-                $imageFile->move(
-                    $this->getParameter('images_directory'),
-                    $newFilename
-                );
-        
-                $presentation->setInternalRulesDoc($newFilename);
-            }
+    //     if ($form->isSubmitted() && $form->isValid()) {
+    //         // Handling files uploading
+    //         $imageFile = $form->get('presentationPicture')->getData();
+    //         if ($imageFile) {
+    //             $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+    //             $safeFilename = $slugger->slug($originalFilename);
+    //             $newFilename = $safeFilename . '.' . $imageFile->guessExtension();
 
-            $entityManager->persist($presentation);
-            $entityManager->flush();
+    //             $imageFile->move(
+    //                 $this->getParameter('images_directory'),
+    //                 $newFilename
+    //             );
 
-            return $this->redirectToRoute('app_presentations_index', [], Response::HTTP_SEE_OTHER);
-        }
+    //             $presentation->setPresentationPicture($newFilename);
+    //         }
+    //         $imageFile = $form->get('logo')->getData();
+    //         if ($imageFile) {
+    //             $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+    //             $safeFilename = $slugger->slug($originalFilename);
+    //             $newFilename = $safeFilename . '.' . $imageFile->guessExtension();
 
-        return $this->renderForm('presentations/new.html.twig', [
-            'presentation' => $presentation,
-            'form' => $form,
-        ]);
-    }
+    //             $imageFile->move(
+    //                 $this->getParameter('images_directory'),
+    //                 $newFilename
+    //             );
+
+    //             $presentation->setLogo($newFilename);
+    //         }
+    //         $imageFile = $form->get('statutesDoc')->getData();
+    //         if ($imageFile) {
+    //             $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+    //             $safeFilename = $slugger->slug($originalFilename);
+    //             $newFilename = $safeFilename . '.' . $imageFile->guessExtension();
+
+    //             $imageFile->move(
+    //                 $this->getParameter('images_directory'),
+    //                 $newFilename
+    //             );
+
+    //             $presentation->setStatutesDoc($newFilename);
+    //         }
+    //         $imageFile = $form->get('internalRulesDoc')->getData();
+    //         if ($imageFile) {
+    //             $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+    //             $safeFilename = $slugger->slug($originalFilename);
+    //             $newFilename = $safeFilename . '.' . $imageFile->guessExtension();
+
+    //             $imageFile->move(
+    //                 $this->getParameter('images_directory'),
+    //                 $newFilename
+    //             );
+
+    //             $presentation->setInternalRulesDoc($newFilename);
+    //         }
+
+    //         $entityManager->persist($presentation);
+    //         $entityManager->flush();
+
+    //         return $this->redirectToRoute('app_presentations_index', [], Response::HTTP_SEE_OTHER);
+    //     }
+
+    //     return $this->renderForm('presentations/new.html.twig', [
+    //         'presentation' => $presentation,
+    //         'form' => $form,
+    //     ]);
+    // }
 
     #[Route('/{id}/edit', name: 'app_presentations_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Presentations $presentation, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
@@ -110,12 +110,12 @@ class PresentationsController extends AbstractController
                 $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $safeFilename = $slugger->slug($originalFilename);
                 $newFilename = $safeFilename . '.' . $imageFile->guessExtension();
-        
+
                 $imageFile->move(
                     $this->getParameter('images_directory'),
                     $newFilename
                 );
-        
+
                 $presentation->setPresentationPicture($newFilename);
             }
             $imageFile = $form->get('logo')->getData();
@@ -123,12 +123,12 @@ class PresentationsController extends AbstractController
                 $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $safeFilename = $slugger->slug($originalFilename);
                 $newFilename = $safeFilename . '.' . $imageFile->guessExtension();
-        
+
                 $imageFile->move(
                     $this->getParameter('images_directory'),
                     $newFilename
                 );
-        
+
                 $presentation->setLogo($newFilename);
             }
             $imageFile = $form->get('statutesDoc')->getData();
@@ -136,12 +136,12 @@ class PresentationsController extends AbstractController
                 $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $safeFilename = $slugger->slug($originalFilename);
                 $newFilename = $safeFilename . '.' . $imageFile->guessExtension();
-        
+
                 $imageFile->move(
                     $this->getParameter('images_directory'),
                     $newFilename
                 );
-        
+
                 $presentation->setStatutesDoc($newFilename);
             }
             $imageFile = $form->get('internalRulesDoc')->getData();
@@ -149,12 +149,12 @@ class PresentationsController extends AbstractController
                 $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $safeFilename = $slugger->slug($originalFilename);
                 $newFilename = $safeFilename . '.' . $imageFile->guessExtension();
-        
+
                 $imageFile->move(
                     $this->getParameter('images_directory'),
                     $newFilename
                 );
-        
+
                 $presentation->setInternalRulesDoc($newFilename);
             }
 
@@ -169,14 +169,14 @@ class PresentationsController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_presentations_delete', methods: ['POST'])]
-    public function delete(Request $request, Presentations $presentation, EntityManagerInterface $entityManager): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$presentation->getId(), $request->request->get('_token'))) {
-            $entityManager->remove($presentation);
-            $entityManager->flush();
-        }
+    // #[Route('/{id}', name: 'app_presentations_delete', methods: ['POST'])]
+    // public function delete(Request $request, Presentations $presentation, EntityManagerInterface $entityManager): Response
+    // {
+    //     if ($this->isCsrfTokenValid('delete' . $presentation->getId(), $request->request->get('_token'))) {
+    //         $entityManager->remove($presentation);
+    //         $entityManager->flush();
+    //     }
 
-        return $this->redirectToRoute('app_presentations_index', [], Response::HTTP_SEE_OTHER);
-    }
+    //     return $this->redirectToRoute('app_presentations_index', [], Response::HTTP_SEE_OTHER);
+    // }
 }

@@ -1,11 +1,23 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Nouvelle raison d'être{% endblock %}
+{% block title %}Nouvelle raison d'être
+{% endblock %}
 
 {% block body %}
-    <h1>Nouvelle raison d'être</h1>
+	{% include "_partials/_headerAdmin.html.twig" %}
+	<main>
+		<section class="row m-0">
+			{% include "_partials/_sidebar.html.twig" %}
 
-    {{ include('purposes/_form.html.twig') }}
+			<div class="col-md-10 editForm">
+				<h2>Nouvelle raison d'être</h2>
 
-    <a href="{{ path('app_purposes_index') }}">Retour</a>
+				{{ include('purposes/_form.html.twig') }}
+				<div class="bloc">
+					<button class="button" id="customSubmitButton">Valider</button>
+					<a class="button" href="{{ path('app_purposes_index') }}">Retour</a>
+				</div>
+			</div>
+		</section>
+	</main>
 {% endblock %}

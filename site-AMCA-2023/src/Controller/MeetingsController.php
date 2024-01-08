@@ -23,44 +23,44 @@ class MeetingsController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_meetings_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
-    {
-        $meeting = new Meetings();
-        $form = $this->createForm(MeetingsType::class, $meeting);
-        $form->handleRequest($request);
+    // #[Route('/new', name: 'app_meetings_new', methods: ['GET', 'POST'])]
+    // public function new(Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
+    // {
+    //     $meeting = new Meetings();
+    //     $form = $this->createForm(MeetingsType::class, $meeting);
+    //     $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            // Handling latitude and longitude values
-            $meeting->setMeetingLon($form->get('meetingLon')->getData());
-            $meeting->setMeetingLat($form->get('meetingLat')->getData());
+    //     if ($form->isSubmitted() && $form->isValid()) {
+    //         // Handling latitude and longitude values
+    //         $meeting->setMeetingLon($form->get('meetingLon')->getData());
+    //         $meeting->setMeetingLat($form->get('meetingLat')->getData());
 
-            // Handling files uploading
-            $imageFile = $form->get('meetingPicture')->getData();
-            if ($imageFile) {
-                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
-                $safeFilename = $slugger->slug($originalFilename);
-                $newFilename = $safeFilename . '.' . $imageFile->guessExtension();
+    //         // Handling files uploading
+    //         $imageFile = $form->get('meetingPicture')->getData();
+    //         if ($imageFile) {
+    //             $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+    //             $safeFilename = $slugger->slug($originalFilename);
+    //             $newFilename = $safeFilename . '.' . $imageFile->guessExtension();
 
-                $imageFile->move(
-                    $this->getParameter('images_directory'),
-                    $newFilename
-                );
+    //             $imageFile->move(
+    //                 $this->getParameter('images_directory'),
+    //                 $newFilename
+    //             );
 
-                $meeting->setMeetingPicture($newFilename);
-            }
+    //             $meeting->setMeetingPicture($newFilename);
+    //         }
 
-            $entityManager->persist($meeting);
-            $entityManager->flush();
-    
-            return $this->redirectToRoute('app_meetings_index', [], Response::HTTP_SEE_OTHER);
-        }
-    
-        return $this->renderForm('meetings/new.html.twig', [
-            'meeting' => $meeting,
-            'form' => $form,
-        ]);
-    }
+    //         $entityManager->persist($meeting);
+    //         $entityManager->flush();
+
+    //         return $this->redirectToRoute('app_meetings_index', [], Response::HTTP_SEE_OTHER);
+    //     }
+
+    //     return $this->renderForm('meetings/new.html.twig', [
+    //         'meeting' => $meeting,
+    //         'form' => $form,
+    //     ]);
+    // }
 
     #[Route('/{id}/edit', name: 'app_meetings_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Meetings $meeting, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
@@ -99,14 +99,14 @@ class MeetingsController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_meetings_delete', methods: ['POST'])]
-    public function delete(Request $request, Meetings $meeting, EntityManagerInterface $entityManager): Response
-    {
-        if ($this->isCsrfTokenValid('delete' . $meeting->getId(), $request->request->get('_token'))) {
-            $entityManager->remove($meeting);
-            $entityManager->flush();
-        }
+    // #[Route('/{id}', name: 'app_meetings_delete', methods: ['POST'])]
+    // public function delete(Request $request, Meetings $meeting, EntityManagerInterface $entityManager): Response
+    // {
+    //     if ($this->isCsrfTokenValid('delete' . $meeting->getId(), $request->request->get('_token'))) {
+    //         $entityManager->remove($meeting);
+    //         $entityManager->flush();
+    //     }
 
-        return $this->redirectToRoute('app_meetings_index', [], Response::HTTP_SEE_OTHER);
-    }
+    //     return $this->redirectToRoute('app_meetings_index', [], Response::HTTP_SEE_OTHER);
+    // }
 }

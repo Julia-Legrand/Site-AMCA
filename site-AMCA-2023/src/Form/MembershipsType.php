@@ -17,6 +17,7 @@ class MembershipsType extends AbstractType
         $builder
             ->add('membershipForm', FileType::class, [
                 'label' => 'Bulletin d\'adhésion',
+                'attr' => ['class' => 'custom-form'],
                 'mapped' => false,
                 'required' => false,
                 'constraints' => [
@@ -37,8 +38,7 @@ class MembershipsType extends AbstractType
             ->add('passengerFee', NumberType::class, [
                 'label' => 'Cotisation passager',
                 'attr' => ['class' => 'custom-form'],
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

@@ -1,34 +1,35 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Contacts{% endblock %}
+{% block title %}Contacts
+{% endblock %}
 
 {% block body %}
-    <h1>Contacts</h1>
+	<h1>Contacts</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Nom</th>
-                <th>Email</th>
-                <th>Message</th>
-                <th>Supprimer</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for contact in contacts %}
-            <tr>
-                <td>{{ contact.contactName }}</td>
-                <td>{{ contact.contactMail }}</td>
-                <td>{{ contact.contactMessage }}</td>
-                <td>
-					{{ include('contacts/_delete_form.html.twig') }}
-				</td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">Donnée vide</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+	<table class="table-responsive">
+		<thead>
+			<tr>
+				<th>Nom</th>
+				<th>Email</th>
+				<th>Message</th>
+				<th>Supprimer</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for contact in contacts %}
+				<tr>
+					<td>{{ contact.contactName }}</td>
+					<td>{{ contact.contactMail }}</td>
+					<td>{{ contact.contactMessage }}</td>
+					<td>
+						{{ include('contacts/_delete_form.html.twig') }}
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="5">Donnée vide</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
 {% endblock %}
