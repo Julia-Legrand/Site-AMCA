@@ -19,28 +19,32 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 #[Route('/thèmes')]
 class ThemesController extends AbstractController
 {
-    #[Route('/', name: 'app_themes_index', methods: ['GET'])]
-    public function index(ThemesRepository $themesRepository, PostsRepository $postsRepository, CommentsRepository $commentsRepository, PresentationsRepository $presentationsRepository): Response
-    {
-        return $this->render('themes/index.html.twig', [
-            'themes' => $themesRepository->findAll(),
-            'posts' => $postsRepository->findAll(),
-            'comments' => $commentsRepository->findAll(),
-            'presentations' => $presentationsRepository->findAll(),
-        ]);
-    }
+    // #[Route('/', name: 'app_themes_index', methods: ['GET'])]
+    // public function index(ThemesRepository $themesRepository, PostsRepository $postsRepository, CommentsRepository $commentsRepository, PresentationsRepository $presentationsRepository): Response
+    // {
+    //     return $this->render('themes/index.html.twig', [
+    //         'themes' => $themesRepository->findAll(),
+    //         'posts' => $postsRepository->findAll(),
+    //         'comments' => $commentsRepository->findAll(),
+    //         'presentations' => $presentationsRepository->findAll(),
+    //     ]);
+    // }
 
     #[IsGranted('ROLE_ADMIN')]
     #[Route('/nouveau', name: 'app_themes_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager, PresentationsRepository $presentationsRepository): Response
     {
+        $theme = new Themes();
+
+        // Set the connected user as the author of the theme
         $user = $this->getUser();
-        // Check if the user is the administrator
+        $theme->setUser($user);
+
+        // Check if the user is the administrator, as only administrator can create a new theme
         if (!$this->isGranted('ROLE_ADMIN')) {
             throw $this->createAccessDeniedException('Vous n\'avez pas la permission de créer un nouveau thème.');
         }
 
-        $theme = new Themes();
         $form = $this->createForm(ThemesType::class, $theme);
         $form->handleRequest($request);
 
@@ -48,7 +52,7 @@ class ThemesController extends AbstractController
             $entityManager->persist($theme);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_themes_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('forum', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('themes/new.html.twig', [
@@ -60,9 +64,11 @@ class ThemesController extends AbstractController
 
     #[IsGranted('ROLE_ADMIN')]
     #[Route('/{id}/modifier', name: 'app_themes_edit', methods: ['GET', 'POST'])]
-    public function edit(UserInterface $user, Request $request, Themes $theme, EntityManagerInterface $entityManager, ThemesRepository $themesRepository, PresentationsRepository $presentationsRepository): Response
+    public function edit(Request $request, Themes $theme, EntityManagerInterface $entityManager, PresentationsRepository $presentationsRepository): Response
     {
+        // Get the connected user
         $user = $this->getUser();
+
         // Check if the user is the administrator
         if (!$this->isGranted('ROLE_ADMIN')) {
             throw $this->createAccessDeniedException('Vous n\'avez pas la permission de modifier ce thème.');
@@ -74,7 +80,7 @@ class ThemesController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_themes_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('forum', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('themes/edit.html.twig', [
@@ -88,7 +94,9 @@ class ThemesController extends AbstractController
     #[Route('/{id}', name: 'app_themes_delete', methods: ['POST'])]
     public function delete(Request $request, Themes $theme, EntityManagerInterface $entityManager): Response
     {
+        // Getting connected user
         $user = $this->getUser();
+
         // Check if the user is the administrator
         if (!$this->isGranted('ROLE_ADMIN')) {
             throw $this->createAccessDeniedException('Vous n\'avez pas la permission de supprimer ce thème.');
@@ -99,6 +107,6 @@ class ThemesController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('app_themes_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('forum', [], Response::HTTP_SEE_OTHER);
     }
 }

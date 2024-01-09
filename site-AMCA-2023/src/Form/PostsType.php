@@ -22,30 +22,17 @@ class PostsType extends AbstractType
                 'label' => 'Titre du post',
                 'attr' => ['class' => 'custom-form'],
             ])
-            ->add('postContent', TextareaType::class, [
-                'label' => 'Texte',
-                'attr' => ['class' => 'custom-form'],
-            ])
-            ->add('created_at', DateTimeType::class, [
-                'widget' => 'single_text',
-                'label' => 'Créé le',
-                'attr' => ['class' => 'custom-form'],
-            ])
             ->add('themes', EntityType::class, [
                 'class' => Themes::class,
                 'choice_label' => function (Themes $theme) {
                     return $theme->getThemeTitle();
                 },
                 'attr' => ['class' => 'custom-form'],
-                'label' => 'Thème',
+                'label' => 'Thème relié',
             ])
-            ->add('user', EntityType::class, [
-                'class' => User::class,
-                'choice_label' => function (User $user) {
-                    return $user->getFirstName() . ' ' . $user->getLastName();
-                },
+            ->add('postContent', TextareaType::class, [
+                'label' => 'Texte',
                 'attr' => ['class' => 'custom-form'],
-                'label' => 'Auteur',
             ])
         ;
     }

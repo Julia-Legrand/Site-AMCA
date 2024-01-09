@@ -15,19 +15,24 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 #[Route('/posts')]
 class PostsController extends AbstractController
 {
-    #[Route('/', name: 'app_posts_index', methods: ['GET'])]
-    public function index(PostsRepository $postsRepository, PresentationsRepository $presentationsRepository): Response
-    {
-        return $this->render('posts/index.html.twig', [
-            'posts' => $postsRepository->findAll(),
-            'presentations' => $presentationsRepository->findAll(),
-        ]);
-    }
+    // #[Route('/', name: 'app_posts_index', methods: ['GET'])]
+    // public function index(PostsRepository $postsRepository, PresentationsRepository $presentationsRepository): Response
+    // {
+    //     return $this->render('posts/index.html.twig', [
+    //         'posts' => $postsRepository->findAll(),
+    //         'presentations' => $presentationsRepository->findAll(),
+    //     ]);
+    // }
 
     #[Route('/nouveau', name: 'app_posts_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager, PresentationsRepository $presentationsRepository): Response
     {
         $post = new Posts();
+
+        // Set the connected user as the author of the post
+        $user = $this->getUser();
+        $post->setUser($user);
+
         $form = $this->createForm(PostsType::class, $post);
         $form->handleRequest($request);
 
@@ -48,6 +53,7 @@ class PostsController extends AbstractController
     #[Route('/{id}/modifier', name: 'app_posts_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Posts $post, EntityManagerInterface $entityManager, PresentationsRepository $presentationsRepository): Response
     {
+        // Get the connected user
         $user = $this->getUser();
 
         // Check if the user is the administrator or the author of the post
@@ -60,10 +66,7 @@ class PostsController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
-
-            if ($this->isGranted('ROLE_ADMIN')) {
-                return $this->redirectToRoute('app_posts_index', [], Response::HTTP_SEE_OTHER);
-            }
+            
             return $this->redirectToRoute('forum', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -77,7 +80,9 @@ class PostsController extends AbstractController
     #[Route('/{id}', name: 'app_posts_delete', methods: ['POST'])]
     public function delete(Request $request, Posts $post, EntityManagerInterface $entityManager): Response
     {
+        // Get the connected user
         $user = $this->getUser();
+
         // Check if the user is the administrator or the author of the post
         if (!$this->isGranted('ROLE_ADMIN') && $post->getUser() !== $user) {
             throw $this->createAccessDeniedException('Vous n\'avez pas la permission de supprimer ce post.');
@@ -88,6 +93,6 @@ class PostsController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('app_posts_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('forum', [], Response::HTTP_SEE_OTHER);
     }
 }

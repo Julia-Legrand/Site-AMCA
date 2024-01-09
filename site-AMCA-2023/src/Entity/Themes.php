@@ -21,7 +21,7 @@ class Themes
     #[ORM\ManyToOne(inversedBy: 'themes')]
     private ?User $user = null;
 
-    #[ORM\OneToMany(mappedBy: 'themes', targetEntity: Posts::class)]
+    #[ORM\OneToMany(mappedBy: 'themes', targetEntity: Posts::class, orphanRemoval: true, cascade: ['persist'])]
     private Collection $post;
 
     public function __construct()

@@ -78,6 +78,7 @@ a:hover {
   text-shadow: #F3F4F7 0 0 5px;
 }
 
+/***** MAIN NAVBAR *****/
 .navbar {
   font-size: 30px;
   color: #F3F4F7;
@@ -86,6 +87,46 @@ a:hover {
   margin: 0 10px;
 }
 
+/***** SIDEBAR *****/
+#sidebarFullsize nav {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  width: -moz-fit-content;
+  width: fit-content;
+  font-size: 16px;
+  white-space: nowrap;
+}
+#sidebarFullsize nav li {
+  margin: 0 25px;
+}
+#sidebarFullsize nav i {
+  color: #F3F4F7;
+  margin-right: 5px;
+}
+#sidebarFullsize nav a {
+  color: #F3F4F7;
+}
+
+#sidebarResponsive {
+  display: none;
+  width: 6rem;
+}
+#sidebarResponsive nav {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+#sidebarResponsive nav i {
+  color: #F3F4F7;
+  font-size: 16px;
+}
+
+/***** CHECKBOX IN FORMS *****/
 input#future_trips_users {
   margin: 20px;
 }
@@ -202,7 +243,7 @@ footer .footerBloc2 .brand {
   margin: 20px;
 }
 
-/********** INDEX **********/
+/********** INDEX PAGE **********/
 /*** OUR STORY ***/
 #our-story {
   display: flex;
@@ -350,7 +391,7 @@ footer .footerBloc2 .brand {
   text-shadow: #F3F4F7 0 0 5px;
 }
 
-/********** ASSO **********/
+/********** ASSO PAGE **********/
 /*** MONTHLY MEETING ***/
 #monthly-meeting {
   background-color: #16171A;
@@ -497,7 +538,7 @@ footer .footerBloc2 .brand {
   margin-top: 40px;
 }
 
-/********** MEMBERSHIP **********/
+/********** MEMBERSHIP PAGE **********/
 .mainMembership {
   background-color: #16171A;
   color: #F3F4F7;
@@ -519,7 +560,7 @@ footer .footerBloc2 .brand {
   height: 480px;
 }
 
-/********** FORUM **********/
+/********** FORUM PAGE **********/
 .mainForum {
   background-color: #16171A;
   color: #F3F4F7;
@@ -580,7 +621,7 @@ footer .footerBloc2 .brand {
   font-size: 10px;
 }
 
-/********** CONTACT **********/
+/********** CONTACT PAGE **********/
 .mainContact {
   background-color: #16171A;
   color: #F3F4F7;
@@ -606,7 +647,7 @@ footer .footerBloc2 .brand {
   margin-left: 5px;
 }
 
-/********** LOGIN & REGISTER **********/
+/********** LOGIN & REGISTER PAGES **********/
 .loginForm {
   background-color: #16171A;
   color: #F3F4F7;
@@ -636,14 +677,39 @@ footer .footerBloc2 .brand {
   flex-direction: column;
   margin-bottom: 40px;
 }
-.loginForm .bloc #registration_form_assignment_0, .loginForm .bloc #registration_form_assignment_1 {
+.loginForm .bloc #registration_form_assignment_0,
+.loginForm .bloc #registration_form_assignment_1 {
   margin-right: 5px;
   margin-left: 15px;
 }
 
-/********** ADMIN **********/
+/********** ADMIN PAGE **********/
+/*** DASHBOARD ***/
+#dashboard {
+  background-color: #d6d6d6;
+  padding: 20px;
+}
+#dashboard h2 {
+  margin-top: 20px;
+  font-size: 40px;
+}
+#dashboard table {
+  background-color: white;
+  box-shadow: #0D121C 1px 0 5px;
+  width: 90%;
+  margin: 20px;
+}
+#dashboard table th {
+  text-align: center;
+}
+#dashboard table td {
+  font-size: 10px;
+  text-align: center;
+}
+
+/*** FORMS ***/
 .editForm {
-  background-color: #343A40;
+  background-color: #343a40;
   color: #F3F4F7;
   display: flex;
   flex-direction: column;

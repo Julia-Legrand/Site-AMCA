@@ -9,15 +9,16 @@
 		{% include "_partials/_navbar.html.twig" %}
 	</header>
 
-	<div class="editForm">
+	<main class="editForm">
 
 		{{ include('comments/_form.html.twig') }}
 		<div class="bloc">
 			<button class="button" id="customSubmitButton">Valider</button>
+			{{ include('comments/_delete_form.html.twig') }}
 			<a class="button" href="{{ path('forum') }}">Retour</a>
 		</div>
 
-	</div>
+	</main>
 	{% include "_partials/_footer.html.twig" %}
 	<script>
 		document.getElementById('customSubmitButton').addEventListener('click', function () {

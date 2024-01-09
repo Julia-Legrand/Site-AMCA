@@ -6,15 +6,15 @@
 {% block body %}
 	{% include "_partials/_headerAdmin.html.twig" %}
 	<main>
-		<section class="row mr-0 ml-0" style="background-color:#343A40;">
+		<section class="row mx-0">
 			{% include "_partials/_sidebar.html.twig" %}
 
-			<div class="col-md-10">
+			<div class="col-md-10" id="dashboard">
 				<div class="row mr-0 ml-0">
 					<div class="col-md-12">
 						<h2>Présentation</h2>
 
-						<table class="table-responsive">
+						<table class="horizontal-table">
 							<thead>
 								<tr>
 									<th>Titre</th>
@@ -31,9 +31,9 @@
 										<td>{{ presentation.presentationTitle }}</td>
 										<td><img src="{{ asset('uploads/images/' ~ presentation.presentationPicture) }}" alt="Photo des membres fondateurs" width="200px"></td>
 										<td>{{ presentation.presentationContent }}</td>
-										<td><img src="{{ asset('uploads/images/' ~ presentation.logo) }}" alt="Logo de l'association" width="200px"></td>
-										<td><embed src="{{ asset('uploads/images/' ~ presentation.statutesDoc) }}" height="300px" type="application/pdf"></td>
-										<td><embed src="{{ asset('uploads/images/' ~ presentation.internalRulesDoc) }}" height="300px" type="application/pdf"></td>
+										<td><img src="{{ asset('uploads/images/' ~ presentation.logo) }}" alt="Logo de l'association" width="100px"></td>
+										<td><embed src="{{ asset('uploads/images/' ~ presentation.statutesDoc) }}" width="200px" type="application/pdf"></td>
+										<td><embed src="{{ asset('uploads/images/' ~ presentation.internalRulesDoc) }}" width="200px" type="application/pdf"></td>
 									</tr>
 								{% endfor %}
 							</tbody>
@@ -44,7 +44,7 @@
 					<div class="col-md-6">
 						<h2>Nos raisons d'être</h2>
 
-						<table class="table-responsive">
+						<table class="horizontal-table">
 							<thead>
 								<tr>
 									<th>Contenu</th>
@@ -62,7 +62,7 @@
 					<div class="col-md-6">
 						<h2>Devenir membre</h2>
 
-						<table class="table-responsive">
+						<table class="horizontal-table">
 							<thead>
 								<tr>
 									<th>Bulletin d'adhésion</th>
@@ -74,7 +74,7 @@
 								{% for membership in memberships %}
 									<tr>
 										<td>
-											<embed src="{{ asset('uploads/images/' ~ membership.membershipForm) }}" height="300px" type="application/pdf">
+											<embed src="{{ asset('uploads/images/' ~ membership.membershipForm) }}" width="200px" type="application/pdf">
 										</td>
 										<td>{{ membership.driverFee }}
 											euros</td>
@@ -90,7 +90,7 @@
 					<div class="col-md-6">
 						<h2>Prochaine réunion</h2>
 
-						<table class="table-responsive">
+						<table class="horizontal-table">
 							<thead>
 								<tr>
 									<th>Date et Heure</th>
@@ -118,7 +118,7 @@
 					<div class="col-md-6">
 						<h2>Messages reçus</h2>
 
-						<table class="table-responsive">
+						<table class="horizontal-table">
 							<thead>
 								<tr>
 									<th>Nom</th>
@@ -150,7 +150,7 @@
 					<div class="col-md-6">
 						<h2>Sorties précédentes</h2>
 
-						<table class="table-responsive">
+						<table class="horizontal-table">
 							<thead>
 								<tr>
 									<th>Nom de la sortie</th>
@@ -176,7 +176,7 @@
 					<div class="col-md-6">
 						<h2>Futures sorties</h2>
 
-						<table class="table-responsive">
+						<table class="horizontal-table">
 							<thead>
 								<tr>
 									<th>Nom de la sortie</th>
@@ -218,7 +218,6 @@
 					</div>
 				</div>
 			</div>
-
 		</section>
 	</main>
 {% endblock %}

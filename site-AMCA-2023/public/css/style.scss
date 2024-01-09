@@ -1,6 +1,6 @@
-@import 'mixins';
-@import 'variables';
-@import 'responsive';
+@import "mixins";
+@import "variables";
+@import "responsive";
 
 /********** GLOBALS **********/
 h1 {
@@ -64,7 +64,7 @@ a:hover {
     border: none;
     margin-top: 20px;
     margin-bottom: 20px;
-    font-family: 'Anton', sans-serif;
+    font-family: "Anton", sans-serif;
     font-size: 20px;
     text-decoration: none;
     transition: all 0.5s ease;
@@ -76,6 +76,7 @@ a:hover {
     text-shadow: $light 0 0 5px;
 }
 
+/***** MAIN NAVBAR *****/
 .navbar {
     font-size: 30px;
     color: $light;
@@ -85,8 +86,54 @@ a:hover {
     }
 }
 
+/***** SIDEBAR *****/
+#sidebarFullsize {
+    nav {
+        height: 100%;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        flex-shrink: 0;
+        width: fit-content;
+        font-size: 16px;
+        white-space: nowrap;
+
+        li {
+            margin: 0 25px;
+        }
+
+        i {
+            color: $light;
+            margin-right: 5px;
+        }
+
+        a {
+            color: $light;
+        }
+    }
+}
+
+#sidebarResponsive {
+    display: none;
+    width: 6rem;
+
+    nav {
+        height: 100%;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        flex-shrink: 0;
+
+        i {
+            color: $light;
+            font-size: 16px;
+        }
+    }
+}
+
+/***** CHECKBOX IN FORMS *****/
 input#future_trips_users {
-    margin: 20px
+    margin: 20px;
 }
 
 /********** HEADERS **********/
@@ -109,7 +156,8 @@ input#future_trips_users {
 }
 
 .headerPages {
-    background-image: linear-gradient(rgb(1, 1, 1, 0.4), rgba(1, 1, 1, 0.4)), url(../images/wallpaper3.jpg);
+    background-image: linear-gradient(rgb(1, 1, 1, 0.4), rgba(1, 1, 1, 0.4)),
+        url(../images/wallpaper3.jpg);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -127,7 +175,8 @@ input#future_trips_users {
 }
 
 .headerShow {
-    background-image: linear-gradient(rgb(1, 1, 1, 0.6), rgba(1, 1, 1, 0.6)), url(../images/wallpaper4.jpg);
+    background-image: linear-gradient(rgb(1, 1, 1, 0.6), rgba(1, 1, 1, 0.6)),
+        url(../images/wallpaper4.jpg);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -219,7 +268,7 @@ footer {
     }
 }
 
-/********** INDEX **********/
+/********** INDEX PAGE **********/
 /*** OUR STORY ***/
 #our-story {
     display: flex;
@@ -272,7 +321,8 @@ footer {
 /*** OUR PURPOSES ***/
 #our-purposes {
     height: 80vh;
-    background-image: linear-gradient(rgb(1, 1, 1, 0.7), rgba(1, 1, 1, 0.7)), url(../images/photo-de-groupe.jpeg);
+    background-image: linear-gradient(rgb(1, 1, 1, 0.7), rgba(1, 1, 1, 0.7)),
+        url(../images/photo-de-groupe.jpeg);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -355,7 +405,8 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: linear-gradient(rgb(1, 1, 1, 0.7), rgba(1, 1, 1, 0.7)), url(../images/wallpaper2.jpg);
+    background-image: linear-gradient(rgb(1, 1, 1, 0.7), rgba(1, 1, 1, 0.7)),
+        url(../images/wallpaper2.jpg);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -371,7 +422,7 @@ footer {
         color: $light;
         background-color: lightgrey;
         font-size: 60px;
-        font-family: 'Anton', sans-serif;
+        font-family: "Anton", sans-serif;
         padding: 10px 40px;
         border-radius: 10px;
         border: none;
@@ -387,7 +438,7 @@ footer {
     }
 }
 
-/********** ASSO **********/
+/********** ASSO PAGE **********/
 /*** MONTHLY MEETING ***/
 #monthly-meeting {
     background-color: $darker;
@@ -559,7 +610,7 @@ footer {
     }
 }
 
-/********** MEMBERSHIP **********/
+/********** MEMBERSHIP PAGE **********/
 .mainMembership {
     background-color: $darker;
     color: $light;
@@ -584,7 +635,7 @@ footer {
     }
 }
 
-/********** FORUM **********/
+/********** FORUM PAGE **********/
 .mainForum {
     background-color: $darker;
     color: $light;
@@ -598,7 +649,7 @@ footer {
         margin-top: 20px;
         width: 500px;
         display: flex;
-        justify-content: space-evenly
+        justify-content: space-evenly;
     }
 
     .forum {
@@ -655,7 +706,7 @@ footer {
     }
 }
 
-/********** CONTACT **********/
+/********** CONTACT PAGE **********/
 .mainContact {
     background-color: $darker;
     color: $light;
@@ -684,7 +735,7 @@ footer {
     }
 }
 
-/********** LOGIN & REGISTER **********/
+/********** LOGIN & REGISTER PAGES **********/
 .loginForm {
     background-color: $darker;
     color: $light;
@@ -717,16 +768,45 @@ footer {
         flex-direction: column;
         margin-bottom: 40px;
 
-        #registration_form_assignment_0, #registration_form_assignment_1 {
+        #registration_form_assignment_0,
+        #registration_form_assignment_1 {
             margin-right: 5px;
             margin-left: 15px;
         }
     }
 }
 
-/********** ADMIN **********/
+/********** ADMIN PAGE **********/
+/*** DASHBOARD ***/
+#dashboard {
+    background-color: #d6d6d6;
+    padding: 20px;
+
+    h2 {
+        margin-top: 20px;
+        font-size: 40px;
+    }
+
+    table {
+        background-color: white;
+        box-shadow: #0D121C 1px 0 5px;
+        width: 90%;
+        margin: 20px;
+
+        th {
+            text-align: center;
+        }
+
+        td {
+            font-size: 10px;
+            text-align: center;
+        }
+    }
+}
+
+/*** FORMS ***/
 .editForm {
-    background-color: #343A40;
+    background-color: #343a40;
     color: $light;
     display: flex;
     flex-direction: column;
@@ -761,5 +841,5 @@ footer {
 
     .hide-button {
         display: none;
-    }    
+    }
 }

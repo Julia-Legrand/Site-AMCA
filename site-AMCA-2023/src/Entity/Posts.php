@@ -23,7 +23,7 @@ class Posts
     private ?string $postContent = null;
 
     #[ORM\Column]
-    private ?\DateTime $created_at = null;
+    private ?\DateTimeImmutable $created_at = null;
 
     #[ORM\ManyToOne(inversedBy: 'post')]
     private ?Themes $themes = null;
@@ -31,12 +31,13 @@ class Posts
     #[ORM\ManyToOne(inversedBy: 'posts')]
     private ?User $user = null;
 
-    #[ORM\OneToMany(mappedBy: 'post', targetEntity: Comments::class)]
+    #[ORM\OneToMany(mappedBy: 'post', targetEntity: Comments::class, orphanRemoval: true, cascade: ['persist'])]
     private Collection $comments;
 
     public function __construct()
     {
         $this->comments = new ArrayCollection();
+        $this->created_at = new \DateTimeImmutable();
     }
 
     public function getId(): ?int
@@ -68,12 +69,12 @@ class Posts
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTime
+    public function getCreatedAt(): ?\DateTimeImmutable
     {
         return $this->created_at;
     }
 
-    public function setCreatedAt(\DateTime $created_at): static
+    public function setCreatedAt(\DateTimeImmutable $created_at): static
     {
         $this->created_at = $created_at;
 

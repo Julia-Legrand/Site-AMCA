@@ -1,13 +1,28 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Modifier le post{% endblock %}
+{% block title %}Modifier le post
+{% endblock %}
 
 {% block body %}
-    <h1>Modifier le post</h1>
+	<header class="headerPages">
+		<h1>Modifier le post</h1>
+		{% include "_partials/_navbar.html.twig" %}
+	</header>
 
-    {{ include('posts/_form.html.twig', {'button_label': 'Valider'}) }}
+	<main class="editForm">
 
-    <a href="{{ path('forum') }}">Retour</a>
+		{{ include('posts/_form.html.twig') }}
+		<div class="bloc">
+			<button class="button" id="customSubmitButton">Valider</button>
+			{{ include('posts/_delete_form.html.twig') }}
+			<a class="button" href="{{ path('forum') }}">Retour</a>
+		</div>
 
-    {{ include('posts/_delete_form.html.twig') }}
+	</main>
+	{% include "_partials/_footer.html.twig" %}
+	<script>
+		document.getElementById('customSubmitButton').addEventListener('click', function () {
+document.querySelector('.submit-button').click();
+});
+	</script>
 {% endblock %}

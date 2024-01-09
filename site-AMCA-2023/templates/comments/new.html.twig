@@ -9,7 +9,7 @@
 		{% include "_partials/_navbar.html.twig" %}
 	</header>
 
-	<main class="mainForum">
+	<main class="editForm">
 
 		{{ include('comments/_form.html.twig', {'postId': app.request.attributes.get('postId')}) }}
 		<div class="bloc">
