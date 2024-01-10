@@ -160,7 +160,7 @@ class PresentationsController extends AbstractController
 
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_presentations_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('admin', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('presentations/edit.html.twig', [

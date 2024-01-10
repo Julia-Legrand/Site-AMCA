@@ -31,6 +31,8 @@ class ContactsController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $contact->setCreatedAt(new \DateTimeImmutable());
+
             $entityManager->persist($contact);
             $entityManager->flush();
 
@@ -47,7 +49,7 @@ class ContactsController extends AbstractController
     #[Route('/{id}', name: 'app_contacts_delete', methods: ['POST'])]
     public function delete(Request $request, Contacts $contact, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$contact->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $contact->getId(), $request->request->get('_token'))) {
             $entityManager->remove($contact);
             $entityManager->flush();
         }

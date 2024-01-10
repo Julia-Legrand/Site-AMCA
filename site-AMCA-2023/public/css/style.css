@@ -88,19 +88,17 @@ a:hover {
 }
 
 /***** SIDEBAR *****/
+#sidebarFullsize {
+  width: 15%;
+  padding: 0;
+}
 #sidebarFullsize nav {
   height: 100%;
   margin: 0;
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
-  width: -moz-fit-content;
-  width: fit-content;
   font-size: 16px;
-  white-space: nowrap;
-}
-#sidebarFullsize nav li {
-  margin: 0 25px;
 }
 #sidebarFullsize nav i {
   color: #F3F4F7;
@@ -108,6 +106,7 @@ a:hover {
 }
 #sidebarFullsize nav a {
   color: #F3F4F7;
+  margin: 0;
 }
 
 #sidebarResponsive {
@@ -688,23 +687,81 @@ footer .footerBloc2 .brand {
 #dashboard {
   background-color: #d6d6d6;
   padding: 20px;
+  width: 85%;
+  /*** RECEIVED MESSAGES PAGE ***/
 }
 #dashboard h2 {
-  margin-top: 20px;
+  margin-top: 40px;
   font-size: 40px;
+}
+#dashboard .icon {
+  color: #16171A;
+  font-size: 20px;
+  border: none;
+  background-color: transparent;
+  transition: all 0.5s ease;
+}
+#dashboard .icon:hover {
+  color: #F3F4F7;
+  text-shadow: #25262A 0 0 5px;
 }
 #dashboard table {
   background-color: white;
-  box-shadow: #0D121C 1px 0 5px;
-  width: 90%;
+  box-shadow: #0D121C 0px 0 5px;
   margin: 20px;
+  table-layout: auto;
 }
 #dashboard table th {
   text-align: center;
+  padding: 10px;
+  border-bottom: 1px solid #25262A;
+  white-space: nowrap;
 }
 #dashboard table td {
-  font-size: 10px;
   text-align: center;
+  padding: 10px;
+  border-bottom: 1px solid #F3F4F7;
+}
+#dashboard table td img {
+  width: 150px;
+  height: 110px;
+  margin: 2px;
+}
+#dashboard table .tdText {
+  font-size: 12px;
+}
+#dashboard table .tdLarger {
+  width: 500px;
+}
+#dashboard table .tdList {
+  text-align: start;
+  white-space: nowrap;
+}
+#dashboard .receivedMessage {
+  width: 60%;
+  background-color: #F3F4F7;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px;
+}
+#dashboard .receivedMessage span {
+  font-weight: bold;
+}
+#dashboard .receivedMessage .blocMessage {
+  margin: 30px 0;
+  padding: 10px;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+#dashboard .receivedMessage .blocMessage .message {
+  font-style: italic;
+}
+#dashboard .receivedMessage .blocActions {
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
 }
 
 /*** FORMS ***/

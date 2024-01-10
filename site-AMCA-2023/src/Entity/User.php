@@ -82,7 +82,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Comments::class)]
     private Collection $comments;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->roles = [self::ROLE_USER];
         $this->futureTrips = new ArrayCollection();
         $this->themes = new ArrayCollection();
@@ -289,7 +290,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function removeFutureTrip(FutureTrips $futureTrip): static
     {
         if ($this->futureTrips->removeElement($futureTrip)) {
-            $futureTrip->removeUser($this);
+            // $futureTrip->removeUser($this);
         }
 
         return $this;

@@ -33,7 +33,7 @@ class PurposesController extends AbstractController
             $entityManager->persist($purpose);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_purposes_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('admin', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('purposes/new.html.twig', [
@@ -51,7 +51,7 @@ class PurposesController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_purposes_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('admin', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('purposes/edit.html.twig', [
@@ -63,11 +63,11 @@ class PurposesController extends AbstractController
     #[Route('/{id}', name: 'app_purposes_delete', methods: ['POST'])]
     public function delete(Request $request, Purposes $purpose, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$purpose->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $purpose->getId(), $request->request->get('_token'))) {
             $entityManager->remove($purpose);
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('app_purposes_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('admin', [], Response::HTTP_SEE_OTHER);
     }
 }

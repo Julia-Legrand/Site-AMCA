@@ -90,7 +90,7 @@ class MeetingsController extends AbstractController
 
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_meetings_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('admin', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('meetings/edit.html.twig', [

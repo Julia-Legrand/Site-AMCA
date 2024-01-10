@@ -82,7 +82,7 @@ class MembershipsController extends AbstractController
 
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_memberships_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('admin', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('memberships/edit.html.twig', [

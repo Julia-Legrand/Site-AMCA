@@ -5,219 +5,225 @@
 
 {% block body %}
 	{% include "_partials/_headerAdmin.html.twig" %}
-	<main>
-		<section class="row mx-0">
-			{% include "_partials/_sidebar.html.twig" %}
+	<section class="row mx-0">
+		{% include "_partials/_sidebar.html.twig" %}
 
-			<div class="col-md-10" id="dashboard">
-				<div class="row mr-0 ml-0">
-					<div class="col-md-12">
-						<h2>Présentation</h2>
+		<div id="dashboard">
+			<div class="row mx-0">
+				<div class="col-md-12">
+					<h2>Présentation</h2>
 
-						<table class="horizontal-table">
-							<thead>
+					<table>
+						<thead>
+							<tr>
+								<th>Titre</th>
+								<th>Image</th>
+								<th>Contenu</th>
+								<th>Logo</th>
+								<th>Statuts</th>
+								<th>Règlement intérieur</th>
+								<th>Modifier</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for presentation in presentations %}
 								<tr>
-									<th>Titre</th>
-									<th>Image</th>
-									<th>Contenu</th>
-									<th>Logo</th>
-									<th>Statuts</th>
-									<th>Règlement intérieur</th>
+									<td data-label="Titre :">{{ presentation.presentationTitle }}</td>
+									<td data-label="Image :"><img src="{{ asset('uploads/images/' ~ presentation.presentationPicture) }}" alt="Photo des membres fondateurs"></td>
+									<td data-label="Contenu :">{{ presentation.presentationContent }}</td>
+									<td data-label="Logo :"><img src="{{ asset('uploads/images/' ~ presentation.logo) }}" alt="Logo de l'association" style="width: 140px; height: 200px"></td>
+									<td data-label="Statuts :"><embed src="{{ asset('uploads/images/' ~ presentation.statutesDoc) }}" width="200px" type="application/pdf"></td>
+									<td data-label="Règlement intérieur :"><embed src="{{ asset('uploads/images/' ~ presentation.internalRulesDoc) }}" width="200px" type="application/pdf"></td>
+									<td data-label="Modifier :">
+										<a href="{{ path('app_presentations_edit', {'id': presentation.id}) }}">
+											<i class="fa-solid fa-pencil icon"></i>
+										</a>
+									</td>
 								</tr>
-							</thead>
-							<tbody>
-								{% for presentation in presentations %}
-									<tr>
-										<td>{{ presentation.presentationTitle }}</td>
-										<td><img src="{{ asset('uploads/images/' ~ presentation.presentationPicture) }}" alt="Photo des membres fondateurs" width="200px"></td>
-										<td>{{ presentation.presentationContent }}</td>
-										<td><img src="{{ asset('uploads/images/' ~ presentation.logo) }}" alt="Logo de l'association" width="100px"></td>
-										<td><embed src="{{ asset('uploads/images/' ~ presentation.statutesDoc) }}" width="200px" type="application/pdf"></td>
-										<td><embed src="{{ asset('uploads/images/' ~ presentation.internalRulesDoc) }}" width="200px" type="application/pdf"></td>
-									</tr>
-								{% endfor %}
-							</tbody>
-						</table>
-					</div>
-				</div>
-				<div class="row mr-0 ml-0">
-					<div class="col-md-6">
-						<h2>Nos raisons d'être</h2>
-
-						<table class="horizontal-table">
-							<thead>
-								<tr>
-									<th>Contenu</th>
-								</tr>
-							</thead>
-							<tbody>
-								{% for purpose in purposes %}
-									<tr>
-										<td>{{ purpose.purposeContent }}</td>
-									</tr>
-								{% endfor %}
-							</tbody>
-						</table>
-					</div>
-					<div class="col-md-6">
-						<h2>Devenir membre</h2>
-
-						<table class="horizontal-table">
-							<thead>
-								<tr>
-									<th>Bulletin d'adhésion</th>
-									<th>Cotisation conducteur</th>
-									<th>Cotisation passager</th>
-								</tr>
-							</thead>
-							<tbody>
-								{% for membership in memberships %}
-									<tr>
-										<td>
-											<embed src="{{ asset('uploads/images/' ~ membership.membershipForm) }}" width="200px" type="application/pdf">
-										</td>
-										<td>{{ membership.driverFee }}
-											euros</td>
-										<td>{{ membership.passengerFee }}
-											euros</td>
-									</tr>
-								{% endfor %}
-							</tbody>
-						</table>
-					</div>
-				</div>
-				<div class="row mr-0 ml-0">
-					<div class="col-md-6">
-						<h2>Prochaine réunion</h2>
-
-						<table class="horizontal-table">
-							<thead>
-								<tr>
-									<th>Date et Heure</th>
-									<th>Photo de la salle</th>
-									<th>Adresse</th>
-									<th>Longitude</th>
-									<th>Latitude</th>
-									<th>Description</th>
-								</tr>
-							</thead>
-							<tbody>
-								{% for meeting in meetings %}
-									<tr>
-										<td>{{ meeting.meetingDate ? meeting.meetingDate|date('d-m-Y à H:i') : '' }}</td>
-										<td><img src="{{ asset('uploads/images/' ~ meeting.meetingPicture) }}" alt="Photo de la salle de réunion" width="200px"></td>
-										<td>{{ meeting.meetingAddress }}</td>
-										<td>{{ meeting.meetingLon }}</td>
-										<td>{{ meeting.meetingLat }}</td>
-										<td>{{ meeting.meetingContent }}</td>
-									</tr>
-								{% endfor %}
-							</tbody>
-						</table>
-					</div>
-					<div class="col-md-6">
-						<h2>Messages reçus</h2>
-
-						<table class="horizontal-table">
-							<thead>
-								<tr>
-									<th>Nom</th>
-									<th>Email</th>
-									<th>Message</th>
-									<th>Supprimer</th>
-								</tr>
-							</thead>
-							<tbody>
-								{% for contact in contacts %}
-									<tr>
-										<td>{{ contact.contactName }}</td>
-										<td>{{ contact.contactMail }}</td>
-										<td>{{ contact.contactMessage }}</td>
-										<td>
-											{{ include('contacts/_delete_form.html.twig') }}
-										</td>
-									</tr>
-								{% else %}
-									<tr>
-										<td colspan="5">Aucun nouveau message</td>
-									</tr>
-								{% endfor %}
-							</tbody>
-						</table>
-					</div>
-				</div>
-				<div class="row mr-0 ml-0">
-					<div class="col-md-6">
-						<h2>Sorties précédentes</h2>
-
-						<table class="horizontal-table">
-							<thead>
-								<tr>
-									<th>Nom de la sortie</th>
-									<th>Photos</th>
-									<th>Description</th>
-								</tr>
-							</thead>
-							<tbody>
-								{% for previous_trip in previous_trips %}
-									<tr>
-										<td>{{ previous_trip.previousTripName }}</td>
-										<td>
-											{% for tripPicture in previous_trip.getTripPictures() %}
-												<img src="{{ asset('uploads/images/' ~ tripPicture.tripPicture) }}" alt="Photo de la sortie" width="200px">
-											{% endfor %}
-										</td>
-										<td>{{ previous_trip.previousTripContent }}</td>
-									</tr>
-								{% endfor %}
-							</tbody>
-						</table>
-					</div>
-					<div class="col-md-6">
-						<h2>Futures sorties</h2>
-
-						<table class="horizontal-table">
-							<thead>
-								<tr>
-									<th>Nom de la sortie</th>
-									<th>Photo</th>
-									<th>Date de départ</th>
-									<th>Date de retour</th>
-									<th>Budget à prévoir</th>
-									<th>Description</th>
-									<th>Longitude</th>
-									<th>Latitude</th>
-									<th>Nb de places</th>
-									<th>Adhérents inscrits</th>
-								</tr>
-							</thead>
-							<tbody>
-								{% for futureTrip in futureTrips %}
-									<tr>
-										<td>{{ futureTrip.futureTripName }}</td>
-										<td><img src="{{ asset('uploads/images/' ~ futureTrip.futureTripPicture) }}" alt="Photo de la sortie" width="200px"></td>
-										<td>{{ futureTrip.startDate ? futureTrip.startDate|date('d-m-Y à H:i') : '' }}</td>
-										<td>{{ futureTrip.endDate ? futureTrip.endDate|date('d-m-Y à H:i') : '' }}</td>
-										<td>{{ futureTrip.budget }}
-											euros</td>
-										<td>{{ futureTrip.futureTripContent }}</td>
-										<td>{{ futureTrip.futureTripLon }}</td>
-										<td>{{ futureTrip.futureTripLat }}</td>
-										<td>{{ futureTrip.numberOfPlaces }}</td>
-										<td>
-											<ul>
-												{% for user in futureTrip.users %}
-													<li>{{ user.firstName ~ ' ' ~ user.lastName }}</li>
-												{% endfor %}
-											</ul>
-										</td>
-									</tr>
-								{% endfor %}
-							</tbody>
-						</table>
-					</div>
+							{% endfor %}
+						</tbody>
+					</table>
 				</div>
 			</div>
-		</section>
-	</main>
+			<div class="row mx-0">
+				<div class="col-md-6">
+					<h2>Nos raisons d'être</h2>
+
+					<table>
+						<thead>
+							<tr>
+								<th>Contenu</th>
+								<th>Modifier</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for purpose in purposes %}
+								<tr>
+									<td data-label="Contenu :">{{ purpose.purposeContent }}</td>
+									<td data-label="Modifier :">
+										<a href="{{ path('app_purposes_edit', {'id': purpose.id}) }}">
+											<i class="fa-solid fa-pencil icon"></i>
+										</a>
+									</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+				<div class="col-md-6 d-flex flex-column">
+					<h2 class="mb-0">Devenir membre</h2>
+
+					<table class="mt-0">
+						<thead>
+							<tr>
+								<th>Bulletin d'adhésion</th>
+								<th>Cotisation conducteur</th>
+								<th>Cotisation passager</th>
+								<th>Modifier</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for membership in memberships %}
+								<tr>
+									<td data-label="Bulletin d'adhésion :">
+										<embed src="{{ asset('uploads/images/' ~ membership.membershipForm) }}" width="200px" type="application/pdf">
+									</td>
+									<td data-label="Cotisation conducteur :">{{ membership.driverFee }}
+										euros</td>
+									<td data-label="Cotisation passager :">{{ membership.passengerFee }}
+										euros</td>
+									<td data-label="Modifier :">
+										<a href="{{ path('app_memberships_edit', {'id': membership.id}) }}">
+											<i class="fa-solid fa-pencil icon"></i>
+										</a>
+									</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="row mx-0">
+				<div class="col-md-12">
+					<h2>Prochaine réunion</h2>
+
+					<table>
+						<thead>
+							<tr>
+								<th>Date et Heure</th>
+								<th>Photo de la salle</th>
+								<th>Adresse</th>
+								<th>Longitude</th>
+								<th>Latitude</th>
+								<th>Description</th>
+								<th>Modifier</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for meeting in meetings %}
+								<tr>
+									<td data-label="Date et Heure :">{{ meeting.meetingDate ? meeting.meetingDate|date('d-m-Y à H:i') : '' }}</td>
+									<td data-label="Photo de la salle :"><img src="{{ asset('uploads/images/' ~ meeting.meetingPicture) }}" alt="Photo de la salle de réunion"></td>
+									<td data-label="Adresse :">{{ meeting.meetingAddress }}</td>
+									<td data-label="Longitude :">{{ meeting.meetingLon }}</td>
+									<td data-label="Latitude :">{{ meeting.meetingLat }}</td>
+									<td data-label="Description :" class="tdLarger">{{ meeting.meetingContent }}</td>
+									<td data-label="Modifier :">
+										<a href="{{ path('app_meetings_edit', {'id': meeting.id}) }}">
+											<i class="fa-solid fa-pencil icon"></i>
+										</a>
+									</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="row mx-0">
+				<div class="col-md-12">
+					<h2>Sorties précédentes</h2>
+
+					<table>
+						<thead>
+							<tr>
+								<th>Nom de la sortie</th>
+								<th>Photos</th>
+								<th>Description</th>
+								<th>Modifier</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for previous_trip in previous_trips %}
+								<tr>
+									<td data-label="Nom de la sortie :">{{ previous_trip.previousTripName }}</td>
+									<td data-label="Photos :" class="tdLarger">
+										{% for tripPicture in previous_trip.getTripPictures() %}
+											<img src="{{ asset('uploads/images/' ~ tripPicture.tripPicture) }}" alt="Photo de la sortie">
+										{% endfor %}
+									</td>
+									<td data-label="Description :">{{ previous_trip.previousTripContent }}</td>
+									<td data-label="Modifier :">
+										<a href="{{ path('app_previous_trips_edit', {'id': previous_trip.id}) }}">
+											<i class="fa-solid fa-pencil icon"></i>
+										</a>
+									</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="row mx-0">
+				<div class="col-md-12">
+					<h2>Futures sorties</h2>
+
+					<table>
+						<thead>
+							<tr>
+								<th>Nom de la sortie</th>
+								<th>Photo</th>
+								<th>Date de départ</th>
+								<th>Date de retour</th>
+								<th>Budget à prévoir</th>
+								<th>Description</th>
+								<th>Longitude</th>
+								<th>Latitude</th>
+								<th>Nb de places</th>
+								<th>Adhérents inscrits</th>
+								<th>Modifier</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for futureTrip in futureTrips %}
+								<tr>
+									<td data-label="Nom de la sortie :">{{ futureTrip.futureTripName }}</td>
+									<td data-label="Photo :"><img src="{{ asset('uploads/images/' ~ futureTrip.futureTripPicture) }}" alt="Photo de la sortie"></td>
+									<td data-label="Date de départ :">{{ futureTrip.startDate ? futureTrip.startDate|date('d-m-Y à H:i') : '' }}</td>
+									<td data-label="Date de retour :">{{ futureTrip.endDate ? futureTrip.endDate|date('d-m-Y à H:i') : '' }}</td>
+									<td data-label="Budget à prévoir :">{{ futureTrip.budget }}
+										euros</td>
+									<td data-label="Description :" class="tdText">{{ futureTrip.futureTripContent }}</td>
+									<td data-label="Longitude :">{{ futureTrip.futureTripLon }}</td>
+									<td data-label="Latitude :">{{ futureTrip.futureTripLat }}</td>
+									<td data-label="Nb de places :">{{ futureTrip.numberOfPlaces }}</td>
+									<td data-label="Adhérents inscrits :" class="tdList">
+										<ul>
+											{% for user in futureTrip.users %}
+												<li>{{ user.firstName ~ ' ' ~ user.lastName }}</li>
+											{% endfor %}
+										</ul>
+									</td>
+									<td data-label="Modifier :">
+										<a href="{{ path('app_future_trips_edit', {'id': futureTrip.id}) }}">
+											<i class="fa-solid fa-pencil icon"></i>
+										</a>
+									</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</section>
 {% endblock %}

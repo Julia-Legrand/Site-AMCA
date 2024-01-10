@@ -6,9 +6,15 @@
 			</a>
 		</div>
 		<div class="bloc-icon">
-			<ul class="navbar-nav-admin my-auto">
+			<ul class="navbar-nav-admin my-auto d-flex align-items-center">
 				{% if app.user %}
-					<li class="nav-item">
+					<p class="pt-3">
+						<i class="fa-regular fa-hand-peace" style="margin-right: 5px;"></i>
+						Bienvenue
+						{{ app.user.firstName }}
+						!
+					</p>
+					<li class="nav-item pb-2">
 						<a class="nav-link" href="{{ path('app_logout') }}">
 							<i class="fa-solid fa-right-from-bracket"></i>
 						</a>

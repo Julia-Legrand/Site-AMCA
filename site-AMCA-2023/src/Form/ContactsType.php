@@ -20,7 +20,7 @@ class ContactsType extends AbstractType
     {
         $builder
             ->add('contactName', TextType::class, [
-                'label' => 'Nom',
+                'label' => 'Nom et Prénom',
                 'attr' => ['class' => 'custom-form'],
             ])
             ->add('contactMail', EmailType::class, [
@@ -43,8 +43,7 @@ class ContactsType extends AbstractType
                         'message' => 'Vous devez accepter le traitement de vos données personnelles.',
                     ]),
                 ],
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

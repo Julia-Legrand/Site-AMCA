@@ -42,18 +42,18 @@ class FutureTripsController extends AbstractController
                 $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $safeFilename = $slugger->slug($originalFilename);
                 $newFilename = $safeFilename . '.' . $imageFile->guessExtension();
-        
+
                 $imageFile->move(
                     $this->getParameter('images_directory'),
                     $newFilename
                 );
-        
+
                 $futureTrip->setFutureTripPicture($newFilename);
             }
             $entityManager->persist($futureTrip);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_future_trips_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('admin', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('future_trips/new.html.twig', [
@@ -79,18 +79,18 @@ class FutureTripsController extends AbstractController
                 $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $safeFilename = $slugger->slug($originalFilename);
                 $newFilename = $safeFilename . '.' . $imageFile->guessExtension();
-        
+
                 $imageFile->move(
                     $this->getParameter('images_directory'),
                     $newFilename
                 );
-        
+
                 $futureTrip->setFutureTripPicture($newFilename);
             }
 
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_future_trips_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('admin', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('future_trips/edit.html.twig', [
@@ -111,11 +111,11 @@ class FutureTripsController extends AbstractController
     #[Route('/{id}', name: 'app_future_trips_delete', methods: ['POST'])]
     public function delete(Request $request, FutureTrips $futureTrip, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$futureTrip->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $futureTrip->getId(), $request->request->get('_token'))) {
             $entityManager->remove($futureTrip);
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('app_future_trips_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('admin', [], Response::HTTP_SEE_OTHER);
     }
 }

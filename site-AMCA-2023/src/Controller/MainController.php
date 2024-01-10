@@ -38,7 +38,7 @@ class MainController extends AbstractController
 
     #[IsGranted('ROLE_ADMIN')]
     #[Route('/admin', name: 'admin')]
-    public function admin(PresentationsRepository $presentationsRepository, MeetingsRepository $meetingsRepository, PurposesRepository $purposesRepository, MembershipsRepository $membershipsRepository, ContactsRepository $contactsRepository, PreviousTripsRepository $previousTripsRepository, TripPicturesRepository $tripPicturesRepository, FutureTripsRepository $futureTripsRepository, UserRepository $userRepository, ThemesRepository $themesRepository, PostsRepository $postsRepository, CommentsRepository $commentsRepository): Response
+    public function admin(PresentationsRepository $presentationsRepository, MeetingsRepository $meetingsRepository, PurposesRepository $purposesRepository, MembershipsRepository $membershipsRepository, ContactsRepository $contactsRepository, PreviousTripsRepository $previousTripsRepository, TripPicturesRepository $tripPicturesRepository, FutureTripsRepository $futureTripsRepository, UserRepository $userRepository): Response
     {
         return $this->render('main/admin.html.twig', [
             'presentations' => $presentationsRepository->findAll(),
@@ -50,9 +50,6 @@ class MainController extends AbstractController
             'trip_pictures' => $tripPicturesRepository->findAll(),
             'futureTrips' => $futureTripsRepository->findAll(),
             'users' => $userRepository->findAll(),
-            'themes' => $themesRepository->findAll(),
-            'posts' => $postsRepository->findAll(),
-            'comments' => $commentsRepository->findAll(),
         ]);
     }
 

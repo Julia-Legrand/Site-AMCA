@@ -35,17 +35,17 @@ class PreviousTripsController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             // Gestion des fichiers uploadés
             $tripPictures = $form->get('pictures')->getData();
-            
+
             foreach ($tripPictures as $tripPicture) {
                 $newTripPicture = new TripPictures();
-                $newTripPicture->setPicture($this->uploadPicture($tripPicture, $pictureService));
-                $previousTrip->addPicture($newTripPicture);
+                $newTripPicture->setTripPicture($this->uploadPicture($tripPicture, $pictureService));
+                $previousTrip->addTripPicture($newTripPicture);
             }
 
             $entityManager->persist($previousTrip);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_previous_trips_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('admin', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('previous_trips/new.html.twig', [
@@ -68,7 +68,7 @@ class PreviousTripsController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_previous_trips_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('admin', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('previous_trips/edit.html.twig', [
@@ -80,11 +80,11 @@ class PreviousTripsController extends AbstractController
     #[Route('/{id}', name: 'app_previous_trips_delete', methods: ['POST'])]
     public function delete(Request $request, PreviousTrips $previousTrip, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$previousTrip->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $previousTrip->getId(), $request->request->get('_token'))) {
             $entityManager->remove($previousTrip);
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('app_previous_trips_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('admin', [], Response::HTTP_SEE_OTHER);
     }
 }

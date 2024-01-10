@@ -88,19 +88,16 @@ a:hover {
 
 /***** SIDEBAR *****/
 #sidebarFullsize {
+    width: 15%;
+    padding: 0;
+
     nav {
         height: 100%;
         margin: 0;
         display: flex;
         flex-direction: column;
         flex-shrink: 0;
-        width: fit-content;
         font-size: 16px;
-        white-space: nowrap;
-
-        li {
-            margin: 0 25px;
-        }
 
         i {
             color: $light;
@@ -109,6 +106,7 @@ a:hover {
 
         a {
             color: $light;
+            margin: 0;
         }
     }
 }
@@ -781,25 +779,94 @@ footer {
 #dashboard {
     background-color: #d6d6d6;
     padding: 20px;
+    width: 85%;
 
     h2 {
-        margin-top: 20px;
+        margin-top: 40px;
         font-size: 40px;
+    }
+
+    .icon {
+        color: $darker;
+        font-size: 20px;
+        border: none;
+        background-color: transparent;
+        transition: all 0.5s ease;
+    }
+
+    .icon:hover {
+        color: $light;
+        text-shadow: $dark 0 0 5px;
     }
 
     table {
         background-color: white;
-        box-shadow: #0D121C 1px 0 5px;
-        width: 90%;
+        box-shadow: #0D121C 0px 0 5px;
         margin: 20px;
+        table-layout: auto;
 
         th {
             text-align: center;
+            padding: 10px;
+            border-bottom: 1px solid $dark;
+            white-space: nowrap;
         }
 
         td {
-            font-size: 10px;
             text-align: center;
+            padding: 10px;
+            border-bottom: 1px solid $light;
+
+            img {
+                width: 150px;
+                height: 110px;
+                margin: 2px;
+            }
+        }
+
+        .tdText {
+            font-size: 12px;
+        }
+
+        .tdLarger {
+            width: 500px;
+        }
+
+        .tdList {
+            text-align: start;
+            white-space: nowrap;
+        }
+    }
+
+    /*** RECEIVED MESSAGES PAGE ***/
+    .receivedMessage {
+        width: 60%;
+        background-color: $light;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px;
+
+        span {
+            font-weight: bold;
+        }
+
+        .blocMessage {
+            margin: 30px 0;
+            padding: 10px;
+            background-color: white;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blocMessage .message {
+            font-style: italic;
+        }
+
+        .blocActions {
+            display: flex;
+            align-items: center;
+            padding-left: 10px;
         }
     }
 }

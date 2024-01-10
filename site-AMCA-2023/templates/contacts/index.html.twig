@@ -4,32 +4,42 @@
 {% endblock %}
 
 {% block body %}
-	<h1>Contacts</h1>
+	{% include "_partials/_headerAdmin.html.twig" %}
+	<section class="row mx-0">
+		{% include "_partials/_sidebar.html.twig" %}
 
-	<table class="table-responsive">
-		<thead>
-			<tr>
-				<th>Nom</th>
-				<th>Email</th>
-				<th>Message</th>
-				<th>Supprimer</th>
-			</tr>
-		</thead>
-		<tbody>
+		<div class="d-flex flex-column align-items-center" id="dashboard" style="padding-bottom: 80px;">
+			<h2 class=" mb-0">Messages reçus</h2>
+
 			{% for contact in contacts %}
-				<tr>
-					<td>{{ contact.contactName }}</td>
-					<td>{{ contact.contactMail }}</td>
-					<td>{{ contact.contactMessage }}</td>
-					<td>
+				<div class="receivedMessage">
+					<div class="blocTitle">
+						<p>
+							<span>Expéditeur :</span>
+							{{ contact.contactName }}</p>
+						<p>
+							<span>Email :</span>
+							{{ contact.contactMail }}</p>
+						<small>Reçu le
+							{{ contact.createdAt ? contact.createdAt|date('d-m-Y à H:i') : '' }}</small>
+					</div>
+					<div class="blocMessage">
+						<p>
+							<span>Message :</span>
+						</p>
+						<p class="message">
+							{{ contact.contactMessage }}</p>
+					</div>
+					<div class="blocActions">
+						<a href="mailto:{{ contact.contactMail }}" title="Répondre" data-bs-toggle="tooltip" data-bs-placement="right">
+							<i class="fa-solid fa-share icon"></i>
+						</a>
 						{{ include('contacts/_delete_form.html.twig') }}
-					</td>
-				</tr>
+					</div>
+				</div>
 			{% else %}
-				<tr>
-					<td colspan="5">Donnée vide</td>
-				</tr>
+				<p style="height: 100vh;">Aucun nouveau message</p>
 			{% endfor %}
-		</tbody>
-	</table>
+		</div>
+	</section>
 {% endblock %}
