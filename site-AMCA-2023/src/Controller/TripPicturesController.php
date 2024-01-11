@@ -6,6 +6,7 @@ use App\Entity\TripPictures;
 use App\Form\TripPicturesType;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\TripPicturesRepository;
+use App\Repository\PreviousTripsRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -16,10 +17,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class TripPicturesController extends AbstractController
 {
     #[Route('/', name: 'app_trip_pictures_index', methods: ['GET'])]
-    public function index(TripPicturesRepository $tripPicturesRepository): Response
+    public function index(TripPicturesRepository $tripPicturesRepository, PreviousTripsRepository $previousTripsRepository): Response
     {
         return $this->render('trip_pictures/index.html.twig', [
             'tripPictures' => $tripPicturesRepository->findAll(),
+            'previous_trips' => $previousTripsRepository->findAll(),
         ]);
     }
 

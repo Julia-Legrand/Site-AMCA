@@ -1,26 +1,24 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Modifier l'utilisateur
+{% block title %}Modifier l'adhérent
 {% endblock %}
 
 {% block body %}
 	{% include "_partials/_headerAdmin.html.twig" %}
-	<main>
-		<section class="row m-0">
-			{% include "_partials/_sidebar.html.twig" %}
+	<section class="row m-0">
+		{% include "_partials/_sidebar.html.twig" %}
 
-			<div class="col-md-10 editForm">
-				<h2>Modifier l'utilisateur</h2>
+		<div class="dashboard editForm">
+			<h2>Modifier l'adhérent</h2>
 
-				{{ include('user/_form.html.twig') }}
-				<div class="bloc">
-					<button class="button" id="customSubmitButton">Valider</button>
-					{{ include('user/_delete_form.html.twig') }}
-					<a class="button" href="{{ path('app_user_index') }}">Retour</a>
-				</div>
+			{{ include('user/_form.html.twig') }}
+			<div class="bloc">
+				<button class="button" id="customSubmitButton">Valider</button>
+				{{ include('user/_delete_form.html.twig') }}
+				<a class="button" href="{{ path('app_user_index') }}">Retour</a>
 			</div>
-		</section>
-	</main>
+		</div>
+	</section>
 
 	<script>
 		document.getElementById('customSubmitButton').addEventListener('click', function () {

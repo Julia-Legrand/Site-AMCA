@@ -242,6 +242,32 @@ footer .footerBloc2 .brand {
   margin: 20px;
 }
 
+/********** LEGAL PAGES **********/
+.mainLegals {
+  background-color: #25262A;
+  color: #F3F4F7;
+}
+.mainLegals h1 {
+  font-size: 70px;
+  padding: 40px;
+}
+.mainLegals .blocsLegals {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: start;
+  padding: 20px;
+}
+.mainLegals .blocsLegals .blocLeft,
+.mainLegals .blocsLegals .blocRight {
+  width: 50%;
+  padding: 30px;
+  text-align: justify;
+}
+.mainLegals .blocsLegals h2,
+.mainLegals .blocsLegals h4 {
+  padding-top: 20px;
+}
+
 /********** INDEX PAGE **********/
 /*** OUR STORY ***/
 #our-story {
@@ -665,7 +691,7 @@ footer .footerBloc2 .brand {
   border: 1px solid #F3F4F7;
   border-radius: 5px;
   display: block;
-  width: 400px;
+  width: 500px;
   padding: 10px;
 }
 .loginForm label {
@@ -681,73 +707,120 @@ footer .footerBloc2 .brand {
   margin-right: 5px;
   margin-left: 15px;
 }
+.loginForm .blocActions {
+  display: flex;
+  justify-content: space-evenly;
+}
 
-/********** ADMIN PAGE **********/
-/*** DASHBOARD ***/
-#dashboard {
+/********** ADMIN PAGES **********/
+/*** GENERAL DASHBOARD ***/
+.dashboard {
   background-color: #d6d6d6;
+  color: #25262A;
   padding: 20px;
   width: 85%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /*** USERS INDEX PAGE ***/
   /*** RECEIVED MESSAGES PAGE ***/
 }
-#dashboard h2 {
+.dashboard h2 {
   margin-top: 40px;
+  margin-bottom: 0;
   font-size: 40px;
 }
-#dashboard .icon {
+.dashboard .icon {
   color: #16171A;
   font-size: 20px;
   border: none;
   background-color: transparent;
   transition: all 0.5s ease;
 }
-#dashboard .icon:hover {
+.dashboard .icon:hover {
   color: #F3F4F7;
   text-shadow: #25262A 0 0 5px;
 }
-#dashboard table {
+.dashboard table {
   background-color: white;
   box-shadow: #0D121C 0px 0 5px;
   margin: 20px;
-  table-layout: auto;
+  border: none;
 }
-#dashboard table th {
+.dashboard table th {
   text-align: center;
+  text-transform: uppercase;
   padding: 10px;
   border-bottom: 1px solid #25262A;
   white-space: nowrap;
 }
-#dashboard table td {
+.dashboard table td {
   text-align: center;
   padding: 10px;
-  border-bottom: 1px solid #F3F4F7;
 }
-#dashboard table td img {
+.dashboard table td img {
   width: 150px;
   height: 110px;
   margin: 2px;
 }
-#dashboard table .tdText {
+.dashboard table .tdText {
   font-size: 12px;
 }
-#dashboard table .tdLarger {
+.dashboard table .tdLarger {
   width: 500px;
 }
-#dashboard table .tdList {
+.dashboard table .tdList {
   text-align: start;
   white-space: nowrap;
 }
-#dashboard .receivedMessage {
+.dashboard .table-responsive {
+  overflow-x: auto;
+  width: 100%;
+}
+.dashboard #dataTable {
+  font-size: small;
+  border-radius: 10px;
+}
+.dashboard #dataTable td {
+  padding: 10px 5px;
+}
+.dashboard .dataTables_wrapper .dataTables_paginate {
+  margin-right: 30px;
+  margin-bottom: 40px;
+}
+.dashboard #dataTable_previous {
+  background-color: transparent;
+}
+.dashboard .page-link {
+  background-color: transparent;
+  border: none;
+  color: #25262A;
+}
+.dashboard .page-item.active .page-link {
+  background-color: white;
+  border: none;
+  color: #25262A;
+}
+.dashboard .dataTables_info,
+.dashboard .table-info {
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  color: #25262A;
+  display: flex;
+  justify-content: space-between;
+  margin: 30px;
+}
+.dashboard .receivedMessage {
   width: 60%;
   background-color: #F3F4F7;
   border-radius: 10px;
   padding: 20px;
   margin: 20px;
 }
-#dashboard .receivedMessage span {
+.dashboard .receivedMessage span {
   font-weight: bold;
 }
-#dashboard .receivedMessage .blocMessage {
+.dashboard .receivedMessage .blocMessage {
   margin: 30px 0;
   padding: 10px;
   background-color: white;
@@ -755,10 +828,10 @@ footer .footerBloc2 .brand {
   display: flex;
   flex-direction: column;
 }
-#dashboard .receivedMessage .blocMessage .message {
+.dashboard .receivedMessage .blocMessage .message {
   font-style: italic;
 }
-#dashboard .receivedMessage .blocActions {
+.dashboard .receivedMessage .blocActions {
   display: flex;
   align-items: center;
   padding-left: 10px;
@@ -766,8 +839,8 @@ footer .footerBloc2 .brand {
 
 /*** FORMS ***/
 .editForm {
-  background-color: #343a40;
-  color: #F3F4F7;
+  background-color: #d6d6d6;
+  color: #25262A;
   display: flex;
   flex-direction: column;
   justify-content: start;

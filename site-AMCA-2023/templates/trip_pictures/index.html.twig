@@ -5,53 +5,42 @@
 
 {% block body %}
 	{% include "_partials/_headerAdmin.html.twig" %}
-	<main>
-		<section class="row m-0">
-			{% include "_partials/_sidebar.html.twig" %}
+	<section class="row m-0">
+		{% include "_partials/_sidebar.html.twig" %}
 
-			<div class="col-md-10" id="dashboard">
-				<h2>Bibliothèque de photos</h2>
-				<a class="button" href="{{ path('app_trip_pictures_new') }}">Ajouter une photo à une sortie</a>
+		<div class="dashboard">
+			<h2>Bibliothèque de photos</h2>
+			<a class="button" href="{{ path('app_trip_pictures_new') }}">Ajouter une photo à une sortie</a>
 
-				<table class="table-responsive">
-					<thead>
-						<tr>
-							<th>Photo</th>
-							<th>Sortie liée</th>
-							<th>Modifier</th>
-						</tr>
-					</thead>
-					<tbody>
-						{% for tripPicture in tripPictures %}
-							<tr>
-								<td>
-									{% if tripPicture.tripPicture is defined %}
-										<img src="{{ asset('uploads/images/' ~ tripPicture.tripPicture) }}" alt="Photo de la sortie" width="200px">
-									{% else %}
-										<em>Photo non disponible</em>
-									{% endif %}
-								</td>
-								<td>
-									{% if tripPicture.previousTrips is defined and tripPicture.previousTrips is not empty %}
-										{{ tripPicture.previousTrips.previousTripName }}
-									{% else %}
-										<em>Sortie non liée</em>
-									{% endif %}
-								</td>
-								<td>
-									<a href="{{ path('app_trip_pictures_edit', {'id': tripPicture.id}) }}">
-										<i class="fa-solid fa-pencil"></i>
-									</a>
-								</td>
-							</tr>
-						{% else %}
-							<tr>
-								<td colspan="3">Donnée vide</td>
-							</tr>
-						{% endfor %}
-					</tbody>
-				</table>
+			<div class="allTrips">
+				{% for previous_trip in previous_trips %}
+					<div class="tripCard">
+						<div class="header">
+							{{ previous_trip.previousTripName }}
+						</div>
+						<div class="body">
+							{% for tripPicture in previous_trip.tripPictures %}
+								<img src="{{ asset('uploads/images/' ~ tripPicture.tripPicture) }}" alt="Photo de la sortie" width="200px" height="150px">
+								<a href="{{ path('app_trip_pictures_edit', {'id': tripPicture.id}) }}">
+									<i class="fa-solid fa-pencil icon"></i>
+								</a>
+							{% endfor %}
+						</div>
+					</div>
+				{% endfor %}
 			</div>
-		</section>
-	</main>
+		</div>
+	</section>
 {% endblock %}
+
+
+{# {% if tripPicture.tripPicture is defined %}
+	<img src="{{ asset('uploads/images/' ~ tripPicture.tripPicture) }}" alt="Photo de la sortie" width="200px">
+{% else %}
+	<small>Photo non disponible</small>
+{% endif %}
+{% if tripPicture.previousTrips is defined and tripPicture.previousTrips is not empty %}
+	{{ tripPicture.previousTrips.previousTripName }}
+{% else %}
+	<small>Sortie non liée</small>
+{% endif %} #}

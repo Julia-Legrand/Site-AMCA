@@ -5,9 +5,9 @@
 
 {% block body %}
 	{% include "_partials/_headerAdmin.html.twig" %}
-	<section class="row m-0" style="background-color:#343A40;">
+	<section class="row mx-0">
 		{% include "_partials/_sidebar.html.twig" %}
-		<div class="col-md-10 loginForm">
+		<div class="dashboard loginForm">
 			<h2>Créer un adhérent</h2>
 
 			{{ form_errors(registrationForm) }}
@@ -112,8 +112,10 @@
             }) }}
 			</div>
 
-			<button type="submit" class="button">Valider</button>
-
+			<div class="blocActions">
+				<button type="submit" class="button">Valider</button>
+				<a class="button" href="{{ path('app_user_index') }}">Retour</a>
+			</div>
 			{{ form_end(registrationForm) }}
 		</div>
 	</section>

@@ -266,6 +266,36 @@ footer {
     }
 }
 
+/********** LEGAL PAGES **********/
+.mainLegals {
+    background-color: $dark;
+    color: $light;
+
+    h1 {
+        font-size: 70px;
+        padding: 40px;
+    }
+
+    .blocsLegals {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: start;
+        padding: 20px;
+
+        .blocLeft,
+        .blocRight {
+            width: 50%;
+            padding: 30px;
+            text-align: justify;
+        }
+
+        h2,
+        h4 {
+            padding-top: 20px;
+        }
+    }
+}
+
 /********** INDEX PAGE **********/
 /*** OUR STORY ***/
 #our-story {
@@ -753,7 +783,7 @@ footer {
         border: 1px solid $light;
         border-radius: 5px;
         display: block;
-        width: 400px;
+        width: 500px;
         padding: 10px;
     }
 
@@ -772,17 +802,27 @@ footer {
             margin-left: 15px;
         }
     }
+
+    .blocActions {
+        display: flex;
+        justify-content: space-evenly;
+    }
 }
 
-/********** ADMIN PAGE **********/
-/*** DASHBOARD ***/
-#dashboard {
+/********** ADMIN PAGES **********/
+/*** GENERAL DASHBOARD ***/
+.dashboard {
     background-color: #d6d6d6;
+    color: $dark;
     padding: 20px;
     width: 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     h2 {
         margin-top: 40px;
+        margin-bottom: 0;
         font-size: 40px;
     }
 
@@ -803,10 +843,11 @@ footer {
         background-color: white;
         box-shadow: #0D121C 0px 0 5px;
         margin: 20px;
-        table-layout: auto;
+        border: none;
 
         th {
             text-align: center;
+            text-transform: uppercase;
             padding: 10px;
             border-bottom: 1px solid $dark;
             white-space: nowrap;
@@ -815,7 +856,6 @@ footer {
         td {
             text-align: center;
             padding: 10px;
-            border-bottom: 1px solid $light;
 
             img {
                 width: 150px;
@@ -836,6 +876,52 @@ footer {
             text-align: start;
             white-space: nowrap;
         }
+    }
+
+    .table-responsive {
+        overflow-x: auto;
+        width: 100%;
+    }
+
+    /*** USERS INDEX PAGE ***/
+    #dataTable {
+        font-size: small;
+        border-radius: 10px;
+
+        td {
+            padding: 10px 5px;
+        }
+    }
+
+    .dataTables_wrapper .dataTables_paginate {
+        margin-right: 30px;
+        margin-bottom: 40px;
+    }
+
+    #dataTable_previous {
+        background-color: transparent;
+    }
+
+    .page-link {
+        background-color: transparent;
+        border: none;
+        color: $dark;
+    }
+
+    .page-item.active .page-link {
+        background-color: white;
+        border: none;
+        color: $dark;
+    }
+
+    .dataTables_info,
+    .table-info {
+        @include paragraph;
+        font-size: 18px;
+        color: $dark;
+        display: flex;
+        justify-content: space-between;
+        margin: 30px;
     }
 
     /*** RECEIVED MESSAGES PAGE ***/
@@ -873,8 +959,8 @@ footer {
 
 /*** FORMS ***/
 .editForm {
-    background-color: #343a40;
-    color: $light;
+    background-color: #d6d6d6;
+    color: $dark;
     display: flex;
     flex-direction: column;
     justify-content: start;

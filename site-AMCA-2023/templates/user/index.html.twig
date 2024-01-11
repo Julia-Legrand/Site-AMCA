@@ -5,20 +5,19 @@
 
 {% block body %}
 	{% include "_partials/_headerAdmin.html.twig" %}
-	<main>
-		<section class="row m-0">
-			{% include "_partials/_sidebar.html.twig" %}
+	<section class="row m-0">
+		{% include "_partials/_sidebar.html.twig" %}
 
-			<div class="col-md-10" id="dashboard">
-				<h2>Liste des adhérents</h2>
-				<a class="button" href="{{ path('app_register') }}">
-					<i class="fa-solid fa-plus"></i>
-					Ajouter un adhérent</a>
-
-				<table class="table-responsive">
+		<div class="dashboard">
+			<h2>Liste des adhérents</h2>
+			<a class="button" href="{{ path('app_register') }}">
+				<i class="fa-solid fa-plus"></i>
+				Ajouter un adhérent</a>
+			<div class="table-responsive">
+				<table id="dataTable">
 					<thead>
 						<tr>
-							<th>Numéro d'adhérent</th>
+							<th>N° d'adhérent</th>
 							<th>Attribution</th>
 							<th>Prénom</th>
 							<th>Nom</th>
@@ -29,39 +28,72 @@
 							<th>Ville</th>
 							<th>Date de naissance</th>
 							<th>Moto</th>
-							<th>Rôle</th>
 							<th>Modifier</th>
 						</tr>
 					</thead>
 					<tbody>
 						{% for user in users %}
 							<tr>
-								<td>{{ user.memberNumber }}</td>
-								<td>{{ user.assignment ? user.assignment|json_encode : '' }}</td>
-								<td>{{ user.firstName }}</td>
-								<td>{{ user.lastName }}</td>
-								<td>{{ user.email }}</td>
-								<td>{{ user.phoneNumber }}</td>
-								<td>{{ user.address }}</td>
-								<td>{{ user.postCode }}</td>
-								<td>{{ user.city }}</td>
-								<td>{{ user.birthdate ? user.birthdate|date('d-m-Y') : '' }}</td>
-								<td>{{ user.bike }}</td>
-								<td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-								<td>
+								<td data-label="Numéro d'adhérent :">{{ user.memberNumber }}</td>
+								<td data-label="Attribution :">{{ user.assignment ? user.assignment|json_encode : '' }}</td>
+								<td data-label="Prénom :">{{ user.firstName }}</td>
+								<td data-label="Nom :">{{ user.lastName }}</td>
+								<td data-label="Email :">{{ user.email }}</td>
+								<td data-label="Téléphone :">{{ user.phoneNumber }}</td>
+								<td data-label="Adresse :">{{ user.address }}</td>
+								<td data-label="Code postal :">{{ user.postCode }}</td>
+								<td data-label="Ville :">{{ user.city }}</td>
+								<td data-label="Date de naissance :">{{ user.birthdate ? user.birthdate|date('d-m-Y') : '' }}</td>
+								<td data-label="Moto :">{{ user.bike }}</td>
+								<td data-label="Modifier :">
 									<a href="{{ path('app_user_edit', {'id': user.id}) }}">
-										<i class="fa-solid fa-pencil"></i>
+										<i class="fa-solid fa-pencil icon"></i>
 									</a>
 								</td>
 							</tr>
 						{% else %}
 							<tr>
-								<td colspan="15">Donnée vide</td>
+								<td colspan="15">Aucun adhérent actif</td>
 							</tr>
 						{% endfor %}
 					</tbody>
 				</table>
 			</div>
-		</section>
-	</main>
+		</div>
+	</section>
+	<script>
+		$(document).ready(function () {
+$('#dataTable').DataTable({
+responsive: true,
+language: {
+"sSearch": "Chercher un adhérent :",
+"sLengthMenu": "Afficher _MENU_ adhérents",
+"sInfo": "Affichage des adhérents _START_ à _END_ sur _TOTAL_ adhérents",
+"sInfoEmpty": "Aucun adhérent à afficher",
+"sInfoFiltered": "(filtré de _MAX_ adhérents au total)",
+"sZeroRecords": "Aucun adhérent trouvé",
+"oPaginate": {
+"sPrevious": "Précédent",
+"sNext": "Suivant"
+},
+// ARIA attributes to enhance the accessibility of the table for users with specific needs
+"oAria": {
+"sSortAscending": ": activer pour trier la colonne par ordre croissant",
+"sSortDescending": ": activer pour trier la colonne par ordre décroissant"
+}
+},
+pagingType: "simple",
+lengthMenu: [
+10,
+20,
+40,
+60,
+80,
+100
+],
+pageLength: 10,
+"dom": '<"table-info"lf>tip'
+});
+});
+	</script>
 {% endblock %}

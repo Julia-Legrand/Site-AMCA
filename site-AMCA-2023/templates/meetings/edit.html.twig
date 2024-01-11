@@ -5,21 +5,19 @@
 
 {% block body %}
 	{% include "_partials/_headerAdmin.html.twig" %}
-	<main>
-		<section class="row m-0">
-			{% include "_partials/_sidebar.html.twig" %}
+	<section class="row m-0">
+		{% include "_partials/_sidebar.html.twig" %}
 
-			<div class="col-md-10 editForm">
-				<h2>Modifier la réunion</h2>
+		<div class="dashboard editForm" style="height:100vh;">
+			<h2>Modifier la réunion</h2>
 
-				{{ include('meetings/_form.html.twig') }}
-				<div class="bloc">
-					<button class="button" id="customSubmitButton">Valider</button>
-					<a class="button" href="{{ path('app_meetings_index') }}">Retour</a>
-				</div>
+			{{ include('meetings/_form.html.twig') }}
+			<div class="bloc">
+				<button class="button" id="customSubmitButton">Valider</button>
+				<a class="button" href="{{ path('admin') }}">Retour</a>
 			</div>
-		</section>
-	</main>
+		</div>
+	</section>
 
 	<script>
 		document.getElementById('customSubmitButton').addEventListener('click', function () {
