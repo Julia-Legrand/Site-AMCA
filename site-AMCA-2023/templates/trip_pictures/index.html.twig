@@ -16,14 +16,16 @@
 				{% for previous_trip in previous_trips %}
 					<div class="tripCard">
 						<div class="header">
-							{{ previous_trip.previousTripName }}
+							<h1>{{ previous_trip.previousTripName }}</h1>
 						</div>
 						<div class="body">
 							{% for tripPicture in previous_trip.tripPictures %}
-								<img src="{{ asset('uploads/images/' ~ tripPicture.tripPicture) }}" alt="Photo de la sortie" width="200px" height="150px">
-								<a href="{{ path('app_trip_pictures_edit', {'id': tripPicture.id}) }}">
-									<i class="fa-solid fa-pencil icon"></i>
-								</a>
+								<div class="pic">
+									<img src="{{ asset('uploads/images/' ~ tripPicture.tripPicture) }}" alt="Photo de la sortie">
+									<a href="{{ path('app_trip_pictures_edit', {'id': tripPicture.id}) }}">
+										<i class="fa-solid fa-pencil icon"></i>
+									</a>
+								</div>
 							{% endfor %}
 						</div>
 					</div>

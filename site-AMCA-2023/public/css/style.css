@@ -722,6 +722,7 @@ footer .footerBloc2 .brand {
   display: flex;
   flex-direction: column;
   align-items: center;
+  /*** PICTURES BANK PAGE ***/
   /*** USERS INDEX PAGE ***/
   /*** RECEIVED MESSAGES PAGE ***/
 }
@@ -776,6 +777,58 @@ footer .footerBloc2 .brand {
 .dashboard .table-responsive {
   overflow-x: auto;
   width: 100%;
+}
+.dashboard .allTrips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.dashboard .allTrips .tripCard {
+  background-color: #F3F4F7;
+  border-radius: 10px;
+  margin: 30px 0;
+  padding: 10px 0;
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+}
+.dashboard .allTrips .tripCard .header h1 {
+  font-size: 25px;
+  margin: 10px;
+}
+.dashboard .allTrips .tripCard .body {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.dashboard .allTrips .tripCard .pic {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  position: relative;
+}
+.dashboard .allTrips .tripCard .pic:hover img {
+  filter: brightness(50%);
+}
+.dashboard .allTrips .tripCard .pic:hover .icon {
+  display: block;
+}
+.dashboard .allTrips .tripCard .pic img {
+  margin: 5px;
+  width: 250px;
+  height: 180px;
+  transition: filter 0.5s ease;
+}
+.dashboard .allTrips .tripCard .pic .icon {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #F3F4F7;
+  font-size: 25px;
+  cursor: pointer;
 }
 .dashboard #dataTable {
   font-size: small;

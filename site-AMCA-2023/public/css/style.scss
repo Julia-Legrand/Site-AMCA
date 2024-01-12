@@ -883,6 +883,72 @@ footer {
         width: 100%;
     }
 
+    /*** PICTURES BANK PAGE ***/
+    .allTrips {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+
+        .tripCard {
+            background-color: $light;
+            border-radius: 10px;
+            margin: 30px 0;
+            padding: 10px 0;
+            width: 45%;
+            display: flex;
+            flex-direction: column;
+
+            .header {
+                h1 {
+                    font-size: 25px;
+                    margin: 10px;
+                }
+            }
+
+            .body {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .pic {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 10px;
+                position: relative;
+
+                &:hover {
+                    img {
+                        filter: brightness(50%);
+                    }
+
+                    .icon {
+                        display: block;
+                    }
+                }
+
+                img {
+                    margin: 5px;
+                    width: 250px;
+                    height: 180px;
+                    transition: filter 0.5s ease;
+                }
+
+                .icon {
+                    display: none;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    color: $light;
+                    font-size: 25px;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
     /*** USERS INDEX PAGE ***/
     #dataTable {
         font-size: small;
