@@ -89,7 +89,7 @@ a:hover {
 
 /***** SIDEBAR *****/
 #sidebarFullsize {
-  width: 15%;
+  width: 13%;
   padding: 0;
 }
 #sidebarFullsize nav {
@@ -123,11 +123,6 @@ a:hover {
 #sidebarResponsive nav i {
   color: #F3F4F7;
   font-size: 16px;
-}
-
-/***** CHECKBOX IN FORMS *****/
-input#future_trips_users {
-  margin: 20px;
 }
 
 /********** HEADERS **********/
@@ -718,7 +713,7 @@ footer .footerBloc2 .brand {
   background-color: #d6d6d6;
   color: #25262A;
   padding: 20px;
-  width: 85%;
+  width: 87%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -726,9 +721,9 @@ footer .footerBloc2 .brand {
   /*** USERS INDEX PAGE ***/
   /*** RECEIVED MESSAGES PAGE ***/
 }
-.dashboard h2 {
+.dashboard h1 {
   margin-top: 40px;
-  margin-bottom: 0;
+  margin-bottom: 10px;
   font-size: 40px;
 }
 .dashboard .icon {
@@ -743,7 +738,8 @@ footer .footerBloc2 .brand {
   text-shadow: #25262A 0 0 5px;
 }
 .dashboard table {
-  background-color: white;
+  background-color: #F3F4F7;
+  border-radius: 10px;
   box-shadow: #0D121C 0px 0 5px;
   margin: 20px;
   border: none;
@@ -777,6 +773,34 @@ footer .footerBloc2 .brand {
 .dashboard .table-responsive {
   overflow-x: auto;
   width: 100%;
+}
+.dashboard .dashboardBloc {
+  /*** FUTURE TRIPS ***/
+}
+.dashboard .dashboardBloc .all-trips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.dashboard .dashboardBloc .all-trips .each-trip {
+  width: 40%;
+  border-radius: 10px;
+  background-color: #F3F4F7;
+  box-shadow: #0D121C 0px 0 5px;
+  margin: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.dashboard .dashboardBloc .all-trips h4 {
+  margin: 0;
+}
+.dashboard .dashboardBloc .all-trips img {
+  width: 200px;
+  height: 140px;
+  margin: 10px;
 }
 .dashboard .allTrips {
   display: flex;
@@ -912,6 +936,19 @@ footer .footerBloc2 .brand {
   width: 500px;
   padding: 10px;
 }
+.editForm .usersChoice {
+  background-color: #F3F4F7;
+  opacity: 0.7;
+  border-radius: 5px;
+  width: 500px;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.editForm .usersChoice label {
+  width: 91%;
+  margin-top: 0;
+}
 .editForm label {
   margin-top: 30px;
 }
@@ -923,4 +960,9 @@ footer .footerBloc2 .brand {
 }
 .editForm .hide-button {
   display: none;
+}
+
+/***** CHECKBOX IN FORMS *****/
+input#future_trips_users {
+  margin: 20px;
 }/*# sourceMappingURL=style.css.map */

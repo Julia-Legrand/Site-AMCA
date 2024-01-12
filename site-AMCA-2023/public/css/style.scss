@@ -88,7 +88,7 @@ a:hover {
 
 /***** SIDEBAR *****/
 #sidebarFullsize {
-    width: 15%;
+    width: 13%;
     padding: 0;
 
     nav {
@@ -127,11 +127,6 @@ a:hover {
             font-size: 16px;
         }
     }
-}
-
-/***** CHECKBOX IN FORMS *****/
-input#future_trips_users {
-    margin: 20px;
 }
 
 /********** HEADERS **********/
@@ -815,14 +810,14 @@ footer {
     background-color: #d6d6d6;
     color: $dark;
     padding: 20px;
-    width: 85%;
+    width: 87%;
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    h2 {
+    h1 {
         margin-top: 40px;
-        margin-bottom: 0;
+        margin-bottom: 10px;
         font-size: 40px;
     }
 
@@ -840,7 +835,8 @@ footer {
     }
 
     table {
-        background-color: white;
+        background-color: $light;
+        border-radius: 10px;
         box-shadow: #0D121C 0px 0 5px;
         margin: 20px;
         border: none;
@@ -881,6 +877,39 @@ footer {
     .table-responsive {
         overflow-x: auto;
         width: 100%;
+    }
+
+    .dashboardBloc {
+
+        /*** FUTURE TRIPS ***/
+        .all-trips {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+
+            .each-trip {
+                width: 40%;
+                border-radius: 10px;
+                background-color: $light;
+                box-shadow: #0D121C 0px 0 5px;
+                margin: 20px;
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            h4 {
+                margin: 0;
+            }
+
+            img {
+                width: 200px;
+                height: 140px;
+                margin: 10px;
+            }
+        }
     }
 
     /*** PICTURES BANK PAGE ***/
@@ -1047,6 +1076,21 @@ footer {
         padding: 10px;
     }
 
+    .usersChoice {
+        background-color: $light;
+        opacity: 0.7;
+        border-radius: 5px;
+        width: 500px;
+        padding: 10px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .usersChoice label {
+        width: 91%;
+        margin-top: 0;
+    }
+
     label {
         margin-top: 30px;
     }
@@ -1061,4 +1105,9 @@ footer {
     .hide-button {
         display: none;
     }
+}
+
+/***** CHECKBOX IN FORMS *****/
+input#future_trips_users {
+    margin: 20px;
 }

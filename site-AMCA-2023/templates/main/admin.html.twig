@@ -9,233 +9,218 @@
 		{% include "_partials/_sidebar.html.twig" %}
 
 		<div class="dashboard">
-			<div class="row mx-0">
-				<div class="col-md-12">
-					<h2>Présentation</h2>
+			<div class="dashboardBloc">
+				<h1>Présentation</h1>
 
-					<table>
-						<thead>
+				<table>
+					<thead>
+						<tr>
+							<th>Titre</th>
+							<th>Image</th>
+							<th>Contenu</th>
+							<th>Logo</th>
+							<th>Statuts</th>
+							<th>Règlement intérieur</th>
+							<th>Modifier</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for presentation in presentations %}
 							<tr>
-								<th>Titre</th>
-								<th>Image</th>
-								<th>Contenu</th>
-								<th>Logo</th>
-								<th>Statuts</th>
-								<th>Règlement intérieur</th>
-								<th>Modifier</th>
+								<td data-label="Titre :">{{ presentation.presentationTitle }}</td>
+								<td data-label="Image :"><img src="{{ asset('uploads/images/' ~ presentation.presentationPicture) }}" alt="Photo des membres fondateurs"></td>
+								<td data-label="Contenu :">{{ presentation.presentationContent }}</td>
+								<td data-label="Logo :"><img src="{{ asset('uploads/images/' ~ presentation.logo) }}" alt="Logo de l'association" style="width: 140px; height: 200px"></td>
+								<td data-label="Statuts :"><embed src="{{ asset('uploads/images/' ~ presentation.statutesDoc) }}" width="200px" type="application/pdf"></td>
+								<td data-label="Règlement intérieur :"><embed src="{{ asset('uploads/images/' ~ presentation.internalRulesDoc) }}" width="200px" type="application/pdf"></td>
+								<td data-label="Modifier :">
+									<a href="{{ path('app_presentations_edit', {'id': presentation.id}) }}">
+										<i class="fa-solid fa-pencil icon"></i>
+									</a>
+								</td>
 							</tr>
-						</thead>
-						<tbody>
-							{% for presentation in presentations %}
-								<tr>
-									<td data-label="Titre :">{{ presentation.presentationTitle }}</td>
-									<td data-label="Image :"><img src="{{ asset('uploads/images/' ~ presentation.presentationPicture) }}" alt="Photo des membres fondateurs"></td>
-									<td data-label="Contenu :">{{ presentation.presentationContent }}</td>
-									<td data-label="Logo :"><img src="{{ asset('uploads/images/' ~ presentation.logo) }}" alt="Logo de l'association" style="width: 140px; height: 200px"></td>
-									<td data-label="Statuts :"><embed src="{{ asset('uploads/images/' ~ presentation.statutesDoc) }}" width="200px" type="application/pdf"></td>
-									<td data-label="Règlement intérieur :"><embed src="{{ asset('uploads/images/' ~ presentation.internalRulesDoc) }}" width="200px" type="application/pdf"></td>
-									<td data-label="Modifier :">
-										<a href="{{ path('app_presentations_edit', {'id': presentation.id}) }}">
-											<i class="fa-solid fa-pencil icon"></i>
-										</a>
-									</td>
-								</tr>
-							{% endfor %}
-						</tbody>
-					</table>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+
+			<div class="dashboardBloc">
+				<h1>Nos raisons d'être
+					<a href="{{ path('app_purposes_new') }}">
+						<i class="fa-solid fa-plus icon" style="font-size: 30px"></i>
+					</a>
+				</h1>
+
+				<table>
+					<thead>
+						<tr>
+							<th>Contenu</th>
+							<th>Modifier</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for purpose in purposes %}
+							<tr>
+								<td data-label=" contenu :">{{ purpose.purposeContent }}</td>
+								<td data-label="Modifier :">
+									<a href="{{ path('app_purposes_edit', {'id': purpose.id}) }}">
+										<i class="fa-solid fa-pencil icon"></i>
+									</a>
+								</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+
+			<div class="dashboardBloc">
+				<h1>Devenir membre</h1>
+
+				<table>
+					<thead>
+						<tr>
+							<th>Bulletin d'adhésion</th>
+							<th>Cotisation conducteur</th>
+							<th>Cotisation passager</th>
+							<th>Modifier</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for membership in memberships %}
+							<tr>
+								<td data-label="Bulletin d'adhésion :">
+									<embed src="{{ asset('uploads/images/' ~ membership.membershipForm) }}" width="200px" type="application/pdf">
+								</td>
+								<td data-label="Cotisation conducteur :">{{ membership.driverFee }}
+									euros</td>
+								<td data-label="Cotisation passager :">{{ membership.passengerFee }}
+									euros</td>
+								<td data-label="Modifier :">
+									<a href="{{ path('app_memberships_edit', {'id': membership.id}) }}">
+										<i class="fa-solid fa-pencil icon"></i>
+									</a>
+								</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+
+			<div class="dashboardBloc">
+				<h1>Prochaine réunion</h1>
+
+				<table>
+					<thead>
+						<tr>
+							<th>Date et Heure</th>
+							<th>Photo de la salle</th>
+							<th>Adresse</th>
+							<th>Longitude</th>
+							<th>Latitude</th>
+							<th>Description</th>
+							<th>Modifier</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for meeting in meetings %}
+							<tr>
+								<td data-label="Date et Heure :">{{ meeting.meetingDate ? meeting.meetingDate|date('d-m-Y à H:i') : '' }}</td>
+								<td data-label="Photo de la salle :"><img src="{{ asset('uploads/images/' ~ meeting.meetingPicture) }}" alt="Photo de la salle de réunion"></td>
+								<td data-label="Adresse :">{{ meeting.meetingAddress }}</td>
+								<td data-label="Longitude :">{{ meeting.meetingLon }}</td>
+								<td data-label="Latitude :">{{ meeting.meetingLat }}</td>
+								<td data-label="Description :" class="tdLarger">{{ meeting.meetingContent }}</td>
+								<td data-label="Modifier :">
+									<a href="{{ path('app_meetings_edit', {'id': meeting.id}) }}">
+										<i class="fa-solid fa-pencil icon"></i>
+									</a>
+								</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+
+			<div class="dashboardBloc">
+				<h1>Sorties précédentes
+					<a href="{{ path('app_previous_trips_new') }}">
+						<i class="fa-solid fa-plus icon" style="font-size: 30px"></i>
+					</a>
+				</h1>
+
+				<table>
+					<thead>
+						<tr>
+							<th>Nom de la sortie</th>
+							<th>Photos</th>
+							<th>Description</th>
+							<th>Modifier</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for previous_trip in previous_trips %}
+							<tr>
+								<td data-label="Nom de la sortie :">{{ previous_trip.previousTripName }}</td>
+								<td data-label="Photos :" class="tdLarger">
+									{% for tripPicture in previous_trip.getTripPictures() %}
+										<img src="{{ asset('uploads/images/' ~ tripPicture.tripPicture) }}" alt="Photo de la sortie">
+									{% endfor %}
+								</td>
+								<td data-label="Description :">{{ previous_trip.previousTripContent }}</td>
+								<td data-label="Modifier :">
+									<a href="{{ path('app_previous_trips_edit', {'id': previous_trip.id}) }}">
+										<i class="fa-solid fa-pencil icon"></i>
+									</a>
+								</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+
+			<div class="dashboardBloc">
+				<h1>Sorties à venir
+					<a href="{{ path('app_future_trips_new') }}">
+						<i class="fa-solid fa-plus icon" style="font-size: 30px"></i>
+					</a>
+				</h1>
+
+				<div class="all-trips">
+					{% for futureTrip in futureTrips %}
+						<div class="each-trip">
+							<h4>{{ futureTrip.futureTripName }}
+								<a href="{{ path('app_future_trips_edit', {'id': futureTrip.id}) }}">
+									<i class="fa-solid fa-pencil icon"></i>
+								</a>
+							</h4>
+							<img src="{{ asset('uploads/images/' ~ futureTrip.futureTripPicture) }}" alt="Photo de la sortie">
+							<small>Dates : du
+								{{ futureTrip.startDate ? futureTrip.startDate|date('d-m-Y à H:i') : '' }}
+								au
+								{{ futureTrip.endDate ? futureTrip.endDate|date('d-m-Y à H:i') : '' }}</small>
+							<small>Budget à prévoir :
+								{{ futureTrip.budget }}
+								euros</small>
+							<p>Description :
+								{{ futureTrip.futureTripContent }}</p>
+							<small>Longitude :
+								{{ futureTrip.futureTripLon }}</small>
+							<small>Latitude :
+								{{ futureTrip.futureTripLat }}</small>
+							<small>Nombre de places :
+								{{ futureTrip.numberOfPlaces }}</small>
+							<small>Adhérents inscrits :
+								<ul>
+									{% for user in futureTrip.users %}
+										<li>{{ user.firstName ~ ' ' ~ user.lastName }}</li>
+									{% endfor %}
+								</ul>
+							</small>
+						</div>
+					{% endfor %}
 				</div>
 			</div>
-			<div class="row mx-0">
-				<div class="col-md-6">
-					<h2>Nos raisons d'être
-						<a href="{{ path('app_purposes_new') }}">
-							<i class="fa-solid fa-plus icon" style="font-size: 30px"></i>
-						</a>
-					</h2>
 
-					<table>
-						<thead>
-							<tr>
-								<th>Contenu</th>
-								<th>Modifier</th>
-							</tr>
-						</thead>
-						<tbody>
-							{% for purpose in purposes %}
-								<tr>
-									<td data-label=" contenu :">{{ purpose.purposeContent }}</td>
-									<td data-label="Modifier :">
-										<a href="{{ path('app_purposes_edit', {'id': purpose.id}) }}">
-											<i class="fa-solid fa-pencil icon"></i>
-										</a>
-									</td>
-								</tr>
-							{% endfor %}
-						</tbody>
-					</table>
-				</div>
-				<div class="col-md-6 d-flex flex-column">
-					<h2 class="mb-0">Devenir membre</h2>
-
-					<table class="mt-0">
-						<thead>
-							<tr>
-								<th>Bulletin d'adhésion</th>
-								<th>Cotisation conducteur</th>
-								<th>Cotisation passager</th>
-								<th>Modifier</th>
-							</tr>
-						</thead>
-						<tbody>
-							{% for membership in memberships %}
-								<tr>
-									<td data-label="Bulletin d'adhésion :">
-										<embed src="{{ asset('uploads/images/' ~ membership.membershipForm) }}" width="200px" type="application/pdf">
-									</td>
-									<td data-label="Cotisation conducteur :">{{ membership.driverFee }}
-										euros</td>
-									<td data-label="Cotisation passager :">{{ membership.passengerFee }}
-										euros</td>
-									<td data-label="Modifier :">
-										<a href="{{ path('app_memberships_edit', {'id': membership.id}) }}">
-											<i class="fa-solid fa-pencil icon"></i>
-										</a>
-									</td>
-								</tr>
-							{% endfor %}
-						</tbody>
-					</table>
-				</div>
-			</div>
-			<div class="row mx-0">
-				<div class="col-md-12">
-					<h2>Prochaine réunion</h2>
-
-					<table>
-						<thead>
-							<tr>
-								<th>Date et Heure</th>
-								<th>Photo de la salle</th>
-								<th>Adresse</th>
-								<th>Longitude</th>
-								<th>Latitude</th>
-								<th>Description</th>
-								<th>Modifier</th>
-							</tr>
-						</thead>
-						<tbody>
-							{% for meeting in meetings %}
-								<tr>
-									<td data-label="Date et Heure :">{{ meeting.meetingDate ? meeting.meetingDate|date('d-m-Y à H:i') : '' }}</td>
-									<td data-label="Photo de la salle :"><img src="{{ asset('uploads/images/' ~ meeting.meetingPicture) }}" alt="Photo de la salle de réunion"></td>
-									<td data-label="Adresse :">{{ meeting.meetingAddress }}</td>
-									<td data-label="Longitude :">{{ meeting.meetingLon }}</td>
-									<td data-label="Latitude :">{{ meeting.meetingLat }}</td>
-									<td data-label="Description :" class="tdLarger">{{ meeting.meetingContent }}</td>
-									<td data-label="Modifier :">
-										<a href="{{ path('app_meetings_edit', {'id': meeting.id}) }}">
-											<i class="fa-solid fa-pencil icon"></i>
-										</a>
-									</td>
-								</tr>
-							{% endfor %}
-						</tbody>
-					</table>
-				</div>
-			</div>
-			<div class="row mx-0">
-				<div class="col-md-12">
-					<h2>Sorties précédentes
-						<a href="{{ path('app_previous_trips_new') }}">
-							<i class="fa-solid fa-plus icon" style="font-size: 30px"></i>
-						</a>
-					</h2>
-
-					<table>
-						<thead>
-							<tr>
-								<th>Nom de la sortie</th>
-								<th>Photos</th>
-								<th>Description</th>
-								<th>Modifier</th>
-							</tr>
-						</thead>
-						<tbody>
-							{% for previous_trip in previous_trips %}
-								<tr>
-									<td data-label="Nom de la sortie :">{{ previous_trip.previousTripName }}</td>
-									<td data-label="Photos :" class="tdLarger">
-										{% for tripPicture in previous_trip.getTripPictures() %}
-											<img src="{{ asset('uploads/images/' ~ tripPicture.tripPicture) }}" alt="Photo de la sortie">
-										{% endfor %}
-									</td>
-									<td data-label="Description :">{{ previous_trip.previousTripContent }}</td>
-									<td data-label="Modifier :">
-										<a href="{{ path('app_previous_trips_edit', {'id': previous_trip.id}) }}">
-											<i class="fa-solid fa-pencil icon"></i>
-										</a>
-									</td>
-								</tr>
-							{% endfor %}
-						</tbody>
-					</table>
-				</div>
-			</div>
-			<div class="row mx-0">
-				<div class="col-md-12">
-					<h2>Sorties à venir
-						<a href="{{ path('app_future_trips_new') }}">
-							<i class="fa-solid fa-plus icon" style="font-size: 30px"></i>
-						</a>
-					</h2>
-
-					<table>
-						<thead>
-							<tr>
-								<th>Nom de la sortie</th>
-								<th>Photo</th>
-								<th>Date de départ</th>
-								<th>Date de retour</th>
-								<th>Budget à prévoir</th>
-								<th>Description</th>
-								<th>Longitude</th>
-								<th>Latitude</th>
-								<th>Nb de places</th>
-								<th>Adhérents inscrits</th>
-								<th>Modifier</th>
-							</tr>
-						</thead>
-						<tbody>
-							{% for futureTrip in futureTrips %}
-								<tr>
-									<td data-label="Nom de la sortie :">{{ futureTrip.futureTripName }}</td>
-									<td data-label="Photo :"><img src="{{ asset('uploads/images/' ~ futureTrip.futureTripPicture) }}" alt="Photo de la sortie"></td>
-									<td data-label="Date de départ :">{{ futureTrip.startDate ? futureTrip.startDate|date('d-m-Y à H:i') : '' }}</td>
-									<td data-label="Date de retour :">{{ futureTrip.endDate ? futureTrip.endDate|date('d-m-Y à H:i') : '' }}</td>
-									<td data-label="Budget à prévoir :">{{ futureTrip.budget }}
-										euros</td>
-									<td data-label="Description :">{{ futureTrip.futureTripContent }}</td>
-									<td data-label="Longitude :">{{ futureTrip.futureTripLon }}</td>
-									<td data-label="Latitude :">{{ futureTrip.futureTripLat }}</td>
-									<td data-label="Nb de places :">{{ futureTrip.numberOfPlaces }}</td>
-									<td data-label="Adhérents inscrits :" class="tdList">
-										<ul>
-											{% for user in futureTrip.users %}
-												<li>{{ user.firstName ~ ' ' ~ user.lastName }}</li>
-											{% endfor %}
-										</ul>
-									</td>
-									<td data-label="Modifier :">
-										<a href="{{ path('app_future_trips_edit', {'id': futureTrip.id}) }}">
-											<i class="fa-solid fa-pencil icon"></i>
-										</a>
-									</td>
-								</tr>
-							{% endfor %}
-						</tbody>
-					</table>
-				</div>
-			</div>
 		</div>
 	</section>
 {% endblock %}

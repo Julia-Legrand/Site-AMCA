@@ -72,13 +72,14 @@ class FutureTripsType extends AbstractType
             ->add('users', EntityType::class, [
                 'class' => User::class,
                 'label' => 'Adhérents :',
+                'attr' => ['class' => 'usersChoice'],
                 'choice_label' => function (User $user) {
                     return $user->getFirstName() . ' ' . $user->getLastName();
                 },
                 'multiple' => true,
                 'expanded' => true,
                 'choice_attr' => function ($choice, $key, $value) {
-                    return ['style' => 'margin-right: 5px; margin-left: 20px;'];
+                    return ['style' => 'margin-right: 5px; margin-left: 5px;'];
                 },
             ]);
     }
