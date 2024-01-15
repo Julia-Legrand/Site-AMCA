@@ -34,7 +34,7 @@
 								<td data-label="Statuts :"><embed src="{{ asset('uploads/images/' ~ presentation.statutesDoc) }}" width="200px" type="application/pdf"></td>
 								<td data-label="Règlement intérieur :"><embed src="{{ asset('uploads/images/' ~ presentation.internalRulesDoc) }}" width="200px" type="application/pdf"></td>
 								<td data-label="Modifier :">
-									<a href="{{ path('app_presentations_edit', {'id': presentation.id}) }}">
+									<a href="{{ path('app_presentations_edit', {'id': presentation.id}) }}" title="Modifier" data-bs-toggle="tooltip" data-bs-placement="right">
 										<i class="fa-solid fa-pencil icon"></i>
 									</a>
 								</td>
@@ -46,7 +46,7 @@
 
 			<div class="dashboardBloc">
 				<h1>Nos raisons d'être
-					<a href="{{ path('app_purposes_new') }}">
+					<a href="{{ path('app_purposes_new') }}" title="Nouveau" data-bs-toggle="tooltip" data-bs-placement="right">
 						<i class="fa-solid fa-plus icon" style="font-size: 30px"></i>
 					</a>
 				</h1>
@@ -63,7 +63,7 @@
 							<tr>
 								<td data-label=" contenu :">{{ purpose.purposeContent }}</td>
 								<td data-label="Modifier :">
-									<a href="{{ path('app_purposes_edit', {'id': purpose.id}) }}">
+									<a href="{{ path('app_purposes_edit', {'id': purpose.id}) }}" title="Modifier" data-bs-toggle="tooltip" data-bs-placement="right">
 										<i class="fa-solid fa-pencil icon"></i>
 									</a>
 								</td>
@@ -96,7 +96,7 @@
 								<td data-label="Cotisation passager :">{{ membership.passengerFee }}
 									euros</td>
 								<td data-label="Modifier :">
-									<a href="{{ path('app_memberships_edit', {'id': membership.id}) }}">
+									<a href="{{ path('app_memberships_edit', {'id': membership.id}) }}" title="Modifier" data-bs-toggle="tooltip" data-bs-placement="right">
 										<i class="fa-solid fa-pencil icon"></i>
 									</a>
 								</td>
@@ -131,7 +131,7 @@
 								<td data-label="Latitude :">{{ meeting.meetingLat }}</td>
 								<td data-label="Description :" class="tdLarger">{{ meeting.meetingContent }}</td>
 								<td data-label="Modifier :">
-									<a href="{{ path('app_meetings_edit', {'id': meeting.id}) }}">
+									<a href="{{ path('app_meetings_edit', {'id': meeting.id}) }}" title="Modifier" data-bs-toggle="tooltip" data-bs-placement="right">
 										<i class="fa-solid fa-pencil icon"></i>
 									</a>
 								</td>
@@ -143,44 +143,36 @@
 
 			<div class="dashboardBloc">
 				<h1>Sorties précédentes
-					<a href="{{ path('app_previous_trips_new') }}">
+					<a href="{{ path('app_previous_trips_new') }}" title="Nouvelle sortie" data-bs-toggle="tooltip" data-bs-placement="right">
 						<i class="fa-solid fa-plus icon" style="font-size: 30px"></i>
 					</a>
 				</h1>
 
-				<table>
-					<thead>
-						<tr>
-							<th>Nom de la sortie</th>
-							<th>Photos</th>
-							<th>Description</th>
-							<th>Modifier</th>
-						</tr>
-					</thead>
-					<tbody>
-						{% for previous_trip in previous_trips %}
-							<tr>
-								<td data-label="Nom de la sortie :">{{ previous_trip.previousTripName }}</td>
-								<td data-label="Photos :" class="tdLarger">
-									{% for tripPicture in previous_trip.getTripPictures() %}
-										<img src="{{ asset('uploads/images/' ~ tripPicture.tripPicture) }}" alt="Photo de la sortie">
-									{% endfor %}
-								</td>
-								<td data-label="Description :">{{ previous_trip.previousTripContent }}</td>
-								<td data-label="Modifier :">
-									<a href="{{ path('app_previous_trips_edit', {'id': previous_trip.id}) }}">
-										<i class="fa-solid fa-pencil icon"></i>
-									</a>
-								</td>
-							</tr>
-						{% endfor %}
-					</tbody>
-				</table>
+				<div class="all-previous-trips">
+					{% for previous_trip in previous_trips %}
+						<div class="tripCard" style="justify-content: space-between;">
+							<div class="header">
+								<h1>{{ previous_trip.previousTripName }}</h1>
+							</div>
+							<div class="body">
+								<p class="description">{{ previous_trip.previousTripContent }}</p>
+							</div>
+							<div class="actions">
+								<a href="{{ path('app_trip_pictures_index') }}" title="Bibliothèque d'images" data-bs-toggle="tooltip" data-bs-placement="right">
+									<i class="fa-solid fa-image icon"></i>
+								</a>
+								<a href="{{ path('app_previous_trips_edit', {'id': previous_trip.id}) }}" title="Modifier" data-bs-toggle="tooltip" data-bs-placement="right">
+									<i class="fa-solid fa-pencil icon"></i>
+								</a>
+							</div>
+						</div>
+					{% endfor %}
+				</div>
 			</div>
 
 			<div class="dashboardBloc">
 				<h1>Sorties à venir
-					<a href="{{ path('app_future_trips_new') }}">
+					<a href="{{ path('app_future_trips_new') }}" title="Nouvelle sortie" data-bs-toggle="tooltip" data-bs-placement="right">
 						<i class="fa-solid fa-plus icon" style="font-size: 30px"></i>
 					</a>
 				</h1>
@@ -188,11 +180,11 @@
 				<div class="all-future-trips">
 					{% for futureTrip in futureTrips %}
 						<div class="each-trip">
-							<h4>{{ futureTrip.futureTripName }}
-								<a href="{{ path('app_future_trips_edit', {'id': futureTrip.id}) }}">
+							<h1>{{ futureTrip.futureTripName }}
+								<a href="{{ path('app_future_trips_edit', {'id': futureTrip.id}) }}" title="Modifier" data-bs-toggle="tooltip" data-bs-placement="right">
 									<i class="fa-solid fa-pencil icon"></i>
 								</a>
-							</h4>
+							</h1>
 							<div class="pic-infos">
 								<img src="{{ asset('uploads/images/' ~ futureTrip.futureTripPicture) }}" alt="Photo de la sortie">
 								<div class="infos">
