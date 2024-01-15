@@ -9,39 +9,51 @@
 		{% include "_partials/_sidebar.html.twig" %}
 
 		<div class="dashboard">
-			<div class="dashboardBloc">
-				<h1>Présentation</h1>
+			<div class="dashboardTitle">
+				<h1>Tableau de bord</h1>
+			</div>
 
-				<table>
-					<thead>
-						<tr>
-							<th>Titre</th>
-							<th>Image</th>
-							<th>Contenu</th>
-							<th>Logo</th>
-							<th>Statuts</th>
-							<th>Règlement intérieur</th>
-							<th>Modifier</th>
-						</tr>
-					</thead>
-					<tbody>
-						{% for presentation in presentations %}
-							<tr>
-								<td data-label="Titre :">{{ presentation.presentationTitle }}</td>
-								<td data-label="Image :"><img src="{{ asset('uploads/images/' ~ presentation.presentationPicture) }}" alt="Photo des membres fondateurs"></td>
-								<td data-label="Contenu :">{{ presentation.presentationContent }}</td>
-								<td data-label="Logo :"><img src="{{ asset('uploads/images/' ~ presentation.logo) }}" alt="Logo de l'association" style="width: 140px; height: 200px"></td>
-								<td data-label="Statuts :"><embed src="{{ asset('uploads/images/' ~ presentation.statutesDoc) }}" width="200px" type="application/pdf"></td>
-								<td data-label="Règlement intérieur :"><embed src="{{ asset('uploads/images/' ~ presentation.internalRulesDoc) }}" width="200px" type="application/pdf"></td>
-								<td data-label="Modifier :">
-									<a href="{{ path('app_presentations_edit', {'id': presentation.id}) }}" title="Modifier" data-bs-toggle="tooltip" data-bs-placement="right">
-										<i class="fa-solid fa-pencil icon"></i>
-									</a>
-								</td>
-							</tr>
-						{% endfor %}
-					</tbody>
-				</table>
+			<div class="dashboardBloc">
+				{% for presentation in presentations %}
+					<div class="presentation">
+						<div class="pres-bloc asso-pic">
+							<p>Nom de l'association
+								<a href="{{ path('app_presentations_edit', {'id': presentation.id}) }}" title="Modifier" data-bs-toggle="tooltip" data-bs-placement="right">
+									<i class="fa-solid fa-pencil icon"></i>
+								</a>
+							</p>
+							<p class="description">
+								<strong>{{ presentation.presentationTitle }}</strong>
+							</p>
+							<img src="{{ asset('uploads/images/' ~ presentation.presentationPicture) }}" alt="Photo des membres fondateurs">
+						</div>
+						<div class="pres-bloc asso-text">
+							<p>Texte de présentation
+								<a href="{{ path('app_presentations_edit', {'id': presentation.id}) }}" title="Modifier" data-bs-toggle="tooltip" data-bs-placement="right">
+									<i class="fa-solid fa-pencil icon"></i>
+								</a>
+							</p>
+							<p class="description">{{ presentation.presentationContent }}</p>
+						</div>
+						<div class="pres-bloc asso-logo">
+							<p>Logo
+								<a href="{{ path('app_presentations_edit', {'id': presentation.id}) }}" title="Modifier" data-bs-toggle="tooltip" data-bs-placement="right">
+									<i class="fa-solid fa-pencil icon"></i>
+								</a>
+							</p>
+							<img src="{{ asset('uploads/images/' ~ presentation.logo) }}" alt="Logo de l'association" width="140px" height="200px" style="background-color:white;">
+						</div>
+						<div class="pres-bloc asso-docs">
+							<p>Documents
+								<a href="{{ path('app_presentations_edit', {'id': presentation.id}) }}" title="Modifier" data-bs-toggle="tooltip" data-bs-placement="right">
+									<i class="fa-solid fa-pencil icon"></i>
+								</a>
+							</p>
+							<small>Statuts :</small><embed src="{{ asset('uploads/images/' ~ presentation.statutesDoc) }}" width="180px" height="175px" type="application/pdf">
+							<small style="margin-top:10px;">Règlement :</small><embed src="{{ asset('uploads/images/' ~ presentation.internalRulesDoc) }}" width="180px" height="175px" type="application/pdf">
+						</div>
+					</div>
+				{% endfor %}
 			</div>
 
 			<div class="dashboardBloc">
@@ -51,94 +63,48 @@
 					</a>
 				</h1>
 
-				<table>
-					<thead>
-						<tr>
-							<th>Contenu</th>
-							<th>Modifier</th>
-						</tr>
-					</thead>
-					<tbody>
-						{% for purpose in purposes %}
-							<tr>
-								<td data-label=" contenu :">{{ purpose.purposeContent }}</td>
-								<td data-label="Modifier :">
-									<a href="{{ path('app_purposes_edit', {'id': purpose.id}) }}" title="Modifier" data-bs-toggle="tooltip" data-bs-placement="right">
-										<i class="fa-solid fa-pencil icon"></i>
-									</a>
-								</td>
-							</tr>
-						{% endfor %}
-					</tbody>
-				</table>
+				{% for purpose in purposes %}
+					{{ purpose.purposeContent }}
+
+					<a href="{{ path('app_purposes_edit', {'id': purpose.id}) }}" title="Modifier" data-bs-toggle="tooltip" data-bs-placement="right">
+						<i class="fa-solid fa-pencil icon"></i>
+					</a>
+				{% endfor %}
 			</div>
 
 			<div class="dashboardBloc">
 				<h1>Devenir membre</h1>
 
-				<table>
-					<thead>
-						<tr>
-							<th>Bulletin d'adhésion</th>
-							<th>Cotisation conducteur</th>
-							<th>Cotisation passager</th>
-							<th>Modifier</th>
-						</tr>
-					</thead>
-					<tbody>
-						{% for membership in memberships %}
-							<tr>
-								<td data-label="Bulletin d'adhésion :">
-									<embed src="{{ asset('uploads/images/' ~ membership.membershipForm) }}" width="200px" type="application/pdf">
-								</td>
-								<td data-label="Cotisation conducteur :">{{ membership.driverFee }}
-									euros</td>
-								<td data-label="Cotisation passager :">{{ membership.passengerFee }}
-									euros</td>
-								<td data-label="Modifier :">
-									<a href="{{ path('app_memberships_edit', {'id': membership.id}) }}" title="Modifier" data-bs-toggle="tooltip" data-bs-placement="right">
-										<i class="fa-solid fa-pencil icon"></i>
-									</a>
-								</td>
-							</tr>
-						{% endfor %}
-					</tbody>
-				</table>
+				{% for membership in memberships %}
+
+					<embed src="{{ asset('uploads/images/' ~ membership.membershipForm) }}" width="200px" type="application/pdf">
+
+					{{ membership.driverFee }}
+					euros
+					{{ membership.passengerFee }}
+					euros
+
+					<a href="{{ path('app_memberships_edit', {'id': membership.id}) }}" title="Modifier" data-bs-toggle="tooltip" data-bs-placement="right">
+						<i class="fa-solid fa-pencil icon"></i>
+					</a>
+				{% endfor %}
 			</div>
 
 			<div class="dashboardBloc">
 				<h1>Prochaine réunion</h1>
 
-				<table>
-					<thead>
-						<tr>
-							<th>Date et Heure</th>
-							<th>Photo de la salle</th>
-							<th>Adresse</th>
-							<th>Longitude</th>
-							<th>Latitude</th>
-							<th>Description</th>
-							<th>Modifier</th>
-						</tr>
-					</thead>
-					<tbody>
-						{% for meeting in meetings %}
-							<tr>
-								<td data-label="Date et Heure :">{{ meeting.meetingDate ? meeting.meetingDate|date('d-m-Y à H:i') : '' }}</td>
-								<td data-label="Photo de la salle :"><img src="{{ asset('uploads/images/' ~ meeting.meetingPicture) }}" alt="Photo de la salle de réunion"></td>
-								<td data-label="Adresse :">{{ meeting.meetingAddress }}</td>
-								<td data-label="Longitude :">{{ meeting.meetingLon }}</td>
-								<td data-label="Latitude :">{{ meeting.meetingLat }}</td>
-								<td data-label="Description :" class="tdLarger">{{ meeting.meetingContent }}</td>
-								<td data-label="Modifier :">
-									<a href="{{ path('app_meetings_edit', {'id': meeting.id}) }}" title="Modifier" data-bs-toggle="tooltip" data-bs-placement="right">
-										<i class="fa-solid fa-pencil icon"></i>
-									</a>
-								</td>
-							</tr>
-						{% endfor %}
-					</tbody>
-				</table>
+				{% for meeting in meetings %}
+					{{ meeting.meetingDate ? meeting.meetingDate|date('d-m-Y à H:i') : '' }}
+					<img src="{{ asset('uploads/images/' ~ meeting.meetingPicture) }}" alt="Photo de la salle de réunion">
+					{{ meeting.meetingAddress }}
+					{{ meeting.meetingLon }}
+					{{ meeting.meetingLat }}
+					{{ meeting.meetingContent }}
+
+					<a href="{{ path('app_meetings_edit', {'id': meeting.id}) }}" title="Modifier" data-bs-toggle="tooltip" data-bs-placement="right">
+						<i class="fa-solid fa-pencil icon"></i>
+					</a>
+				{% endfor %}
 			</div>
 
 			<div class="dashboardBloc">

@@ -777,7 +777,8 @@ footer .footerBloc2 .brand {
   align-items: center;
   margin-top: 85px;
   margin-left: 13%;
-  /*** PREVIOUS TRIPS ***/
+  /*** SECTIONS OF MAIN DASHBOARD***/
+  /*** PREVIOUS TRIPS (DASHBOARD AND PAGE) ***/
   /*** USERS INDEX PAGE ***/
   /*** RECEIVED MESSAGES PAGE ***/
 }
@@ -786,35 +787,54 @@ footer .footerBloc2 .brand {
   margin-bottom: 10px;
   font-size: 40px;
 }
-.dashboard table {
-  background-color: #F3F4F7;
-  border-radius: 10px;
-  box-shadow: #0D121C 0px 0 5px;
-  margin: 20px;
-  border: none;
-}
-.dashboard table th {
-  text-align: center;
-  text-transform: uppercase;
-  padding: 10px;
-  border-bottom: 1px solid #25262A;
-  white-space: nowrap;
-}
-.dashboard table td {
-  text-align: center;
-  padding: 10px;
-}
-.dashboard table td img {
-  width: 150px;
-  height: 110px;
-  margin: 2px;
-}
-.dashboard .table-responsive {
-  overflow-x: auto;
+.dashboard .dashboardTitle {
   width: 100%;
+  display: flex;
+  align-items: center;
+  margin: 30px 0 40px 20px;
+}
+.dashboard .dashboardTitle h1 {
+  font-size: 50px;
+  margin: 0;
 }
 .dashboard .dashboardBloc {
+  /*** PRESENTATION ***/
+  /*** PURPOSES ***/
+  /*** MEMBERSHIP ***/
+  /*** MONTHLY MEETING ***/
   /*** FUTURE TRIPS ***/
+}
+.dashboard .dashboardBloc .presentation {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: start;
+}
+.dashboard .dashboardBloc .pres-bloc {
+  display: flex;
+  flex-direction: column;
+  background-color: #F3F4F7;
+  margin: 20px;
+  border-radius: 10px;
+  box-shadow: #0D121C 0px 0 5px;
+  padding: 20px;
+}
+.dashboard .dashboardBloc p.description {
+  text-align: center;
+  background-color: white;
+  padding: 10px;
+}
+.dashboard .dashboardBloc .asso-pic {
+  width: 300px;
+}
+.dashboard .dashboardBloc .asso-text {
+  width: 700px;
+}
+.dashboard .dashboardBloc .asso-logo {
+  width: 180px;
+}
+.dashboard .dashboardBloc .asso-docs {
+  width: 220px;
 }
 .dashboard .dashboardBloc .all-future-trips {
   display: flex;
@@ -928,6 +948,33 @@ footer .footerBloc2 .brand {
   text-decoration: none;
   margin-right: 10px;
 }
+.dashboard table {
+  background-color: #F3F4F7;
+  border-radius: 10px;
+  box-shadow: #0D121C 0px 0 5px;
+  margin: 20px;
+  border: none;
+}
+.dashboard table th {
+  text-align: center;
+  text-transform: uppercase;
+  padding: 10px;
+  border-bottom: 1px solid #25262A;
+  white-space: nowrap;
+}
+.dashboard table td {
+  text-align: center;
+  padding: 10px;
+}
+.dashboard table td img {
+  width: 150px;
+  height: 110px;
+  margin: 2px;
+}
+.dashboard .table-responsive {
+  overflow-x: auto;
+  width: 100%;
+}
 .dashboard #dataTable {
   font-size: small;
   border-radius: 10px;
@@ -988,7 +1035,7 @@ footer .footerBloc2 .brand {
   padding-left: 10px;
 }
 
-/*** FORMS ***/
+/*** FORMS TO CREATE & EDIT DASHBOARD ELEMENTS ***/
 .editForm {
   background-color: #d6d6d6;
   color: #25262A;
