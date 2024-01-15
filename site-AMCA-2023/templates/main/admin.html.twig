@@ -185,7 +185,7 @@
 					</a>
 				</h1>
 
-				<div class="all-trips">
+				<div class="all-future-trips">
 					{% for futureTrip in futureTrips %}
 						<div class="each-trip">
 							<h4>{{ futureTrip.futureTripName }}
@@ -193,29 +193,36 @@
 									<i class="fa-solid fa-pencil icon"></i>
 								</a>
 							</h4>
-							<img src="{{ asset('uploads/images/' ~ futureTrip.futureTripPicture) }}" alt="Photo de la sortie">
-							<small>Dates : du
-								{{ futureTrip.startDate ? futureTrip.startDate|date('d-m-Y à H:i') : '' }}
-								au
-								{{ futureTrip.endDate ? futureTrip.endDate|date('d-m-Y à H:i') : '' }}</small>
-							<small>Budget à prévoir :
-								{{ futureTrip.budget }}
-								euros</small>
-							<p>Description :
-								{{ futureTrip.futureTripContent }}</p>
-							<small>Longitude :
-								{{ futureTrip.futureTripLon }}</small>
-							<small>Latitude :
-								{{ futureTrip.futureTripLat }}</small>
-							<small>Nombre de places :
-								{{ futureTrip.numberOfPlaces }}</small>
-							<small>Adhérents inscrits :
-								<ul>
-									{% for user in futureTrip.users %}
-										<li>{{ user.firstName ~ ' ' ~ user.lastName }}</li>
-									{% endfor %}
-								</ul>
-							</small>
+							<div class="pic-infos">
+								<img src="{{ asset('uploads/images/' ~ futureTrip.futureTripPicture) }}" alt="Photo de la sortie">
+								<div class="infos">
+									<small>Dates : du
+										{{ futureTrip.startDate ? futureTrip.startDate|date('d-m-Y à H:i') : '' }}
+										au
+										{{ futureTrip.endDate ? futureTrip.endDate|date('d-m-Y à H:i') : '' }}</small>
+									<small class="spaced">Budget à prévoir :
+										{{ futureTrip.budget }}
+										euros</small>
+									<small class="spaced" style="text-decoration: underline;">Données pour générer la carte</small>
+									<small>Longitude :
+										{{ futureTrip.futureTripLon }}</small>
+									<small>Latitude :
+										{{ futureTrip.futureTripLat }}</small>
+								</div>
+							</div>
+							<p>Description de la sortie :</p>
+							<p class="description">{{ futureTrip.futureTripContent }}</p>
+							<div class="places">
+								<small>Nombre de places :
+									{{ futureTrip.numberOfPlaces }}</small>
+								<small class="spaced">Adhérents inscrits :
+									<ul class="user-list">
+										{% for user in futureTrip.users %}
+											<li>{{ user.firstName ~ ' ' ~ user.lastName }}</li>
+										{% endfor %}
+									</ul>
+								</small>
+							</div>
 						</div>
 					{% endfor %}
 				</div>

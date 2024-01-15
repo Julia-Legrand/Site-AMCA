@@ -79,7 +79,7 @@ class FutureTripsType extends AbstractType
                 'multiple' => true,
                 'expanded' => true,
                 'choice_attr' => function ($choice, $key, $value) {
-                    return ['style' => 'margin-right: 5px; margin-left: 5px;'];
+                    return ['style' => 'margin-right: 5px;'];
                 },
             ]);
     }
