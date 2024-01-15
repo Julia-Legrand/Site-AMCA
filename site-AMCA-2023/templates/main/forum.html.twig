@@ -26,7 +26,7 @@
 			<section class="forum">
 				<h2>{{ theme.themeTitle }}
 					{% if is_granted('ROLE_ADMIN') %}
-						<a href="{{ path('app_themes_edit', {'id': theme.id}) }}">
+						<a href="{{ path('app_themes_edit', {'id': theme.id}) }}" title="Modifier" data-bs-toggle="tooltip" data-bs-placement="right">
 							<i class="fa-solid fa-pencil"></i>
 						</a>
 					{% endif %}
@@ -34,7 +34,7 @@
 				{% for post in theme.post %}
 					<h4>{{ post.postTitle }}
 						{% if is_granted('ROLE_ADMIN') or post.user == app.user %}
-							<a href="{{ path('app_posts_edit', {'id': post.id}) }}">
+							<a href="{{ path('app_posts_edit', {'id': post.id}) }}" title="Modifier" data-bs-toggle="tooltip" data-bs-placement="right">
 								<i class="fa-solid fa-pencil" style="margin-left: 10px;"></i>
 							</a>
 						{% endif %}
@@ -59,7 +59,7 @@
 									<i class="fa-solid fa-quote-left"></i>
 									{{ comment.commentContent }}
 									{% if is_granted('ROLE_ADMIN') or comment.user == app.user %}
-										<a href="{{ path('app_comments_edit', {'id': comment.id, 'postId': post.id}) }}">
+										<a href="{{ path('app_comments_edit', {'id': comment.id, 'postId': post.id}) }}" title="Modifier" data-bs-toggle="tooltip" data-bs-placement="right">
 											<i class="fa-solid fa-pencil" style="vertical-align: middle; margin-bottom:"></i>
 										</a>
 									{% endif %}

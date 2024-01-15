@@ -662,13 +662,6 @@ footer .footerBloc2 .brand {
   border-radius: 10px;
   padding: 40px 100px;
   margin: 60px;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s, transform 0.5s;
-}
-.mainForum .forum.visible {
-  opacity: 1;
-  transform: translateY(0);
 }
 .mainForum h2 {
   margin-top: 20px;
@@ -787,30 +780,25 @@ footer .footerBloc2 .brand {
   margin-bottom: 10px;
   font-size: 40px;
 }
-.dashboard .dashboardTitle {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  margin: 30px 0 40px 20px;
-}
-.dashboard .dashboardTitle h1 {
-  font-size: 50px;
-  margin: 0;
-}
 .dashboard .dashboardBloc {
   /*** PRESENTATION ***/
-  /*** PURPOSES ***/
-  /*** MEMBERSHIP ***/
   /*** MONTHLY MEETING ***/
   /*** FUTURE TRIPS ***/
 }
 .dashboard .dashboardBloc .presentation {
   display: flex;
+}
+.dashboard .dashboardBloc .bloc-left {
+  display: flex;
+  flex-direction: column;
+}
+.dashboard .dashboardBloc .bloc-up {
+  display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: start;
 }
-.dashboard .dashboardBloc .pres-bloc {
+.dashboard .dashboardBloc .pres-bloc,
+.dashboard .dashboardBloc .bloc-down {
   display: flex;
   flex-direction: column;
   background-color: #F3F4F7;
@@ -818,6 +806,10 @@ footer .footerBloc2 .brand {
   border-radius: 10px;
   box-shadow: #0D121C 0px 0 5px;
   padding: 20px;
+}
+.dashboard .dashboardBloc .bloc {
+  display: flex;
+  flex-direction: column;
 }
 .dashboard .dashboardBloc p.description {
   text-align: center;
@@ -833,8 +825,41 @@ footer .footerBloc2 .brand {
 .dashboard .dashboardBloc .asso-logo {
   width: 180px;
 }
+.dashboard .dashboardBloc .asso-fee {
+  width: 180px;
+  display: flex;
+  flex-direction: column;
+}
 .dashboard .dashboardBloc .asso-docs {
   width: 220px;
+  height: 805px;
+}
+.dashboard .dashboardBloc .icon-small {
+  font-size: 15px;
+  margin-left: 5px;
+}
+.dashboard .dashboardBloc .asso-meet {
+  display: flex;
+  flex-direction: column;
+  background-color: #F3F4F7;
+  margin: 20px;
+  border-radius: 10px;
+  box-shadow: #0D121C 0px 0 5px;
+  padding: 20px;
+}
+.dashboard .dashboardBloc .meet-blocs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+}
+.dashboard .dashboardBloc .meet-bloc {
+  margin: 10px 20px;
+  display: flex;
+  flex-direction: column;
+}
+.dashboard .dashboardBloc .meet-blocs img {
+  width: 200px;
+  height: 140px;
 }
 .dashboard .dashboardBloc .all-future-trips {
   display: flex;
@@ -1043,6 +1068,7 @@ footer .footerBloc2 .brand {
   flex-direction: column;
   justify-content: start;
   align-items: center;
+  padding: 80px;
 }
 .editForm h2 {
   margin-top: 60px;

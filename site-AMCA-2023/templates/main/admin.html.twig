@@ -9,101 +9,129 @@
 		{% include "_partials/_sidebar.html.twig" %}
 
 		<div class="dashboard">
-			<div class="dashboardTitle">
-				<h1>Tableau de bord</h1>
-			</div>
-
 			<div class="dashboardBloc">
+				<h1>Tableau de bord</h1>
+
 				{% for presentation in presentations %}
 					<div class="presentation">
-						<div class="pres-bloc asso-pic">
-							<p>Nom de l'association
-								<a href="{{ path('app_presentations_edit', {'id': presentation.id}) }}" title="Modifier" data-bs-toggle="tooltip" data-bs-placement="right">
-									<i class="fa-solid fa-pencil icon"></i>
-								</a>
-							</p>
-							<p class="description">
-								<strong>{{ presentation.presentationTitle }}</strong>
-							</p>
-							<img src="{{ asset('uploads/images/' ~ presentation.presentationPicture) }}" alt="Photo des membres fondateurs">
-						</div>
-						<div class="pres-bloc asso-text">
-							<p>Texte de présentation
-								<a href="{{ path('app_presentations_edit', {'id': presentation.id}) }}" title="Modifier" data-bs-toggle="tooltip" data-bs-placement="right">
-									<i class="fa-solid fa-pencil icon"></i>
-								</a>
-							</p>
-							<p class="description">{{ presentation.presentationContent }}</p>
-						</div>
-						<div class="pres-bloc asso-logo">
-							<p>Logo
-								<a href="{{ path('app_presentations_edit', {'id': presentation.id}) }}" title="Modifier" data-bs-toggle="tooltip" data-bs-placement="right">
-									<i class="fa-solid fa-pencil icon"></i>
-								</a>
-							</p>
-							<img src="{{ asset('uploads/images/' ~ presentation.logo) }}" alt="Logo de l'association" width="140px" height="200px" style="background-color:white;">
+						<div class="bloc-left">
+							<div class="bloc-up">
+								<div class="pres-bloc asso-pic">
+									<p>Nom de l'association
+										<a href="{{ path('app_presentations_edit', {'id': presentation.id}) }}" title="Modifier" data-bs-toggle="tooltip" data-bs-placement="right">
+											<i class="fa-solid fa-pencil icon"></i>
+										</a>
+									</p>
+									<p class="description">
+										<strong>{{ presentation.presentationTitle }}</strong>
+									</p>
+									<img src="{{ asset('uploads/images/' ~ presentation.presentationPicture) }}" alt="Photo des membres fondateurs">
+								</div>
+								<div class="pres-bloc asso-text">
+									<p>Texte de présentation
+										<a href="{{ path('app_presentations_edit', {'id': presentation.id}) }}" title="Modifier" data-bs-toggle="tooltip" data-bs-placement="right">
+											<i class="fa-solid fa-pencil icon"></i>
+										</a>
+									</p>
+									<p class="description">{{ presentation.presentationContent }}</p>
+								</div>
+								<div class="bloc">
+									<div class="pres-bloc asso-logo">
+										<p>Logo
+											<a href="{{ path('app_presentations_edit', {'id': presentation.id}) }}" title="Modifier" data-bs-toggle="tooltip" data-bs-placement="right">
+												<i class="fa-solid fa-pencil icon"></i>
+											</a>
+										</p>
+										<img src="{{ asset('uploads/images/' ~ presentation.logo) }}" alt="Logo de l'association" width="140px" height="200px" style="background-color:white;">
+									</div>
+									<div class="pres-bloc asso-fee">
+										{% for membership in memberships %}
+											<p>Cotisations
+												<a href="{{ path('app_memberships_edit', {'id': membership.id}) }}" title="Modifier" data-bs-toggle="tooltip" data-bs-placement="right">
+													<i class="fa-solid fa-pencil icon icon-small"></i>
+												</a>
+											</p>
+											<small>Conducteur :
+												{{ membership.driverFee }}
+												€</small>
+											<small style="margin-top:10px;">Passager :
+												{{ membership.passengerFee }}
+												€</small>
+										{% endfor %}
+									</div>
+								</div>
+							</div>
+							<div class="bloc-down">
+								<p>Raisons d'être de l'association
+									<a href="{{ path('app_purposes_new') }}" title="Nouveau" data-bs-toggle="tooltip" data-bs-placement="right">
+										<i class="fa-solid fa-plus icon"></i>
+									</a>
+								</p>
+								{% for purpose in purposes %}
+									<p class="description">{{ purpose.purposeContent }}
+										<a href="{{ path('app_purposes_edit', {'id': purpose.id}) }}" title="Modifier" data-bs-toggle="tooltip" data-bs-placement="right">
+											<i class="fa-solid fa-pencil icon icon-small"></i>
+										</a>
+									</p>
+								{% endfor %}
+							</div>
 						</div>
 						<div class="pres-bloc asso-docs">
-							<p>Documents
+							<p>Documents</p>
+							<small>Statuts
 								<a href="{{ path('app_presentations_edit', {'id': presentation.id}) }}" title="Modifier" data-bs-toggle="tooltip" data-bs-placement="right">
-									<i class="fa-solid fa-pencil icon"></i>
+									<i class="fa-solid fa-pencil icon icon-small"></i>
 								</a>
-							</p>
-							<small>Statuts :</small><embed src="{{ asset('uploads/images/' ~ presentation.statutesDoc) }}" width="180px" height="175px" type="application/pdf">
-							<small style="margin-top:10px;">Règlement :</small><embed src="{{ asset('uploads/images/' ~ presentation.internalRulesDoc) }}" width="180px" height="175px" type="application/pdf">
+							</small><embed src="{{ asset('uploads/images/' ~ presentation.statutesDoc) }}" width="180px" height="200px" type="application/pdf">
+							<small style="margin-top:20px;">Règlement
+								<a href="{{ path('app_presentations_edit', {'id': presentation.id}) }}" title="Modifier" data-bs-toggle="tooltip" data-bs-placement="right">
+									<i class="fa-solid fa-pencil icon icon-small"></i>
+								</a>
+							</small><embed src="{{ asset('uploads/images/' ~ presentation.internalRulesDoc) }}" width="180px" height="200px" type="application/pdf">
+
+							{% for membership in memberships %}
+								<small style="margin-top:20px;">Bulletin d'adhésion
+									<a href="{{ path('app_memberships_edit', {'id': membership.id}) }}" title="Modifier" data-bs-toggle="tooltip" data-bs-placement="right">
+										<i class="fa-solid fa-pencil icon icon-small"></i>
+									</a>
+								</small><embed src="{{ asset('uploads/images/' ~ membership.membershipForm) }}" width="180px" height="200px" type="application/pdf">
+							{% endfor %}
 						</div>
 					</div>
 				{% endfor %}
 			</div>
 
 			<div class="dashboardBloc">
-				<h1>Nos raisons d'être
-					<a href="{{ path('app_purposes_new') }}" title="Nouveau" data-bs-toggle="tooltip" data-bs-placement="right">
-						<i class="fa-solid fa-plus icon" style="font-size: 30px"></i>
-					</a>
-				</h1>
-
-				{% for purpose in purposes %}
-					{{ purpose.purposeContent }}
-
-					<a href="{{ path('app_purposes_edit', {'id': purpose.id}) }}" title="Modifier" data-bs-toggle="tooltip" data-bs-placement="right">
-						<i class="fa-solid fa-pencil icon"></i>
-					</a>
-				{% endfor %}
-			</div>
-
-			<div class="dashboardBloc">
-				<h1>Devenir membre</h1>
-
-				{% for membership in memberships %}
-
-					<embed src="{{ asset('uploads/images/' ~ membership.membershipForm) }}" width="200px" type="application/pdf">
-
-					{{ membership.driverFee }}
-					euros
-					{{ membership.passengerFee }}
-					euros
-
-					<a href="{{ path('app_memberships_edit', {'id': membership.id}) }}" title="Modifier" data-bs-toggle="tooltip" data-bs-placement="right">
-						<i class="fa-solid fa-pencil icon"></i>
-					</a>
-				{% endfor %}
-			</div>
-
-			<div class="dashboardBloc">
-				<h1>Prochaine réunion</h1>
-
 				{% for meeting in meetings %}
-					{{ meeting.meetingDate ? meeting.meetingDate|date('d-m-Y à H:i') : '' }}
-					<img src="{{ asset('uploads/images/' ~ meeting.meetingPicture) }}" alt="Photo de la salle de réunion">
-					{{ meeting.meetingAddress }}
-					{{ meeting.meetingLon }}
-					{{ meeting.meetingLat }}
-					{{ meeting.meetingContent }}
+					<div class="asso-meet">
+						<p>Prochaine réunion
+							<a href="{{ path('app_meetings_edit', {'id': meeting.id}) }}" title="Modifier" data-bs-toggle="tooltip" data-bs-placement="right">
+								<i class="fa-solid fa-pencil icon"></i>
+							</a>
+						</p>
+						<div class="meet-blocs">
+							<div class="meet-bloc" style="width: 280px;">
+								<p>Date : le
+									{{ meeting.meetingDate ? meeting.meetingDate|date('d-m-Y à H:i') : '' }}</p>
+								<p>Photo de la salle :</p>
+								<img src="{{ asset('uploads/images/' ~ meeting.meetingPicture) }}" alt="Photo de la salle de réunion">
+							</div>
+							<div class="meet-bloc" style="width: 280px;">
+								<p>Adresse :</p>
+								<p>{{ meeting.meetingAddress }}</p>
 
-					<a href="{{ path('app_meetings_edit', {'id': meeting.id}) }}" title="Modifier" data-bs-toggle="tooltip" data-bs-placement="right">
-						<i class="fa-solid fa-pencil icon"></i>
-					</a>
+								<small style="text-decoration: underline;">Données pour générer la carte</small>
+								<small>Longitude :
+									{{ meeting.meetingLon }}</small>
+								<small>Latitude :
+									{{ meeting.meetingLat }}</small>
+							</div>
+							<div class="meet-bloc" style="width: 400px;">
+								<p>Description :</p>
+								<p class="description">{{ meeting.meetingContent }}</p>
+							</div>
+						</div>
+					</div>
 				{% endfor %}
 			</div>
 
