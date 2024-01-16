@@ -644,52 +644,138 @@ footer .footerBloc2 .brand {
   color: #F3F4F7;
   padding: 40px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row-reverse;
   justify-content: center;
+  align-items: start;
+  /*** RIGHT SECTION OF PAGE ***/
+  /*** LEFT SECTION OF PAGE ***/
+}
+.mainForum aside {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 20px;
+}
+.mainForum aside .new {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
 }
-.mainForum .newTheme {
-  margin-top: 20px;
-  width: 500px;
+.mainForum aside .new .button {
+  margin-bottom: 10px;
+}
+.mainForum aside .existing {
+  margin: 10px;
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
+}
+.mainForum aside table {
+  background-color: #F3F4F7;
+  color: #25262A;
+  border-radius: 10px;
+  box-shadow: #F3F4F7 0px 0 5px;
+  width: 300px;
+  margin-bottom: 5px;
+  border: none;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+}
+.mainForum aside table th {
+  text-transform: uppercase;
+  text-align: left;
+  padding: 10px;
+  border-bottom: 1px solid #25262A;
+}
+.mainForum aside table td {
+  text-align: left;
+  padding: 10px;
+}
+.mainForum aside table i {
+  color: #25262A;
+  font-size: 12px;
+  margin-right: 5px;
 }
 .mainForum .forum {
-  background-color: #25262A;
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  /*** FORUM SECTIONS ***/
+}
+.mainForum .forum h1 {
+  font-size: 50px;
+  text-align: left;
+  margin-bottom: 30px;
+}
+.mainForum .forum h4 {
+  text-align: left;
+}
+.mainForum .forum h4::after {
+  width: 100%;
+}
+.mainForum .forum i,
+.mainForum .forum a {
+  text-decoration: none;
+  color: #25262A;
+  font-size: 20px;
+}
+.mainForum .forum .icon:hover {
+  color: #F3F4F7;
+}
+.mainForum .forum .allPosts {
+  background-color: #F3F4F7;
+  box-shadow: #F3F4F7 0px 0 5px;
+  color: #25262A;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+.mainForum .forum .post {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px 0;
+}
+.mainForum .forum .postContent {
+  display: flex;
+}
+.mainForum .forum .postContent p {
+  width: 80%;
+  padding: 0 20px;
+  margin-bottom: 40px;
+}
+.mainForum .forum .button {
+  color: #F3F4F7;
+  width: 146px;
+}
+.mainForum .forum .button i {
+  margin-right: 10px;
+  color: #F3F4F7;
+}
+.mainForum .forum .author {
+  width: 20%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-radius: 10px;
-  padding: 40px 100px;
-  margin: 60px;
 }
-.mainForum h2 {
+.mainForum .forum .answers {
   margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.mainForum h4 {
-  margin-top: 40px;
+.mainForum .forum .answersAuthor {
+  background-color: #F3F4F7;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  margin: 5px;
+  width: 80%;
 }
-.mainForum i {
-  text-decoration: none;
-  color: #F3F4F7;
-  font-size: 20px;
-}
-.mainForum a {
-  text-decoration: none;
-  color: #F3F4F7;
-}
-.mainForum p {
-  text-align: center;
-  margin-bottom: 40px;
-}
-.mainForum .comment-container {
-  margin: 20px;
-}
-.mainForum .comment-container i {
-  margin-right: 5px;
-  margin-left: 5px;
-  vertical-align: top;
-  font-size: 10px;
+.mainForum .forum .answersAuthor i {
+  font-size: 15px;
+  color: #25262A;
 }
 
 /********** CONTACT PAGE **********/
@@ -814,6 +900,7 @@ footer .footerBloc2 .brand {
 .dashboard .dashboardBloc p.description {
   text-align: center;
   background-color: white;
+  border-radius: 10px;
   padding: 10px;
 }
 .dashboard .dashboardBloc .asso-pic {
@@ -1037,6 +1124,7 @@ footer .footerBloc2 .brand {
   width: 60%;
   background-color: #F3F4F7;
   border-radius: 10px;
+  box-shadow: #0D121C 0px 0 5px;
   padding: 20px;
   margin: 20px;
 }

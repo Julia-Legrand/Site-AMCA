@@ -720,59 +720,160 @@ footer {
     color: $light;
     padding: 40px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row-reverse;
     justify-content: center;
-    align-items: center;
+    align-items: start;
 
-    .newTheme {
-        margin-top: 20px;
-        width: 500px;
-        display: flex;
-        justify-content: space-evenly;
-    }
-
-    .forum {
-        background-color: $dark;
+    /*** RIGHT SECTION OF PAGE ***/
+    aside {
         display: flex;
         flex-direction: column;
         align-items: center;
-        border-radius: 10px;
-        padding: 40px 100px;
-        margin: 60px;
+        margin: 0 20px;
+
+        .new {
+            margin-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .new .button {
+            margin-bottom: 10px;
+        }
+
+        .existing {
+            margin: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        table {
+            background-color: $light;
+            color: $dark;
+            border-radius: 10px;
+            box-shadow: $light 0px 0 5px;
+            width: 300px;
+            margin-bottom: 5px;
+            border: none;
+            @include paragraph;
+            font-size: 14px;
+
+            th {
+                text-transform: uppercase;
+                text-align: left;
+                padding: 10px;
+                border-bottom: 1px solid $dark;
+            }
+
+            td {
+                text-align: left;
+                padding: 10px;
+            }
+
+            i {
+                color: $dark;
+                font-size: 12px;
+                margin-right: 5px;
+            }
+        }
     }
 
-    h2 {
-        margin-top: 20px;
-    }
-
-    h4 {
-        margin-top: 40px;
-    }
-
-    i {
-        text-decoration: none;
-        color: $light;
-        font-size: 20px;
-    }
-
-    a {
-        text-decoration: none;
-        color: $light;
-    }
-
-    p {
-        text-align: center;
-        margin-bottom: 40px;
-    }
-
-    .comment-container {
+    /*** LEFT SECTION OF PAGE ***/
+    .forum {
+        display: flex;
+        flex-direction: column;
         margin: 20px;
 
-        i {
-            margin-right: 5px;
-            margin-left: 5px;
-            vertical-align: top;
-            font-size: 10px;
+        h1 {
+            font-size: 50px;
+            text-align: left;
+            margin-bottom: 30px;
+        }
+
+        h4 {
+            text-align: left;
+        }
+
+        h4::after {
+            width: 100%;
+        }
+
+        i,
+        a {
+            text-decoration: none;
+            color: $dark;
+            font-size: 20px;
+        }
+
+        .icon:hover {
+            color: $light;
+        }
+
+        /*** FORUM SECTIONS ***/
+        .allPosts {
+            background-color: $light;
+            box-shadow: $light 0px 0 5px;
+            color: $dark;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+
+        .post {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .postContent {
+            display: flex;
+        }
+
+        .postContent p {
+            width: 80%;
+            padding: 0 20px;
+            margin-bottom: 40px;
+        }
+
+        .button {
+            color: $light;
+            width: 146px;
+
+            i {
+                margin-right: 10px;
+                color: $light;
+            }
+        }
+
+        .author {
+            width: 20%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .answers {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .answersAuthor {
+            background-color: $light;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            margin: 5px;
+            width: 80%;
+
+            i {
+                font-size: 15px;
+                color: $dark;
+            }
         }
     }
 }
@@ -909,6 +1010,7 @@ footer {
         p.description {
             text-align: center;
             background-color: white;
+            border-radius: 10px;
             padding: 10px;
         }
 
@@ -1182,6 +1284,7 @@ footer {
         width: 60%;
         background-color: $light;
         border-radius: 10px;
+        box-shadow: #0D121C 0px 0 5px;
         padding: 20px;
         margin: 20px;
 
