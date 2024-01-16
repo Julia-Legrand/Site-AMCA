@@ -1,3 +1,170 @@
+@media all and (max-width: 1500px) {
+  /********** INDEX PAGE **********/
+  /*** OUR STORY ***/
+  #our-story {
+    justify-content: space-between !important;
+  }
+}
+@media all and (max-width: 1310px) {
+  /********** INDEX PAGE **********/
+  /*** OUR STORY ***/
+  #our-story .story-text,
+  #our-story .story-picture {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    margin: 20px !important;
+  }
+  #our-story .story-text {
+    width: 500px !important;
+  }
+}
+@media all and (max-width: 1200px) {
+  /********** INDEX PAGE **********/
+  /*** CONTACT ***/
+  #contact-us {
+    flex-direction: column;
+  }
+  #contact-us .buttonIndex {
+    margin: 20px !important;
+  }
+  /********** PARTIALS **********/
+  /***** FOOTER *****/
+  footer .footerBloc1 {
+    padding: 60px !important;
+  }
+  footer .footerBloc1 .list {
+    margin-left: 40px !important;
+  }
+}
+@media all and (max-width: 1000px) {
+  /********** INDEX PAGE **********/
+  /*** OUR STORY ***/
+  #our-story {
+    flex-direction: column-reverse;
+  }
+  /*** PREVIOUS TRIPS ***/
+  #our-previous-trips .previous-trip {
+    flex-direction: column !important;
+    margin: 0 10px !important;
+  }
+  #our-previous-trips .previous-trip-picture {
+    margin: 10px !important;
+  }
+  #our-previous-trips .previous-trip-text {
+    margin: 25px 10px 60px 10px !important;
+  }
+  /*** CONTACT ***/
+  #contact-us {
+    flex-direction: column;
+  }
+  #contact-us .buttonIndex {
+    margin: 20px !important;
+  }
+  /********** PARTIALS **********/
+  /***** FOOTER *****/
+  footer .footerBloc1 {
+    flex-direction: column;
+    padding: 10px !important;
+  }
+  footer .footerBloc1 .bloc-right {
+    justify-content: space-evenly;
+    width: 100%;
+  }
+  footer .footerBloc1 .list {
+    margin-left: 10px !important;
+  }
+  footer .footerBloc1 .list ul {
+    padding: 0 !important;
+  }
+}
+@media all and (max-width: 600px) {
+  /********** PARTIALS **********/
+  /***** HEADERS *****/
+  .headerIndex h1 {
+    font-size: 80px;
+  }
+  /***** FOOTER *****/
+  footer li {
+    line-height: 3 !important;
+  }
+  footer .bloc-right {
+    flex-direction: column !important;
+    margin-left: 40px;
+  }
+  /********** INDEX PAGE **********/
+  /*** PREVIOUS TRIPS ***/
+  #our-previous-trips .previous-trip-picture {
+    width: 400px !important;
+    height: 270px !important;
+  }
+  #our-previous-trips .previous-trip-picture img {
+    width: 400px !important;
+    height: 270px !important;
+  }
+  #our-previous-trips .previous-trip-text {
+    width: 400px !important;
+  }
+}
+@media all and (max-width: 500px) {
+  /********** PARTIALS **********/
+  /***** HEADERS *****/
+  .headerIndex {
+    min-height: 70vh !important;
+    height: auto;
+  }
+  .headerIndex h1 {
+    font-size: 50px;
+  }
+  /********** INDEX PAGE **********/
+  /*** OUR STORY ***/
+  #our-story .story-text {
+    width: 290px !important;
+  }
+  #our-story .story-picture {
+    width: 250px !important;
+    height: 250px !important;
+  }
+  /*** CONTACT ***/
+  #contact-us .buttonIndex {
+    font-size: 40px !important;
+    margin: 20px !important;
+    width: 287px !important;
+    padding: 10px !important;
+  }
+}
+@media all and (max-width: 400px) {
+  /********** PARTIALS **********/
+  /***** FOOTER *****/
+  footer .bloc-right {
+    margin-left: 10px !important;
+  }
+  footer .bloc-right .list {
+    font-size: 15px !important;
+  }
+  /********** INDEX PAGE **********/
+  /*** OUR PURPOSES ***/
+  #our-purposes .purpose {
+    height: 290px !important;
+    width: 290px !important;
+    margin: 40px 0 !important;
+  }
+  #our-purposes p {
+    font-size: 20px !important;
+  }
+  /*** PREVIOUS TRIPS ***/
+  #our-previous-trips .previous-trip-picture {
+    width: 280px !important;
+    height: 190px !important;
+  }
+  #our-previous-trips .previous-trip-picture img {
+    width: 280px !important;
+    height: 190px !important;
+  }
+  #our-previous-trips .previous-trip-text {
+    width: 280px !important;
+  }
+}
 /********** GLOBALS **********/
 /***** TITLES *****/
 h1 {
@@ -179,12 +346,13 @@ a:hover {
 
 /***** HEADERS *****/
 .headerIndex {
-  background-image: url(../images/wallpaper1.jpg);
+  background-image: linear-gradient(rgba(1, 1, 1, 0.4), rgba(1, 1, 1, 0.4)), url(../images/wallpaper1.jpg);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  height: 100vh;
+  min-height: 100vh;
+  height: auto;
   color: #F3F4F7;
   display: flex;
   flex-direction: column;
@@ -192,7 +360,7 @@ a:hover {
   align-items: center;
 }
 .headerIndex h1 {
-  margin: 90px 0;
+  margin: 90px 20px;
 }
 
 .headerPages {
@@ -201,7 +369,8 @@ a:hover {
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  height: 80vh;
+  min-height: 80vh;
+  height: auto;
   color: #F3F4F7;
   display: flex;
   flex-direction: column;
@@ -218,7 +387,8 @@ a:hover {
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  height: 60vh;
+  min-height: 60vh;
+  height: auto;
   color: #F3F4F7;
   display: flex;
   flex-direction: column;
@@ -269,13 +439,13 @@ footer .footerBloc1 {
   justify-content: space-between;
   align-items: center;
   background-color: #25262A;
+  padding: 60px 100px;
 }
 footer .footerBloc1 .bloc-left img {
-  height: 400px;
-  margin: 40px 40px 40px 100px;
+  height: 290px;
+  margin: 20px;
 }
 footer .footerBloc1 .bloc-right {
-  margin-right: 100px;
   display: flex;
   align-items: start;
 }
@@ -325,15 +495,22 @@ footer .footerBloc2 .brand {
 /*** OUR STORY ***/
 #our-story {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
-  height: 80vh;
+  height: auto;
   background-color: #59371E;
   color: #F3F4F7;
+  padding: 100px 20px;
+}
+#our-story .story-picture {
+  width: 400px;
+  height: 400px;
+  box-shadow: #16171A 0px 0px 20px 10px;
+  border-radius: 10px;
 }
 #our-story .story-picture img {
-  width: 450px;
-  box-shadow: #16171A 0px 0px 20px 10px;
+  width: 100%;
+  height: 100%;
   border-radius: 10px;
 }
 #our-story .story-text {
@@ -346,7 +523,6 @@ footer .footerBloc2 .brand {
 #our-story .story-picture {
   opacity: 0;
   transform: translateX(100);
-  /* Initial position */
   transition: opacity 0.8s ease, transform 1s ease;
 }
 #our-story .animate-from-left {
@@ -357,15 +533,15 @@ footer .footerBloc2 .brand {
 }
 #our-story .animated {
   opacity: 1 !important;
-  transform: translateX(10%) !important;
+  transform: translateX(15%) !important;
 }
 #our-story .story-text.animated {
-  transform: translateX(-10%) !important;
+  transform: translateX(-15%) !important;
 }
 
 /*** OUR PURPOSES ***/
 #our-purposes {
-  height: 80vh;
+  padding: 100px 20px;
   background-image: linear-gradient(rgba(1, 1, 1, 0.7), rgba(1, 1, 1, 0.7)), url(../images/photo-de-groupe.jpeg);
   background-position: center;
   background-size: cover;
@@ -379,6 +555,7 @@ footer .footerBloc2 .brand {
 }
 #our-purposes .our-purposes {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
 }
 #our-purposes .our-purposes .purpose {
@@ -404,7 +581,7 @@ footer .footerBloc2 .brand {
 #our-previous-trips {
   background-color: #25262A;
   color: #F3F4F7;
-  padding: 80px 0;
+  padding: 100px 20px;
 }
 #our-previous-trips .previous-trips {
   display: flex;
@@ -413,10 +590,10 @@ footer .footerBloc2 .brand {
 }
 #our-previous-trips .previous-trip {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   margin: 60px;
-  width: 80%;
+  width: 100%;
 }
 #our-previous-trips .previous-trip:nth-child(odd) {
   flex-direction: row-reverse;
@@ -424,6 +601,7 @@ footer .footerBloc2 .brand {
 #our-previous-trips .previous-trip .previous-trip-picture {
   width: 500px;
   height: 370px;
+  margin: 40px;
   box-shadow: #F3F4F7 0px 0px 10px 5px;
 }
 #our-previous-trips .previous-trip .previous-trip-picture img {
@@ -432,11 +610,13 @@ footer .footerBloc2 .brand {
 }
 #our-previous-trips .previous-trip .previous-trip-text {
   width: 600px;
+  margin: 40px;
   text-align: center;
 }
 
 /*** CONTACT ***/
 #contact-us {
+  padding: 100px 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -445,7 +625,6 @@ footer .footerBloc2 .brand {
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  height: 40vh;
 }
 #contact-us h1 {
   font-size: 60px;
@@ -459,7 +638,8 @@ footer .footerBloc2 .brand {
   padding: 10px 40px;
   border-radius: 10px;
   border: none;
-  margin: 60px;
+  margin-left: 60px;
+  width: 482px;
   text-decoration: none;
   opacity: 1;
   transition: all 0.5s ease;
@@ -474,7 +654,7 @@ footer .footerBloc2 .brand {
 #monthly-meeting {
   background-color: #16171A;
   color: #F3F4F7;
-  padding: 80px 0;
+  padding: 100px 20px;
 }
 #monthly-meeting .our-meeting {
   display: flex;
@@ -524,7 +704,7 @@ footer .footerBloc2 .brand {
 #agenda {
   background-color: #25262A;
   color: #F3F4F7;
-  padding: 80px 0;
+  padding: 100px 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -535,7 +715,7 @@ footer .footerBloc2 .brand {
 #futures-sorties {
   background-color: #16171A;
   color: #F3F4F7;
-  padding: 80px 0;
+  padding: 100px 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -623,8 +803,7 @@ footer .footerBloc2 .brand {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 20px;
-  padding-bottom: 60px;
+  padding: 80px 20px;
 }
 .mainMembership h2 {
   margin-top: 60px;
@@ -782,7 +961,7 @@ footer .footerBloc2 .brand {
 .mainContact {
   background-color: #16171A;
   color: #F3F4F7;
-  padding: 40px;
+  padding: 100px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;

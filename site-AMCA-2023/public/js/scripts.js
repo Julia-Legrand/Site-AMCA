@@ -10,12 +10,12 @@ document.addEventListener("DOMContentLoaded", function () {
       var scroll = window.scrollY || window.pageYOffset;
 
       // Adding the condition for responsive design
-      if (window.innerWidth >= 1131) {
+      if (window.innerWidth >= 1311) {
         if (scroll > elementTop - windowHeight + 100) {
           element.classList.add("animated");
         }
       } else {
-        // If the screen width is less than 1130 pixels, disable the animation
+        // If the screen width is less than 1311 pixels, disable the animation
         element.classList.remove("animated");
       }
     });

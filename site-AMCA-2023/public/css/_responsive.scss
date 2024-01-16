@@ -1,0 +1,237 @@
+@media all and (max-width:1500px) {
+
+    /********** INDEX PAGE **********/
+    /*** OUR STORY ***/
+    #our-story {
+        justify-content: space-between !important;
+    }
+}
+
+@media all and (max-width:1310px) {
+
+    /********** INDEX PAGE **********/
+    /*** OUR STORY ***/
+    #our-story {
+
+        .story-text,
+        .story-picture {
+            opacity: 1 !important;
+            transform: none !important;
+            transition: none !important;
+            margin: 20px !important;
+        }
+
+        .story-text {
+            width: 500px !important;
+        }
+    }
+}
+
+@media all and (max-width:1200px) {
+
+    /********** INDEX PAGE **********/
+    /*** CONTACT ***/
+    #contact-us {
+        flex-direction: column;
+
+        .buttonIndex {
+            margin: 20px !important;
+        }
+    }
+
+    /********** PARTIALS **********/
+    /***** FOOTER *****/
+    footer {
+        .footerBloc1 {
+            padding: 60px !important;
+
+            .list {
+                margin-left: 40px !important;
+            }
+        }
+    }
+}
+
+@media all and (max-width:1000px) {
+
+    /********** INDEX PAGE **********/
+    /*** OUR STORY ***/
+    #our-story {
+        flex-direction: column-reverse;
+    }
+
+    /*** PREVIOUS TRIPS ***/
+    #our-previous-trips {
+        .previous-trip {
+            flex-direction: column !important;
+            margin: 0 10px !important;
+        }
+
+        .previous-trip-picture {
+            margin: 10px !important;
+        }
+
+        .previous-trip-text {
+            margin: 25px 10px 60px 10px !important;
+        }
+    }
+
+    /*** CONTACT ***/
+    #contact-us {
+        flex-direction: column;
+
+        .buttonIndex {
+            margin: 20px !important;
+        }
+    }
+
+    /********** PARTIALS **********/
+    /***** FOOTER *****/
+    footer {
+        .footerBloc1 {
+            flex-direction: column;
+            padding: 10px !important;
+
+            .bloc-right {
+                justify-content: space-evenly;
+                width: 100%;
+            }
+
+            .list {
+                margin-left: 10px !important;
+            }
+
+            .list ul {
+                padding: 0 !important;
+            }
+        }
+    }
+}
+
+@media all and (max-width:600px) {
+
+    /********** PARTIALS **********/
+    /***** HEADERS *****/
+    .headerIndex {
+
+        h1 {
+            font-size: 80px;
+        }
+    }
+
+    /***** FOOTER *****/
+    footer {
+        li {
+            line-height: 3 !important;
+        }
+
+        .bloc-right {
+            flex-direction: column !important;
+            margin-left: 40px;
+        }
+    }
+
+    /********** INDEX PAGE **********/
+    /*** PREVIOUS TRIPS ***/
+    #our-previous-trips {
+        .previous-trip-picture {
+            width: 400px !important;
+            height: 270px !important;
+
+            img {
+                width: 400px !important;
+                height: 270px !important;
+            }
+        }
+
+        .previous-trip-text {
+            width: 400px !important;
+        }
+    }
+}
+
+@media all and (max-width:500px) {
+
+    /********** PARTIALS **********/
+    /***** HEADERS *****/
+    .headerIndex {
+        min-height: 70vh !important;
+        height: auto;
+
+        h1 {
+            font-size: 50px;
+        }
+    }
+
+    /********** INDEX PAGE **********/
+    /*** OUR STORY ***/
+    #our-story {
+
+        .story-text {
+            width: 290px !important;
+        }
+
+        .story-picture {
+            width: 250px !important;
+            height: 250px !important;
+        }
+    }
+
+    /*** CONTACT ***/
+    #contact-us {
+
+        .buttonIndex {
+            font-size: 40px !important;
+            margin: 20px !important;
+            width: 287px !important;
+            padding: 10px !important;
+        }
+    }
+}
+
+@media all and (max-width:400px) {
+
+    /********** PARTIALS **********/
+    /***** FOOTER *****/
+    footer {
+
+        .bloc-right {
+            margin-left: 10px !important;
+
+            .list {
+                font-size: 15px !important;
+            }
+        }
+    }
+
+    /********** INDEX PAGE **********/
+    /*** OUR PURPOSES ***/
+    #our-purposes {
+        .purpose {
+            height: 290px !important;
+            width: 290px !important;
+            margin: 40px 0 !important;
+        }
+
+        p {
+            font-size: 20px !important;
+        }
+    }
+
+    /*** PREVIOUS TRIPS ***/
+    #our-previous-trips {
+        .previous-trip-picture {
+            width: 280px !important;
+            height: 190px !important;
+
+            img {
+                width: 280px !important;
+                height: 190px !important;
+            }
+        }
+
+        .previous-trip-text {
+            width: 280px !important;
+        }
+    }
+}
