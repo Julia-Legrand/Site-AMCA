@@ -4,6 +4,11 @@
   #our-story {
     justify-content: space-between !important;
   }
+  /********** ASSO PAGE **********/
+  /*** MONTHLY MEETING ***/
+  #monthly-meeting .our-meeting {
+    justify-content: space-between !important;
+  }
 }
 @media all and (max-width: 1310px) {
   /********** INDEX PAGE **********/
@@ -18,8 +23,32 @@
   #our-story .story-text {
     width: 500px !important;
   }
+  /********** ASSO PAGE **********/
+  /*** MONTHLY MEETING ***/
+  #monthly-meeting .meetingRight,
+  #monthly-meeting .meetingLeft {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    margin: 20px !important;
+  }
 }
 @media all and (max-width: 1200px) {
+  /********** PARTIALS **********/
+  /***** SIDEBARS *****/
+  #sidebarFullsize {
+    display: none;
+  }
+  #sidebarResponsive {
+    display: block !important;
+  }
+  /***** FOOTER *****/
+  footer .footerBloc1 {
+    padding: 60px !important;
+  }
+  footer .footerBloc1 .list {
+    margin-left: 40px !important;
+  }
   /********** INDEX PAGE **********/
   /*** CONTACT ***/
   #contact-us {
@@ -28,16 +57,38 @@
   #contact-us .buttonIndex {
     margin: 20px !important;
   }
-  /********** PARTIALS **********/
-  /***** FOOTER *****/
-  footer .footerBloc1 {
-    padding: 60px !important;
+  /********** ASSO PAGE **********/
+  /*** FUTURE TRIPS SHOW ***/
+  .mainShow {
+    flex-direction: column-reverse;
   }
-  footer .footerBloc1 .list {
-    margin-left: 40px !important;
+  .mainShow .showRight {
+    width: 600px !important;
+  }
+  /********** ADMIN PAGES **********/
+  /*** GENERAL DASHBOARD ***/
+  .dashboard {
+    width: 100% !important;
+    margin-left: 5rem !important;
   }
 }
 @media all and (max-width: 1000px) {
+  /********** PARTIALS **********/
+  /***** FOOTER *****/
+  footer .footerBloc1 {
+    flex-direction: column;
+    padding: 10px !important;
+  }
+  footer .footerBloc1 .bloc-right {
+    justify-content: space-evenly;
+    width: 100%;
+  }
+  footer .footerBloc1 .list {
+    margin-left: 10px !important;
+  }
+  footer .footerBloc1 .list ul {
+    padding: 0 !important;
+  }
   /********** INDEX PAGE **********/
   /*** OUR STORY ***/
   #our-story {
@@ -61,21 +112,54 @@
   #contact-us .buttonIndex {
     margin: 20px !important;
   }
-  /********** PARTIALS **********/
-  /***** FOOTER *****/
-  footer .footerBloc1 {
+  /********** ASSO PAGE **********/
+  /*** AGENDA ***/
+  #agenda iframe {
+    width: 80% !important;
+    height: 600px;
+  }
+  /********** FORUM PAGE **********/
+  .mainForum {
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  .mainForum table {
+    display: none;
+  }
+  /********** ADMIN PAGES **********/
+  /*** MAIN DASHBOARD ***/
+  /*** SECTIONS OF MAIN DASHBOARD***/
+  .dashboardBloc {
+    /*** PRESENTATION ***/
+  }
+  .dashboardBloc .presentation {
     flex-direction: column;
-    padding: 10px !important;
+    align-items: center;
   }
-  footer .footerBloc1 .bloc-right {
-    justify-content: space-evenly;
-    width: 100%;
+  /*** RECEIVED MESSAGES PAGE ***/
+  .receivedMessage {
+    width: 80% !important;
   }
-  footer .footerBloc1 .list {
-    margin-left: 10px !important;
+}
+@media all and (max-width: 800px) {
+  /********** ADMIN PAGES **********/
+  /*** MAIN DASHBOARD ***/
+  /*** SECTIONS OF MAIN DASHBOARD***/
+  .dashboardBloc {
+    /*** FUTURE TRIPS ***/
   }
-  footer .footerBloc1 .list ul {
-    padding: 0 !important;
+  .dashboardBloc .each-trip {
+    width: 600px !important;
+  }
+  /*** USERS INDEX PAGE ***/
+  .dataTables_info,
+  .table-info {
+    flex-direction: column;
+    align-items: start;
+  }
+  .dataTables_info .dataTables_length,
+  .table-info .dataTables_length {
+    margin-bottom: 20px;
   }
 }
 @media all and (max-width: 600px) {
@@ -105,6 +189,60 @@
   #our-previous-trips .previous-trip-text {
     width: 400px !important;
   }
+  /********** ASSO PAGE **********/
+  /*** MONTHLY MEETING ***/
+  #monthly-meeting .our-meeting {
+    flex-direction: column-reverse !important;
+  }
+  #monthly-meeting .meetingLeft,
+  #monthly-meeting .meetingRight {
+    width: 500px !important;
+  }
+  /*** AGENDA ***/
+  #agenda iframe {
+    width: 90% !important;
+    height: 400px !important;
+  }
+  /*** FUTURE TRIPS INDEX ***/
+  #futures-sorties .each-trip {
+    width: 500px !important;
+    margin: 20px !important;
+  }
+  #futures-sorties img {
+    width: 400px !important;
+    height: 250px !important;
+  }
+  /*** FUTURE TRIPS SHOW ***/
+  .mainShow .showLeft img {
+    width: 500px !important;
+    height: 350px !important;
+  }
+  .mainShow .showLeft #mapFutureTrip {
+    width: 500px !important;
+    height: 350px !important;
+  }
+  .mainShow .showRight {
+    width: 500px !important;
+  }
+  /********** ADMIN PAGES **********/
+  /*** MAIN DASHBOARD ***/
+  .dashboardBloc {
+    /*** PRESENTATION ***/
+    /*** FUTURE TRIPS ***/
+  }
+  .dashboardBloc .presentation .asso-text {
+    width: 500px !important;
+  }
+  .dashboardBloc .each-trip {
+    width: 500px !important;
+  }
+  /*** FORMS TO CREATE & EDIT DASHBOARD ELEMENTS ***/
+  .editForm {
+    padding: 10px !important;
+  }
+  .editForm .usersChoice {
+    width: 480px !important;
+  }
 }
 @media all and (max-width: 500px) {
   /********** PARTIALS **********/
@@ -115,6 +253,13 @@
   }
   .headerIndex h1 {
     font-size: 50px;
+  }
+  .headerPages {
+    min-height: 70vh !important;
+    height: auto;
+  }
+  .headerPages h1 {
+    font-size: 80px !important;
   }
   /********** INDEX PAGE **********/
   /*** OUR STORY ***/
@@ -132,15 +277,94 @@
     width: 287px !important;
     padding: 10px !important;
   }
+  /********** ASSO PAGE **********/
+  /*** MONTHLY MEETING ***/
+  #monthly-meeting .meetingLeft,
+  #monthly-meeting .meetingRight {
+    width: 400px !important;
+  }
+  /*** FUTURE TRIPS INDEX ***/
+  #futures-sorties .each-trip {
+    width: 400px !important;
+    height: 600px !important;
+    padding: 0 20px !important;
+  }
+  #futures-sorties img {
+    width: 300px !important;
+    height: 210px !important;
+  }
+  /*** FUTURE TRIPS SHOW ***/
+  .mainShow .showLeft img {
+    width: 400px !important;
+    height: 250px !important;
+  }
+  .mainShow .showLeft #mapFutureTrip {
+    width: 400px !important;
+    height: 250px !important;
+  }
+  .mainShow .showRight {
+    width: 400px !important;
+  }
+  /********** FORUM PAGE **********/
+  .mainForum {
+    padding: 0 !important;
+  }
+  .mainForum .forum {
+    width: 90% !important;
+  }
+  .mainForum .postContent {
+    flex-direction: column;
+    margin-bottom: 35px !important;
+  }
+  .mainForum .postContent p {
+    width: 100% !important;
+  }
+  .mainForum .author {
+    width: 100% !important;
+  }
+  .mainForum .answersAuthor {
+    width: 100% !important;
+  }
+  /********** ADMIN PAGES **********/
+  /*** MAIN DASHBOARD ***/
+  .dashboardBloc {
+    /*** PRESENTATION ***/
+    /*** FUTURE TRIPS ***/
+  }
+  .dashboardBloc .presentation .asso-text {
+    width: 400px !important;
+  }
+  .dashboardBloc .each-trip {
+    width: 400px !important;
+  }
+  .dashboardBloc .pic-infos {
+    flex-direction: column !important;
+  }
+  /*** FORMS TO CREATE & EDIT DASHBOARD ELEMENTS ***/
+  .editForm .custom-form {
+    width: 300px !important;
+  }
+  .editForm .usersChoice {
+    width: 300px !important;
+    -moz-column-count: 1 !important;
+         column-count: 1 !important;
+  }
 }
 @media all and (max-width: 400px) {
   /********** PARTIALS **********/
+  /***** HEADERS *****/
+  .headerPages h1 {
+    font-size: 55px !important;
+  }
   /***** FOOTER *****/
   footer .bloc-right {
     margin-left: 10px !important;
   }
   footer .bloc-right .list {
     font-size: 15px !important;
+  }
+  footer .footerBloc2 {
+    flex-direction: column;
   }
   /********** INDEX PAGE **********/
   /*** OUR PURPOSES ***/
@@ -162,6 +386,80 @@
     height: 190px !important;
   }
   #our-previous-trips .previous-trip-text {
+    width: 280px !important;
+  }
+  /********** ASSO PAGE **********/
+  /*** MONTHLY MEETING ***/
+  #monthly-meeting .meetingLeft,
+  #monthly-meeting .meetingRight {
+    width: 290px !important;
+  }
+  /*** FUTURE TRIPS INDEX ***/
+  #futures-sorties .each-trip {
+    width: 290px !important;
+    height: 550px !important;
+  }
+  #futures-sorties img {
+    width: 230px !important;
+    height: 150px !important;
+  }
+  /*** FUTURE TRIPS SHOW ***/
+  .mainShow .showLeft img {
+    width: 290px !important;
+    height: 220px !important;
+  }
+  .mainShow .showLeft #mapFutureTrip {
+    width: 290px !important;
+    height: 220px !important;
+  }
+  .mainShow .showRight {
+    width: 290px !important;
+  }
+  .mainShow ul {
+    padding: 0 !important;
+  }
+  /********** ADMIN PAGES **********/
+  /*** MAIN DASHBOARD ***/
+  .dashboardBloc {
+    /*** PRESENTATION ***/
+    /*** MONTHLY MEETING ***/
+    /*** FUTURE TRIPS ***/
+    /***** LIST OF MEMBERS IN ALL PAGES *****/
+  }
+  .dashboardBloc .presentation .asso-pic,
+  .dashboardBloc .presentation .asso-text,
+  .dashboardBloc .presentation .bloc-down {
+    width: 280px !important;
+    margin: 20px 0 !important;
+  }
+  .dashboardBloc .asso-meet {
+    width: 280px !important;
+    margin: 20px 0 !important;
+  }
+  .dashboardBloc .each-trip {
+    width: 280px !important;
+    margin: 20px 0 !important;
+  }
+  .dashboardBloc .user-list {
+    -moz-column-count: 1;
+         column-count: 1;
+  }
+  /*** RECEIVED MESSAGES PAGE ***/
+  .receivedMessage {
+    width: 100% !important;
+  }
+  /*** FORMS TO CREATE & EDIT DASHBOARD ELEMENTS ***/
+  .editForm {
+    padding: 10px !important;
+  }
+  .editForm .bloc {
+    flex-direction: column;
+    align-items: center !important;
+  }
+  .editForm .custom-form {
+    width: 280px !important;
+  }
+  .editForm .usersChoice {
     width: 280px !important;
   }
 }
@@ -303,6 +601,7 @@ a:hover {
 #sidebarFullsize nav {
   height: 100%;
   margin: 0;
+  padding: 0 15px;
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
@@ -319,10 +618,10 @@ a:hover {
 
 #sidebarResponsive {
   display: none;
-  width: 6rem;
+  width: 5rem;
   position: fixed;
-  top: 0;
-  height: 100vh;
+  top: 86px;
+  height: 100%;
   z-index: 900;
 }
 #sidebarResponsive .fixed-sidebar {
@@ -658,16 +957,20 @@ footer .footerBloc2 .brand {
 }
 #monthly-meeting .our-meeting {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
 }
-#monthly-meeting .meetingLeft img {
+#monthly-meeting .meetingLeft {
   width: 500px;
+}
+#monthly-meeting .meetingLeft img {
+  width: 100%;
+  height: 100%;
   margin: 40px 0;
 }
 #monthly-meeting .meetingLeft #mapMeetings {
+  width: 100%;
   height: 300px;
-  width: 500px;
 }
 #monthly-meeting .meetingRight {
   width: 700px;
@@ -683,7 +986,6 @@ footer .footerBloc2 .brand {
 #monthly-meeting .meetingLeft {
   opacity: 0;
   transform: translateX(100);
-  /* Initial position */
   transition: opacity 0.8s ease, transform 1s ease;
 }
 #monthly-meeting .animate-from-left {
@@ -709,6 +1011,10 @@ footer .footerBloc2 .brand {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+#agenda iframe {
+  width: 60%;
+  height: 600px;
 }
 
 /*** FUTURE TRIPS INDEX ***/
@@ -788,9 +1094,11 @@ footer .footerBloc2 .brand {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 40px;
 }
 .mainShow .showRight p {
   text-align: center;
+  padding: 20px;
 }
 .mainShow .showRight h4 {
   margin-top: 40px;
@@ -976,7 +1284,7 @@ footer .footerBloc2 .brand {
   border-radius: 5px;
   margin-bottom: 40px;
   display: block;
-  width: 800px;
+  width: 100%;
   padding: 10px;
 }
 .mainContact #contacts_agreeTerms {
@@ -985,6 +1293,8 @@ footer .footerBloc2 .brand {
 
 /********** LOGIN & REGISTER PAGES **********/
 .loginForm {
+  margin-top: 85px;
+  padding: 80px 20px;
   background-color: #16171A;
   color: #F3F4F7;
   display: flex;
@@ -1002,7 +1312,7 @@ footer .footerBloc2 .brand {
   border: 1px solid #F3F4F7;
   border-radius: 5px;
   display: block;
-  width: 500px;
+  width: 300px;
   padding: 10px;
 }
 .loginForm label {
@@ -1024,7 +1334,7 @@ footer .footerBloc2 .brand {
 }
 
 /********** ADMIN PAGES **********/
-/*** GENERAL DASHBOARD ***/
+/*** MAIN DASHBOARD ***/
 .dashboard {
   background-color: #d6d6d6;
   color: #25262A;
@@ -1052,10 +1362,12 @@ footer .footerBloc2 .brand {
 }
 .dashboard .dashboardBloc .presentation {
   display: flex;
+  justify-content: center;
 }
 .dashboard .dashboardBloc .bloc-left {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 .dashboard .dashboardBloc .bloc-up {
   display: flex;
@@ -1071,6 +1383,7 @@ footer .footerBloc2 .brand {
   border-radius: 10px;
   box-shadow: #0D121C 0px 0 5px;
   padding: 20px;
+  width: 90%;
 }
 .dashboard .dashboardBloc .bloc {
   display: flex;
@@ -1083,10 +1396,10 @@ footer .footerBloc2 .brand {
   padding: 10px;
 }
 .dashboard .dashboardBloc .asso-pic {
-  width: 300px;
+  width: 290px;
 }
 .dashboard .dashboardBloc .asso-text {
-  width: 700px;
+  width: 600px;
 }
 .dashboard .dashboardBloc .asso-logo {
   width: 180px;
@@ -1120,6 +1433,7 @@ footer .footerBloc2 .brand {
 }
 .dashboard .dashboardBloc .meet-bloc {
   margin: 10px 20px;
+  width: 290px;
   display: flex;
   flex-direction: column;
 }
@@ -1336,6 +1650,8 @@ footer .footerBloc2 .brand {
   justify-content: start;
   align-items: center;
   padding: 80px;
+  min-height: 100vh;
+  height: auto;
 }
 .editForm h2 {
   margin-top: 60px;
@@ -1373,6 +1689,10 @@ footer .footerBloc2 .brand {
   justify-content: space-evenly;
   width: 400px;
   margin: 20px;
+}
+.editForm .button {
+  width: -moz-fit-content;
+  width: fit-content;
 }
 .editForm .hide-button {
   display: none;

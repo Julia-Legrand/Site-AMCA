@@ -133,6 +133,7 @@ a:hover {
     nav {
         height: 100%;
         margin: 0;
+        padding: 0 15px;
         display: flex;
         flex-direction: column;
         flex-shrink: 0;
@@ -152,10 +153,10 @@ a:hover {
 
 #sidebarResponsive {
     display: none;
-    width: 6rem;
+    width: 5rem;
     position: fixed;
-    top: 0;
-    height: 100vh;
+    top: 86px;
+    height: 100%;
     z-index: 900;
 
     .fixed-sidebar {
@@ -540,19 +541,22 @@ footer {
 
     .our-meeting {
         display: flex;
-        justify-content: space-evenly;
+        justify-content: space-around;
         align-items: center;
     }
 
     .meetingLeft {
+        width: 500px;
+
         img {
-            width: 500px;
+            width: 100%;
+            height: 100%;
             margin: 40px 0;
         }
 
         #mapMeetings {
+            width: 100%;
             height: 300px;
-            width: 500px;
         }
     }
 
@@ -573,7 +577,6 @@ footer {
     .meetingLeft {
         opacity: 0;
         transform: translateX(100);
-        /* Initial position */
         transition: opacity 0.8s ease, transform 1s ease;
     }
 
@@ -604,6 +607,11 @@ footer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    iframe {
+        width: 60%;
+        height: 600px;
+    }
 }
 
 /*** FUTURE TRIPS INDEX ***/
@@ -692,9 +700,11 @@ footer {
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        margin-bottom: 40px;
 
         p {
             text-align: center;
+            padding: 20px;
         }
 
         h4 {
@@ -911,7 +921,7 @@ footer {
         border-radius: 5px;
         margin-bottom: 40px;
         display: block;
-        width: 800px;
+        width: 100%;
         padding: 10px;
     }
 
@@ -922,6 +932,8 @@ footer {
 
 /********** LOGIN & REGISTER PAGES **********/
 .loginForm {
+    margin-top: 85px;
+    padding: 80px 20px;
     background-color: $darker;
     color: $light;
     display: flex;
@@ -940,7 +952,7 @@ footer {
         border: 1px solid $light;
         border-radius: 5px;
         display: block;
-        width: 500px;
+        width: 300px;
         padding: 10px;
     }
 
@@ -967,7 +979,7 @@ footer {
 }
 
 /********** ADMIN PAGES **********/
-/*** GENERAL DASHBOARD ***/
+/*** MAIN DASHBOARD ***/
 .dashboard {
     background-color: #d6d6d6;
     color: $dark;
@@ -991,11 +1003,13 @@ footer {
         /*** PRESENTATION ***/
         .presentation {
             display: flex;
+            justify-content: center;
         }
 
         .bloc-left {
             display: flex;
             flex-direction: column;
+            align-items: center;
         }
 
         .bloc-up {
@@ -1013,6 +1027,7 @@ footer {
             border-radius: 10px;
             box-shadow: #0D121C 0px 0 5px;
             padding: 20px;
+            width: 90%;
         }
 
         .bloc {
@@ -1028,11 +1043,11 @@ footer {
         }
 
         .asso-pic {
-            width: 300px;
+            width: 290px;
         }
 
         .asso-text {
-            width: 700px;
+            width: 600px;
         }
 
         .asso-logo {
@@ -1074,6 +1089,7 @@ footer {
 
         .meet-bloc {
             margin: 10px 20px;
+            width: 290px;
             display: flex;
             flex-direction: column;
         }
@@ -1335,6 +1351,8 @@ footer {
     justify-content: start;
     align-items: center;
     padding: 80px;
+    min-height: 100vh;
+    height: auto;
 
     h2 {
         margin-top: 60px;
@@ -1375,6 +1393,10 @@ footer {
         justify-content: space-evenly;
         width: 400px;
         margin: 20px;
+    }
+
+    .button {
+        width: fit-content;
     }
 
     .hide-button {

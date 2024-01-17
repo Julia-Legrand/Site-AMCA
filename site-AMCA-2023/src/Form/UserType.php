@@ -52,7 +52,7 @@ class UserType extends AbstractType
                 'multiple' => true,
                 'expanded' => true,
                 'choice_attr' => function ($choice, $key, $value) {
-                    return ['style' => 'margin-right: 5px; margin-left: 20px;'];
+                    return ['style' => 'margin-right: 5px; margin-left: 10px'];
                 },
             ])
             ->add('firstName', TextType::class, [
@@ -105,7 +105,7 @@ class UserType extends AbstractType
                 'multiple' => true,
                 'expanded' => true,
                 'choice_attr' => function ($choice, $key, $value) {
-                    return ['style' => 'margin-right: 5px; margin-left: 20px;'];
+                    return ['style' => 'margin-right: 5px; margin-left: 8px;'];
                 },
             ]);
     }

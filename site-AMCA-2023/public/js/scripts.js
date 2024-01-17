@@ -1,13 +1,13 @@
 // Animation to bring the two divs closer together on scroll in the "à-propos" section
 document.addEventListener("DOMContentLoaded", function () {
-  var textElements = document.querySelectorAll(".story-picture");
-  var pictureElements = document.querySelectorAll(".story-text");
+  let textElements = document.querySelectorAll(".story-picture");
+  let pictureElements = document.querySelectorAll(".story-text");
 
   function checkElements(elements) {
     elements.forEach(function (element) {
-      var elementTop = element.getBoundingClientRect().top;
-      var windowHeight = window.innerHeight;
-      var scroll = window.scrollY || window.pageYOffset;
+      let elementTop = element.getBoundingClientRect().top;
+      let windowHeight = window.innerHeight;
+      let scroll = window.scrollY || window.pageYOffset;
 
       // Adding the condition for responsive design
       if (window.innerWidth >= 1311) {
@@ -42,22 +42,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Animation to bring the two divs closer together on scroll in the "monthly-meeting" section
 document.addEventListener("DOMContentLoaded", function () {
-  var textElements = document.querySelectorAll(".meetingLeft");
-  var pictureElements = document.querySelectorAll(".meetingRight");
+  let textElements = document.querySelectorAll(".meetingLeft");
+  let pictureElements = document.querySelectorAll(".meetingRight");
 
   function checkElements(elements) {
     elements.forEach(function (element) {
-      var elementTop = element.getBoundingClientRect().top;
-      var windowHeight = window.innerHeight;
-      var scroll = window.scrollY || window.pageYOffset;
+      let elementTop = element.getBoundingClientRect().top;
+      let windowHeight = window.innerHeight;
+      let scroll = window.scrollY || window.pageYOffset;
 
       // Adding the condition for responsive design
-      if (window.innerWidth >= 1131) {
+      if (window.innerWidth >= 1311) {
         if (scroll > elementTop - windowHeight + 100) {
           element.classList.add("animated");
         }
       } else {
-        // If the screen width is less than 1130 pixels, disable the animation
+        // If the screen width is less than 1311 pixels, disable the animation
         element.classList.remove("animated");
       }
     });
@@ -84,16 +84,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Animation to display each-trip on scroll
 document.addEventListener("DOMContentLoaded", function () {
-  var tripElements = document.querySelectorAll(".each-trip");
+  let tripElements = document.querySelectorAll(".each-trip");
 
   function showTripsOnScroll() {
     tripElements.forEach(function (tripElement) {
-      var rect = tripElement.getBoundingClientRect();
-      var windowHeight =
+      let rect = tripElement.getBoundingClientRect();
+      let windowHeight =
         window.innerHeight || document.documentElement.clientHeight;
 
-      // Vous pouvez ajuster cette valeur (0.5) pour déterminer quand les éléments devraient apparaître
-      var isVisible = rect.top <= windowHeight * 0.5 && rect.bottom >= 0;
+      let isVisible = rect.top <= windowHeight * 0.5 && rect.bottom >= 0;
 
       if (isVisible && !tripElement.classList.contains("visible")) {
         tripElement.classList.add("visible");

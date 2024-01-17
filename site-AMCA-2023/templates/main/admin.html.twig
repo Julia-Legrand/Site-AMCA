@@ -110,13 +110,13 @@
 							</a>
 						</p>
 						<div class="meet-blocs">
-							<div class="meet-bloc" style="width: 280px;">
+							<div class="meet-bloc">
 								<p>Date : le
 									{{ meeting.meetingDate ? meeting.meetingDate|date('d-m-Y à H:i') : '' }}</p>
 								<p>Photo de la salle :</p>
 								<img src="{{ asset('uploads/images/' ~ meeting.meetingPicture) }}" alt="Photo de la salle de réunion">
 							</div>
-							<div class="meet-bloc" style="width: 280px;">
+							<div class="meet-bloc">
 								<p>Adresse :</p>
 								<p>{{ meeting.meetingAddress }}</p>
 
@@ -126,7 +126,7 @@
 								<small>Latitude :
 									{{ meeting.meetingLat }}</small>
 							</div>
-							<div class="meet-bloc" style="width: 400px;">
+							<div class="meet-bloc">
 								<p>Description :</p>
 								<p class="description">{{ meeting.meetingContent }}</p>
 							</div>
