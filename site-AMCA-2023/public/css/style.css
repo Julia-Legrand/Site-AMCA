@@ -161,6 +161,19 @@
   .table-info .dataTables_length {
     margin-bottom: 20px;
   }
+  /***** LEGAL PAGES *****/
+  .mainLegals h1 {
+    font-size: 70px !important;
+    padding: 20px !important;
+  }
+  .mainLegals .blocsLegals {
+    flex-direction: column;
+    align-items: center;
+  }
+  .mainLegals .blocsLegals .blocLeft,
+  .mainLegals .blocsLegals .blocRight {
+    width: 100% !important;
+  }
 }
 @media all and (max-width: 600px) {
   /********** PARTIALS **********/
