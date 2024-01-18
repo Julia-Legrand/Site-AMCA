@@ -10,9 +10,7 @@
 
 		<div class="dashboard">
 			<h1>Liste des adhérents</h1>
-			<a class="button" href="{{ path('app_register') }}">
-				<i class="fa-solid fa-plus"></i>
-				Ajouter un adhérent</a>
+
 			<div class="table-responsive">
 				<table id="dataTable">
 					<thead>
@@ -28,24 +26,32 @@
 							<th>Ville</th>
 							<th>Date de naissance</th>
 							<th>Moto</th>
+							<th>Statut</th>
 							<th>Modifier</th>
 						</tr>
 					</thead>
 					<tbody>
 						{% for user in users %}
 							<tr>
-								<td data-label="Numéro d'adhérent :">{{ user.memberNumber }}</td>
-								<td data-label="Attribution :">{{ user.assignment ? user.assignment|json_encode : '' }}</td>
-								<td data-label="Prénom :">{{ user.firstName }}</td>
-								<td data-label="Nom :">{{ user.lastName }}</td>
-								<td data-label="Email :">{{ user.email }}</td>
-								<td data-label="Téléphone :">{{ user.phoneNumber }}</td>
-								<td data-label="Adresse :">{{ user.address }}</td>
-								<td data-label="Code postal :">{{ user.postCode }}</td>
-								<td data-label="Ville :">{{ user.city }}</td>
-								<td data-label="Date de naissance :">{{ user.birthdate ? user.birthdate|date('d-m-Y') : '' }}</td>
-								<td data-label="Moto :">{{ user.bike }}</td>
-								<td data-label="Modifier :">
+								<td>{{ user.memberNumber }}</td>
+								<td>{{ user.assignment ? user.assignment|json_encode : '' }}</td>
+								<td>{{ user.firstName }}</td>
+								<td>{{ user.lastName }}</td>
+								<td>{{ user.email }}</td>
+								<td>{{ user.phoneNumber }}</td>
+								<td>{{ user.address }}</td>
+								<td>{{ user.postCode }}</td>
+								<td>{{ user.city }}</td>
+								<td>{{ user.birthdate ? user.birthdate|date('d-m-Y') : '' }}</td>
+								<td>{{ user.bike }}</td>
+								<td>
+									{% if user.status == 0 %}
+										Inactif
+									{% else %}
+										Actif
+									{% endif %}
+								</td>
+								<td>
 									<a href="{{ path('app_user_edit', {'id': user.id}) }}">
 										<i class="fa-solid fa-pencil icon"></i>
 									</a>

@@ -19,7 +19,7 @@ class UserType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        // Ajoutez plainPassword uniquement si l'utilisateur est créé
+        // Add plainPassword only if user is created
         if ($options['data']->getId() === null) {
             $builder->add('plainPassword', PasswordType::class, [
                 'mapped' => false,
@@ -44,12 +44,12 @@ class UserType extends AbstractType
                 'attr' => ['class' => 'custom-form'],
             ])
             ->add('assignment', ChoiceType::class, [
-                'label' => 'Attribution',
+                'label' => 'Profil',
                 'choices' => [
                     'Conducteur' => 'Conducteur',
                     'Passager' => 'Passager',
                 ],
-                'multiple' => true,
+                'multiple' => false,
                 'expanded' => true,
                 'choice_attr' => function ($choice, $key, $value) {
                     return ['style' => 'margin-right: 5px; margin-left: 10px'];
@@ -106,6 +106,18 @@ class UserType extends AbstractType
                 'expanded' => true,
                 'choice_attr' => function ($choice, $key, $value) {
                     return ['style' => 'margin-right: 5px; margin-left: 8px;'];
+                },
+            ])
+            ->add('status', ChoiceType::class, [
+                'label' => 'Statut',
+                'choices' => [
+                    'Inactif' => false,
+                    'Actif' => true,
+                ],
+                'multiple' => false,
+                'expanded' => true,
+                'choice_attr' => function ($choice, $key, $value) {
+                    return ['style' => 'margin-right: 5px; margin-left: 10px'];
                 },
             ]);
     }

@@ -73,14 +73,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'users', targetEntity: Themes::class)]
     private Collection $themes;
 
-    #[ORM\Column(type: "json")]
-    private array $assignment = [];
+    #[ORM\Column(type: "string")]
+    private ?string $assignment = null;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Posts::class)]
     private Collection $posts;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Comments::class)]
     private Collection $comments;
+
+    #[ORM\Column]
+    private ?bool $status = null;
 
     public function __construct()
     {
@@ -89,6 +92,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->themes = new ArrayCollection();
         $this->posts = new ArrayCollection();
         $this->comments = new ArrayCollection();
+        $this->status = false;
     }
 
     public function getId(): ?int
@@ -326,14 +330,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    // Getter
-    public function getAssignment(): ?array
+    public function getAssignment(): ?string
     {
         return $this->assignment;
     }
 
-    // Setter
-    public function setAssignment(array $assignment): static
+    public function setAssignment(string $assignment): static
     {
         $this->assignment = $assignment;
 
@@ -396,6 +398,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $comment->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function isStatus(): ?bool
+    {
+        return $this->status;
+    }
+
+    public function setStatus(bool $status): static
+    {
+        $this->status = $status;
 
         return $this;
     }

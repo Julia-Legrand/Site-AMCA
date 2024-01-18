@@ -76,12 +76,17 @@ class MainController extends AbstractController
     #[Route('/forum', name: 'forum')]
     public function forum(PresentationsRepository $presentationsRepository, ThemesRepository $themesRepository, PostsRepository $postsRepository, CommentsRepository $commentsRepository): Response
     {
-        return $this->render('main/forum.html.twig', [
-            'presentations' => $presentationsRepository->findAll(),
-            'themes' => $themesRepository->findAll(),
-            'posts' => $postsRepository->findAll(),
-            'comments' => $commentsRepository->findAll(),
-        ]);
+        // Check if the user has the status set to true (validated)
+        if ($this->getUser()->isStatus()) {
+            return $this->render('main/forum.html.twig', [
+                'presentations' => $presentationsRepository->findAll(),
+                'themes' => $themesRepository->findAll(),
+                'posts' => $postsRepository->findAll(),
+                'comments' => $commentsRepository->findAll(),
+            ]);
+        } else {
+            throw $this->createAccessDeniedException('Vous n\'avez pas la permission d\'accéder au forum.');
+        }
     }
 
     #[Route('/politique-de-confidentialite', name: 'confid')]

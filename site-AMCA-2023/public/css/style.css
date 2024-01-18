@@ -534,6 +534,12 @@ p {
 /***** LINKS *****/
 a {
   font-family: "Montserrat", sans-serif;
+  text-decoration: none;
+}
+
+a.errorLinks {
+  color: #F3F4F7;
+  text-decoration: none;
 }
 
 a:hover {
@@ -691,6 +697,11 @@ a:hover {
 }
 .headerPages h1 {
   margin: 70px 0;
+}
+
+.headerForum {
+  min-height: 50vh;
+  height: auto;
 }
 
 .headerShow {
@@ -1306,6 +1317,8 @@ footer .footerBloc2 .brand {
 
 /********** LOGIN & REGISTER PAGES **********/
 .loginForm {
+  min-height: 100vh;
+  height: auto;
   margin-top: 85px;
   padding: 80px 20px;
   background-color: #16171A;
@@ -1349,6 +1362,8 @@ footer .footerBloc2 .brand {
 /********** ADMIN PAGES **********/
 /*** MAIN DASHBOARD ***/
 .dashboard {
+  min-height: 100vh;
+  height: auto;
   background-color: #d6d6d6;
   color: #25262A;
   padding: 20px;
@@ -1603,9 +1618,6 @@ footer .footerBloc2 .brand {
 .dashboard .dataTables_wrapper .dataTables_paginate {
   margin-right: 30px;
   margin-bottom: 40px;
-}
-.dashboard #dataTable_previous {
-  background-color: transparent;
 }
 .dashboard .page-link {
   background-color: transparent;

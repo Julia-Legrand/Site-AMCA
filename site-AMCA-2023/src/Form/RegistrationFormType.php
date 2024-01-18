@@ -25,15 +25,15 @@ class RegistrationFormType extends AbstractType
                 'attr' => ['class' => 'custom-form'],
             ])
             ->add('assignment', ChoiceType::class, [
-                'label' => 'Attribution',
+                'label' => 'Profil',
                 'choices' => [
                     'Conducteur' => 'Conducteur',
                     'Passager' => 'Passager',
                 ],
-                'multiple' => true,
+                'multiple' => false,
                 'expanded' => true,
                 'choice_attr' => function ($choice, $key, $value) {
-                    return ['style' => 'margin-right: 5px; margin-left: 20px;'];
+                    return ['style' => 'margin-right: 5px; margin-left: 10px'];
                 },
             ])
             ->add('firstName', TextType::class, [
@@ -53,7 +53,7 @@ class RegistrationFormType extends AbstractType
                 ],
             ])
             ->add('plainPassword', PasswordType::class, [
-                // instead of being set onto the object directly,
+                // Instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,
                 'attr' => ['autocomplete' => 'new-password', 'class' => 'custom-form'],
@@ -62,9 +62,9 @@ class RegistrationFormType extends AbstractType
                         'message' => 'Veuillez entrer un mot de passe',
                     ]),
                     new Length([
-                        'min' => 6,
+                        'min' => 8,
                         'minMessage' => 'Votre mot de passe doit comporter au moins {{ limit }} caractères',
-                        // la longueur maximale autorisée par Symfony pour des raisons de sécurité
+                        // Max length autorised by Symfony for security reasons
                         'max' => 4096,
                     ]),
                 ],

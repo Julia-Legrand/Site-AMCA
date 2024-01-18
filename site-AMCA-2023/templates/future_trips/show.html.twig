@@ -6,6 +6,24 @@
 {% endblock %}
 
 {% block body %}
+	{% for message in app.flashes('success') %}
+		<div class="alert alert-success">
+			{{ message }}
+		</div>
+	{% endfor %}
+
+	{% for message in app.flashes('error') %}
+		<div class="alert alert-danger">
+			{{ message }}
+		</div>
+	{% endfor %}
+
+	{% for message in app.flashes('info') %}
+		<div class="alert alert-info">
+			{{ message }}
+		</div>
+	{% endfor %}
+
 	<header class="headerShow">
 		<h1>{{ futureTrip.futureTripName }}</h1>
 		<h2>Du
@@ -32,7 +50,7 @@
 					<li>{{ user.firstName ~ ' ' ~ user.lastName }}</li>
 				{% endfor %}
 			</ul>
-			<a href="{{ path('app_contacts_new') }}" class="button">S'inscrire</a>
+			{{ include('future_trips/_subscribe_form.html.twig') }}
 		</div>
 	</main>
 	{% include "_partials/_footer.html.twig" %}
@@ -40,17 +58,25 @@
 	<!--JAVASCRIPT-->
 	<script>
 		// Display map for the specific future trip
-var mapFutureTrip = L.map('mapFutureTrip').setView([
+let mapFutureTrip = L.map('mapFutureTrip').setView([
 {{ futureTrip.futureTripLon }}, {{ futureTrip.futureTripLat }}
 ], 8);
 
-var futureTripMarker = L.marker([{{ futureTrip.futureTripLon }}, {{ futureTrip.futureTripLat }}]).addTo(mapFutureTrip);
+let futureTripMarker = L.marker([{{ futureTrip.futureTripLon }}, {{ futureTrip.futureTripLat }}]).addTo(mapFutureTrip);
 
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 maxZoom: 19,
 attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(mapFutureTrip);
 
-futureTripMarker.bindPopup("Voyage prévu :    {{ futureTrip.futureTripName }}du   {{ futureTrip.startDate | date('d-m-Y') }}au   {{ futureTrip.endDate | date('d-m-Y') }}");
+futureTripMarker.bindPopup("Voyage prévu :         {{ futureTrip.futureTripName }}du        {{ futureTrip.startDate | date('d-m-Y') }}au        {{ futureTrip.endDate | date('d-m-Y') }}");
+
+// Display alerts within timing
+let alerts = document.querySelectorAll('.alert');
+alerts.forEach(alert => {
+setTimeout(() => {
+alert.remove();
+}, 3000);
+});
 	</script>
 {% endblock %}

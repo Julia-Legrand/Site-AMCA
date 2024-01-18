@@ -1,0 +1,4 @@
+<form method="post" action="{{ path('app_future_trips_subscribe', {'id': futureTrip.id}) }}">
+	<input type="hidden" name="_token" value="{{ csrf_token('subscribe' ~ futureTrip.id) }}">
+	<button class="button">S'inscrire</button>
+</form>

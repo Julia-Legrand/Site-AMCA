@@ -54,6 +54,12 @@ p {
 /***** LINKS *****/
 a {
     @include paragraph;
+    text-decoration: none;
+}
+
+a.errorLinks {
+    color: $light;
+    text-decoration: none;
 }
 
 a:hover {
@@ -219,6 +225,11 @@ a:hover {
     h1 {
         margin: 70px 0;
     }
+}
+
+.headerForum {
+    min-height: 50vh;
+    height: auto;
 }
 
 .headerShow {
@@ -932,6 +943,8 @@ footer {
 
 /********** LOGIN & REGISTER PAGES **********/
 .loginForm {
+    min-height: 100vh;
+    height: auto;
     margin-top: 85px;
     padding: 80px 20px;
     background-color: $darker;
@@ -981,6 +994,8 @@ footer {
 /********** ADMIN PAGES **********/
 /*** MAIN DASHBOARD ***/
 .dashboard {
+    min-height: 100vh;
+    height: auto;
     background-color: #d6d6d6;
     color: $dark;
     padding: 20px;
@@ -1280,10 +1295,6 @@ footer {
     .dataTables_wrapper .dataTables_paginate {
         margin-right: 30px;
         margin-bottom: 40px;
-    }
-
-    #dataTable_previous {
-        background-color: transparent;
     }
 
     .page-link {

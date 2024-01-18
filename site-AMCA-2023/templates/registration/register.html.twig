@@ -21,7 +21,7 @@
                 }
             }) }}
 
-			<label for="{{ registrationForm.assignment.vars.id }}">Attribution</label>
+			<label for="{{ registrationForm.assignment.vars.id }}">Profil</label>
 			{{ form_widget(registrationForm.assignment, {
             }) }}
 		</div>
@@ -47,7 +47,7 @@
 			{{ form_widget(registrationForm.email, {
                 attr: {
                     'class': 'custom-form',
-					'placeholder': 'john.doe@exemple.com'
+					'placeholder': 'exemple@exemple.com'
                 }
             }) }}
 
@@ -55,7 +55,7 @@
 			{{ form_widget(registrationForm.plainPassword, {
                 attr: {
                     'class': 'custom-form',
-					'placeholder': '8 caractères minimum, avec au moins un chiffre et un symbole'
+					'placeholder': '8 caractères minimum'
                 }
             }) }}
 		</div>
@@ -64,8 +64,7 @@
 			<label for="{{ registrationForm.phoneNumber.vars.id }}">Téléphone</label>
 			{{ form_widget(registrationForm.phoneNumber, {
                 attr: {
-                    'class': 'custom-form',
-					'placeholder': '00 00 00 00 00'
+                    'class': 'custom-form'
                 }
             }) }}
 		</div>
@@ -113,7 +112,7 @@
 
 		<div class="blocActions">
 			<button type="submit" class="button">Valider</button>
-			<a class="button" href="{{ path('app_user_index') }}">Retour</a>
+			<a class="button" href="{{ path('home') }}">Retour</a>
 		</div>
 		{{ form_end(registrationForm) }}
 	</div>

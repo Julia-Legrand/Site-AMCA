@@ -1,0 +1,13 @@
+{# templates/bundles/TwigBundle/Exception/error403.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	{% include "_partials/_headerAdmin.html.twig" %}
+	<div class="loginForm">
+		<h2>Accès refusé</h2>
+
+		<p>Vous n'avez pas la permission d'accéder à cette page.</p>
+		<p>Veuillez retourner sur la
+			<a class="errorLinks" href="{{ path('home') }}">page d'accueil</a>.</p>
+	</div>
+{% endblock %}
