@@ -30,7 +30,7 @@
 			{{ futureTrip.startDate ? futureTrip.startDate|date('d-m-Y') : '' }}
 			au
 			{{ futureTrip.endDate ? futureTrip.endDate|date('d-m-Y') : '' }}</h2>
-		<h4 style="margin-bottom: 60px;">Budget à prévoir :
+		<h4>Budget à prévoir :
 			{{ futureTrip.budget }}
 			euros</h4>
 	</header>
@@ -55,7 +55,6 @@
 	</main>
 	{% include "_partials/_footer.html.twig" %}
 
-	<!--JAVASCRIPT-->
 	<script>
 		// Display map for the specific future trip
 let mapFutureTrip = L.map('mapFutureTrip').setView([
@@ -69,7 +68,7 @@ maxZoom: 19,
 attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(mapFutureTrip);
 
-futureTripMarker.bindPopup("Voyage prévu :         {{ futureTrip.futureTripName }}du        {{ futureTrip.startDate | date('d-m-Y') }}au        {{ futureTrip.endDate | date('d-m-Y') }}");
+futureTripMarker.bindPopup("Voyage prévu :  {{ futureTrip.futureTripName }}du  {{ futureTrip.startDate | date('d-m-Y') }}au  {{ futureTrip.endDate | date('d-m-Y') }}");
 
 // Display alerts within timing
 let alerts = document.querySelectorAll('.alert');

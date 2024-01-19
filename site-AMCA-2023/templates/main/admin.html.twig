@@ -42,7 +42,7 @@
 												<i class="fa-solid fa-pencil icon"></i>
 											</a>
 										</p>
-										<img src="{{ asset('uploads/images/' ~ presentation.logo) }}" alt="Logo de l'association" width="140px" height="200px" style="background-color:white;">
+										<img src="{{ asset('uploads/images/' ~ presentation.logo) }}" alt="Logo de l'association" width="140" height="200" style="background-color:white;">
 									</div>
 									<div class="pres-bloc asso-fee">
 										{% for membership in memberships %}
@@ -82,19 +82,22 @@
 								<a href="{{ path('app_presentations_edit', {'id': presentation.id}) }}" title="Modifier" data-bs-toggle="tooltip" data-bs-placement="right">
 									<i class="fa-solid fa-pencil icon icon-small"></i>
 								</a>
-							</small><embed src="{{ asset('uploads/images/' ~ presentation.statutesDoc) }}" width="180px" height="200px" type="application/pdf">
+							</small>
+							<embed src="{{ asset('uploads/images/' ~ presentation.statutesDoc) }}" width="180" height="200" type="application/pdf">
 							<small style="margin-top:20px;">Règlement
 								<a href="{{ path('app_presentations_edit', {'id': presentation.id}) }}" title="Modifier" data-bs-toggle="tooltip" data-bs-placement="right">
 									<i class="fa-solid fa-pencil icon icon-small"></i>
 								</a>
-							</small><embed src="{{ asset('uploads/images/' ~ presentation.internalRulesDoc) }}" width="180px" height="200px" type="application/pdf">
+							</small>
+							<embed src="{{ asset('uploads/images/' ~ presentation.internalRulesDoc) }}" width="180" height="200" type="application/pdf">
 
 							{% for membership in memberships %}
 								<small style="margin-top:20px;">Bulletin d'adhésion
 									<a href="{{ path('app_memberships_edit', {'id': membership.id}) }}" title="Modifier" data-bs-toggle="tooltip" data-bs-placement="right">
 										<i class="fa-solid fa-pencil icon icon-small"></i>
 									</a>
-								</small><embed src="{{ asset('uploads/images/' ~ membership.membershipForm) }}" width="180px" height="200px" type="application/pdf">
+								</small>
+								<embed src="{{ asset('uploads/images/' ~ membership.membershipForm) }}" width="180" height="200" type="application/pdf">
 							{% endfor %}
 						</div>
 					</div>

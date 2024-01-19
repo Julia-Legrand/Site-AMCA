@@ -1206,6 +1206,9 @@ footer .footerBloc2 .brand {
   text-align: left;
   padding: 10px;
 }
+.mainForum aside table .textCenter {
+  text-align: center;
+}
 .mainForum aside table i {
   color: #25262A;
   font-size: 12px;

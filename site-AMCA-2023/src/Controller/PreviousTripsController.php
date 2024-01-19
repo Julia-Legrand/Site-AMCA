@@ -14,18 +14,11 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-#[Route('/previous_trips')]
+#[Route('/précédente-sortie')]
 class PreviousTripsController extends AbstractController
 {
-    #[Route('/', name: 'app_previous_trips_index', methods: ['GET'])]
-    public function index(PreviousTripsRepository $previousTripsRepository): Response
-    {
-        return $this->render('previous_trips/index.html.twig', [
-            'previous_trips' => $previousTripsRepository->findAll(),
-        ]);
-    }
 
-    #[Route('/new', name: 'app_previous_trips_new', methods: ['GET', 'POST'])]
+    #[Route('/nouveau', name: 'app_previous_trips_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager, PictureService $pictureService): Response
     {
         $previousTrip = new PreviousTrips();
@@ -33,7 +26,7 @@ class PreviousTripsController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // Gestion des fichiers uploadés
+            // Handling files uploading
             $tripPictures = $form->get('pictures')->getData();
 
             foreach ($tripPictures as $tripPicture) {
@@ -59,7 +52,7 @@ class PreviousTripsController extends AbstractController
         return $pictureService->add($file);
     }
 
-    #[Route('/{id}/edit', name: 'app_previous_trips_edit', methods: ['GET', 'POST'])]
+    #[Route('/{id}/modifier', name: 'app_previous_trips_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, PreviousTrips $previousTrip, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(PreviousTripsType::class, $previousTrip);

@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-#[Route('/photos-sorties')]
+#[Route('/photo-sortie')]
 class TripPicturesController extends AbstractController
 {
     #[Route('/', name: 'app_trip_pictures_index', methods: ['GET'])]
@@ -25,7 +25,7 @@ class TripPicturesController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_trip_pictures_new', methods: ['GET', 'POST'])]
+    #[Route('/nouveau', name: 'app_trip_pictures_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
         $tripPicture = new TripPictures();
@@ -59,7 +59,7 @@ class TripPicturesController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_trip_pictures_edit', methods: ['GET', 'POST'])]
+    #[Route('/{id}/modifier', name: 'app_trip_pictures_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, TripPictures $tripPicture, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
         $form = $this->createForm(TripPicturesType::class, $tripPicture);

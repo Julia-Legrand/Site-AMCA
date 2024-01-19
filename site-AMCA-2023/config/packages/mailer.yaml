@@ -1,3 +1,4 @@
-framework:
+when@dev:
+  framework:
     mailer:
-        dsn: '%env(MAILER_DSN)%'
+      dsn: "%env(MAILER_DSN)%"

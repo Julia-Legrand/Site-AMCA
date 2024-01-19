@@ -809,6 +809,10 @@ footer {
                 padding: 10px;
             }
 
+            .textCenter {
+                text-align: center;
+            }
+
             i {
                 color: $dark;
                 font-size: 12px;
@@ -1165,7 +1169,7 @@ footer {
                 padding: 20px;
             }
 
-            small.spaced {
+            .spaced {
                 margin-top: 10px;
             }
 

@@ -16,19 +16,9 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-#[Route('/thèmes')]
+#[Route('/thème')]
 class ThemesController extends AbstractController
 {
-    // #[Route('/', name: 'app_themes_index', methods: ['GET'])]
-    // public function index(ThemesRepository $themesRepository, PostsRepository $postsRepository, CommentsRepository $commentsRepository, PresentationsRepository $presentationsRepository): Response
-    // {
-    //     return $this->render('themes/index.html.twig', [
-    //         'themes' => $themesRepository->findAll(),
-    //         'posts' => $postsRepository->findAll(),
-    //         'comments' => $commentsRepository->findAll(),
-    //         'presentations' => $presentationsRepository->findAll(),
-    //     ]);
-    // }
 
     #[IsGranted('ROLE_ADMIN')]
     #[Route('/nouveau', name: 'app_themes_new', methods: ['GET', 'POST'])]

@@ -14,18 +14,11 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-#[Route('/futures-sorties')]
+#[Route('/future-sortie')]
 class FutureTripsController extends AbstractController
 {
-    #[Route('/', name: 'app_future_trips_index', methods: ['GET'])]
-    public function index(FutureTripsRepository $futureTripsRepository): Response
-    {
-        return $this->render('future_trips/index.html.twig', [
-            'futureTrips' => $futureTripsRepository->findAll(),
-        ]);
-    }
 
-    #[Route('/new', name: 'app_future_trips_new', methods: ['GET', 'POST'])]
+    #[Route('/nouveau', name: 'app_future_trips_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
         $futureTrip = new FutureTrips();
@@ -63,7 +56,7 @@ class FutureTripsController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_future_trips_edit', methods: ['GET', 'POST'])]
+    #[Route('/{id}/modifier', name: 'app_future_trips_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, FutureTrips $futureTrip, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
         $form = $this->createForm(FutureTripsType::class, $futureTrip);

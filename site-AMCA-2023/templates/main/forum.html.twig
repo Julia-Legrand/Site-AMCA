@@ -13,12 +13,12 @@
 		<aside>
 			<div class="new">
 				{% if is_granted('ROLE_ADMIN') %}
-					<a class="button" href="{{ path('app_themes_new') }}" style="width:187px;">
+					<a class="button" href="{{ path('app_themes_new') }}" width="187">
 						Nouveau thème
 						<i class="fa-solid fa-plus"></i>
 					</a>
 				{% endif %}
-				<a class="button" href="{{ path('app_posts_new') }}" style="width:224px;">
+				<a class="button" href="{{ path('app_posts_new') }}" width="224">
 					Nouvelle discussion
 					<i class="fa-solid fa-plus"></i>
 				</a>
@@ -30,7 +30,7 @@
 							<i class="fa-solid fa-tags"></i>
 							Thèmes
 						</th>
-						<th style="text-align:center;">
+						<th class="textCenter">
 							Discussions
 						</th>
 					</tr>
@@ -39,7 +39,7 @@
 							<td>
 								{{ theme.themeTitle }}
 							</td>
-							<td style="text-align:center;">{{ theme.post|length }}
+							<td class="textCenter">{{ theme.post|length }}
 							</td>
 						</tr>
 					{% endfor %}
@@ -52,7 +52,7 @@
 							<i class="fa-solid fa-comments"></i>
 							Discussions
 						</th>
-						<th style="text-align:center;">
+						<th class="textCenter">
 							Commentaires
 						</th>
 					</tr>
@@ -61,7 +61,7 @@
 							<td>
 								{{ post.postTitle }}
 							</td>
-							<td style="text-align:center;">{{ post.comments|length }}
+							<td class="textCenter">{{ post.comments|length }}
 							</td>
 						</tr>
 					{% endfor %}

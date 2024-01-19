@@ -67,15 +67,14 @@
 	<script>
 		// Display map for monthly meetings
 {% for meeting in meetings %}
-var mapMeetings = L.map('mapMeetings').setView([
+let mapMeetings = L.map('mapMeetings').setView([
 {{ meeting.meetingLon }}, {{ meeting.meetingLat }}
 ], 15);
 
-var meetingMarker = L.marker([{{ meeting.meetingLon }}, {{ meeting.meetingLat }}]).addTo(mapMeetings);
+let meetingMarker = L.marker([{{ meeting.meetingLon }}, {{ meeting.meetingLat }}]).addTo(mapMeetings);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(mapMeetings);
 
-meetingMarker.bindPopup("Réunion le      {{ meeting.meetingDate | date('d-m-Y à H:i') }}au      {{ meeting.meetingAddress }}");{% endfor %}
+meetingMarker.bindPopup("Réunion le   {{ meeting.meetingDate | date('d-m-Y à H:i') }}au   {{ meeting.meetingAddress }}");{% endfor %}
 	</script>
-
 {% endblock %}

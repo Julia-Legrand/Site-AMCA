@@ -23,20 +23,20 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_user_edit', methods: ['GET', 'POST'])]
+    #[Route('/{id}/modifier', name: 'app_user_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, User $user, EntityManagerInterface $entityManager, UserPasswordHasherInterface $userPasswordHasher): Response
     {
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // Vérifie si le champ plainPassword est soumis dans la requête
+            // Check if the plainPassword field is submitted in the request
             if ($form->has('plainPassword')) {
                 $plainPassword = $form->get('plainPassword')->getData();
 
-                // Vérifie si le champ de mot de passe est non vide
+                // Check if the password field is not empty
                 if (!empty($plainPassword)) {
-                    // Encode le nouveau mot de passe
+                    // Encode the new password
                     $user->setPassword(
                         $userPasswordHasher->hashPassword(
                             $user,
@@ -60,7 +60,7 @@ class UserController extends AbstractController
     #[Route('/{id}', name: 'app_user_delete', methods: ['POST'])]
     public function delete(Request $request, User $user, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->request->get('_token'))) {
             $entityManager->remove($user);
             $entityManager->flush();
         }

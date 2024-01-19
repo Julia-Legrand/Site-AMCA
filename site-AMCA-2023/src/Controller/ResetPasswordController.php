@@ -20,7 +20,7 @@ use SymfonyCasts\Bundle\ResetPassword\Controller\ResetPasswordControllerTrait;
 use SymfonyCasts\Bundle\ResetPassword\Exception\ResetPasswordExceptionInterface;
 use SymfonyCasts\Bundle\ResetPassword\ResetPasswordHelperInterface;
 
-#[Route('/reset-password')]
+#[Route('/réinitialisation')]
 class ResetPasswordController extends AbstractController
 {
     use ResetPasswordControllerTrait;
@@ -56,7 +56,7 @@ class ResetPasswordController extends AbstractController
     /**
      * Confirmation page after a user has requested a password reset.
      */
-    #[Route('/check-email', name: 'app_check_email')]
+    #[Route('/confirmation', name: 'app_check_email')]
     public function checkEmail(): Response
     {
         // Generate a fake token if the user does not exist or someone hit this page directly.
@@ -65,9 +65,21 @@ class ResetPasswordController extends AbstractController
             $resetToken = $this->resetPasswordHelper->generateFakeResetToken();
         }
 
+        $expirationMessage = $this->getExpirationMessage($resetToken->getExpiresAt());
+
         return $this->render('reset_password/check_email.html.twig', [
             'resetToken' => $resetToken,
+            'expirationMessage' => $expirationMessage,
         ]);
+    }
+
+    private function getExpirationMessage(\DateTimeInterface $expiresAt): string
+    {
+        // Calculate the custom expiration message here using $expiresAt
+        $difference = $expiresAt->getTimestamp() - (new \DateTime())->getTimestamp();
+        $minutes = ceil($difference / 60);
+
+        return "Ce lien expirera dans {$minutes} minutes.";
     }
 
     /**
@@ -102,7 +114,7 @@ class ResetPasswordController extends AbstractController
             return $this->redirectToRoute('app_forgot_password_request');
         }
 
-        // The token is valid; allow the user to change their password.
+        // The token is valid; allow the user to change the password.
         $form = $this->createForm(ChangePasswordFormType::class);
         $form->handleRequest($request);
 
@@ -158,7 +170,7 @@ class ResetPasswordController extends AbstractController
         }
 
         $email = (new TemplatedEmail())
-            ->from(new Address('julia-legrand@orange.fr', 'Administrateur du site'))
+            ->from(new Address('Email à configurer', 'Administrateur du site'))
             ->to($user->getEmail())
             ->subject('Votre demande de réinitialisation de mot de passe')
             ->htmlTemplate('reset_password/email.html.twig')

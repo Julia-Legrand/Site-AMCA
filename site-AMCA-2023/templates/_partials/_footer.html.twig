@@ -6,10 +6,18 @@
 		<div class="bloc-right">
 			<div class="list">
 				<ul>
-					<li><ahref="{{ path('asso') }}">VIE DE L'ASSOCIATION</a></li>
-					<li><ahref="{{ path('membership') }}">DEVENIR MEMBRE</a></li>
-					<li><ahref="{{ path('forum') }}">FORUM</a></li>
-					<li><ahref="{{ path('app_contacts_new') }}">CONTACT</a></li>
+					<li>
+						<a href="{{ path('asso') }}">VIE DE L'ASSOCIATION</a>
+					</li>
+					<li>
+						<a href="{{ path('membership') }}">DEVENIR MEMBRE</a>
+					</li>
+					<li>
+						<a href="{{ path('forum') }}">FORUM</a>
+					</li>
+					<li>
+						<a href="{{ path('app_contacts_new') }}">CONTACT</a>
+					</li>
 				</ul>
 			</div>
 			<div class="list">
@@ -18,15 +26,18 @@
 						<a href="https://www.ville-pornichet.fr" target="_blank">VILLE DE PORNICHET</a>
 					</li>
 					<li>
-						<a href="https://www.ville-pornichet.fr/la-maison-des-associations" target="_blank">CENTRE CAMILLE FLAMMARION</a>
+						<a href="https://www.ville-pornichet.fr/la-maison-des-associations" target="_blank">CENTRE
+							CAMILLE FLAMMARION</a>
 					</li>
 					{% for presentation in presentations %}
-						<li>
-							<a href="{{ asset('uploads/images/' ~ presentation.statutesDoc) }}" download>STATUTS DE L'ASSOCIATION</a>
-						</li>
-						<li>
-							<a href="{{ asset('uploads/images/' ~ presentation.internalRulesDoc) }}" download>RÈGLEMENT INTÉRIEUR</a>
-						</li>
+					<li>
+						<a href="{{ asset('uploads/images/' ~ presentation.statutesDoc) }}" download>STATUTS DE
+							L'ASSOCIATION</a>
+					</li>
+					<li>
+						<a href="{{ asset('uploads/images/' ~ presentation.internalRulesDoc) }}" download>RÈGLEMENT
+							INTÉRIEUR</a>
+					</li>
 					{% endfor %}
 				</ul>
 			</div>
@@ -43,7 +54,7 @@
 		<div class="brand">
 			<small>2023 |
 				{% for presentation in presentations %}
-					{{ presentation.presentationTitle }}
+				{{ presentation.presentationTitle }}
 				{% endfor %}
 			</small>
 		</div>

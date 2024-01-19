@@ -11,18 +11,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/purposes')]
+#[Route('/raison-asso')]
 class PurposesController extends AbstractController
 {
-    #[Route('/', name: 'app_purposes_index', methods: ['GET'])]
-    public function index(PurposesRepository $purposesRepository): Response
-    {
-        return $this->render('purposes/index.html.twig', [
-            'purposes' => $purposesRepository->findAll(),
-        ]);
-    }
 
-    #[Route('/new', name: 'app_purposes_new', methods: ['GET', 'POST'])]
+    #[Route('/nouveau', name: 'app_purposes_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $purpose = new Purposes();
@@ -42,7 +35,7 @@ class PurposesController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_purposes_edit', methods: ['GET', 'POST'])]
+    #[Route('/{id}/modifier', name: 'app_purposes_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Purposes $purpose, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(PurposesType::class, $purpose);
