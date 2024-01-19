@@ -20,6 +20,7 @@ class ChangePasswordFormType extends AbstractType
                 'options' => [
                     'attr' => [
                         'autocomplete' => 'Nouveau mot de passe',
+                        'class' => 'custom-form'
                     ],
                 ],
                 'first_options' => [

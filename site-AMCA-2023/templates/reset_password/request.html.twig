@@ -4,19 +4,22 @@
 {% endblock %}
 
 {% block body %}
-	{% for flash_error in app.flashes('reset_password_error') %}
-		<div class="alert alert-danger" role="alert">{{ flash_error }}</div>
-	{% endfor %}
-	<h1>Réinitialiser votre mot de passe</h1>
+	{% include "_partials/_headerAdmin.html.twig" %}
+	<div class="loginForm">
+		{% for flash_error in app.flashes('reset_password_error') %}
+			<div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+		{% endfor %}
+		<h2>Réinitialiser votre mot de passe</h2>
 
-	{{ form_start(requestForm) }}
-	{{ form_row(requestForm.email) }}
-	<div>
-		<small>
-			Entrez votre adresse e-mail, et nous vous enverrons un lien pour réinitialiser votre mot de passe.
-		</small>
+		{{ form_start(requestForm) }}
+		{{ form_row(requestForm.email) }}
+		<div>
+			<small>
+				Entrez votre adresse e-mail, et nous vous enverrons un lien pour réinitialiser votre mot de passe.
+			</small>
+		</div>
+
+		<button class="button">Envoyer</button>
+		{{ form_end(requestForm) }}
 	</div>
-
-	<button class="button">Envoyer</button>
-	{{ form_end(requestForm) }}
 {% endblock %}

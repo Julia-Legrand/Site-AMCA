@@ -51,6 +51,10 @@ p {
     font-size: 20px;
 }
 
+.resetText {
+    text-align: center;
+}
+
 /***** LINKS *****/
 a {
     @include paragraph;
