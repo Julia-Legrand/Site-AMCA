@@ -1664,6 +1664,9 @@ footer .footerBloc2 .brand {
   font-size: small;
   border-radius: 10px;
 }
+.dashboard #dataTable th {
+  text-align: center;
+}
 .dashboard #dataTable td {
   padding: 10px 5px;
 }
