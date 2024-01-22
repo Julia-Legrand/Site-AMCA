@@ -111,8 +111,8 @@ class UserType extends AbstractType
             ->add('status', ChoiceType::class, [
                 'label' => 'Statut',
                 'choices' => [
-                    'Inactif' => false,
-                    'Actif' => true,
+                    'En attente' => false,
+                    'Validé' => true,
                 ],
                 'multiple' => false,
                 'expanded' => true,

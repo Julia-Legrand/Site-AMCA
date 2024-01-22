@@ -13,6 +13,44 @@
             justify-content: space-between !important;
         }
     }
+
+    /********** ADMIN PAGES **********/
+    /*** USERS INDEX PAGE ***/
+    .dashboard {
+        table {
+            width: 600px;
+
+            thead {
+                display: none;
+            }
+
+            tr {
+                display: block;
+                margin: 20px;
+            }
+
+            td {
+                display: block;
+                text-align: right !important;
+            }
+
+            td:before {
+                content: attr(data-label);
+                float: left;
+                font-weight: bold;
+            }
+        }
+
+        .dataTables_info,
+        .table-info {
+            flex-direction: column;
+            align-items: start;
+
+            .dataTables_length {
+                margin-bottom: 20px;
+            }
+        }
+    }
 }
 
 @media all and (max-width:1310px) {
@@ -205,17 +243,6 @@
         }
     }
 
-    /*** USERS INDEX PAGE ***/
-    .dataTables_info,
-    .table-info {
-        flex-direction: column;
-        align-items: start;
-
-        .dataTables_length {
-            margin-bottom: 20px;
-        }
-    }
-
     /***** LEGAL PAGES *****/
     .mainLegals {
 
@@ -360,6 +387,11 @@
             width: 480px !important;
         }
     }
+
+    /*** USERS INDEX PAGE ***/
+    .dashboard table {
+        width: 500px;
+    }
 }
 
 @media all and (max-width:500px) {
@@ -501,6 +533,11 @@
         .pic-infos {
             flex-direction: column !important;
         }
+    }
+
+    /*** USERS INDEX PAGE ***/
+    .dashboard table {
+        width: 400px;
     }
 
     /*** FORMS TO CREATE & EDIT DASHBOARD ELEMENTS ***/
@@ -675,6 +712,26 @@
 
         .usersChoice {
             width: 280px !important;
+        }
+    }
+
+    /*** USERS INDEX PAGE ***/
+    .dashboard table {
+        width: 280px;
+        margin: 0 !important;
+    }
+
+    .dataTables_wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .dataTables_wrapper .dataTables_filter label {
+        white-space: wrap !important;
+
+        input {
+            margin-left: 0 !important;
         }
     }
 }

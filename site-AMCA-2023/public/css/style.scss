@@ -1016,7 +1016,7 @@ footer {
 
     h1 {
         margin-top: 40px;
-        margin-bottom: 10px;
+        margin-bottom: 20px;
         font-size: 40px;
     }
 
@@ -1265,6 +1265,8 @@ footer {
         box-shadow: #0D121C 0px 0 5px;
         margin: 20px;
         border: none;
+        font-size: small;
+        border-radius: 10px;
 
         th {
             text-align: center;
@@ -1276,7 +1278,7 @@ footer {
 
         td {
             text-align: center;
-            padding: 10px;
+            padding: 10px 5px;
 
             img {
                 width: 150px;
@@ -1284,11 +1286,10 @@ footer {
                 margin: 2px;
             }
         }
-    }
 
-    .table-responsive {
-        overflow-x: auto;
-        width: 100%;
+        tbody tr:nth-child(odd) {
+            background-color: white;
+        }
     }
 
     #dataTable {
@@ -1301,7 +1302,6 @@ footer {
     }
 
     .dataTables_wrapper .dataTables_paginate {
-        margin-right: 30px;
         margin-bottom: 40px;
     }
 

@@ -9,6 +9,36 @@
   #monthly-meeting .our-meeting {
     justify-content: space-between !important;
   }
+  /********** ADMIN PAGES **********/
+  /*** USERS INDEX PAGE ***/
+  .dashboard table {
+    width: 600px;
+  }
+  .dashboard table thead {
+    display: none;
+  }
+  .dashboard table tr {
+    display: block;
+    margin: 20px;
+  }
+  .dashboard table td {
+    display: block;
+    text-align: right !important;
+  }
+  .dashboard table td:before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+  }
+  .dashboard .dataTables_info,
+  .dashboard .table-info {
+    flex-direction: column;
+    align-items: start;
+  }
+  .dashboard .dataTables_info .dataTables_length,
+  .dashboard .table-info .dataTables_length {
+    margin-bottom: 20px;
+  }
 }
 @media all and (max-width: 1310px) {
   /********** INDEX PAGE **********/
@@ -151,16 +181,6 @@
   .dashboardBloc .each-trip {
     width: 600px !important;
   }
-  /*** USERS INDEX PAGE ***/
-  .dataTables_info,
-  .table-info {
-    flex-direction: column;
-    align-items: start;
-  }
-  .dataTables_info .dataTables_length,
-  .table-info .dataTables_length {
-    margin-bottom: 20px;
-  }
   /***** LEGAL PAGES *****/
   .mainLegals h1 {
     font-size: 70px !important;
@@ -255,6 +275,10 @@
   }
   .editForm .usersChoice {
     width: 480px !important;
+  }
+  /*** USERS INDEX PAGE ***/
+  .dashboard table {
+    width: 500px;
   }
 }
 @media all and (max-width: 500px) {
@@ -352,6 +376,10 @@
   }
   .dashboardBloc .pic-infos {
     flex-direction: column !important;
+  }
+  /*** USERS INDEX PAGE ***/
+  .dashboard table {
+    width: 400px;
   }
   /*** FORMS TO CREATE & EDIT DASHBOARD ELEMENTS ***/
   .editForm .custom-form {
@@ -474,6 +502,22 @@
   }
   .editForm .usersChoice {
     width: 280px !important;
+  }
+  /*** USERS INDEX PAGE ***/
+  .dashboard table {
+    width: 280px;
+    margin: 0 !important;
+  }
+  .dataTables_wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .dataTables_wrapper .dataTables_filter label {
+    white-space: wrap !important;
+  }
+  .dataTables_wrapper .dataTables_filter label input {
+    margin-left: 0 !important;
   }
 }
 /********** GLOBALS **********/
@@ -1387,7 +1431,7 @@ footer .footerBloc2 .brand {
 }
 .dashboard h1 {
   margin-top: 40px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   font-size: 40px;
 }
 .dashboard .dashboardBloc {
@@ -1516,7 +1560,7 @@ footer .footerBloc2 .brand {
   background-color: white;
   padding: 20px;
 }
-.dashboard .dashboardBloc .all-future-trips small.spaced {
+.dashboard .dashboardBloc .all-future-trips .spaced {
   margin-top: 10px;
 }
 .dashboard .dashboardBloc .all-future-trips .places {
@@ -1594,6 +1638,8 @@ footer .footerBloc2 .brand {
   box-shadow: #0D121C 0px 0 5px;
   margin: 20px;
   border: none;
+  font-size: small;
+  border-radius: 10px;
 }
 .dashboard table th {
   text-align: center;
@@ -1604,16 +1650,15 @@ footer .footerBloc2 .brand {
 }
 .dashboard table td {
   text-align: center;
-  padding: 10px;
+  padding: 10px 5px;
 }
 .dashboard table td img {
   width: 150px;
   height: 110px;
   margin: 2px;
 }
-.dashboard .table-responsive {
-  overflow-x: auto;
-  width: 100%;
+.dashboard table tbody tr:nth-child(odd) {
+  background-color: white;
 }
 .dashboard #dataTable {
   font-size: small;
@@ -1623,7 +1668,6 @@ footer .footerBloc2 .brand {
   padding: 10px 5px;
 }
 .dashboard .dataTables_wrapper .dataTables_paginate {
-  margin-right: 30px;
   margin-bottom: 40px;
 }
 .dashboard .page-link {
