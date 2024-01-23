@@ -119,8 +119,8 @@ class FutureTripsController extends AbstractController
     {
         if ($this->isCsrfTokenValid('subscribe' . $futureTrip->getId(), $request->request->get('_token'))) {
             if (!$this->getUser()->isStatus()) {
-                $this->addFlash('error', 'Votre compte n\'est pas actif.');
-                throw $this->createAccessDeniedException('Votre compte n\'est pas actif');
+                $this->addFlash('error', 'Votre compte n\'est pas encore actif, veuillez contacter l\'administrateur du site');
+                return $this->redirectToRoute('app_future_trips_show', ['id' => $futureTrip->getId()], Response::HTTP_SEE_OTHER);
             }
 
             $numberOfPlaces = $futureTrip->getNumberOfPlaces();
