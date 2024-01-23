@@ -2,9 +2,10 @@
 
 namespace App\Entity;
 
-use App\Repository\CommentsRepository;
+use App\Entity\User;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\CommentsRepository;
 
 #[ORM\Entity(repositoryClass: CommentsRepository::class)]
 class Comments
@@ -20,8 +21,12 @@ class Comments
     #[ORM\Column]
     private ?\DateTimeImmutable $created_at = null;
 
-    #[ORM\ManyToOne(inversedBy: 'comments')]
-    private ?User $user = null;
+    // #[ORM\ManyToOne(inversedBy: 'comments')]
+    // private ?User $user;
+
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'comments')]
+    #[ORM\JoinColumn(name: 'user_id', referencedColumnName: 'id', onDelete: 'SET NULL')]
+    private ?User $user;
 
     #[ORM\ManyToOne(inversedBy: 'comments')]
     private ?Posts $post = null;

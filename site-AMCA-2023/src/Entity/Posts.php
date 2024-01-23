@@ -2,11 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\PostsRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Entity\User;
+use App\Entity\Comments;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\PostsRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity(repositoryClass: PostsRepository::class)]
 class Posts
@@ -28,8 +30,12 @@ class Posts
     #[ORM\ManyToOne(inversedBy: 'post')]
     private ?Themes $themes = null;
 
-    #[ORM\ManyToOne(inversedBy: 'posts')]
-    private ?User $user = null;
+    // #[ORM\ManyToOne(inversedBy: 'posts')]
+    // private ?User $user;
+
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'posts')]
+    #[ORM\JoinColumn(name: 'user_id', referencedColumnName: 'id', onDelete: 'SET NULL')]
+    private ?User $user;
 
     #[ORM\OneToMany(mappedBy: 'post', targetEntity: Comments::class, orphanRemoval: true, cascade: ['persist'])]
     private Collection $comments;

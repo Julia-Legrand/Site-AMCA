@@ -94,9 +94,15 @@
 								</p>
 								<div class="author">
 									<small>Posté par
-										{{ post.user.firstName ~ ' ' ~ post.user.lastName }}</small>
+										{% if post.user %}
+											{{ post.user.firstName ~ ' ' ~ post.user.lastName }}
+										{% else %}
+											Anonyme
+										{% endif %}
+									</small>
 									<small>Le
-										{{ post.createdAt ? post.createdAt|date('d-m-Y à H:i') : '' }}</small>
+										{{ post.createdAt ? post.createdAt|date('d-m-Y à H:i') : '' }}
+									</small>
 								</div>
 							</div>
 							<a class="button" href="{{ path('app_comments_new', {'postId': post.id}) }}">
@@ -105,7 +111,11 @@
 								{% for comment in post.comments %}
 									<div class="answersAuthor">
 										<small style="margin-bottom:10px;">Réponse de
-											{{ comment.user.firstName ~ ' ' ~ comment.user.lastName }}
+											{% if comment.user %}
+												{{ comment.user.firstName ~ ' ' ~ comment.user.lastName }}
+											{% else %}
+												Anonyme
+											{% endif %}
 											le
 											{{ comment.createdAt ? comment.createdAt|date('d-m-Y à H:i') : '' }}
 											:

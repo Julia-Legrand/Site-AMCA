@@ -43,6 +43,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 50)]
     private ?string $memberNumber = null;
 
+    #[ORM\Column(type: "string")]
+    private ?string $assignment = null;
+
     #[ORM\Column(length: 100)]
     private ?string $firstName = null;
 
@@ -72,9 +75,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\OneToMany(mappedBy: 'users', targetEntity: Themes::class)]
     private Collection $themes;
-
-    #[ORM\Column(type: "string")]
-    private ?string $assignment = null;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Posts::class)]
     private Collection $posts;
