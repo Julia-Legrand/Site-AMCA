@@ -4,17 +4,18 @@ namespace App\Controller;
 
 use App\Entity\Purposes;
 use App\Form\PurposesType;
-use App\Repository\PurposesRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/raison-asso')]
 class PurposesController extends AbstractController
 {
 
+    #[IsGranted('ROLE_ADMIN')]
     #[Route('/nouveau', name: 'app_purposes_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -35,6 +36,7 @@ class PurposesController extends AbstractController
         ]);
     }
 
+    #[IsGranted('ROLE_ADMIN')]
     #[Route('/{id}/modifier', name: 'app_purposes_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Purposes $purpose, EntityManagerInterface $entityManager): Response
     {
@@ -53,6 +55,7 @@ class PurposesController extends AbstractController
         ]);
     }
 
+    #[IsGranted('ROLE_ADMIN')]
     #[Route('/{id}', name: 'app_purposes_delete', methods: ['POST'])]
     public function delete(Request $request, Purposes $purpose, EntityManagerInterface $entityManager): Response
     {

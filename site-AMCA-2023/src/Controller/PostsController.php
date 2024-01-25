@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Posts;
 use App\Form\PostsType;
-use App\Repository\PostsRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\PresentationsRepository;
 use Symfony\Component\HttpFoundation\Request;

@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\Comments;
 use App\Form\CommentsType;
 use App\Repository\PostsRepository;
-use App\Repository\CommentsRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\PresentationsRepository;
 use Symfony\Component\HttpFoundation\Request;

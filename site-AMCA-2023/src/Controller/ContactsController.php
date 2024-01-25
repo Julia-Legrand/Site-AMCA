@@ -10,6 +10,7 @@ use App\Repository\PresentationsRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/contact')]
@@ -46,6 +47,7 @@ class ContactsController extends AbstractController
         ]);
     }
 
+    #[IsGranted('ROLE_ADMIN')]
     #[Route('/{id}', name: 'app_contacts_delete', methods: ['POST'])]
     public function delete(Request $request, Contacts $contact, EntityManagerInterface $entityManager): Response
     {

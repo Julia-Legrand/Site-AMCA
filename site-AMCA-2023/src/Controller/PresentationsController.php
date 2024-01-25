@@ -5,17 +5,18 @@ namespace App\Controller;
 use App\Entity\Presentations;
 use App\Form\PresentationsType;
 use Doctrine\ORM\EntityManagerInterface;
-use App\Repository\PresentationsRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/présentation')]
 class PresentationsController extends AbstractController
 {
 
+    #[IsGranted('ROLE_ADMIN')]
     #[Route('/{id}/modifier', name: 'app_presentations_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Presentations $presentation, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {

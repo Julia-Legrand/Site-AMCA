@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\FutureTrips;
 use App\Form\FutureTripsType;
 use Doctrine\ORM\EntityManagerInterface;
-use App\Repository\FutureTripsRepository;
 use App\Repository\PresentationsRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,6 +17,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class FutureTripsController extends AbstractController
 {
 
+    #[IsGranted('ROLE_ADMIN')]
     #[Route('/nouveau', name: 'app_future_trips_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
@@ -56,6 +56,7 @@ class FutureTripsController extends AbstractController
         ]);
     }
 
+    #[IsGranted('ROLE_ADMIN')]
     #[Route('/{id}/modifier', name: 'app_future_trips_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, FutureTrips $futureTrip, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
@@ -102,6 +103,7 @@ class FutureTripsController extends AbstractController
         ]);
     }
 
+    #[IsGranted('ROLE_ADMIN')]
     #[Route('/{id}', name: 'app_future_trips_delete', methods: ['POST'])]
     public function delete(Request $request, FutureTrips $futureTrip, EntityManagerInterface $entityManager): Response
     {
