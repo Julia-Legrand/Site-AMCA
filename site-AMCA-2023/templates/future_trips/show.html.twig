@@ -68,7 +68,7 @@ maxZoom: 19,
 attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(mapFutureTrip);
 
-futureTripMarker.bindPopup("Voyage prévu :  {{ futureTrip.futureTripName }}du  {{ futureTrip.startDate | date('d-m-Y') }}au  {{ futureTrip.endDate | date('d-m-Y') }}");
+futureTripMarker.bindPopup("Voyage prévu :   {{ futureTrip.futureTripName }}du   {{ futureTrip.startDate | date('d-m-Y') }}au   {{ futureTrip.endDate | date('d-m-Y') }}");
 
 // Display alerts within timing
 let alerts = document.querySelectorAll('.alert');
