@@ -58,29 +58,4 @@ class PictureService
 
         return $fichier;
     }
-
-    public function delete(string $fichier, ?string $folder = '')
-    {
-        $success = false;
-
-        if ($fichier !== 'default.png') {
-            $path = $this->params->get('images_directory') . $folder;
-
-            // Supprimer l'image redimensionnée
-            $resizedImagePath = $path . $fichier;
-            if (file_exists($resizedImagePath)) {
-                unlink($resizedImagePath);
-            }
-
-            // Supprimer l'image originale
-            $originalImagePath = $path . $fichier;
-            if (file_exists($originalImagePath)) {
-                unlink($originalImagePath);
-            }
-
-            $success = true;
-        }
-
-        return $success;
-    }
 }
