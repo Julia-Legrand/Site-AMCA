@@ -48,7 +48,7 @@ class PictureService
         imagecopyresampled($resizedPicture, $tripPictureSource, 0, 0, 0, 0, $width, $height, $imageWidth, $imageHeight);
 
         // Chemin pour stocker l'image redimensionnée
-        $path = $this->params->get('image_directory') . $folder;
+        $path = $this->params->get('images_directory') . $folder;
 
         // Stockage de l'image redimensionnée au format PNG
         imagepng($resizedPicture, $path . $width . 'x' . $height . '-' . $fichier);
@@ -64,7 +64,7 @@ class PictureService
         $success = false;
 
         if ($fichier !== 'default.png') {
-            $path = $this->params->get('image_directory') . $folder;
+            $path = $this->params->get('images_directory') . $folder;
 
             // Supprimer l'image redimensionnée
             $resizedImagePath = $path . $fichier;

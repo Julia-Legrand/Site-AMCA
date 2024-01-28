@@ -38,8 +38,7 @@ class TripPicturesType extends AbstractType
                 },
                 'attr' => ['class' => 'custom-form'],
                 'label' => 'Sortie',
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

@@ -29,8 +29,7 @@ class PreviousTripsType extends AbstractType
                 'multiple' => true,
                 'mapped' => false,
                 'required' => false,
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

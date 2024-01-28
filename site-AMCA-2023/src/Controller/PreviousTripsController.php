@@ -55,12 +55,22 @@ class PreviousTripsController extends AbstractController
 
     #[IsGranted('ROLE_ADMIN')]
     #[Route('/{id}/modifier', name: 'app_previous_trips_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, PreviousTrips $previousTrip, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, PreviousTrips $previousTrip, EntityManagerInterface $entityManager, PictureService $pictureService): Response
     {
         $form = $this->createForm(PreviousTripsType::class, $previousTrip);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // Handling files uploading
+            $tripPictures = $form->get('pictures')->getData();
+
+            foreach ($tripPictures as $tripPicture) {
+                $newTripPicture = new TripPictures();
+                $newTripPicture->setTripPicture($this->uploadPicture($tripPicture, $pictureService));
+                $previousTrip->addTripPicture($newTripPicture);
+            }
+
+            $entityManager->persist($previousTrip);
             $entityManager->flush();
 
             return $this->redirectToRoute('admin', [], Response::HTTP_SEE_OTHER);
