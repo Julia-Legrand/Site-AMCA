@@ -25,7 +25,7 @@
 									<p class="description">
 										<strong>{{ presentation.presentationTitle }}</strong>
 									</p>
-									<img src="{{ asset('uploads/images/' ~ presentation.presentationPicture) }}" alt="Photo des membres fondateurs">
+									<img src="{{ asset('uploads/' ~ presentation.presentationPicture) }}" alt="Photo des membres fondateurs">
 								</div>
 								<div class="pres-bloc asso-text">
 									<p>Texte de présentation
@@ -42,7 +42,7 @@
 												<i class="fa-solid fa-pencil icon"></i>
 											</a>
 										</p>
-										<img src="{{ asset('uploads/images/' ~ presentation.logo) }}" alt="Logo de l'association" width="140" height="200" style="background-color:white;">
+										<img src="{{ asset('uploads/' ~ presentation.logo) }}" alt="Logo de l'association" width="140" height="200" style="background-color:white;">
 									</div>
 									<div class="pres-bloc asso-fee">
 										{% for membership in memberships %}
@@ -83,13 +83,13 @@
 									<i class="fa-solid fa-pencil icon icon-small"></i>
 								</a>
 							</small>
-							<embed src="{{ asset('uploads/images/' ~ presentation.statutesDoc) }}" width="180" height="200" type="application/pdf">
+							<embed src="{{ asset('uploads/' ~ presentation.statutesDoc) }}" width="180" height="200" type="application/pdf">
 							<small style="margin-top:20px;">Règlement
 								<a href="{{ path('app_presentations_edit', {'id': presentation.id}) }}" title="Modifier" data-bs-toggle="tooltip" data-bs-placement="right">
 									<i class="fa-solid fa-pencil icon icon-small"></i>
 								</a>
 							</small>
-							<embed src="{{ asset('uploads/images/' ~ presentation.internalRulesDoc) }}" width="180" height="200" type="application/pdf">
+							<embed src="{{ asset('uploads/' ~ presentation.internalRulesDoc) }}" width="180" height="200" type="application/pdf">
 
 							{% for membership in memberships %}
 								<small style="margin-top:20px;">Bulletin d'adhésion
@@ -97,7 +97,7 @@
 										<i class="fa-solid fa-pencil icon icon-small"></i>
 									</a>
 								</small>
-								<embed src="{{ asset('uploads/images/' ~ membership.membershipForm) }}" width="180" height="200" type="application/pdf">
+								<embed src="{{ asset('uploads/' ~ membership.membershipForm) }}" width="180" height="200" type="application/pdf">
 							{% endfor %}
 						</div>
 					</div>
@@ -117,7 +117,7 @@
 								<p>Date : le
 									{{ meeting.meetingDate ? meeting.meetingDate|date('d-m-Y à H:i') : '' }}</p>
 								<p>Photo de la salle :</p>
-								<img src="{{ asset('uploads/images/' ~ meeting.meetingPicture) }}" alt="Photo de la salle de réunion">
+								<img src="{{ asset('uploads/' ~ meeting.meetingPicture) }}" alt="Photo de la salle de réunion">
 							</div>
 							<div class="meet-bloc">
 								<p>Adresse :</p>
@@ -183,7 +183,7 @@
 								</a>
 							</h1>
 							<div class="pic-infos">
-								<img src="{{ asset('uploads/images/' ~ futureTrip.futureTripPicture) }}" alt="Photo de la sortie">
+								<img src="{{ asset('uploads/' ~ futureTrip.futureTripPicture) }}" alt="Photo de la sortie">
 								<div class="infos">
 									<small>Dates : du
 										{{ futureTrip.startDate ? futureTrip.startDate|date('d-m-Y à H:i') : '' }}

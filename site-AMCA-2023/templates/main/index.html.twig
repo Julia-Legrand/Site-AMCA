@@ -17,7 +17,7 @@
 		<section id="our-story">
 			{% for presentation in presentations %}
 				<div class="story-picture animate-from-left">
-					<img src="{{ asset('uploads/images/' ~ presentation.presentationPicture) }}" alt="Photo des membres fondateurs">
+					<img src="{{ asset('uploads/' ~ presentation.presentationPicture) }}" alt="Photo des membres fondateurs">
 				</div>
 				<div class="story-text animate-from-right">
 					<h2>Notre histoire</h2>
@@ -51,7 +51,7 @@
 								<div class="carousel-inner">
 									{% for tripPicture in previous_trip.getTripPictures() %}
 										<div class="carousel-item{% if loop.first %} active{% endif %}">
-											<img src="{{ asset('uploads/images/' ~ tripPicture.tripPicture) }}" class="d-block" alt="Photo de la sortie" width="200" height="140">
+											<img src="{{ asset('uploads/' ~ tripPicture.tripPicture) }}" class="d-block" alt="Photo de la sortie" width="200" height="140">
 										</div>
 									{% endfor %}
 								</div>

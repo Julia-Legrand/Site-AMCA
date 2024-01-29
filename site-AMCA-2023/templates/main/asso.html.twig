@@ -18,7 +18,7 @@
 			<div class="our-meeting">
 				{% for meeting in meetings %}
 					<div class="meetingLeft animate-from-left">
-						<img src="{{ asset('uploads/images/' ~ meeting.meetingPicture) }}" alt="Photo de la salle de réunion">
+						<img src="{{ asset('uploads/' ~ meeting.meetingPicture) }}" alt="Photo de la salle de réunion">
 						<div id="mapMeetings"></div>
 					</div>
 					<div class="meetingRight animate-from-right">
@@ -50,7 +50,7 @@
 				{% for futureTrip in futureTrips %}
 					<div class="each-trip">
 						<h4>{{ futureTrip.futureTripName }}</h4>
-						<img src="{{ asset('uploads/images/' ~ futureTrip.futureTripPicture) }}" alt="Photo de la sortie">
+						<img src="{{ asset('uploads/' ~ futureTrip.futureTripPicture) }}" alt="Photo de la sortie">
 						<small>Dates : du
 							{{ futureTrip.startDate ? futureTrip.startDate|date('d-m-Y à H:i') : '' }}
 							au
@@ -75,6 +75,6 @@ let meetingMarker = L.marker([{{ meeting.meetingLon }}, {{ meeting.meetingLat }}
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(mapMeetings);
 
-meetingMarker.bindPopup("Réunion le   {{ meeting.meetingDate | date('d-m-Y à H:i') }}au   {{ meeting.meetingAddress }}");{% endfor %}
+meetingMarker.bindPopup("Réunion le   {{ meeting.meetingDate | date('d-m-Y à H:i') }}au  {{ meeting.meetingAddress }}");{% endfor %}
 	</script>
 {% endblock %}
