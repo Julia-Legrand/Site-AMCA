@@ -85,7 +85,7 @@ class CommentsController extends AbstractController
         ]);
     }
 
-    #[Route('/delete/{id}', name: 'app_comments_delete', methods: ['POST'])]
+    #[Route('/{id}', name: 'app_comments_delete', methods: ['POST'])]
     public function delete(Request $request, Comments $comment, EntityManagerInterface $entityManager): Response
     {
         // Get the connected user

@@ -12,7 +12,7 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-#[Route('/adhésion')]
+#[Route('/adhesion')]
 class MembershipsController extends AbstractController
 {
 

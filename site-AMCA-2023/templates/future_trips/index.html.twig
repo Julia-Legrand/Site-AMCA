@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Futures sorties
+{% endblock %}
+
+{% block body %}
+	{% include "_partials/_headerAdmin.html.twig" %}
+	<main>
+		<section class="row m-0">
+			{% include "_partials/_sidebar.html.twig" %}
+
+			<div class="col-md-10" id="dashboard">
+				<h1>Futures sorties</h1>
+				<a class="button" href="{{ path('app_future_trips_new') }}">Créer une nouvelle sortie</a>
+
+				<table class="table-responsive">
+					<thead>
+						<tr>
+							<th>Nom de la sortie</th>
+							<th>Photo</th>
+							<th>Date de départ</th>
+							<th>Date de retour</th>
+							<th>Budget à prévoir</th>
+							<th>Description</th>
+							<th>Longitude</th>
+							<th>Latitude</th>
+							<th>Nb de places</th>
+							<!--Ajouter un bouton pour s'inscrire : <th>S'inscrire</th>-->
+							<th>Adhérents inscrits</th>
+							<th>Modifier</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for futureTrip in futureTrips %}
+							<tr>
+								<td>{{ futureTrip.futureTripName }}</td>
+								<td><img src="{{ asset('uploads/images/' ~ futureTrip.futureTripPicture) }}" alt="Photo de la sortie" width="200px"></td>
+								<td>{{ futureTrip.startDate ? futureTrip.startDate|date('d-m-Y à H:i') : '' }}</td>
+								<td>{{ futureTrip.endDate ? futureTrip.endDate|date('d-m-Y à H:i') : '' }}</td>
+								<td>{{ futureTrip.budget }}
+									euros</td>
+								<td>{{ futureTrip.futureTripContent }}</td>
+								<td>{{ futureTrip.futureTripLon }}</td>
+								<td>{{ futureTrip.futureTripLat }}</td>
+								<td>{{ futureTrip.numberOfPlaces }}</td>
+								<!--Bouton pour s'inscrire: <td>Boutton</td>-->
+								<td>
+									<ul>
+										{% for user in futureTrip.users %}
+											<li>{{ user.firstName ~ ' ' ~ user.lastName }}</li>
+										{% endfor %}
+									</ul>
+								</td>
+								<td>
+									<a href="{{ path('app_future_trips_edit', {'id': futureTrip.id}) }}">
+										<i class="fa-solid fa-pencil"></i>
+									</a>
+								</td>
+							</tr>
+						{% else %}
+							<tr>
+								<td colspan="11">Donnée vide</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</section>
+	</main>
+{% endblock %}

@@ -30,9 +30,6 @@ class Posts
     #[ORM\ManyToOne(inversedBy: 'post')]
     private ?Themes $themes = null;
 
-    // #[ORM\ManyToOne(inversedBy: 'posts')]
-    // private ?User $user;
-
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'posts')]
     #[ORM\JoinColumn(name: 'user_id', referencedColumnName: 'id', onDelete: 'SET NULL')]
     private ?User $user;
