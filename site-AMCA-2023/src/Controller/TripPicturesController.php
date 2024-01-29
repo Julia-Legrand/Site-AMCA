@@ -63,6 +63,16 @@ class TripPicturesController extends AbstractController
         ]);
     }
 
+    // Function to remove the old file
+    private function removeOldFile(TripPictures $tripPicture)
+    {
+        $oldFilePath = $this->getParameter('images_directory') . $tripPicture->getTripPicture();
+
+        if (file_exists($oldFilePath)) {
+            unlink($oldFilePath);
+        }
+    }
+
     #[IsGranted('ROLE_ADMIN')]
     #[Route('/{id}/modifier', name: 'app_trip_pictures_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, TripPictures $tripPicture, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
@@ -98,16 +108,6 @@ class TripPicturesController extends AbstractController
             'tripPicture' => $tripPicture,
             'form' => $form,
         ]);
-    }
-
-    // Function to remove the old file
-    private function removeOldFile(TripPictures $tripPicture)
-    {
-        $oldFilePath = $this->getParameter('images_directory') . $tripPicture->getTripPicture();
-
-        if (file_exists($oldFilePath)) {
-            unlink($oldFilePath);
-        }
     }
 
     #[IsGranted('ROLE_ADMIN')]

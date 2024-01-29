@@ -56,6 +56,16 @@ class FutureTripsController extends AbstractController
         ]);
     }
 
+    // Function to remove the old file
+    private function removeOldFile(string $filename): void
+    {
+        $filePath = $this->getParameter('images_directory') . '/' . $filename;
+
+        if (file_exists($filePath)) {
+            unlink($filePath);
+        }
+    }
+
     #[IsGranted('ROLE_ADMIN')]
     #[Route('/{id}/modifier', name: 'app_future_trips_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, FutureTrips $futureTrip, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
@@ -71,6 +81,10 @@ class FutureTripsController extends AbstractController
             // Handling files uploading
             $imageFile = $form->get('futureTripPicture')->getData();
             if ($imageFile) {
+                // Remove the old file
+                $this->removeOldFile($futureTrip->getFutureTripPicture());
+
+                // Process the new file
                 $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $safeFilename = $slugger->slug($originalFilename);
                 $newFilename = $safeFilename . '.' . $imageFile->guessExtension();
@@ -108,6 +122,9 @@ class FutureTripsController extends AbstractController
     public function delete(Request $request, FutureTrips $futureTrip, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete' . $futureTrip->getId(), $request->request->get('_token'))) {
+            // Remove the old file before removing the entity
+            $this->removeOldFile($futureTrip->getFutureTripPicture());
+
             $entityManager->remove($futureTrip);
             $entityManager->flush();
         }
