@@ -16,8 +16,8 @@ class PictureService
 
     public function add(UploadedFile $tripPicture, ?string $folder = '')
     {
-        // Rename the new picture
-        $fichier = md5(uniqid(rand(), true)) . '.png';
+        // Utilisez le nom d'origine du fichier
+        $fichier = $tripPicture->getClientOriginalName();
 
         // Path to store the picture
         $path = $this->params->get('images_directory') . $folder;
