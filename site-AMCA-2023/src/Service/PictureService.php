@@ -16,13 +16,13 @@ class PictureService
 
     public function add(UploadedFile $tripPicture, ?string $folder = '')
     {
-        // Rename new pictures
+        // Rename the new picture
         $fichier = md5(uniqid(rand(), true)) . '.png';
 
-        // Path to store original picture
+        // Path to store the picture
         $path = $this->params->get('images_directory') . $folder;
 
-        // Move original picture to destination folder
+        // Move the picture to the destination folder
         $tripPicture->move($path . '/', $fichier);
 
         return $fichier;

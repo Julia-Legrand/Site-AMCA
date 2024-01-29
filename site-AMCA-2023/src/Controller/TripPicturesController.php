@@ -74,6 +74,10 @@ class TripPicturesController extends AbstractController
             // Handling files uploading
             $imageFile = $form->get('tripPicture')->getData();
             if ($imageFile) {
+                // Remove the old file
+                $this->removeOldFile($tripPicture);
+
+                // Process the new file
                 $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $safeFilename = $slugger->slug($originalFilename);
                 $newFilename = $safeFilename . '.' . $imageFile->guessExtension();
@@ -96,11 +100,24 @@ class TripPicturesController extends AbstractController
         ]);
     }
 
+    // Function to remove the old file
+    private function removeOldFile(TripPictures $tripPicture)
+    {
+        $oldFilePath = $this->getParameter('images_directory') . $tripPicture->getTripPicture();
+
+        if (file_exists($oldFilePath)) {
+            unlink($oldFilePath);
+        }
+    }
+
     #[IsGranted('ROLE_ADMIN')]
     #[Route('/{id}', name: 'app_trip_pictures_delete', methods: ['POST'])]
     public function delete(Request $request, TripPictures $tripPicture, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete' . $tripPicture->getId(), $request->request->get('_token'))) {
+            // Remove the file before removing the entity
+            $this->removeOldFile($tripPicture);
+
             $entityManager->remove($tripPicture);
             $entityManager->flush();
         }
