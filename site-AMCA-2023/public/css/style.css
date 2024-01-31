@@ -1472,6 +1472,13 @@ footer .footerBloc2 .brand {
   transform: translateY(-50%);
   cursor: pointer;
   color: #25262A;
+  font-size: small;
+  margin-right: 5px;
+  transition: all 0.5s ease;
+}
+.loginForm .toggle-password:hover {
+  color: #F3F4F7;
+  text-shadow: #25262A 0 0 5px;
 }
 
 /********** ADMIN PAGES **********/
