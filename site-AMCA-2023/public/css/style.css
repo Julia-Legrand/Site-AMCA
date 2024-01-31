@@ -1462,6 +1462,17 @@ footer .footerBloc2 .brand {
   display: flex;
   justify-content: space-evenly;
 }
+.loginForm .password-toggle {
+  position: relative;
+}
+.loginForm .toggle-password {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #25262A;
+}
 
 /********** ADMIN PAGES **********/
 /*** MAIN DASHBOARD ***/

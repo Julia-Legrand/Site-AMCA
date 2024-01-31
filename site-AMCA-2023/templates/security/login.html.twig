@@ -14,8 +14,12 @@
 
 			<label for="inputEmail">Email</label>
 			<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+
 			<label for="inputPassword">Mot de passe</label>
-			<input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+			<div class="password-toggle">
+				<input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+				<span class="toggle-password" onclick="togglePassword()">Afficher</span>
+			</div>
 
 			<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
@@ -23,4 +27,19 @@
 		</form>
 		<a class="button" href="{{ path('app_forgot_password_request') }}">Mot de passe oublié ?</a>
 	</div>
+
+	<script>
+		function togglePassword() {
+var passwordInput = document.getElementById('inputPassword');
+var toggleButton = document.querySelector('.toggle-password');
+
+if (passwordInput.type === 'password') {
+passwordInput.type = 'text';
+toggleButton.textContent = 'Masquer';
+} else {
+passwordInput.type = 'password';
+toggleButton.textContent = 'Afficher';
+}
+}
+	</script>
 {% endblock %}

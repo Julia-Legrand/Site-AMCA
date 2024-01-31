@@ -998,6 +998,19 @@ footer {
         display: flex;
         justify-content: space-evenly;
     }
+
+    .password-toggle {
+        position: relative;
+    }
+
+    .toggle-password {
+        position: absolute;
+        right: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        color: $dark;
+    }
 }
 
 /********** ADMIN PAGES **********/

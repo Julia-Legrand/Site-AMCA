@@ -17,7 +17,7 @@
 			{{ form_widget(registrationForm.memberNumber, {
                 attr: {
                     'class': 'custom-form',
-					'placeholder': '2024/01'
+                    'placeholder': '2024/01'
                 }
             }) }}
 
@@ -47,17 +47,15 @@
 			{{ form_widget(registrationForm.email, {
                 attr: {
                     'class': 'custom-form',
-					'placeholder': 'exemple@exemple.com'
+                    'placeholder': 'exemple@exemple.com'
                 }
             }) }}
 
 			<label for="{{ registrationForm.plainPassword.vars.id }}">Mot de passe</label>
-			{{ form_widget(registrationForm.plainPassword, {
-                attr: {
-                    'class': 'custom-form',
-					'placeholder': '8 caractères minimum'
-                }
-            }) }}
+			<div class="password-toggle">
+				<input type="password" id="registrationPassword" name="registrationPassword" class="form-control" autocomplete="new-password" required>
+				<span class="toggle-password" onclick="toggleRegistrationPassword()">Afficher</span>
+			</div>
 		</div>
 
 		<div class="bloc">
@@ -116,4 +114,19 @@
 		</div>
 		{{ form_end(registrationForm) }}
 	</div>
+
+	<script>
+		function toggleRegistrationPassword() {
+var registrationPasswordInput = document.getElementById('registrationPassword');
+var toggleButton = document.querySelector('.toggle-password');
+
+if (registrationPasswordInput.type === 'password') {
+registrationPasswordInput.type = 'text';
+toggleButton.textContent = 'Masquer';
+} else {
+registrationPasswordInput.type = 'password';
+toggleButton.textContent = 'Afficher';
+}
+}
+	</script>
 {% endblock %}
