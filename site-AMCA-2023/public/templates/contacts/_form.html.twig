@@ -1,0 +1,18 @@
+{{ form_start(form, {'attr': {'onsubmit': 'return showPopup();'}}) }}
+{{ form_widget(form) }}
+<button class="button">{{ button_label|default('Envoyer') }}</button>
+{{ form_end(form) }}
+
+<script>
+	function showPopup() {
+return confirm('Le message a bien été envoyé !');
+}
+
+function submitForm() {
+if (showPopup()) { // Scroll to the top of the page
+window.scrollTo(0, 0);
+return true; // Allow the form submission
+}
+return false; // Prevent the form submission if the user clicks cancel in the popup
+}
+</script>

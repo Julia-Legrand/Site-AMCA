@@ -80,13 +80,13 @@
 					</h1>
 					{% for post in theme.post %}
 						<div class="post">
-							<h4>{{ post.postTitle }}
+							<h3>{{ post.postTitle }}
 								{% if is_granted('ROLE_ADMIN') or post.user == app.user %}
 									<a href="{{ path('app_posts_edit', {'id': post.id}) }}" title="Modifier" data-bs-toggle="tooltip" data-bs-placement="right">
 										<i class="fa-solid fa-pencil icon"></i>
 									</a>
 								{% endif %}
-							</h4>
+							</h3>
 							<div class="postContent">
 								<p>
 									<i class="fa-solid fa-quote-left" style="margin-right:5px; vertical-align:top;"></i>

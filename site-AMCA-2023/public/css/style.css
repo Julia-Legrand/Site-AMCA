@@ -598,13 +598,13 @@ h2::after {
   box-shadow: #F3F4F7 1px 0 5px;
 }
 
-h4 {
+h3 {
   font-family: "Over the Rainbow", cursive;
   font-size: 30px;
   text-align: center;
 }
 
-h4::after {
+h3::after {
   display: block;
   height: 1px;
   width: 100px;
@@ -822,10 +822,10 @@ a:hover {
   margin: 70px 0;
 }
 .headerShow h2::after,
-.headerShow h4::after {
+.headerShow h3::after {
   display: none;
 }
-.headerShow h4 {
+.headerShow h3 {
   margin: 40px;
 }
 
@@ -910,7 +910,7 @@ footer .footerBloc2 .brand {
   text-align: justify;
 }
 .mainLegals .blocsLegals h2,
-.mainLegals .blocsLegals h4 {
+.mainLegals .blocsLegals h3 {
   padding-top: 20px;
 }
 
@@ -1177,7 +1177,7 @@ footer .footerBloc2 .brand {
   opacity: 1;
   transform: translateY(0);
 }
-#futures-sorties .all-trips h4::after {
+#futures-sorties .all-trips h3::after {
   background-color: #16171A;
   box-shadow: #16171A 1px 0 5px;
 }
@@ -1225,7 +1225,7 @@ footer .footerBloc2 .brand {
   text-align: center;
   padding: 20px;
 }
-.mainShow .showRight h4 {
+.mainShow .showRight h3 {
   margin-top: 40px;
 }
 
@@ -1322,10 +1322,10 @@ footer .footerBloc2 .brand {
   text-align: left;
   margin-bottom: 30px;
 }
-.mainForum .forum h4 {
+.mainForum .forum h3 {
   text-align: left;
 }
-.mainForum .forum h4::after {
+.mainForum .forum h3::after {
   width: 100%;
 }
 .mainForum .forum i,

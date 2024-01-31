@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Association AMCA 44
+{% endblock %}
+
+
+{% block body %}
+	<header class="headerPages">
+		<h1>Vie de l'association</h1>
+		{% include "_partials/_navbar.html.twig" %}
+	</header>
+
+	<main>
+
+		<!--MONTHLY MEETING-->
+		<section id="monthly-meeting">
+			<h2>Notre prochaine réunion mensuelle</h2>
+			<div class="our-meeting">
+				{% for meeting in meetings %}
+					<div class="meetingLeft animate-from-left">
+						<img src="{{ asset('uploads/' ~ meeting.meetingPicture) }}" alt="Photo de la salle de réunion">
+						<div id="mapMeetings"></div>
+					</div>
+					<div class="meetingRight animate-from-right">
+						<p>Venez nous rencontrer</p>
+						<p>Le
+							{{ meeting.meetingDate ? meeting.meetingDate|date('d-m-Y à H:i') : '' }}
+						</p>
+						<p>Au
+							<strong>{{ meeting.meetingAddress }}</strong>
+						</p>
+						<p style="font-size: 15px; padding-top: 40px;">
+							<i class="fa-solid fa-arrow-right"></i>
+							{{ meeting.meetingContent }}</p>
+					</div>
+				{% endfor %}
+			</div>
+		</section>
+
+		<!--AGENDA-->
+		<section id="agenda">
+			<h2>Agenda de l'association</h2>
+			<iframe src="https://calendar.google.com/calendar/u/0/embed?src=amca44500@gmail.com" style="border: 0" frameborder="0" scrolling="no"></iframe>
+		</section>
+
+		<!--FUTURE TRIPS-->
+		<section id="futures-sorties">
+			<h2>Nos prochaines grandes sorties</h2>
+			<div class="all-trips">
+				{% for futureTrip in futureTrips %}
+					<div class="each-trip">
+						<h4>{{ futureTrip.futureTripName }}</h4>
+						<img src="{{ asset('uploads/' ~ futureTrip.futureTripPicture) }}" alt="Photo de la sortie">
+						<small>Dates : du
+							{{ futureTrip.startDate ? futureTrip.startDate|date('d-m-Y à H:i') : '' }}
+							au
+							{{ futureTrip.endDate ? futureTrip.endDate|date('d-m-Y à H:i') : '' }}</small>
+						<a href="{{ path('app_future_trips_show', {'id': futureTrip.id}) }}" class="button" target="_blank">Plus d'infos</a>
+					</div>
+				{% endfor %}
+			</div>
+		</section>
+
+	</main>
+	{% include "_partials/_footer.html.twig" %}
+
+	<script>
+		// Display map for monthly meetings
+{% for meeting in meetings %}
+let mapMeetings = L.map('mapMeetings').setView([
+{{ meeting.meetingLon }}, {{ meeting.meetingLat }}
+], 15);
+
+let meetingMarker = L.marker([{{ meeting.meetingLon }}, {{ meeting.meetingLat }}]).addTo(mapMeetings);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(mapMeetings);
+
+meetingMarker.bindPopup("Réunion le   {{ meeting.meetingDate | date('d-m-Y à H:i') }}au  {{ meeting.meetingAddress }}");{% endfor %}
+	</script>
+{% endblock %}

@@ -1,0 +1,141 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Association AMCA 44
+{% endblock %}
+
+{% block body %}
+	<header class="headerPages">
+		<h1>Forum de l'association</h1>
+		{% include "_partials/_navbar.html.twig" %}
+	</header>
+
+	<main class="mainForum">
+		<aside>
+			<div class="new">
+				{% if is_granted('ROLE_ADMIN') %}
+					<a class="button" href="{{ path('app_themes_new') }}" width="187">
+						Nouveau thème
+						<i class="fa-solid fa-plus"></i>
+					</a>
+				{% endif %}
+				<a class="button" href="{{ path('app_posts_new') }}" width="224">
+					Nouvelle discussion
+					<i class="fa-solid fa-plus"></i>
+				</a>
+			</div>
+			<div class="existing">
+				<table>
+					<tr>
+						<th>
+							<i class="fa-solid fa-tags"></i>
+							Thèmes
+						</th>
+						<th class="textCenter">
+							Discussions
+						</th>
+					</tr>
+					{% for theme in themes %}
+						<tr>
+							<td>
+								{{ theme.themeTitle }}
+							</td>
+							<td class="textCenter">{{ theme.post|length }}
+							</td>
+						</tr>
+					{% endfor %}
+				</table>
+			</div>
+			<div class="existing">
+				<table>
+					<tr>
+						<th>
+							<i class="fa-solid fa-comments"></i>
+							Discussions
+						</th>
+						<th class="textCenter">
+							Réponses
+						</th>
+					</tr>
+					{% for post in posts %}
+						<tr>
+							<td>
+								{{ post.postTitle }}
+							</td>
+							<td class="textCenter">{{ post.comments|length }}
+							</td>
+						</tr>
+					{% endfor %}
+				</table>
+			</div>
+		</aside>
+		<section class="forum">
+			{% for theme in themes %}
+				<div class="allPosts">
+					<h1>{{ theme.themeTitle }}
+						{% if is_granted('ROLE_ADMIN') %}
+							<a href="{{ path('app_themes_edit', {'id': theme.id}) }}" title="Modifier" data-bs-toggle="tooltip" data-bs-placement="right">
+								<i class="fa-solid fa-pencil icon icon"></i>
+							</a>
+						{% endif %}
+					</h1>
+					{% for post in theme.post %}
+						<div class="post">
+							<h4>{{ post.postTitle }}
+								{% if is_granted('ROLE_ADMIN') or post.user == app.user %}
+									<a href="{{ path('app_posts_edit', {'id': post.id}) }}" title="Modifier" data-bs-toggle="tooltip" data-bs-placement="right">
+										<i class="fa-solid fa-pencil icon"></i>
+									</a>
+								{% endif %}
+							</h4>
+							<div class="postContent">
+								<p>
+									<i class="fa-solid fa-quote-left" style="margin-right:5px; vertical-align:top;"></i>
+									{{ post.postContent }}
+								</p>
+								<div class="author">
+									<small>Posté par
+										{% if post.user %}
+											{{ post.user.firstName ~ ' ' ~ post.user.lastName }}
+										{% else %}
+											Anonyme
+										{% endif %}
+									</small>
+									<small>Le
+										{{ post.createdAt ? post.createdAt|date('d-m-Y à H:i') : '' }}
+									</small>
+								</div>
+							</div>
+							<a class="button" href="{{ path('app_comments_new', {'postId': post.id}) }}">
+								<i class="fa-solid fa-share"></i>Répondre</a>
+							<div class="answers">
+								{% for comment in post.comments %}
+									<div class="answersAuthor">
+										<small style="margin-bottom:10px;">Réponse de
+											{% if comment.user %}
+												{{ comment.user.firstName ~ ' ' ~ comment.user.lastName }}
+											{% else %}
+												Anonyme
+											{% endif %}
+											le
+											{{ comment.createdAt ? comment.createdAt|date('d-m-Y à H:i') : '' }}
+											:
+										</small>
+										<p style="font-style:italic;">
+											{{ comment.commentContent }}
+											{% if is_granted('ROLE_ADMIN') or comment.user == app.user %}
+												<a href="{{ path('app_comments_edit', {'id': comment.id, 'postId': post.id}) }}" title="Modifier" data-bs-toggle="tooltip" data-bs-placement="right">
+													<i class="fa-solid fa-pencil icon"></i>
+												</a>
+											{% endif %}
+										</p>
+									</div>
+								{% endfor %}
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+			{% endfor %}
+		</section>
+	</main>
+	{% include "_partials/_footer.html.twig" %}
+{% endblock %}

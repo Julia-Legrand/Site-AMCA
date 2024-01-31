@@ -24,11 +24,11 @@ h2::after {
     box-shadow: $light 1px 0 5px;
 }
 
-h4 {
-    @include title4;
+h3 {
+    @include title3;
 }
 
-h4::after {
+h3::after {
     display: block;
     height: 1px;
     width: 100px;
@@ -256,11 +256,11 @@ a:hover {
     }
 
     h2::after,
-    h4::after {
+    h3::after {
         display: none;
     }
 
-    h4 {
+    h3 {
         margin: 40px;
     }
 }
@@ -360,7 +360,7 @@ footer {
         }
 
         h2,
-        h4 {
+        h3 {
             padding-top: 20px;
         }
     }
@@ -667,7 +667,7 @@ footer {
             transform: translateY(0);
         }
 
-        h4::after {
+        h3::after {
             background-color: $darker;
             box-shadow: $darker 1px 0 5px;
         }
@@ -723,7 +723,7 @@ footer {
             padding: 20px;
         }
 
-        h4 {
+        h3 {
             margin-top: 40px;
         }
     }
@@ -834,11 +834,11 @@ footer {
             margin-bottom: 30px;
         }
 
-        h4 {
+        h3 {
             text-align: left;
         }
 
-        h4::after {
+        h3::after {
             width: 100%;
         }
 

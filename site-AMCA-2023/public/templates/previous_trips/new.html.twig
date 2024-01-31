@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter une ancienne sortie
+{% endblock %}
+
+{% block body %}
+	{% include "_partials/_headerAdmin.html.twig" %}
+	<section>
+		{% include "_partials/_sidebar.html.twig" %}
+
+		<div class="dashboard editForm">
+			<h1>Ajouter une ancienne sortie</h1>
+
+			{{ include('previous_trips/_form.html.twig') }}
+			<div class="bloc">
+				<button class="button" id="customSubmitButton">Valider</button>
+				<a class="button" href="{{ path('admin') }}">Retour</a>
+			</div>
+		</div>
+	</section>
+	<script>
+		document.getElementById('customSubmitButton').addEventListener('click', function () {
+document.querySelector('.submit-button').click();
+});
+	</script>
+{% endblock %}

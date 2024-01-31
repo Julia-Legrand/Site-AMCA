@@ -30,9 +30,9 @@
 			{{ futureTrip.startDate ? futureTrip.startDate|date('d-m-Y') : '' }}
 			au
 			{{ futureTrip.endDate ? futureTrip.endDate|date('d-m-Y') : '' }}</h2>
-		<h4>Budget à prévoir :
+		<h3>Budget à prévoir :
 			{{ futureTrip.budget }}
-			euros</h4>
+			euros</h3>
 	</header>
 
 	<main class="mainShow">
@@ -42,7 +42,7 @@
 		</div>
 		<div class="showRight">
 			<p>{{ futureTrip.futureTripContent }}</p>
-			<h4>Inscription</h4>
+			<h3>Inscription</h3>
 			<p>Nombre de places :
 				{{ futureTrip.numberOfPlaces }}</p>
 			<ul class="user-list">
@@ -68,7 +68,7 @@ maxZoom: 19,
 attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(mapFutureTrip);
 
-futureTripMarker.bindPopup("Voyage prévu :     {{ futureTrip.futureTripName }}du     {{ futureTrip.startDate | date('d-m-Y') }}au     {{ futureTrip.endDate | date('d-m-Y') }}");
+futureTripMarker.bindPopup("Voyage prévu :      {{ futureTrip.futureTripName }}du      {{ futureTrip.startDate | date('d-m-Y') }}au      {{ futureTrip.endDate | date('d-m-Y') }}");
 
 // Display alerts within timing
 let alerts = document.querySelectorAll('.alert');
