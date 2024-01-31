@@ -51,7 +51,7 @@
 								<div class="carousel-inner">
 									{% for tripPicture in previous_trip.getTripPictures() %}
 										<div class="carousel-item{% if loop.first %} active{% endif %}">
-											<img src="{{ asset('uploads/' ~ tripPicture.tripPicture) }}" class="d-block" alt="Photo de la sortie" width="200" height="140">
+											<img src="{{ asset('uploads/' ~ tripPicture.tripPicture) }}" class="d-block" alt="Photo de la sortie">
 										</div>
 									{% endfor %}
 								</div>

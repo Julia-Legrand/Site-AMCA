@@ -213,11 +213,11 @@
   /*** PREVIOUS TRIPS ***/
   #our-previous-trips .previous-trip-picture {
     width: 400px !important;
-    height: 270px !important;
+    height: 263px !important;
   }
   #our-previous-trips .previous-trip-picture img {
     width: 400px !important;
-    height: 270px !important;
+    height: 263px !important;
   }
   #our-previous-trips .previous-trip-text {
     width: 400px !important;
@@ -465,11 +465,11 @@
   /*** PREVIOUS TRIPS ***/
   #our-previous-trips .previous-trip-picture {
     width: 280px !important;
-    height: 190px !important;
+    height: 184px !important;
   }
   #our-previous-trips .previous-trip-picture img {
     width: 280px !important;
-    height: 190px !important;
+    height: 184px !important;
   }
   #our-previous-trips .previous-trip-text {
     width: 280px !important;
@@ -1024,13 +1024,13 @@ footer .footerBloc2 .brand {
 }
 #our-previous-trips .previous-trip .previous-trip-picture {
   width: 500px;
-  height: 370px;
+  height: 330px;
   margin: 40px;
   box-shadow: #F3F4F7 0px 0px 10px 5px;
 }
 #our-previous-trips .previous-trip .previous-trip-picture img {
   width: 500px;
-  height: 370px;
+  height: 330px;
 }
 #our-previous-trips .previous-trip .previous-trip-text {
   width: 600px;
@@ -1677,7 +1677,7 @@ footer .footerBloc2 .brand {
 }
 .dashboard .all-previous-trips .pic img {
   width: 250px;
-  height: 180px;
+  height: 164px;
   transition: filter 0.5s ease;
 }
 .dashboard .all-previous-trips .pic:hover img {
