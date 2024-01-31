@@ -1044,7 +1044,7 @@ footer .footerBloc2 .brand {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: linear-gradient(rgba(1, 1, 1, 0.7), rgba(1, 1, 1, 0.7)), url(../images/wallpaper2.jpg);
+  background-image: linear-gradient(rgba(1, 1, 1, 0.8), rgba(1, 1, 1, 0.8)), url(../images/wallpaper2.jpg);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -1056,7 +1056,7 @@ footer .footerBloc2 .brand {
 }
 #contact-us .buttonIndex {
   color: #F3F4F7;
-  background-color: rgb(162, 159, 159);
+  background-color: rgba(162, 159, 159, 0.8);
   font-size: 60px;
   font-family: "Anton", sans-serif;
   padding: 10px 40px;
