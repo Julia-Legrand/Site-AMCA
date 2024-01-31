@@ -965,7 +965,7 @@ footer .footerBloc2 .brand {
 /*** OUR PURPOSES ***/
 #our-purposes {
   padding: 100px 20px;
-  background-image: linear-gradient(rgba(1, 1, 1, 0.7), rgba(1, 1, 1, 0.7)), url(../images/photo-de-groupe.jpeg);
+  background-image: linear-gradient(rgba(1, 1, 1, 0.7), rgba(1, 1, 1, 0.7)), url(../images/photo-de-groupe.webp);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
