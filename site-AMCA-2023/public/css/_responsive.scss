@@ -386,6 +386,10 @@
         .usersChoice {
             width: 480px !important;
         }
+
+        .bloc {
+            width: 100% !important;
+        }
     }
 
     /*** USERS INDEX PAGE ***/
@@ -467,6 +471,16 @@
     }
 
     /*** FUTURE TRIPS SHOW ***/
+    .headerShow {
+        h1 {
+            font-size: 70px;
+        }
+
+        h2 {
+            font-size: 30px;
+        }
+    }
+
     .mainShow {
 
         .showLeft {
@@ -560,6 +574,52 @@
     .headerPages {
         h1 {
             font-size: 55px !important;
+        }
+    }
+
+    .headerAdmin {
+        p {
+            font-size: 18px;
+        }
+
+        ul {
+            padding-left: 0 !important;
+        }
+
+        img {
+            height: 45px;
+        }
+
+        a {
+            margin: 0 !important;
+        }
+    }
+
+    /***** SIDEBAR *****/
+    #sidebarResponsive {
+        width: 100% !important;
+        position: fixed !important;
+        top: 86px !important;
+        /* Ajustez selon la hauteur de votre header */
+        height: 50px !important;
+        z-index: 900 !important;
+
+        .navbar {
+            font-size: 0px !important;
+        }
+
+        nav {
+            flex-direction: row !important;
+            justify-content: center;
+
+            ul {
+                flex-direction: row !important;
+            }
+
+            a {
+                padding-top: 0 !important;
+                padding-bottom: 0 !important;
+            }
         }
     }
 
@@ -662,6 +722,17 @@
 
     /********** ADMIN PAGES **********/
     /*** MAIN DASHBOARD ***/
+    .dashboard {
+        margin-left: 0 !important;
+        margin-top: 136px !important;
+        padding: 10px !important;
+    }
+
+    .button {
+        padding: 10px 15px !important;
+        font-size: 18px !important;
+    }
+
     .dashboardBloc {
 
         /*** PRESENTATION ***/
@@ -696,16 +767,12 @@
     /*** RECEIVED MESSAGES PAGE ***/
     .receivedMessage {
         width: 100% !important;
+        padding: 10px !important;
+        margin: 10px !important;
     }
 
     /*** FORMS TO CREATE & EDIT DASHBOARD ELEMENTS ***/
     .editForm {
-        padding: 10px !important;
-
-        .bloc {
-            flex-direction: column;
-            align-items: center !important;
-        }
 
         .custom-form {
             width: 280px !important;
@@ -718,8 +785,12 @@
 
     /*** USERS INDEX PAGE ***/
     .dashboard table {
-        width: 230px;
+        width: 280px;
         margin: 0 !important;
+
+        tr {
+            margin: 10px;
+        }
     }
 
     .dataTables_wrapper {
