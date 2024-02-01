@@ -18,7 +18,7 @@
 			<div class="our-meeting">
 				{% for meeting in meetings %}
 					<div class="meetingLeft animate-from-left">
-						<img src="{{ asset('uploads/' ~ meeting.meetingPicture) }}" alt="Photo de la salle de réunion">
+						<img loading="lazy" src="{{ asset('uploads/' ~ meeting.meetingPicture) }}" alt="Photo de la salle de réunion">
 						<div id="mapMeetings"></div>
 					</div>
 					<div class="meetingRight animate-from-right">
@@ -50,7 +50,7 @@
 				{% for futureTrip in futureTrips %}
 					<div class="each-trip">
 						<h3>{{ futureTrip.futureTripName }}</h3>
-						<img src="{{ asset('uploads/' ~ futureTrip.futureTripPicture) }}" alt="Photo de la sortie">
+						<img loading="lazy" src="{{ asset('uploads/' ~ futureTrip.futureTripPicture) }}" alt="Photo de la sortie">
 						<small>Dates : du
 							{{ futureTrip.startDate ? futureTrip.startDate|date('d-m-Y à H:i') : '' }}
 							au
