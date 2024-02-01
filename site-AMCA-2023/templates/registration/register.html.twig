@@ -53,7 +53,15 @@
 
 			<label for="{{ registrationForm.plainPassword.vars.id }}">Mot de passe</label>
 			<div class="password-toggle">
-				<input type="password" id="registrationPassword" name="registrationPassword" class="form-control" autocomplete="new-password" required>
+				{{ form_widget(registrationForm.plainPassword, {
+            'attr': {
+                'id': 'registrationPassword',
+                'name': 'registrationPassword',
+                'class': 'form-control',
+                'autocomplete': 'new-password',
+                'required': 'required'
+            }
+        }) }}
 				<span class="toggle-password" onclick="toggleRegistrationPassword()">Afficher</span>
 			</div>
 		</div>
