@@ -1254,10 +1254,14 @@ footer .footerBloc2 .brand {
 .mainMembership a {
   text-decoration: none;
   color: #F3F4F7;
-  text-transform: uppercase;
 }
 .mainMembership embed {
   height: 480px;
+  margin-bottom: 20px;
+}
+.mainMembership i {
+  color: #F3F4F7;
+  margin-right: 10px;
 }
 
 /********** FORUM PAGE **********/

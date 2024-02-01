@@ -31,11 +31,11 @@
 					</li>
 					{% for presentation in presentations %}
 					<li>
-						<a href="{{ asset('uploads/images/' ~ presentation.statutesDoc) }}" download>STATUTS DE
+						<a href="{{ asset('uploads/' ~ presentation.statutesDoc) }}" download>STATUTS DE
 							L'ASSOCIATION</a>
 					</li>
 					<li>
-						<a href="{{ asset('uploads/images/' ~ presentation.internalRulesDoc) }}" download>RÈGLEMENT
+						<a href="{{ asset('uploads/' ~ presentation.internalRulesDoc) }}" download>RÈGLEMENT
 							INTÉRIEUR</a>
 					</li>
 					{% endfor %}

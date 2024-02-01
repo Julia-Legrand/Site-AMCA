@@ -751,11 +751,16 @@ footer {
     a {
         text-decoration: none;
         color: $light;
-        text-transform: uppercase;
     }
 
     embed {
         height: 480px;
+        margin-bottom: 20px;
+    }
+
+    i {
+        color: $light;
+        margin-right: 10px;
     }
 }
 

@@ -29,6 +29,7 @@
 		<h2>Bulletin d'adhésion</h2>
 		{% for membership in memberships %}
 			<embed src="{{ asset('uploads/' ~ membership.membershipForm) }}" type="application/pdf" alt="Bulletin d'adhésion">
+			<a href="{{ asset('uploads/' ~ membership.membershipForm) }}" download><i class="fa-solid fa-download icon"></i>Télécharger</a>
 
 			<h2>Montant de la cotisation 2024</h2>
 			<p>Cotisation conducteur :
