@@ -142,12 +142,6 @@
   #contact-us .buttonIndex {
     margin: 20px !important;
   }
-  /********** ASSO PAGE **********/
-  /*** AGENDA ***/
-  #agenda iframe {
-    width: 80% !important;
-    height: 600px;
-  }
   /********** FORUM PAGE **********/
   .mainForum {
     flex-direction: column !important;
@@ -172,6 +166,12 @@
   }
 }
 @media all and (max-width: 800px) {
+  /********** ASSO PAGE **********/
+  /*** AGENDA ***/
+  #agenda .gagenda_embed iframe {
+    width: 600px !important;
+    height: 400px !important;
+  }
   /********** ADMIN PAGES **********/
   /*** MAIN DASHBOARD ***/
   /*** SECTIONS OF MAIN DASHBOARD***/
@@ -232,8 +232,8 @@
     width: 500px !important;
   }
   /*** AGENDA ***/
-  #agenda iframe {
-    width: 90% !important;
+  #agenda .gagenda_embed iframe {
+    width: 400px !important;
     height: 400px !important;
   }
   /*** FUTURE TRIPS INDEX ***/
@@ -479,6 +479,11 @@
   #monthly-meeting .meetingLeft,
   #monthly-meeting .meetingRight {
     width: 290px !important;
+  }
+  /*** AGENDA ***/
+  #agenda .gagenda_embed iframe {
+    width: 290px !important;
+    height: 400px !important;
   }
   /*** FUTURE TRIPS INDEX ***/
   #futures-sorties .each-trip {
@@ -1137,8 +1142,13 @@ footer .footerBloc2 .brand {
   justify-content: center;
   align-items: center;
 }
-#agenda iframe {
-  width: 60%;
+#agenda .gagenda_embed {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#agenda .gagenda_embed iframe {
+  width: 800px;
   height: 600px;
 }
 

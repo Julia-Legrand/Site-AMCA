@@ -624,9 +624,15 @@ footer {
     justify-content: center;
     align-items: center;
 
-    iframe {
-        width: 60%;
-        height: 600px;
+    .gagenda_embed {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        iframe {
+            width: 800px;
+            height: 600px;
+        }
     }
 }
 

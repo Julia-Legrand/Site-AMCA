@@ -192,16 +192,6 @@
         }
     }
 
-    /********** ASSO PAGE **********/
-    /*** AGENDA ***/
-    #agenda {
-
-        iframe {
-            width: 80% !important;
-            height: 600px;
-        }
-    }
-
     /********** FORUM PAGE **********/
     .mainForum {
         flex-direction: column !important;
@@ -231,6 +221,15 @@
 }
 
 @media all and (max-width:800px) {
+
+    /********** ASSO PAGE **********/
+    /*** AGENDA ***/
+    #agenda .gagenda_embed {
+        iframe {
+            width: 600px !important;
+            height: 400px !important;
+        }
+    }
 
     /********** ADMIN PAGES **********/
     /*** MAIN DASHBOARD ***/
@@ -319,10 +318,9 @@
     }
 
     /*** AGENDA ***/
-    #agenda {
-
+    #agenda .gagenda_embed {
         iframe {
-            width: 90% !important;
+            width: 400px !important;
             height: 400px !important;
         }
     }
@@ -678,6 +676,14 @@
         .meetingLeft,
         .meetingRight {
             width: 290px !important;
+        }
+    }
+
+    /*** AGENDA ***/
+    #agenda .gagenda_embed {
+        iframe {
+            width: 290px !important;
+            height: 400px !important;
         }
     }
 

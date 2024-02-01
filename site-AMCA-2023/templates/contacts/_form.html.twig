@@ -1,6 +1,6 @@
 {{ form_start(form, {'attr': {'onsubmit': 'return showPopup();'}}) }}
 {{ form_widget(form) }}
-<button class="button">{{ button_label|default('Envoyer') }}</button>
+<button class="button g-recaptcha" data-sitekey="6LefH2MpAAAAADKsBj31AzyndxRiVZLKR1PxgGQo" data-callback='onSubmit' data-action='submit'>{{ button_label|default('Envoyer') }}</button>
 {{ form_end(form) }}
 
 <script>
