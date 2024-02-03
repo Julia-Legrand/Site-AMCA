@@ -993,6 +993,16 @@ footer {
         margin-top: 10px;
     }
 
+    .blocButtons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .button {
+            width: fit-content;
+        }
+    }
+
     .bloc {
         display: flex;
         flex-direction: column;

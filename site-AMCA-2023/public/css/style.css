@@ -1462,6 +1462,15 @@ footer .footerBloc2 .brand {
 .loginForm label {
   margin-top: 10px;
 }
+.loginForm .blocButtons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.loginForm .blocButtons .button {
+  width: -moz-fit-content;
+  width: fit-content;
+}
 .loginForm .bloc {
   display: flex;
   flex-direction: column;

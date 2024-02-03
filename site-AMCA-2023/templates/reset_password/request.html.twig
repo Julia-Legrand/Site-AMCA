@@ -11,13 +11,13 @@
 		{% endfor %}
 		<h2>Réinitialiser votre mot de passe</h2>
 
+		<div>
+			<p>
+				Entrez votre adresse e-mail et nous vous enverrons un lien pour réinitialiser votre mot de passe.
+			</p>
+		</div>
 		{{ form_start(requestForm) }}
 		{{ form_row(requestForm.email) }}
-		<div>
-			<small>
-				Entrez votre adresse e-mail et nous vous enverrons un lien pour réinitialiser votre mot de passe.
-			</small>
-		</div>
 
 		<button class="button">Envoyer</button>
 		{{ form_end(requestForm) }}

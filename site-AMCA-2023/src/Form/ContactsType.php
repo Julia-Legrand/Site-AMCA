@@ -26,7 +26,7 @@ class ContactsType extends AbstractType
                 'attr' => ['class' => 'custom-form'],
             ])
             ->add('contactMail', EmailType::class, [
-                'label' => 'Email',
+                'label' => 'E-mail',
                 'attr' => ['class' => 'custom-form'],
                 'constraints' => [
                     new NotBlank(),

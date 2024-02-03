@@ -47,7 +47,7 @@ class RegistrationFormType extends AbstractType
                 'attr' => ['class' => 'custom-form'],
             ])
             ->add('email', EmailType::class, [
-                'label' => 'Email',
+                'label' => 'E-mail',
                 'attr' => ['class' => 'custom-form'],
                 'constraints' => [
                     new NotBlank(),

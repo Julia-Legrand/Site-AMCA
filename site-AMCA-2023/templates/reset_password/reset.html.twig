@@ -1,42 +1,23 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Mot de passe oublié
+{% block title %}Réinitialiser le mot de passe
 {% endblock %}
 
 {% block body %}
 	{% include "_partials/_headerAdmin.html.twig" %}
 	<div class="loginForm">
-		<h2>Mot de passe oublié</h2>
+		<h2>Réinitialiser votre mot de passe</h2>
 
 		{{ form_start(resetForm) }}
 		{{ form_row(resetForm.plainPassword, {
             'attr': {
-                'type': 'password',
                 'autocomplete': 'new-password',
+                'class': 'custom-form',
+                'type': 'password',
             }
         }) }}
 
-		<div class="password-toggle">
-			<input type="password" id="resetPassword" name="resetPassword" class="form-control" autocomplete="new-password" required>
-			<span class="toggle-password" onclick="toggleResetPassword()">Afficher</span>
-		</div>
-
-		<button class="button">Mot de passe oublié</button>
+		<button class="button">Envoyer</button>
 		{{ form_end(resetForm) }}
 	</div>
-
-	<script>
-		function toggleResetPassword() {
-var resetPasswordInput = document.getElementById('resetPassword');
-var toggleButton = document.querySelector('.toggle-password');
-
-if (resetPasswordInput.type === 'password') {
-resetPasswordInput.type = 'text';
-toggleButton.textContent = 'Masquer';
-} else {
-resetPasswordInput.type = 'password';
-toggleButton.textContent = 'Afficher';
-}
-}
-	</script>
 {% endblock %}
