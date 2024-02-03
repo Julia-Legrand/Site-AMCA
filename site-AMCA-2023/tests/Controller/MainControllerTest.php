@@ -1,17 +1,17 @@
 <?php
 
-// namespace App\Tests\Controller;
+namespace App\Tests\Controller;
 
-// use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-// class MainControllerTest extends WebTestCase
-// {
-//     public function testIndex()
-//     {
-//         $client = static::createClient();
+class MainControllerTest extends WebTestCase
+{
+    public function testIndex()
+    {
+        $client = static::createClient();
 
-//         $crawler = $client->request('GET', '/');
+        $crawler = $client->request('GET', '/');
 
-//         $this->assertResponseStatusCodeSame(200);
-//     }
-// }
+        $this->assertResponseStatusCodeSame(200);
+    }
+}
