@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Karser\Recaptcha3Bundle\Form\Recaptcha3Type;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\Email;
+use Symfony\Component\Validator\Constraints\Regex;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -65,6 +66,10 @@ class RegistrationFormType extends AbstractType
                         'min' => 8,
                         'minMessage' => 'Votre mot de passe doit comporter au moins {{ limit }} caractères',
                         'max' => 4096,
+                    ]),
+                    new Regex([
+                        'pattern' => '/^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[^a-zA-Z\d]).+$/',
+                        'message' => 'Le mot de passe doit contenir au moins une minuscule, une majuscule, un chiffre et un caractère spécial.',
                     ]),
                 ],
             ])
