@@ -10,6 +10,11 @@
 			<a class="nav-item nav-link" href="{{ path('membership') }}">DEVENIR MEMBRE</a>
 			<a class="nav-item nav-link" href="{{ path('forum') }}">FORUM</a>
 			<a class="nav-item nav-link" href="{{ path('app_contacts_new') }}">CONTACT</a>
+			{% if app.user %}
+				<a class="nav-link" href="{{ path('app_logout') }}">
+					<i class="fa-solid fa-right-from-bracket"></i>
+				</a>
+			{% endif %}
 		</div>
 	</div>
 </nav>
