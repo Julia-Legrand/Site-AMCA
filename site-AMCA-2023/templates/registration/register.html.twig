@@ -5,10 +5,21 @@
 
 {% block body %}
 	{% include "_partials/_headerAdmin.html.twig" %}
-	<div class="loginForm">
-		<h2>Nouvel adhérent</h2>
 
-		{{ form_errors(registrationForm) }}
+	<div class="loginForm">
+		{% for message in app.flashes('success') %}
+			<div class="alert alert-success">
+				{{ message }}
+			</div>
+		{% endfor %}
+
+		{% for message in app.flashes('error') %}
+			<div class="alert alert-danger">
+				{{ message }}
+			</div>
+		{% endfor %}
+
+		<h2>Nouvel adhérent</h2>
 
 		{{ form_start(registrationForm) }}
 
@@ -136,5 +147,13 @@ registrationPasswordInput.type = 'password';
 toggleButton.textContent = 'Afficher';
 }
 }
+
+// Display alerts within timing
+let alerts = document.querySelectorAll('.alert');
+alerts.forEach(alert => {
+setTimeout(() => {
+alert.remove();
+}, 10000);
+});
 	</script>
 {% endblock %}

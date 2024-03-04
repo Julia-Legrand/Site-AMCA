@@ -34,7 +34,14 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
+            $this->addFlash('success', 'Inscription réussie !');
+
             return $this->redirectToRoute('home');
+        }
+
+        // Errors messages displayed on frontend template
+        foreach ($form->getErrors(true, true) as $error) {
+            $this->addFlash('error', $error->getMessage());
         }
 
         return $this->render('registration/register.html.twig', [

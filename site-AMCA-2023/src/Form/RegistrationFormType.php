@@ -26,6 +26,12 @@ class RegistrationFormType extends AbstractType
             ->add('memberNumber', TextType::class, [
                 'label' => 'Numéro adhérent',
                 'attr' => ['class' => 'custom-form'],
+                'constraints' => [
+                    new Regex([
+                        'pattern' => '/^\d{4}\/\d{2}$/',
+                        'message' => 'Le format du numéro d\'adhérent doit être "année/numéro à 2 chiffres".',
+                    ]),
+                ],
             ])
             ->add('assignment', ChoiceType::class, [
                 'label' => 'Profil',
@@ -69,13 +75,19 @@ class RegistrationFormType extends AbstractType
                     ]),
                     new Regex([
                         'pattern' => '/^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[^a-zA-Z\d]).+$/',
-                        'message' => 'Le mot de passe doit contenir au moins une minuscule, une majuscule, un chiffre et un caractère spécial.',
+                        'message' => 'Votre mot de passe doit contenir au moins une minuscule, une majuscule, un chiffre et un caractère spécial.',
                     ]),
                 ],
             ])
             ->add('phoneNumber', TextType::class, [
                 'label' => 'Téléphone',
                 'attr' => ['class' => 'custom-form'],
+                'constraints' => [
+                    new Regex([
+                        'pattern' => '/^\d{10}$/',
+                        'message' => 'Le numéro de téléphone doit contenir 10 chiffres.',
+                    ]),
+                ],
             ])
             ->add('address', TextType::class, [
                 'label' => 'Adresse',
@@ -84,6 +96,12 @@ class RegistrationFormType extends AbstractType
             ->add('postCode', TextType::class, [
                 'label' => 'Code Postal',
                 'attr' => ['class' => 'custom-form'],
+                'constraints' => [
+                    new Regex([
+                        'pattern' => '/^\d{5}$/',
+                        'message' => 'Le code postal doit contenir 5 chiffres.',
+                    ]),
+                ],
             ])
             ->add('city', TextType::class, [
                 'label' => 'Ville',
