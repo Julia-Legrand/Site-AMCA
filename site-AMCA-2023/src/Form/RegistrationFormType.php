@@ -29,7 +29,7 @@ class RegistrationFormType extends AbstractType
                 'constraints' => [
                     new Regex([
                         'pattern' => '/^\d{4}\/\d{2}$/',
-                        'message' => 'Le format du numéro d\'adhérent doit être "année/numéro à 2 chiffres".',
+                        'message' => 'Le format du numéro d\'adhérent doit être "année/numéro à 2 chiffres"',
                     ]),
                 ],
             ])
@@ -74,8 +74,8 @@ class RegistrationFormType extends AbstractType
                         'max' => 4096,
                     ]),
                     new Regex([
-                        'pattern' => '/^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[^a-zA-Z\d]).+$/',
-                        'message' => 'Votre mot de passe doit contenir au moins une minuscule, une majuscule, un chiffre et un caractère spécial.',
+                        'pattern' => '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z\d]).{8,}$/',
+                        'message' => 'Votre mot de passe doit contenir au moins une minuscule, une majuscule, un chiffre et un caractère spécial',
                     ]),
                 ],
             ])
