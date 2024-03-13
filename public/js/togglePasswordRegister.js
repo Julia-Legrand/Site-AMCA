@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     // Function to display or mask password
     function toggleRegistrationPassword() {
-        let registrationPasswordInput = document.getElementById('registrationPassword');
+        let registrationPasswordInput = document.getElementById('registration_form_plainPassword');
         let toggleButton = document.querySelector('.toggle-password');
 
         if (registrationPasswordInput.type === 'password') {

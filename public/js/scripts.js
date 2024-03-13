@@ -108,6 +108,10 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // Custom submit button
-document.getElementById('customSubmitButton').addEventListener('click', function () {
-  document.querySelector('.submit-button').click();
-});
+const customSubmitButton = document.getElementById('customSubmitButton');
+
+if (customSubmitButton) {
+  customSubmitButton.addEventListener('click', function () {
+    document.querySelector('.submit-button').click();
+  })
+};

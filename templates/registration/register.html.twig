@@ -66,14 +66,14 @@
 			<div class="password-toggle">
 				{{ form_widget(registrationForm.plainPassword, {
             'attr': {
-                'id': 'registrationPassword',
+                'id': 'registration_form_plainPassword',
                 'name': 'registrationPassword',
                 'class': 'form-control',
                 'autocomplete': 'new-password',
                 'required': 'required'
             }
         }) }}
-				<span class="toggle-password" onclick="toggleRegistrationPassword()">Afficher</span>
+				<span class="toggle-password">Afficher</span>
 			</div>
 		</div>
 
@@ -134,19 +134,6 @@
 		{{ form_end(registrationForm) }}
 	</div>
 
-	<script>
-		function toggleRegistrationPassword() {
-var registrationPasswordInput = document.getElementById('registrationPassword');
-var toggleButton = document.querySelector('.toggle-password');
-
-if (registrationPasswordInput.type === 'password') {
-registrationPasswordInput.type = 'text';
-toggleButton.textContent = 'Masquer';
-} else {
-registrationPasswordInput.type = 'password';
-toggleButton.textContent = 'Afficher';
-}
-}
-	</script>
+	<script src="{{ asset('js/togglePasswordRegister.js') }}"></script>
 	<script src="{{ asset('js/alerts.js') }}"></script>
 {% endblock %}
