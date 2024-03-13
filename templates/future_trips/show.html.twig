@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ futureTrip.futureTripName }}
+	- Association AMCA 44
+{% endblock %}
+
+{% block body %}
+	<header class="headerShow">
+		<h1>{{ futureTrip.futureTripName }}</h1>
+		<h2>Du
+			{{ futureTrip.startDate ? futureTrip.startDate|date('d-m-Y') : '' }}
+			au
+			{{ futureTrip.endDate ? futureTrip.endDate|date('d-m-Y') : '' }}</h2>
+		<h3>Budget à prévoir :
+			{{ futureTrip.budget }}
+			euros</h3>
+	</header>
+
+	<main class="mainShow">
+		<div class="showLeft">
+			<img loading="lazy" src="{{ asset('uploads/' ~ futureTrip.futureTripPicture) }}" alt="Photo de la sortie">
+			<div id="mapFutureTrip" class="mapFutureTrip"></div>
+		</div>
+		<div class="showRight">
+			<p>{{ futureTrip.futureTripContent }}</p>
+			{% if app.user %}
+				<h3>Inscription</h3>
+				<p>Nombre de places :
+					{{ futureTrip.numberOfPlaces }}</p>
+				<ul class="user-list">
+					{% for user in futureTrip.users %}
+						<li>{{ user.firstName ~ ' ' ~ user.lastName }}</li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+			{{ include('future_trips/_subscribe_form.html.twig') }}
+
+			{% for message in app.flashes('success') %}
+				<div class="alert alert-success">
+					{{ message }}
+				</div>
+			{% endfor %}
+
+			{% for message in app.flashes('error') %}
+				<div class="alert alert-danger">
+					{{ message }}
+				</div>
+			{% endfor %}
+
+			{% for message in app.flashes('info') %}
+				<div class="alert alert-info">
+					{{ message }}
+				</div>
+			{% endfor %}
+		</div>
+	</main>
+	{% include "_partials/_footer.html.twig" %}
+
+	<script>
+		// Display map for the specific future trip
+let mapFutureTrip = L.map('mapFutureTrip').setView([
+{{ futureTrip.futureTripLon }}, {{ futureTrip.futureTripLat }}
+], 8);
+
+let futureTripMarker = L.marker([{{ futureTrip.futureTripLon }}, {{ futureTrip.futureTripLat }}]).addTo(mapFutureTrip);
+
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+maxZoom: 19,
+attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(mapFutureTrip);
+
+futureTripMarker.bindPopup("Voyage prévu :  {{ futureTrip.futureTripName }}du  {{ futureTrip.startDate | date('d-m-Y') }}au  {{ futureTrip.endDate | date('d-m-Y') }}");
+	</script>
+	<script src="{{ asset('js/displayAgenda.js') }}"></script>
+{% endblock %}

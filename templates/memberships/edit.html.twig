@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier les informations d'adhésion
+{% endblock %}
+
+{% block body %}
+	{% include "_partials/_headerAdmin.html.twig" %}
+	<section>
+		{% include "_partials/_sidebar.html.twig" %}
+
+		<div class="dashboard editForm">
+			<h1>Modifier les informations d'adhésion</h1>
+
+			{{ include('memberships/_form.html.twig') }}
+			<div class="bloc">
+				<button class="button" id="customSubmitButton">Valider</button>
+				<a class="button" href="{{ path('admin') }}">Retour</a>
+			</div>
+		</div>
+	</section>
+
+	<script src="{{ asset('js/scripts.js') }}"></script>
+{% endblock %}

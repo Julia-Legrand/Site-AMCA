@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Rédiger un commentaire
+{% endblock %}
+
+{% block body %}
+	<header class="headerPages headerForum">
+		<h1>Rédiger un commentaire</h1>
+		{% include "_partials/_navbar.html.twig" %}
+	</header>
+
+	<main class="editForm">
+		{{ include('comments/_form.html.twig', {'postId': app.request.attributes.get('postId')}) }}
+		<div class="bloc">
+			<button class="button" id="customSubmitButton">Valider</button>
+			<a class="button" href="{{ path('forum') }}">Retour</a>
+		</div>
+	</main>
+
+	{% include "_partials/_footer.html.twig" %}
+
+	<script src="{{ asset('js/submitButtonComments.js') }}"></script>
+{% endblock %}

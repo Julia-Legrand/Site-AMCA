@@ -1,0 +1,122 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des adhérents
+{% endblock %}
+
+{% block body %}
+	{% include "_partials/_headerAdmin.html.twig" %}
+	<section>
+		{% include "_partials/_sidebar.html.twig" %}
+
+		<div
+			class="dashboard">
+			<!--PENDING MEMBERS-->
+			<h1>Liste des adhérents en attente</h1>
+
+			<table>
+				<thead>
+					<tr>
+						<th>N° d'adhérent</th>
+						<th>Profil</th>
+						<th>Prénom</th>
+						<th>Nom</th>
+						<th>E-mail</th>
+						<th>Téléphone</th>
+						<th>Adresse</th>
+						<th>Code postal</th>
+						<th>Ville</th>
+						<th>Date de naissance</th>
+						<th>Moto</th>
+						<th>Modifier</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for user in users %}
+						{% if user.status == 0 %}
+							<tr>
+								<td data-label="N° d'adhérent">{{ user.memberNumber }}</td>
+								<td data-label="Profil">{{ user.assignment ? user.assignment|json_encode : '' }}</td>
+								<td data-label="Prénom">{{ user.firstName }}</td>
+								<td data-label="Nom">{{ user.lastName }}</td>
+								<td data-label="E-mail">{{ user.email }}</td>
+								<td data-label="Téléphone">{{ user.phoneNumber }}</td>
+								<td data-label="Adresse">{{ user.address }}</td>
+								<td data-label="Code postal">{{ user.postCode }}</td>
+								<td data-label="Ville">{{ user.city }}</td>
+								<td data-label="Date de naissance">{{ user.birthdate ? user.birthdate|date('d-m-Y') : '' }}</td>
+								<td data-label="Moto">{{ user.bike }}</td>
+								<td data-label="Modifier">
+									<a href="{{ path('app_user_edit', {'id': user.id}) }}" title="Modifier" data-bs-toggle="tooltip" data-bs-placement="right">
+										<i class="fa-solid fa-pencil icon"></i>
+									</a>
+								</td>
+							</tr>
+							{% if not users|filter(user => user.status == 0)|length %}
+								<tr>
+									<td colspan="15">Aucun adhérent en attente</td>
+								</tr>
+							{% endif %}
+						{% endif %}
+					{% endfor %}
+				</tbody>
+			</table>
+
+			<!--VALIDATED MEMBERS-->
+			<h1>Liste des adhérents validés</h1>
+
+			<button class="icon" onclick="printTable()">
+				<i class="fas fa-print"></i>
+			</button>
+
+			<table id="dataTable">
+				<thead>
+					<tr>
+						<th>N° d'adhérent</th>
+						<th>Profil</th>
+						<th>Prénom</th>
+						<th>Nom</th>
+						<th>E-mail</th>
+						<th>Téléphone</th>
+						<th>Adresse</th>
+						<th>Code postal</th>
+						<th>Ville</th>
+						<th>Date de naissance</th>
+						<th>Moto</th>
+						<th class="no-print">Modifier</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for user in users %}
+						{% if user.status == 1 %}
+							<tr>
+								<td data-label="N° d'adhérent">{{ user.memberNumber }}</td>
+								<td data-label="Profil">{{ user.assignment ? user.assignment|json_encode : '' }}</td>
+								<td data-label="Prénom">{{ user.firstName }}</td>
+								<td data-label="Nom">{{ user.lastName }}</td>
+								<td data-label="E-mail">{{ user.email }}</td>
+								<td data-label="Téléphone">{{ user.phoneNumber }}</td>
+								<td data-label="Adresse">{{ user.address }}</td>
+								<td data-label="Code postal">{{ user.postCode }}</td>
+								<td data-label="Ville">{{ user.city }}</td>
+								<td data-label="Date de naissance">{{ user.birthdate ? user.birthdate|date('d-m-Y') : '' }}</td>
+								<td data-label="Moto">{{ user.bike }}</td>
+								<td data-label="Modifier" class="no-print">
+									<a href="{{ path('app_user_edit', {'id': user.id}) }}" title="Modifier" data-bs-toggle="tooltip" data-bs-placement="right">
+										<i class="fa-solid fa-pencil icon"></i>
+									</a>
+								</td>
+							</tr>
+							{% if not users|filter(user => user.status == 1)|length %}
+								<tr>
+									<td colspan="15">Aucun adhérent validé</td>
+								</tr>
+							{% endif %}
+						{% endif %}
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</section>
+
+	<script src="{{ asset('js/table.js') }}"></script>
+{% endblock %}

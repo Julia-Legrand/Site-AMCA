@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion
+{% endblock %}
+
+{% block body %}
+	{% include "_partials/_headerAdmin.html.twig" %}
+	<div class="loginForm">
+		<h2>Se connecter</h2>
+		<form method="post">
+			{% if error %}
+				<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+			{% endif %}
+
+			<label for="inputEmail">Email</label>
+			<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+
+			<label for="inputPassword">Mot de passe</label>
+			<div class="password-toggle">
+				<input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+				<span class="toggle-password" onclick="togglePassword()">Afficher</span>
+			</div>
+
+			<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+			<div class="blocButtons">
+				<button class="button" type="submit">Valider</button>
+				<a class="button" href="{{ path('app_forgot_password_request') }}">Mot de passe oublié ?</a>
+			</div>
+		</form>
+	</div>
+
+	<script src="{{ asset('js/togglePasswordLogin.js') }}"></script>
+{% endblock %}
