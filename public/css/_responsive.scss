@@ -342,19 +342,7 @@
     /*** FUTURE TRIPS SHOW ***/
     .mainShow {
 
-        .showLeft {
-
-            img {
-                width: 500px !important;
-                height: 350px !important;
-            }
-
-            #mapFutureTrip {
-                width: 500px !important;
-                height: 350px !important;
-            }
-        }
-
+        .showLeft,
         .showRight {
             width: 500px !important;
         }
@@ -471,7 +459,7 @@
     /*** FUTURE TRIPS SHOW ***/
     .headerShow {
         h1 {
-            font-size: 70px;
+            font-size: 60px;
         }
 
         h2 {
@@ -481,19 +469,7 @@
 
     .mainShow {
 
-        .showLeft {
-
-            img {
-                width: 400px !important;
-                height: 250px !important;
-            }
-
-            #mapFutureTrip {
-                width: 400px !important;
-                height: 250px !important;
-            }
-        }
-
+        .showLeft,
         .showRight {
             width: 400px !important;
         }
@@ -598,7 +574,6 @@
         width: 100% !important;
         position: fixed !important;
         top: 86px !important;
-        /* Ajustez selon la hauteur de votre header */
         height: 50px !important;
         z-index: 900 !important;
 
@@ -704,19 +679,7 @@
     /*** FUTURE TRIPS SHOW ***/
     .mainShow {
 
-        .showLeft {
-
-            img {
-                width: 290px !important;
-                height: 220px !important;
-            }
-
-            #mapFutureTrip {
-                width: 290px !important;
-                height: 220px !important;
-            }
-        }
-
+        .showLeft,
         .showRight {
             width: 290px !important;
         }
