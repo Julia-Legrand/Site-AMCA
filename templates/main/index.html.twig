@@ -51,7 +51,7 @@
 								<div class="carousel-inner">
 									{% for tripPicture in previous_trip.getTripPictures() %}
 										<div class="carousel-item{% if loop.first %} active{% endif %}">
-											<img loading="lazy" src="{{ asset('uploads/' ~ tripPicture.tripPicture) }}" class="d-block" alt="Photo de la sortie">
+											<img loading="lazy" src="{{ asset('uploads/' ~ tripPicture.tripPicture) }}" class="d-block" alt="Photo d'une sortie effectuée précédemment">
 										</div>
 									{% endfor %}
 								</div>
@@ -68,7 +68,7 @@
 
 		<!--CONTACT-->
 		<section id="contact-us">
-			<h1>Envie de nous rejoindre ?</h1>
+			<p class="contactIndex">Envie de nous rejoindre ?</p>
 			<a href="{{ path('app_contacts_new') }}" class="buttonIndex">Contactez-nous !</a>
 		</section>
 

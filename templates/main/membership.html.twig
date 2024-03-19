@@ -10,8 +10,8 @@
 	</header>
 
 	<main class="mainMembership">
-		<h2>Faire de la moto c'est bien, le faire à plusieurs, c'est mieux !</h2>
-		<p>Vous souhaitez nous rejoindre ? Prenez contact avec nous via le
+		<h2>Rouler avec nous</h2>
+		<p>Faire de la moto c'est bien, le faire à plusieurs, c'est mieux ! Prenez contact avec nous via le
 			<a href="{{ path('app_contacts_new') }}">formulaire<i class="fa-regular fa-comment-dots" style="margin-left: 10px;"></i>
 			</a>
 		</p>
@@ -29,7 +29,8 @@
 		<h2>Bulletin d'adhésion</h2>
 		{% for membership in memberships %}
 			<embed src="{{ asset('uploads/' ~ membership.membershipForm) }}" type="application/pdf" alt="Bulletin d'adhésion">
-			<a href="{{ asset('uploads/' ~ membership.membershipForm) }}" download><i class="fa-solid fa-download icon"></i>Télécharger</a>
+			<a href="{{ asset('uploads/' ~ membership.membershipForm) }}" download>
+				<i class="fa-solid fa-download icon"></i>Télécharger</a>
 
 			<h2>Montant de la cotisation 2024</h2>
 			<p>Cotisation conducteur :

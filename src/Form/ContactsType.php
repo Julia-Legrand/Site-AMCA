@@ -22,11 +22,12 @@ class ContactsType extends AbstractType
     {
         $builder
             ->add('contactName', TextType::class, [
-                'label' => 'Nom et Prénom',
+                'label' => 'Nom et Prénom *',
                 'attr' => ['class' => 'custom-form'],
+                'required' => true,
             ])
             ->add('contactMail', EmailType::class, [
-                'label' => 'E-mail',
+                'label' => 'E-mail *',
                 'attr' => ['class' => 'custom-form'],
                 'constraints' => [
                     new NotBlank(),
@@ -34,8 +35,9 @@ class ContactsType extends AbstractType
                 ],
             ])
             ->add('contactMessage', TextareaType::class, [
-                'label' => 'Message',
+                'label' => 'Message *',
                 'attr' => ['class' => 'custom-form'],
+                'required' => true,
             ])
             ->add('agreeTerms', CheckboxType::class, [
                 'label' => 'J\'accepte le traitement de mes données personnelles dans le cadre de cette prise de contact.',
