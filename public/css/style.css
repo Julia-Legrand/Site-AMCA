@@ -1035,7 +1035,8 @@ footer .footerBloc2 .brand {
   background-attachment: fixed;
 }
 #contact-us .contactIndex {
-  font-size: 60px;
+  font-size: 70px;
+  margin-top: 10px;
   color: #F3F4F7;
   font-family: "Anton", sans-serif;
   text-align: center;
