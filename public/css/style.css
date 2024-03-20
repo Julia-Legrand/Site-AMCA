@@ -684,8 +684,7 @@ a:hover {
 /********** PARTIALS **********/
 /***** MAIN NAVBAR *****/
 .navbar {
-  font-size: 35px;
-  font-weight: bold;
+  font-size: 30px;
   color: white;
 }
 .navbar a {
@@ -1225,6 +1224,7 @@ footer .footerBloc2 .brand {
   flex-direction: column;
   align-items: center;
   padding: 80px 20px;
+  text-align: center;
 }
 .mainMembership h2 {
   margin-top: 60px;
