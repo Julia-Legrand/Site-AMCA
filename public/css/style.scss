@@ -120,6 +120,13 @@ a:hover {
     text-shadow: $dark 0 0 5px;
 }
 
+/***** LOGO *****/
+img.logo-asso {
+    margin: 20px;
+    height: 180px;
+    width: auto;
+}
+
 /********** PARTIALS **********/
 /***** MAIN NAVBAR *****/
 .navbar {
@@ -193,18 +200,6 @@ a:hover {
 }
 
 /***** HEADERS *****/
-.headerIndexLogo {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-
-    img {
-        height: 150px;
-        width: auto;
-        margin: 10px 20px;
-    }
-}
-
 .headerIndex {
     background-image: linear-gradient(rgb(1, 1, 1, 0.4), rgba(1, 1, 1, 0.4)), url(../images/wallpaper1.webp);
     background-position: center;
@@ -219,8 +214,17 @@ a:hover {
     justify-content: center;
     align-items: center;
 
+    img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 150px;
+        width: auto;
+        margin: 20px;
+    }
+
     h1 {
-        margin: 70px 20px 90px 20px;
+        margin: 120px 20px 80px 20px;
     }
 }
 
@@ -241,6 +245,15 @@ a:hover {
 
     h1 {
         margin: 70px 0;
+    }
+
+    img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 150px;
+        width: auto;
+        margin: 20px;
     }
 }
 
@@ -264,8 +277,17 @@ a:hover {
     justify-content: center;
     align-items: center;
 
+    img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 150px;
+        width: auto;
+        margin: 20px;
+    }
+
     h1 {
-        margin: 10px 0 70px 0;
+        margin: 70px 0;
     }
 
     h2 {
@@ -490,6 +512,10 @@ footer {
     color: $light;
     padding: 10px 20px 100px 20px;
 
+    h2 {
+        margin-top: 20px;
+    }
+
     .previous-trips {
         display: flex;
         flex-direction: column;
@@ -653,6 +679,13 @@ footer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    .logo-meteo {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
 
     .gagenda_embed {
         display: flex;
@@ -1349,7 +1382,6 @@ footer {
         background-color: $light;
         border-radius: 10px;
         box-shadow: #0D121C 0px 0 5px;
-        margin: 20px;
         border: none;
         font-size: small;
         border-radius: 10px;
@@ -1357,20 +1389,15 @@ footer {
         th {
             text-align: center;
             text-transform: uppercase;
+            text-wrap: wrap;
             padding: 10px;
             border-bottom: 1px solid $dark;
-            white-space: nowrap;
         }
 
         td {
             text-align: center;
-            padding: 10px 5px;
-
-            img {
-                width: 150px;
-                height: 110px;
-                margin: 2px;
-            }
+            padding: 20px 2px;
+            text-wrap: wrap;
         }
 
         tbody tr:nth-child(odd) {
@@ -1384,15 +1411,28 @@ footer {
 
         th {
             text-align: center;
+            text-wrap: wrap;
         }
 
         td {
-            padding: 10px 5px;
+            padding: 20px 2px;
+            text-wrap: wrap;
         }
+    }
+
+    .dataTables_wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .dataTables_wrapper .dataTables_paginate {
         margin-bottom: 40px;
+    }
+
+    .pagination {
+        display: flex;
+        justify-content: center !important;
     }
 
     .page-link {
@@ -1412,9 +1452,18 @@ footer {
         @include paragraph;
         font-size: 18px;
         color: $dark;
+        margin: 30px 10px;
+    }
+
+    .dataTables_info {
         display: flex;
-        justify-content: space-between;
-        margin: 30px;
+        justify-content: center;
+    }
+
+    .table-info {
+        display: flex;
+        justify-content: space-around;
+        width: 90%;
     }
 
     /*** RECEIVED MESSAGES PAGE ***/

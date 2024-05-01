@@ -9,38 +9,22 @@
   #monthly-meeting .our-meeting {
     justify-content: space-between !important;
   }
-  /********** ADMIN PAGES **********/
-  /*** USERS INDEX PAGE ***/
-  .dashboard table {
-    width: 600px;
-  }
-  .dashboard table thead {
-    display: none;
-  }
-  .dashboard table tr {
-    display: block;
-    margin: 20px;
-  }
-  .dashboard table td {
-    display: block;
-    text-align: right !important;
-  }
-  .dashboard table td:before {
-    content: attr(data-label);
-    float: left;
-    font-weight: bold;
-  }
-  .dashboard .dataTables_info,
-  .dashboard .table-info {
-    flex-direction: column;
-    align-items: start;
-  }
-  .dashboard .dataTables_info .dataTables_length,
-  .dashboard .table-info .dataTables_length {
-    margin-bottom: 20px;
-  }
 }
 @media all and (max-width: 1310px) {
+  /********** PARTIALS **********/
+  /***** SIDEBARS *****/
+  #sidebarFullsize {
+    display: none;
+  }
+  #sidebarResponsive {
+    display: block !important;
+  }
+  /********** ADMIN PAGES **********/
+  /*** GENERAL DASHBOARD ***/
+  .dashboard {
+    width: 100% !important;
+    margin-left: 5rem !important;
+  }
   /********** INDEX PAGE **********/
   /*** OUR STORY ***/
   #our-story .story-text,
@@ -65,13 +49,6 @@
 }
 @media all and (max-width: 1200px) {
   /********** PARTIALS **********/
-  /***** SIDEBARS *****/
-  #sidebarFullsize {
-    display: none;
-  }
-  #sidebarResponsive {
-    display: block !important;
-  }
   /***** FOOTER *****/
   footer .footerBloc1 {
     padding: 60px !important;
@@ -94,12 +71,6 @@
   }
   .mainShow .showRight {
     width: 600px !important;
-  }
-  /********** ADMIN PAGES **********/
-  /*** GENERAL DASHBOARD ***/
-  .dashboard {
-    width: 100% !important;
-    margin-left: 5rem !important;
   }
 }
 @media all and (max-width: 1000px) {
@@ -164,6 +135,38 @@
   .receivedMessage {
     width: 80% !important;
   }
+  /*** USERS INDEX PAGE ***/
+  .dashboard table {
+    width: 800px;
+    font-size: medium !important;
+  }
+  .dashboard table thead {
+    display: none;
+  }
+  .dashboard table tr {
+    display: block;
+    margin: 20px;
+    padding: 20px 0;
+  }
+  .dashboard table td {
+    display: block;
+    text-align: right !important;
+    padding: 10px 60px !important;
+  }
+  .dashboard table td:before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+  }
+  .dashboard .dataTables_info,
+  .dashboard .table-info {
+    flex-direction: column;
+    align-items: center;
+  }
+  .dashboard .dataTables_info .dataTables_length,
+  .dashboard .table-info .dataTables_length {
+    margin-bottom: 20px;
+  }
 }
 @media all and (max-width: 800px) {
   /********** ASSO PAGE **********/
@@ -183,6 +186,10 @@
   }
   .dashboardBloc .each-trip {
     width: 600px !important;
+  }
+  /*** USERS INDEX PAGE ***/
+  .dashboard table {
+    width: 600px;
   }
   /***** LEGAL PAGES *****/
   .mainLegals h1 {
@@ -379,6 +386,9 @@
   .dashboard table {
     width: 400px;
   }
+  .dashboard table td {
+    padding: 10px 30px !important;
+  }
   /*** FORMS TO CREATE & EDIT DASHBOARD ELEMENTS ***/
   .editForm .custom-form {
     width: 300px !important;
@@ -392,6 +402,23 @@
 @media all and (max-width: 400px) {
   /********** PARTIALS **********/
   /***** HEADERS *****/
+  .headerIndex img {
+    height: 90px !important;
+    width: auto;
+    margin: 10px;
+  }
+  .headerIndex h1 {
+    margin: 140px 20px 60px 20px !important;
+  }
+  .headerPages {
+    min-height: 60vh !important;
+    height: auto;
+  }
+  .headerPages img {
+    height: 90px !important;
+    width: auto;
+    margin: 10px;
+  }
   .headerPages h1 {
     font-size: 55px !important;
   }
@@ -451,6 +478,14 @@
     font-size: 20px !important;
   }
   /*** PREVIOUS TRIPS ***/
+  #our-previous-trips {
+    /***** LOGO *****/
+  }
+  #our-previous-trips img.logo-asso {
+    margin: 10px !important;
+    height: 120px !important;
+    width: auto;
+  }
   #our-previous-trips .previous-trip-picture {
     width: 280px !important;
     height: 184px !important;
@@ -469,7 +504,12 @@
     width: 290px !important;
   }
   /*** AGENDA ***/
-  #agenda .headerIndexLogo {
+  #agenda .logo-meteo {
+    width: auto;
+  }
+  #agenda .logo-meteo img.logo-asso {
+    margin: 10px !important;
+    height: 120px !important;
     width: auto;
   }
   #agenda .gagenda_embed iframe {
@@ -544,10 +584,10 @@
   /*** USERS INDEX PAGE ***/
   .dashboard table {
     width: 280px;
-    margin: 0 !important;
+    font-size: small !important;
   }
-  .dashboard table tr {
-    margin: 10px;
+  .dashboard table td {
+    padding: 5px !important;
   }
   .dataTables_wrapper {
     display: flex;
@@ -687,6 +727,13 @@ a:hover {
   text-shadow: #25262A 0 0 5px;
 }
 
+/***** LOGO *****/
+img.logo-asso {
+  margin: 20px;
+  height: 180px;
+  width: auto;
+}
+
 /********** PARTIALS **********/
 /***** MAIN NAVBAR *****/
 .navbar {
@@ -753,17 +800,6 @@ a:hover {
 }
 
 /***** HEADERS *****/
-.headerIndexLogo {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-}
-.headerIndexLogo img {
-  height: 150px;
-  width: auto;
-  margin: 10px 20px;
-}
-
 .headerIndex {
   background-image: linear-gradient(rgba(1, 1, 1, 0.4), rgba(1, 1, 1, 0.4)), url(../images/wallpaper1.webp);
   background-position: center;
@@ -778,8 +814,16 @@ a:hover {
   justify-content: center;
   align-items: center;
 }
+.headerIndex img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 150px;
+  width: auto;
+  margin: 20px;
+}
 .headerIndex h1 {
-  margin: 70px 20px 90px 20px;
+  margin: 120px 20px 80px 20px;
 }
 
 .headerPages {
@@ -798,6 +842,14 @@ a:hover {
 }
 .headerPages h1 {
   margin: 70px 0;
+}
+.headerPages img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 150px;
+  width: auto;
+  margin: 20px;
 }
 
 .headerForum {
@@ -819,8 +871,16 @@ a:hover {
   justify-content: center;
   align-items: center;
 }
+.headerShow img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 150px;
+  width: auto;
+  margin: 20px;
+}
 .headerShow h1 {
-  margin: 10px 0 70px 0;
+  margin: 70px 0;
 }
 .headerShow h2 {
   margin: 0px 20px 60px 20px;
@@ -1010,6 +1070,9 @@ footer .footerBloc2 .brand a {
   color: #F3F4F7;
   padding: 10px 20px 100px 20px;
 }
+#our-previous-trips h2 {
+  margin-top: 20px;
+}
 #our-previous-trips .previous-trips {
   display: flex;
   flex-direction: column;
@@ -1149,6 +1212,12 @@ footer .footerBloc2 .brand a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+#agenda .logo-meteo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 #agenda .gagenda_embed {
   display: flex;
@@ -1748,7 +1817,6 @@ footer .footerBloc2 .brand a {
   background-color: #F3F4F7;
   border-radius: 10px;
   box-shadow: #0D121C 0px 0 5px;
-  margin: 20px;
   border: none;
   font-size: small;
   border-radius: 10px;
@@ -1756,18 +1824,14 @@ footer .footerBloc2 .brand a {
 .dashboard table th {
   text-align: center;
   text-transform: uppercase;
+  text-wrap: wrap;
   padding: 10px;
   border-bottom: 1px solid #25262A;
-  white-space: nowrap;
 }
 .dashboard table td {
   text-align: center;
-  padding: 10px 5px;
-}
-.dashboard table td img {
-  width: 150px;
-  height: 110px;
-  margin: 2px;
+  padding: 20px 2px;
+  text-wrap: wrap;
 }
 .dashboard table tbody tr:nth-child(odd) {
   background-color: white;
@@ -1778,12 +1842,23 @@ footer .footerBloc2 .brand a {
 }
 .dashboard #dataTable th {
   text-align: center;
+  text-wrap: wrap;
 }
 .dashboard #dataTable td {
-  padding: 10px 5px;
+  padding: 20px 2px;
+  text-wrap: wrap;
+}
+.dashboard .dataTables_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .dashboard .dataTables_wrapper .dataTables_paginate {
   margin-bottom: 40px;
+}
+.dashboard .pagination {
+  display: flex;
+  justify-content: center !important;
 }
 .dashboard .page-link {
   background-color: transparent;
@@ -1800,9 +1875,16 @@ footer .footerBloc2 .brand a {
   font-family: "Montserrat", sans-serif;
   font-size: 18px;
   color: #25262A;
+  margin: 30px 10px;
+}
+.dashboard .dataTables_info {
   display: flex;
-  justify-content: space-between;
-  margin: 30px;
+  justify-content: center;
+}
+.dashboard .table-info {
+  display: flex;
+  justify-content: space-around;
+  width: 90%;
 }
 .dashboard .receivedMessage {
   width: 60%;

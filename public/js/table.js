@@ -40,11 +40,6 @@ $(document).ready(function () {
                 "sPrevious": "Précédent",
                 "sNext": "Suivant"
             },
-            // ARIA attributes to enhance the accessibility of the table for users with specific needs
-            "oAria": {
-                "sSortAscending": ": activer pour trier la colonne par ordre croissant",
-                "sSortDescending": ": activer pour trier la colonne par ordre décroissant"
-            }
         },
         pagingType: "simple",
         lengthMenu: [
@@ -56,6 +51,7 @@ $(document).ready(function () {
             100
         ],
         pageLength: 10,
-        "dom": '<"table-info"lf>tip'
+        "dom": '<"table-info"lf>tip',
+        "ordering": false
     });
 });

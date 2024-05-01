@@ -7,9 +7,7 @@
 
 {% block body %}
 	<header class="headerShow">
-		<div class="headerIndexLogo">
-			<img loading="lazy" src="{{ asset('images/logo-noir-transparent.webp') }}" alt="Logo de l'association">
-		</div>
+		<img loading="lazy" class="logo-asso" src="{{ asset('images/logo-noir-transparent.webp') }}" alt="Logo de l'association">
 		<h1>{{ futureTrip.futureTripName }}</h1>
 		<h2>Du
 			{{ futureTrip.startDate ? futureTrip.startDate|date('d-m-Y') : '' }}
@@ -55,6 +53,6 @@ let futureTripMarker = L.marker([{{ futureTrip.futureTripLon }}, {{ futureTrip.f
 
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(mapFutureTrip);
 
-futureTripMarker.bindPopup("Voyage prévu :                                        {{ futureTrip.futureTripName }}du                                        {{ futureTrip.startDate | date('d-m-Y') }}au                                        {{ futureTrip.endDate | date('d-m-Y') }}");
+futureTripMarker.bindPopup("Voyage prévu :                                          {{ futureTrip.futureTripName }}du                                          {{ futureTrip.startDate | date('d-m-Y') }}au                                          {{ futureTrip.endDate | date('d-m-Y') }}");
 	</script>
 {% endblock %}

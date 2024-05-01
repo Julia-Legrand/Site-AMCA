@@ -13,47 +13,26 @@
             justify-content: space-between !important;
         }
     }
-
-    /********** ADMIN PAGES **********/
-    /*** USERS INDEX PAGE ***/
-    .dashboard {
-        table {
-            width: 600px;
-
-            thead {
-                display: none;
-            }
-
-            tr {
-                display: block;
-                margin: 20px;
-            }
-
-            td {
-                display: block;
-                text-align: right !important;
-            }
-
-            td:before {
-                content: attr(data-label);
-                float: left;
-                font-weight: bold;
-            }
-        }
-
-        .dataTables_info,
-        .table-info {
-            flex-direction: column;
-            align-items: start;
-
-            .dataTables_length {
-                margin-bottom: 20px;
-            }
-        }
-    }
 }
 
 @media all and (max-width:1310px) {
+
+    /********** PARTIALS **********/
+    /***** SIDEBARS *****/
+    #sidebarFullsize {
+        display: none;
+    }
+
+    #sidebarResponsive {
+        display: block !important;
+    }
+
+    /********** ADMIN PAGES **********/
+    /*** GENERAL DASHBOARD ***/
+    .dashboard {
+        width: 100% !important;
+        margin-left: 5rem !important;
+    }
 
     /********** INDEX PAGE **********/
     /*** OUR STORY ***/
@@ -89,15 +68,6 @@
 @media all and (max-width:1200px) {
 
     /********** PARTIALS **********/
-    /***** SIDEBARS *****/
-    #sidebarFullsize {
-        display: none;
-    }
-
-    #sidebarResponsive {
-        display: block !important;
-    }
-
     /***** FOOTER *****/
     footer {
         .footerBloc1 {
@@ -127,13 +97,6 @@
         .showRight {
             width: 600px !important;
         }
-    }
-
-    /********** ADMIN PAGES **********/
-    /*** GENERAL DASHBOARD ***/
-    .dashboard {
-        width: 100% !important;
-        margin-left: 5rem !important;
     }
 }
 
@@ -218,6 +181,46 @@
     .receivedMessage {
         width: 80% !important;
     }
+
+    /*** USERS INDEX PAGE ***/
+    .dashboard {
+        table {
+            width: 800px;
+            font-size: medium !important;
+
+            thead {
+                display: none;
+            }
+
+            tr {
+                display: block;
+                margin: 20px;
+                padding: 20px 0;
+            }
+
+            td {
+                display: block;
+                text-align: right !important;
+                padding: 10px 60px !important;
+            }
+
+            td:before {
+                content: attr(data-label);
+                float: left;
+                font-weight: bold;
+            }
+        }
+
+        .dataTables_info,
+        .table-info {
+            flex-direction: column;
+            align-items: center;
+
+            .dataTables_length {
+                margin-bottom: 20px;
+            }
+        }
+    }
 }
 
 @media all and (max-width:800px) {
@@ -243,6 +246,13 @@
         /*** FUTURE TRIPS ***/
         .each-trip {
             width: 600px !important;
+        }
+    }
+
+    /*** USERS INDEX PAGE ***/
+    .dashboard {
+        table {
+            width: 600px;
         }
     }
 
@@ -383,8 +393,10 @@
     }
 
     /*** USERS INDEX PAGE ***/
-    .dashboard table {
-        width: 500px;
+    .dashboard {
+        table {
+            width: 500px;
+        }
     }
 }
 
@@ -528,8 +540,14 @@
     }
 
     /*** USERS INDEX PAGE ***/
-    .dashboard table {
-        width: 400px;
+    .dashboard {
+        table {
+            width: 400px;
+
+            td {
+                padding: 10px 30px !important;
+            }
+        }
     }
 
     /*** FORMS TO CREATE & EDIT DASHBOARD ELEMENTS ***/
@@ -549,7 +567,28 @@
 
     /********** PARTIALS **********/
     /***** HEADERS *****/
+    .headerIndex {
+        img {
+            height: 90px !important;
+            width: auto;
+            margin: 10px;
+        }
+
+        h1 {
+            margin: 140px 20px 60px 20px !important;
+        }
+    }
+
     .headerPages {
+        min-height: 60vh !important;
+        height: auto;
+
+        img {
+            height: 90px !important;
+            width: auto;
+            margin: 10px;
+        }
+
         h1 {
             font-size: 55px !important;
         }
@@ -633,6 +672,14 @@
 
     /*** PREVIOUS TRIPS ***/
     #our-previous-trips {
+
+        /***** LOGO *****/
+        img.logo-asso {
+            margin: 10px !important;
+            height: 120px !important;
+            width: auto;
+        }
+
         .previous-trip-picture {
             width: 280px !important;
             height: 184px !important;
@@ -660,8 +707,14 @@
 
     /*** AGENDA ***/
     #agenda {
-        .headerIndexLogo {
+        .logo-meteo {
             width: auto;
+
+            img.logo-asso {
+                margin: 10px !important;
+                height: 120px !important;
+                width: auto;
+            }
         }
 
         .gagenda_embed {
@@ -765,10 +818,10 @@
     /*** USERS INDEX PAGE ***/
     .dashboard table {
         width: 280px;
-        margin: 0 !important;
+        font-size: small !important;
 
-        tr {
-            margin: 10px;
+        td {
+            padding: 5px !important;
         }
     }
 
