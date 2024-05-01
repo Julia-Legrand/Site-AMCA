@@ -5,6 +5,9 @@
 
 {% block body %}
 	<header class="headerIndex">
+		<div class="headerIndexLogo">
+			<img loading="lazy" src="{{ asset('images/logo-noir-transparent.webp') }}" alt="Logo de l'association">
+		</div>
 		{% for presentation in presentations %}
 			<h1>{{ presentation.presentationTitle }}</h1>
 		{% endfor %}
@@ -42,6 +45,9 @@
 
 		<!--PREVIOUS TRIPS-->
 		<section id="our-previous-trips">
+			<div class="headerIndexLogo" style="justify-content: end;">
+				<img loading="lazy" src="{{ asset('images/logo-noir-transparent.webp') }}" alt="Logo de l'association">
+			</div>
 			<h2>Nos précédentes sorties</h2>
 			<div class="previous-trips">
 				{% for previous_trip in previous_trips %}

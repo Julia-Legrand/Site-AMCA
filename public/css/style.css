@@ -168,7 +168,10 @@
 @media all and (max-width: 800px) {
   /********** ASSO PAGE **********/
   /*** AGENDA ***/
-  #agenda .gagenda_embed iframe {
+  #agenda h2 {
+    margin-top: 30px;
+  }
+  #agenda h2 .gagenda_embed iframe {
     width: 600px !important;
     height: 400px !important;
   }
@@ -466,6 +469,9 @@
     width: 290px !important;
   }
   /*** AGENDA ***/
+  #agenda .headerIndexLogo {
+    width: auto;
+  }
   #agenda .gagenda_embed iframe {
     width: 290px !important;
     height: 400px !important;
@@ -686,6 +692,7 @@ a:hover {
 .navbar {
   font-size: 30px;
   color: white;
+  margin-bottom: 60px;
 }
 .navbar a {
   margin: 0 10px;
@@ -746,6 +753,17 @@ a:hover {
 }
 
 /***** HEADERS *****/
+.headerIndexLogo {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.headerIndexLogo img {
+  height: 150px;
+  width: auto;
+  margin: 10px 20px;
+}
+
 .headerIndex {
   background-image: linear-gradient(rgba(1, 1, 1, 0.4), rgba(1, 1, 1, 0.4)), url(../images/wallpaper1.webp);
   background-position: center;
@@ -761,11 +779,11 @@ a:hover {
   align-items: center;
 }
 .headerIndex h1 {
-  margin: 90px 20px;
+  margin: 70px 20px 90px 20px;
 }
 
 .headerPages {
-  background-image: linear-gradient(rgba(1, 1, 1, 0.4), rgba(1, 1, 1, 0.4)), url(../images/wallpaper3.webp);
+  background-image: linear-gradient(rgba(1, 1, 1, 0.7), rgba(1, 1, 1, 0.7)), url(../images/wallpaper3.webp);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -802,14 +820,13 @@ a:hover {
   align-items: center;
 }
 .headerShow h1 {
-  margin: 70px 0;
+  margin: 10px 0 70px 0;
 }
-.headerShow h2::after,
-.headerShow h3::after {
+.headerShow h2 {
+  margin: 0px 20px 60px 20px;
+}
+.headerShow h2::after {
   display: none;
-}
-.headerShow h3 {
-  margin: 40px;
 }
 
 .headerAdmin {
@@ -869,6 +886,9 @@ footer .footerBloc2 .legals,
 footer .footerBloc2 .brand {
   color: #F3F4F7;
   margin: 20px;
+}
+footer .footerBloc2 .brand a {
+  margin-left: 5px;
 }
 
 /********** LEGAL PAGES **********/
@@ -939,10 +959,10 @@ footer .footerBloc2 .brand {
 }
 #our-story .animated {
   opacity: 1 !important;
-  transform: translateX(15%) !important;
+  transform: translateX(10%) !important;
 }
 #our-story .story-text.animated {
-  transform: translateX(-15%) !important;
+  transform: translateX(-10%) !important;
 }
 
 /*** OUR PURPOSES ***/
@@ -976,7 +996,7 @@ footer .footerBloc2 .brand {
   align-items: center;
   padding: 40px 30px 30px 30px;
   color: #16171A;
-  margin: 60px;
+  margin: 30px;
 }
 #our-purposes .our-purposes p {
   text-align: center;
@@ -988,7 +1008,7 @@ footer .footerBloc2 .brand {
 #our-previous-trips {
   background-color: #25262A;
   color: #F3F4F7;
-  padding: 100px 20px;
+  padding: 10px 20px 100px 20px;
 }
 #our-previous-trips .previous-trips {
   display: flex;
@@ -1010,15 +1030,23 @@ footer .footerBloc2 .brand {
   height: 330px;
   margin: 40px;
   box-shadow: #F3F4F7 0px 0px 10px 5px;
+  border-radius: 8px;
 }
 #our-previous-trips .previous-trip .previous-trip-picture img {
   width: 500px;
   height: 330px;
+  border-radius: 8px;
 }
 #our-previous-trips .previous-trip .previous-trip-text {
   width: 600px;
   margin: 40px;
   text-align: center;
+}
+#our-previous-trips .previous-trip .previous-trip-text h3 {
+  font-size: 40px;
+}
+#our-previous-trips .previous-trip .previous-trip-text p {
+  font-size: 23px;
 }
 
 /*** CONTACT ***/
@@ -1034,7 +1062,7 @@ footer .footerBloc2 .brand {
   background-attachment: fixed;
 }
 #contact-us .contactIndex {
-  font-size: 70px;
+  font-size: 60px;
   margin-top: 10px;
   color: #F3F4F7;
   font-family: "Anton", sans-serif;
@@ -1116,7 +1144,7 @@ footer .footerBloc2 .brand {
 #agenda {
   background-color: #25262A;
   color: #F3F4F7;
-  padding: 100px 20px;
+  padding: 10px 20px 100px 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1206,14 +1234,26 @@ footer .footerBloc2 .brand {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 40px;
+  margin: 40px 0;
 }
 .mainShow .showRight p {
   text-align: center;
+  padding: 0px;
+}
+.mainShow .showRight small {
+  text-align: center;
+  font-size: 15px;
   padding: 20px;
 }
 .mainShow .showRight h3 {
   margin-top: 40px;
+}
+.mainShow .showRight a {
+  color: #F3F4F7;
+}
+.mainShow .showRight i {
+  color: #F3F4F7;
+  margin-right: 10px;
 }
 
 /********** MEMBERSHIP PAGE **********/

@@ -6,10 +6,10 @@
 		<div class="bloc-right">
 			<div class="list">
 				<ul>
-					<li><a href="{{ path('asso') }}">VIE DE L'ASSOCIATION</a></li>
-					<li><a href="{{ path('membership') }}">DEVENIR MEMBRE</a></li>
-					<li><a href="{{ path('forum') }}">FORUM</a></li>
-					<li><a href="{{ path('app_contacts_new') }}">CONTACT</a></li>
+					<li><a href="{{path('asso')}}">VIE DE L'ASSOCIATION</a></li>
+					<li><a href="{{path('membership')}}">DEVENIR MEMBRE</a></li>
+					<li><a href="{{path('forum')}}">FORUM</a></li>
+					<li><a href="{{path('app_contacts_new')}}">CONTACT</a></li>
 				</ul>
 			</div>
 			<div class="list">
@@ -48,6 +48,10 @@
 				{% for presentation in presentations %}
 				{{ presentation.presentationTitle }}
 				{% endfor %}
+				<a href="https://www.facebook.com/people/Asso-Amca/pfbid02EdV1ANoYryPtf92ef283uzQVkT3FkFBqWF7iVFTLVdYs3ekSrCyzNNhachXBRajBl/"
+					target="_blank">
+					<i class="fa-brands fa-facebook"></i>
+				</a>
 			</small>
 		</div>
 	</div>

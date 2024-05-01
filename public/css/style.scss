@@ -125,6 +125,7 @@ a:hover {
 .navbar {
     font-size: 30px;
     color: white;
+    margin-bottom: 60px;
 
     a {
         margin: 0 10px;
@@ -192,6 +193,18 @@ a:hover {
 }
 
 /***** HEADERS *****/
+.headerIndexLogo {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    img {
+        height: 150px;
+        width: auto;
+        margin: 10px 20px;
+    }
+}
+
 .headerIndex {
     background-image: linear-gradient(rgb(1, 1, 1, 0.4), rgba(1, 1, 1, 0.4)), url(../images/wallpaper1.webp);
     background-position: center;
@@ -207,12 +220,12 @@ a:hover {
     align-items: center;
 
     h1 {
-        margin: 90px 20px;
+        margin: 70px 20px 90px 20px;
     }
 }
 
 .headerPages {
-    background-image: linear-gradient(rgb(1, 1, 1, 0.4), rgba(1, 1, 1, 0.4)),
+    background-image: linear-gradient(rgb(1, 1, 1, 0.7), rgba(1, 1, 1, 0.7)),
         url(../images/wallpaper3.webp);
     background-position: center;
     background-size: cover;
@@ -252,16 +265,15 @@ a:hover {
     align-items: center;
 
     h1 {
-        margin: 70px 0;
+        margin: 10px 0 70px 0;
     }
 
-    h2::after,
-    h3::after {
+    h2 {
+        margin: 0px 20px 60px 20px;
+    }
+
+    h2::after {
         display: none;
-    }
-
-    h3 {
-        margin: 40px;
     }
 }
 
@@ -332,6 +344,12 @@ footer {
         .brand {
             color: $light;
             margin: 20px;
+        }
+
+        .brand {
+            a {
+                margin-left: 5px;
+            }
         }
     }
 }
@@ -415,11 +433,11 @@ footer {
 
     .animated {
         opacity: 1 !important;
-        transform: translateX(15%) !important;
+        transform: translateX(10%) !important;
     }
 
     .story-text.animated {
-        transform: translateX(-15%) !important;
+        transform: translateX(-10%) !important;
     }
 }
 
@@ -455,7 +473,7 @@ footer {
             align-items: center;
             padding: 40px 30px 30px 30px;
             color: $darker;
-            margin: 60px;
+            margin: 30px;
         }
 
         p {
@@ -470,7 +488,7 @@ footer {
 #our-previous-trips {
     background-color: $dark;
     color: $light;
-    padding: 100px 20px;
+    padding: 10px 20px 100px 20px;
 
     .previous-trips {
         display: flex;
@@ -494,10 +512,12 @@ footer {
             height: 330px;
             margin: 40px;
             box-shadow: $light 0px 0px 10px 5px;
+            border-radius: 8px;
 
             img {
                 width: 500px;
                 height: 330px;
+                border-radius: 8px;
             }
         }
 
@@ -505,6 +525,14 @@ footer {
             width: 600px;
             margin: 40px;
             text-align: center;
+
+            h3 {
+                font-size: 40px;
+            }
+
+            p {
+                font-size: 23px;
+            }
         }
     }
 }
@@ -523,7 +551,7 @@ footer {
     background-attachment: fixed;
 
     .contactIndex {
-        font-size: 70px;
+        font-size: 60px;
         margin-top: 10px;
         color: $light;
         font-family: 'Anton', sans-serif;
@@ -620,7 +648,7 @@ footer {
 #agenda {
     background-color: $dark;
     color: $light;
-    padding: 100px 20px;
+    padding: 10px 20px 100px 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -721,15 +749,30 @@ footer {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin-bottom: 40px;
+        margin: 40px 0;
 
         p {
             text-align: center;
+            padding: 0px;
+        }
+
+        small {
+            text-align: center;
+            font-size: 15px;
             padding: 20px;
         }
 
         h3 {
             margin-top: 40px;
+        }
+
+        a {
+            color: $light;
+        }
+
+        i {
+            color: $light;
+            margin-right: 10px;
         }
     }
 }

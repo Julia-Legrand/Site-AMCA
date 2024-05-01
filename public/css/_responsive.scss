@@ -224,10 +224,14 @@
 
     /********** ASSO PAGE **********/
     /*** AGENDA ***/
-    #agenda .gagenda_embed {
-        iframe {
-            width: 600px !important;
-            height: 400px !important;
+    #agenda h2 {
+        margin-top: 30px;
+
+        .gagenda_embed {
+            iframe {
+                width: 600px !important;
+                height: 400px !important;
+            }
         }
     }
 
@@ -655,10 +659,16 @@
     }
 
     /*** AGENDA ***/
-    #agenda .gagenda_embed {
-        iframe {
-            width: 290px !important;
-            height: 400px !important;
+    #agenda {
+        .headerIndexLogo {
+            width: auto;
+        }
+
+        .gagenda_embed {
+            iframe {
+                width: 290px !important;
+                height: 400px !important;
+            }
         }
     }
 

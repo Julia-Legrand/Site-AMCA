@@ -7,14 +7,14 @@
 
 {% block body %}
 	<header class="headerShow">
+		<div class="headerIndexLogo">
+			<img loading="lazy" src="{{ asset('images/logo-noir-transparent.webp') }}" alt="Logo de l'association">
+		</div>
 		<h1>{{ futureTrip.futureTripName }}</h1>
 		<h2>Du
 			{{ futureTrip.startDate ? futureTrip.startDate|date('d-m-Y') : '' }}
 			au
 			{{ futureTrip.endDate ? futureTrip.endDate|date('d-m-Y') : '' }}</h2>
-		<h3>Budget à prévoir :
-			{{ futureTrip.budget }}
-			euros</h3>
 	</header>
 
 	<main class="mainShow">
@@ -23,36 +23,24 @@
 			<div id="mapFutureTrip"></div>
 		</div>
 		<div class="showRight">
-			<p>{{ futureTrip.futureTripContent }}</p>
+			<h3>{{ futureTrip.futureTripName }}</h3>
+			<p style="font-weight: bold;">Budget à prévoir :
+				{{ futureTrip.budget }}
+				euros</p>
+			<p style="font-weight: bold;">Nombre de places :
+				{{ futureTrip.numberOfPlaces }}</p>
+			<p style="padding: 30px;">{{ futureTrip.futureTripContent }}</p>
+			<small style="padding: 0px;">Les grandes sorties sont réservées aux membres de l'association.</small>
+			<small>Pour y participer, toutes les infos sont ici
+				<a href="{{ path('membership') }}">
+					<i class="fa-solid fa-arrow-right"></i>DEVENIR MEMBRE</a>
+			</small>
 			{% if app.user %}
-				<h3>Inscription</h3>
-				<p>Nombre de places :
-					{{ futureTrip.numberOfPlaces }}</p>
-				<ul class="user-list">
-					{% for user in futureTrip.users %}
-						<li>{{ user.firstName ~ ' ' ~ user.lastName }}</li>
-					{% endfor %}
-				</ul>
+				<small style="padding-top: 20px;">En tant que membre de l'association, vous pouvez envoyer votre demande d'inscription par e-mail à notre vice-président :</small>
+				<a href="mailto:marcgallene@free.fr?cc=gaby.goyal@sfr.fr&subject=Demande%20d'inscription%20à%20la%20sortie%20{{ futureTrip.futureTripName|raw }}">
+					<button class="button">S'inscrire</button>
+				</a>
 			{% endif %}
-			{{ include('future_trips/_subscribe_form.html.twig') }}
-
-			{% for message in app.flashes('success') %}
-				<div class="alert alert-success">
-					{{ message }}
-				</div>
-			{% endfor %}
-
-			{% for message in app.flashes('error') %}
-				<div class="alert alert-danger">
-					{{ message }}
-				</div>
-			{% endfor %}
-
-			{% for message in app.flashes('info') %}
-				<div class="alert alert-info">
-					{{ message }}
-				</div>
-			{% endfor %}
 		</div>
 	</main>
 	{% include "_partials/_footer.html.twig" %}
@@ -67,6 +55,6 @@ let futureTripMarker = L.marker([{{ futureTrip.futureTripLon }}, {{ futureTrip.f
 
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(mapFutureTrip);
 
-futureTripMarker.bindPopup("Voyage prévu : {{ futureTrip.futureTripName }}du {{ futureTrip.startDate | date('d-m-Y') }}au {{ futureTrip.endDate | date('d-m-Y') }}");
+futureTripMarker.bindPopup("Voyage prévu :                                        {{ futureTrip.futureTripName }}du                                        {{ futureTrip.startDate | date('d-m-Y') }}au                                        {{ futureTrip.endDate | date('d-m-Y') }}");
 	</script>
 {% endblock %}

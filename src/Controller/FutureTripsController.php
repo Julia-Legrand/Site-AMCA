@@ -132,37 +132,37 @@ class FutureTripsController extends AbstractController
         return $this->redirectToRoute('admin', [], Response::HTTP_SEE_OTHER);
     }
 
-    #[IsGranted('ROLE_USER')]
-    #[Route('/inscription/{id}', name: 'app_future_trips_subscribe', methods: ['POST'])]
-    public function subscribe(Request $request, FutureTrips $futureTrip, EntityManagerInterface $entityManager): Response
-    {
-        if ($this->isCsrfTokenValid('subscribe' . $futureTrip->getId(), $request->request->get('_token'))) {
-            if (!$this->getUser()->isStatus()) {
-                $this->addFlash('error', 'Votre compte n\'est pas encore actif, veuillez contacter l\'administrateur du site');
-                return $this->redirectToRoute('app_future_trips_show', ['id' => $futureTrip->getId()], Response::HTTP_SEE_OTHER);
-            }
+    // #[IsGranted('ROLE_USER')]
+    // #[Route('/inscription/{id}', name: 'app_future_trips_subscribe', methods: ['POST'])]
+    // public function subscribe(Request $request, FutureTrips $futureTrip, EntityManagerInterface $entityManager): Response
+    // {
+    //     if ($this->isCsrfTokenValid('subscribe' . $futureTrip->getId(), $request->request->get('_token'))) {
+    //         if (!$this->getUser()->isStatus()) {
+    //             $this->addFlash('error', 'Votre compte n\'est pas encore actif, veuillez contacter l\'administrateur du site');
+    //             return $this->redirectToRoute('app_future_trips_show', ['id' => $futureTrip->getId()], Response::HTTP_SEE_OTHER);
+    //         }
 
-            $numberOfPlaces = $futureTrip->getNumberOfPlaces();
-            $countSubscribedUsers = count($futureTrip->getUsers());
+    //         $numberOfPlaces = $futureTrip->getNumberOfPlaces();
+    //         $countSubscribedUsers = count($futureTrip->getUsers());
 
-            if ($countSubscribedUsers >= $numberOfPlaces) {
-                $this->addFlash('error', 'Le nombre maximal d\'inscriptions a été atteint');
-                return $this->redirectToRoute('app_future_trips_show', ['id' => $futureTrip->getId()], Response::HTTP_SEE_OTHER);
-            }
+    //         if ($countSubscribedUsers >= $numberOfPlaces) {
+    //             $this->addFlash('error', 'Le nombre maximal d\'inscriptions a été atteint');
+    //             return $this->redirectToRoute('app_future_trips_show', ['id' => $futureTrip->getId()], Response::HTTP_SEE_OTHER);
+    //         }
 
-            $user = $this->getUser();
-            $subscribedUsers = $futureTrip->getUsers();
+    //         $user = $this->getUser();
+    //         $subscribedUsers = $futureTrip->getUsers();
 
-            if ($subscribedUsers->contains($user)) {
-                $this->addFlash('info', 'Vous êtes déjà inscrit à cette sortie');
-                return $this->redirectToRoute('app_future_trips_show', ['id' => $futureTrip->getId()], Response::HTTP_SEE_OTHER);
-            }
+    //         if ($subscribedUsers->contains($user)) {
+    //             $this->addFlash('info', 'Vous êtes déjà inscrit à cette sortie');
+    //             return $this->redirectToRoute('app_future_trips_show', ['id' => $futureTrip->getId()], Response::HTTP_SEE_OTHER);
+    //         }
 
-            $futureTrip->addUser($user);
+    //         $futureTrip->addUser($user);
 
-            $entityManager->flush();
-            $this->addFlash('success', 'Inscription validée avec succès !');
-            return $this->redirectToRoute('app_future_trips_show', ['id' => $futureTrip->getId()], Response::HTTP_SEE_OTHER);
-        }
-    }
+    //         $entityManager->flush();
+    //         $this->addFlash('success', 'Inscription validée avec succès !');
+    //         return $this->redirectToRoute('app_future_trips_show', ['id' => $futureTrip->getId()], Response::HTTP_SEE_OTHER);
+    //     }
+    // }
 }

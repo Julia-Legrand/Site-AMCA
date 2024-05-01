@@ -6,6 +6,9 @@
 
 {% block body %}
 	<header class="headerPages">
+		<div class="headerIndexLogo">
+			<img loading="lazy" src="{{ asset('images/logo-noir-transparent.webp') }}" alt="Logo de l'association">
+		</div>
 		<h1>Vie de l'association</h1>
 		{% include "_partials/_navbar.html.twig" %}
 	</header>
@@ -30,7 +33,6 @@
 							<strong>{{ meeting.meetingAddress }}</strong>
 						</p>
 						<p style="font-size: 15px; padding-top: 40px;">
-							<i class="fa-solid fa-arrow-right"></i>
 							{{ meeting.meetingContent }}</p>
 					</div>
 				{% endfor %}
@@ -39,6 +41,10 @@
 
 		<!--AGENDA-->
 		<section id="agenda">
+			<div class="headerIndexLogo">
+				<img loading="lazy" src="{{ asset('images/logo-noir-transparent.webp') }}" alt="Logo de l'association">
+				<a href="https://www.meteorama.fr" target="_blank"><img src="{{ asset('images/meteorama.png') }}"></a>
+			</div>
 			<h2>Agenda de l'association</h2>
 			<div class="gagenda_embed" data="src=amca44500@gmail.com"></div>
 		</section>
@@ -75,7 +81,7 @@ let meetingMarker = L.marker([{{ meeting.meetingLon }}, {{ meeting.meetingLat }}
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(mapMeetings);
 
-meetingMarker.bindPopup("Réunion le {{ meeting.meetingDate | date('d-m-Y à H:i') }}au {{ meeting.meetingAddress }}");{% endfor %}
+meetingMarker.bindPopup("Réunion le          {{ meeting.meetingDate | date('d-m-Y à H:i') }}au          {{ meeting.meetingAddress }}");{% endfor %}
 	</script>
 	<script src="{{ asset('js/displayAgenda.js') }}"></script>
 {% endblock %}
