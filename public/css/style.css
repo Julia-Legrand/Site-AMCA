@@ -208,6 +208,9 @@
 @media all and (max-width: 600px) {
   /********** PARTIALS **********/
   /***** HEADERS *****/
+  .headerIndex {
+    background-attachment: scroll !important;
+  }
   .headerIndex h1 {
     font-size: 80px;
   }
@@ -298,6 +301,7 @@
     font-size: 50px;
   }
   .headerPages {
+    background-attachment: scroll !important;
     min-height: 70vh !important;
     height: auto;
   }
@@ -314,6 +318,9 @@
     height: 250px !important;
   }
   /*** CONTACT ***/
+  #contact-us {
+    background-attachment: scroll !important;
+  }
   #contact-us .buttonIndex {
     font-size: 40px !important;
     margin: 20px !important;
@@ -337,6 +344,9 @@
     height: 210px !important;
   }
   /*** FUTURE TRIPS SHOW ***/
+  .headerShow {
+    background-attachment: scroll !important;
+  }
   .headerShow h1 {
     font-size: 60px;
   }
@@ -420,7 +430,16 @@
     margin: 10px;
   }
   .headerPages h1 {
+    margin-top: 150px !important;
     font-size: 55px !important;
+  }
+  .headerShow img {
+    height: 90px !important;
+    width: auto;
+    margin: 10px;
+  }
+  .headerShow h1 {
+    margin-top: 150px !important;
   }
   .headerAdmin p {
     font-size: 18px;
@@ -469,6 +488,9 @@
   }
   /********** INDEX PAGE **********/
   /*** OUR PURPOSES ***/
+  #our-purposes {
+    background-attachment: scroll !important;
+  }
   #our-purposes .purpose {
     height: 290px !important;
     width: 290px !important;
@@ -850,11 +872,6 @@ img.logo-asso {
   height: 150px;
   width: auto;
   margin: 20px;
-}
-
-.headerForum {
-  min-height: 50vh;
-  height: auto;
 }
 
 .headerShow {
