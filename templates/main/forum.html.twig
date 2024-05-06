@@ -89,21 +89,35 @@
 								{% endif %}
 							</h3>
 							<div class="postContent">
-								<p>
-									<i class="fa-solid fa-quote-left" style="margin-right:5px; vertical-align:top;"></i>
-									{{ post.postContent }}
-								</p>
-								<div class="author">
-									<small>Posté par
-										{% if post.user %}
-											{{ post.user.firstName ~ ' ' ~ post.user.lastName }}
-										{% else %}
-											Anonyme
-										{% endif %}
-									</small>
-									<small>Le
-										{{ post.createdAt ? post.createdAt|date('d-m-Y à H:i') : '' }}
-									</small>
+								<div class="text">
+									<p>
+										<i class="fa-solid fa-quote-left" style="margin-right:5px; vertical-align:top;"></i>
+										{{ post.postContent }}
+									</p>
+									<div class="author">
+										<small>Posté par
+											{% if post.user %}
+												{{ post.user.firstName ~ ' ' ~ post.user.lastName }}
+											{% else %}
+												Anonyme
+											{% endif %}
+										</small>
+										<small>Le
+											{{ post.createdAt ? post.createdAt|date('d-m-Y à H:i') : '' }}
+										</small>
+									</div>
+								</div>
+								<div class="pics">
+									{% for postPicture in post.postPicture %}
+										<div class="pic">
+											<img loading="lazy" src="{{ asset('uploads/' ~ postPicture.postPicture) }}" width="250" height="auto" alt="Photo du post">
+											<div class="icon">
+												{% if is_granted('ROLE_ADMIN') or post.user == app.user %}
+													{{ include('post_pictures/_delete_form.html.twig') }}
+												{% endif %}
+											</div>
+										</div>
+									{% endfor %}
 								</div>
 							</div>
 							<a class="button" href="{{ path('app_comments_new', {'postId': post.id}) }}">

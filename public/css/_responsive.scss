@@ -514,16 +514,28 @@
         }
 
         .postContent {
-            flex-direction: column;
             margin-bottom: 35px !important;
-        }
 
-        .postContent p {
-            width: 100% !important;
-        }
+            .text {
+                flex-direction: column-reverse;
 
-        .author {
-            width: 100% !important;
+                p {
+                    width: 100% !important;
+                }
+
+                .author {
+                    margin-bottom: 20px;
+                    width: 100% !important;
+                }
+            }
+
+            .pics {
+                justify-content: center;
+
+                img {
+                    margin: 10px 0 !important;
+                }
+            }
         }
 
         .answersAuthor {

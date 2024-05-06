@@ -1,0 +1,6 @@
+<form method="post" action="{{ path('app_post_pictures_delete', {'id': postPicture.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet élément ?');">
+	<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ postPicture.id) }}">
+	<button>
+		<i class="fa-regular fa-trash-can icon"></i>
+	</button>
+</form>

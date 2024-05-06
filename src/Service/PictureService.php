@@ -14,7 +14,7 @@ class PictureService
         $this->params = $params;
     }
 
-    public function add(UploadedFile $tripPicture, ?string $folder = '')
+    public function addTripPicture(UploadedFile $tripPicture, ?string $folder = '')
     {
         // Use original name
         $fichier = $tripPicture->getClientOriginalName();
@@ -24,6 +24,20 @@ class PictureService
 
         // Move the picture to the destination folder
         $tripPicture->move($path . '/', $fichier);
+
+        return $fichier;
+    }
+
+    public function addPostPicture(UploadedFile $postPicture, ?string $folder = '')
+    {
+        // Use original name
+        $fichier = $postPicture->getClientOriginalName();
+
+        // Path to store the picture
+        $path = $this->params->get('images_directory') . $folder;
+
+        // Move the picture to the destination folder
+        $postPicture->move($path . '/', $fichier);
 
         return $fichier;
     }

@@ -9,6 +9,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -34,7 +35,13 @@ class PostsType extends AbstractType
                 'label' => 'Texte',
                 'attr' => ['class' => 'custom-form'],
             ])
-        ;
+            ->add('postPicture', FileType::class, [
+                'label' => 'Ajouter des photos',
+                'attr' => ['class' => 'custom-form'],
+                'multiple' => true,
+                'mapped' => false,
+                'required' => false,
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

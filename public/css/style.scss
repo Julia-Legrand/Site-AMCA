@@ -955,12 +955,57 @@ footer {
 
         .postContent {
             display: flex;
-        }
+            flex-direction: column;
 
-        .postContent p {
-            width: 80%;
-            padding: 0 20px;
-            margin-bottom: 40px;
+            .text {
+                display: flex;
+                word-wrap: break-word;
+
+                p {
+                    width: 80%;
+                    padding: 0 20px;
+                    margin-bottom: 40px;
+                }
+            }
+
+            .pics {
+                display: flex;
+                align-items: center;
+                flex-wrap: wrap;
+                margin-bottom: 20px;
+
+                .pic {
+                    width: 260px;
+                    padding: 5px;
+                    position: relative;
+                }
+
+                .pic img {
+                    width: 250px;
+                    height: auto;
+                    margin-bottom: 20px;
+                    transition: filter 0.5s ease;
+                }
+
+                .pic:hover img {
+                    filter: brightness(50%);
+                }
+
+                .pic .icon {
+                    display: none;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    color: $light;
+                    font-size: 25px;
+                    cursor: pointer;
+                }
+
+                .pic:hover .icon {
+                    display: block;
+                }
+            }
         }
 
         .button {

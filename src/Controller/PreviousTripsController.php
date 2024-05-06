@@ -32,7 +32,7 @@ class PreviousTripsController extends AbstractController
 
             foreach ($tripPictures as $tripPicture) {
                 $newTripPicture = new TripPictures();
-                $newTripPicture->setTripPicture($this->uploadPicture($tripPicture, $pictureService));
+                $newTripPicture->setTripPicture($this->uploadTripPicture($tripPicture, $pictureService));
                 $previousTrip->addTripPicture($newTripPicture);
             }
 
@@ -48,9 +48,9 @@ class PreviousTripsController extends AbstractController
         ]);
     }
 
-    private function uploadPicture(UploadedFile $file, PictureService $pictureService)
+    private function uploadTripPicture(UploadedFile $file, PictureService $pictureService)
     {
-        return $pictureService->add($file);
+        return $pictureService->addTripPicture($file);
     }
 
     #[IsGranted('ROLE_ADMIN')]
@@ -66,7 +66,7 @@ class PreviousTripsController extends AbstractController
 
             foreach ($tripPictures as $tripPicture) {
                 $newTripPicture = new TripPictures();
-                $newTripPicture->setTripPicture($this->uploadPicture($tripPicture, $pictureService));
+                $newTripPicture->setTripPicture($this->uploadTripPicture($tripPicture, $pictureService));
                 $previousTrip->addTripPicture($newTripPicture);
             }
 

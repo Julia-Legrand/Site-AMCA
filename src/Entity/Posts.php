@@ -37,10 +37,14 @@ class Posts
     #[ORM\OneToMany(mappedBy: 'post', targetEntity: Comments::class, orphanRemoval: true, cascade: ['persist'])]
     private Collection $comments;
 
+    #[ORM\OneToMany(mappedBy: 'posts', targetEntity: postPictures::class, orphanRemoval: true, cascade: ['persist'])]
+    private Collection $postPicture;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
         $this->created_at = new \DateTimeImmutable();
+        $this->postPicture = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -132,6 +136,36 @@ class Posts
             // set the owning side to null (unless already changed)
             if ($comment->getPost() === $this) {
                 $comment->setPost(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, postPictures>
+     */
+    public function getPostPicture(): Collection
+    {
+        return $this->postPicture;
+    }
+
+    public function addPostPicture(postPictures $postPicture): static
+    {
+        if (!$this->postPicture->contains($postPicture)) {
+            $this->postPicture->add($postPicture);
+            $postPicture->setPosts($this);
+        }
+
+        return $this;
+    }
+
+    public function removePostPicture(postPictures $postPicture): static
+    {
+        if ($this->postPicture->removeElement($postPicture)) {
+            // set the owning side to null (unless already changed)
+            if ($postPicture->getPosts() === $this) {
+                $postPicture->setPosts(null);
             }
         }
 

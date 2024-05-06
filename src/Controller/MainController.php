@@ -11,6 +11,7 @@ use App\Repository\MeetingsRepository;
 use App\Repository\PurposesRepository;
 use App\Repository\FutureTripsRepository;
 use App\Repository\MembershipsRepository;
+use App\Repository\PostPicturesRepository;
 use App\Repository\TripPicturesRepository;
 use App\Repository\PresentationsRepository;
 use App\Repository\PreviousTripsRepository;
@@ -70,7 +71,7 @@ class MainController extends AbstractController
 
     #[IsGranted('ROLE_USER')]
     #[Route('/forum', name: 'forum')]
-    public function forum(PresentationsRepository $presentationsRepository, ThemesRepository $themesRepository, PostsRepository $postsRepository, CommentsRepository $commentsRepository): Response
+    public function forum(PresentationsRepository $presentationsRepository, ThemesRepository $themesRepository, PostsRepository $postsRepository, PostPicturesRepository $postPicturesRepository, CommentsRepository $commentsRepository): Response
     {
         // Check if the user has the status set to true (validated)
         if ($this->getUser()->isStatus()) {
@@ -78,6 +79,7 @@ class MainController extends AbstractController
                 'presentations' => $presentationsRepository->findAll(),
                 'themes' => $themesRepository->findAll(),
                 'posts' => $postsRepository->findAll(),
+                'post_pictures' => $postPicturesRepository->findAll(),
                 'comments' => $commentsRepository->findAll(),
             ]);
         } else {

@@ -4,11 +4,14 @@ namespace App\Controller;
 
 use App\Entity\Posts;
 use App\Form\PostsType;
+use App\Entity\PostPictures;
+use App\Service\PictureService;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\PresentationsRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/discussion')]
@@ -16,7 +19,7 @@ class PostsController extends AbstractController
 {
 
     #[Route('/nouveau', name: 'app_posts_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager, PresentationsRepository $presentationsRepository): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, PresentationsRepository $presentationsRepository, PictureService $pictureService): Response
     {
         $post = new Posts();
 
@@ -28,6 +31,15 @@ class PostsController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // Handling files uploading
+            $postPictures = $form->get('postPicture')->getData();
+
+            foreach ($postPictures as $postPicture) {
+                $newPostPicture = new PostPictures();
+                $newPostPicture->setPostPicture($this->uploadPostPicture($postPicture, $pictureService));
+                $post->addPostPicture($newPostPicture);
+            }
+
             $entityManager->persist($post);
             $entityManager->flush();
 
@@ -41,8 +53,13 @@ class PostsController extends AbstractController
         ]);
     }
 
+    private function uploadPostPicture(UploadedFile $file, PictureService $pictureService)
+    {
+        return $pictureService->addPostPicture($file);
+    }
+
     #[Route('/{id}/modifier', name: 'app_posts_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Posts $post, EntityManagerInterface $entityManager, PresentationsRepository $presentationsRepository): Response
+    public function edit(Request $request, Posts $post, EntityManagerInterface $entityManager, PresentationsRepository $presentationsRepository, PictureService $pictureService): Response
     {
         // Get the connected user
         $user = $this->getUser();
@@ -56,6 +73,16 @@ class PostsController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // Handling files uploading
+            $postPictures = $form->get('postPicture')->getData();
+
+            foreach ($postPictures as $postPicture) {
+                $newPostPicture = new PostPictures();
+                $newPostPicture->setPostPicture($this->uploadPostPicture($postPicture, $pictureService));
+                $post->addPostPicture($newPostPicture);
+            }
+
+            $entityManager->persist($post);
             $entityManager->flush();
 
             return $this->redirectToRoute('forum', [], Response::HTTP_SEE_OTHER);

@@ -369,14 +369,23 @@
     width: 90% !important;
   }
   .mainForum .postContent {
-    flex-direction: column;
     margin-bottom: 35px !important;
   }
-  .mainForum .postContent p {
+  .mainForum .postContent .text {
+    flex-direction: column-reverse;
+  }
+  .mainForum .postContent .text p {
     width: 100% !important;
   }
-  .mainForum .author {
+  .mainForum .postContent .text .author {
+    margin-bottom: 20px;
     width: 100% !important;
+  }
+  .mainForum .postContent .pics {
+    justify-content: center;
+  }
+  .mainForum .postContent .pics img {
+    margin: 10px 0 !important;
   }
   .mainForum .answersAuthor {
     width: 100% !important;
@@ -1476,11 +1485,49 @@ footer .footerBloc2 .brand a {
 }
 .mainForum .forum .postContent {
   display: flex;
+  flex-direction: column;
 }
-.mainForum .forum .postContent p {
+.mainForum .forum .postContent .text {
+  display: flex;
+  word-wrap: break-word;
+}
+.mainForum .forum .postContent .text p {
   width: 80%;
   padding: 0 20px;
   margin-bottom: 40px;
+}
+.mainForum .forum .postContent .pics {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.mainForum .forum .postContent .pics .pic {
+  width: 260px;
+  padding: 5px;
+  position: relative;
+}
+.mainForum .forum .postContent .pics .pic img {
+  width: 250px;
+  height: auto;
+  margin-bottom: 20px;
+  transition: filter 0.5s ease;
+}
+.mainForum .forum .postContent .pics .pic:hover img {
+  filter: brightness(50%);
+}
+.mainForum .forum .postContent .pics .pic .icon {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #F3F4F7;
+  font-size: 25px;
+  cursor: pointer;
+}
+.mainForum .forum .postContent .pics .pic:hover .icon {
+  display: block;
 }
 .mainForum .forum .button {
   color: #F3F4F7;
