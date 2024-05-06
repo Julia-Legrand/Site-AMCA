@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Entity\User;
 use App\Entity\Comments;
+use App\Entity\PostPictures;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\PostsRepository;
@@ -37,7 +38,7 @@ class Posts
     #[ORM\OneToMany(mappedBy: 'post', targetEntity: Comments::class, orphanRemoval: true, cascade: ['persist'])]
     private Collection $comments;
 
-    #[ORM\OneToMany(mappedBy: 'posts', targetEntity: postPictures::class, orphanRemoval: true, cascade: ['persist'])]
+    #[ORM\OneToMany(mappedBy: 'posts', targetEntity: PostPictures::class, orphanRemoval: true, cascade: ['persist'])]
     private Collection $postPicture;
 
     public function __construct()
