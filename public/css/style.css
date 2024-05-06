@@ -182,7 +182,11 @@
   /*** MAIN DASHBOARD ***/
   /*** SECTIONS OF MAIN DASHBOARD***/
   .dashboardBloc {
+    /*** PRESENTATION ***/
     /*** FUTURE TRIPS ***/
+  }
+  .dashboardBloc .asso-docs .docs {
+    flex-direction: column;
   }
   .dashboardBloc .each-trip {
     width: 600px !important;
@@ -1361,6 +1365,7 @@ footer .footerBloc2 .brand a {
 }
 .mainMembership embed {
   height: 480px;
+  width: auto;
   margin-bottom: 20px;
 }
 .mainMembership i {
@@ -1616,7 +1621,6 @@ footer .footerBloc2 .brand a {
   width: 87%;
   background-color: #d6d6d6;
   color: #25262A;
-  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1639,10 +1643,6 @@ footer .footerBloc2 .brand a {
 }
 .dashboard .dashboardBloc .presentation {
   display: flex;
-  justify-content: center;
-}
-.dashboard .dashboardBloc .bloc-left {
-  display: flex;
   flex-direction: column;
   align-items: center;
 }
@@ -1656,7 +1656,7 @@ footer .footerBloc2 .brand a {
   display: flex;
   flex-direction: column;
   background-color: #F3F4F7;
-  margin: 20px;
+  margin: 10px;
   border-radius: 10px;
   box-shadow: #0D121C 0px 0 5px;
   padding: 20px;
@@ -1673,7 +1673,7 @@ footer .footerBloc2 .brand a {
   padding: 10px;
 }
 .dashboard .dashboardBloc .asso-pic {
-  width: 290px;
+  width: 280px;
 }
 .dashboard .dashboardBloc .asso-text {
   width: 600px;
@@ -1687,8 +1687,18 @@ footer .footerBloc2 .brand a {
   flex-direction: column;
 }
 .dashboard .dashboardBloc .asso-docs {
-  width: 220px;
-  height: 805px;
+  display: flex;
+  flex-direction: column;
+  width: auto;
+}
+.dashboard .dashboardBloc .asso-docs .docs {
+  display: flex;
+  justify-content: space-evenly;
+}
+.dashboard .dashboardBloc .asso-docs .docs .doc {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
 }
 .dashboard .dashboardBloc .icon-small {
   font-size: 15px;

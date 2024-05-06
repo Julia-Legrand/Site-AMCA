@@ -826,6 +826,7 @@ footer {
 
     embed {
         height: 480px;
+        width: auto;
         margin-bottom: 20px;
     }
 
@@ -1121,7 +1122,6 @@ footer {
     width: 87%;
     background-color: #d6d6d6;
     color: $dark;
-    padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1140,11 +1140,6 @@ footer {
         /*** PRESENTATION ***/
         .presentation {
             display: flex;
-            justify-content: center;
-        }
-
-        .bloc-left {
-            display: flex;
             flex-direction: column;
             align-items: center;
         }
@@ -1160,7 +1155,7 @@ footer {
             display: flex;
             flex-direction: column;
             background-color: $light;
-            margin: 20px;
+            margin: 10px;
             border-radius: 10px;
             box-shadow: #0D121C 0px 0 5px;
             padding: 20px;
@@ -1180,7 +1175,7 @@ footer {
         }
 
         .asso-pic {
-            width: 290px;
+            width: 280px;
         }
 
         .asso-text {
@@ -1198,8 +1193,20 @@ footer {
         }
 
         .asso-docs {
-            width: 220px;
-            height: 805px;
+            display: flex;
+            flex-direction: column;
+            width: auto;
+
+            .docs {
+                display: flex;
+                justify-content: space-evenly;
+
+                .doc {
+                    display: flex;
+                    flex-direction: column;
+                    margin: 20px;
+                }
+            }
         }
 
         .icon-small {

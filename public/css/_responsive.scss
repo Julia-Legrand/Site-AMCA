@@ -243,6 +243,14 @@
     /*** SECTIONS OF MAIN DASHBOARD***/
     .dashboardBloc {
 
+        /*** PRESENTATION ***/
+        .asso-docs {
+
+            .docs {
+                flex-direction: column;
+            }
+        }
+
         /*** FUTURE TRIPS ***/
         .each-trip {
             width: 600px !important;
