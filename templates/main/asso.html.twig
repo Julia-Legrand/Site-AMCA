@@ -14,7 +14,7 @@
 	<main>
 
 		<!--MONTHLY MEETING-->
-		<section id="monthly-meeting">
+		<section id="reunions-mensuelles">
 			<h2>Notre prochaine réunion mensuelle</h2>
 			<div class="our-meeting">
 				{% for meeting in meetings %}
@@ -63,6 +63,28 @@
 					</div>
 				{% endfor %}
 			</div>
+		</section>
+
+		<!--MEMORY DUTY-->
+		<section id="devoir-memoire">
+			<h2>Nos amis motards disparus</h2>
+			<div class="all-people">
+                {% for memory_duty in memory_duties %}
+                    <div class="personCard">
+						<div class="header">
+                            <h2>{{ memory_duty.memoryTitle }}</h2>
+                        </div>
+						<div class="body">
+                            <div class="pic">
+								<img loading="lazy" src="{{ asset('uploads/' ~ memory_duty.memoryPicture) }}" alt="Photo de la personne">
+							</div>
+                            <div class="text">
+                                <p class="description">{{ memory_duty.memoryContent }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
 		</section>
 
 	</main>

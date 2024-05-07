@@ -8,7 +8,7 @@
 
     /********** ASSO PAGE **********/
     /*** MONTHLY MEETING ***/
-    #monthly-meeting {
+    #reunions-mensuelles {
         .our-meeting {
             justify-content: space-between !important;
         }
@@ -53,7 +53,7 @@
 
     /********** ASSO PAGE **********/
     /*** MONTHLY MEETING ***/
-    #monthly-meeting {
+    #reunions-mensuelles {
 
         .meetingRight,
         .meetingLeft {
@@ -328,7 +328,7 @@
 
     /********** ASSO PAGE **********/
     /*** MONTHLY MEETING ***/
-    #monthly-meeting {
+    #reunions-mensuelles {
 
         .our-meeting {
             flex-direction: column-reverse !important;
@@ -369,6 +369,11 @@
         .showRight {
             width: 500px !important;
         }
+    }
+
+    /*** MEMORY DUTY ***/
+    #devoir-memoire {
+        background-attachment: scroll !important;
     }
 
     /********** ADMIN PAGES **********/
@@ -460,13 +465,15 @@
 
     /********** ASSO PAGE **********/
     /*** MONTHLY MEETING ***/
-    #monthly-meeting {
+    #reunions-mensuelles {
 
         .meetingLeft,
         .meetingRight {
             width: 400px !important;
         }
     }
+
+
 
     /*** FUTURE TRIPS INDEX ***/
     #futures-sorties {
@@ -737,7 +744,7 @@
 
     /********** ASSO PAGE **********/
     /*** MONTHLY MEETING ***/
-    #monthly-meeting {
+    #reunions-mensuelles {
 
         .meetingLeft,
         .meetingRight {

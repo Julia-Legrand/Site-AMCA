@@ -6,7 +6,7 @@
   }
   /********** ASSO PAGE **********/
   /*** MONTHLY MEETING ***/
-  #monthly-meeting .our-meeting {
+  #reunions-mensuelles .our-meeting {
     justify-content: space-between !important;
   }
 }
@@ -39,8 +39,8 @@
   }
   /********** ASSO PAGE **********/
   /*** MONTHLY MEETING ***/
-  #monthly-meeting .meetingRight,
-  #monthly-meeting .meetingLeft {
+  #reunions-mensuelles .meetingRight,
+  #reunions-mensuelles .meetingLeft {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
@@ -241,11 +241,11 @@
   }
   /********** ASSO PAGE **********/
   /*** MONTHLY MEETING ***/
-  #monthly-meeting .our-meeting {
+  #reunions-mensuelles .our-meeting {
     flex-direction: column-reverse !important;
   }
-  #monthly-meeting .meetingLeft,
-  #monthly-meeting .meetingRight {
+  #reunions-mensuelles .meetingLeft,
+  #reunions-mensuelles .meetingRight {
     width: 500px !important;
   }
   /*** AGENDA ***/
@@ -266,6 +266,10 @@
   .mainShow .showLeft,
   .mainShow .showRight {
     width: 500px !important;
+  }
+  /*** MEMORY DUTY ***/
+  #devoir-memoire {
+    background-attachment: scroll !important;
   }
   /********** ADMIN PAGES **********/
   /*** MAIN DASHBOARD ***/
@@ -333,8 +337,8 @@
   }
   /********** ASSO PAGE **********/
   /*** MONTHLY MEETING ***/
-  #monthly-meeting .meetingLeft,
-  #monthly-meeting .meetingRight {
+  #reunions-mensuelles .meetingLeft,
+  #reunions-mensuelles .meetingRight {
     width: 400px !important;
   }
   /*** FUTURE TRIPS INDEX ***/
@@ -534,8 +538,8 @@
   }
   /********** ASSO PAGE **********/
   /*** MONTHLY MEETING ***/
-  #monthly-meeting .meetingLeft,
-  #monthly-meeting .meetingRight {
+  #reunions-mensuelles .meetingLeft,
+  #reunions-mensuelles .meetingRight {
     width: 290px !important;
   }
   /*** AGENDA ***/
@@ -1182,54 +1186,54 @@ footer .footerBloc2 .brand a {
 
 /********** ASSO PAGE **********/
 /*** MONTHLY MEETING ***/
-#monthly-meeting {
+#reunions-mensuelles {
   background-color: #16171A;
   color: #F3F4F7;
   padding: 100px 20px;
 }
-#monthly-meeting .our-meeting {
+#reunions-mensuelles .our-meeting {
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
-#monthly-meeting .meetingLeft {
+#reunions-mensuelles .meetingLeft {
   width: 500px;
 }
-#monthly-meeting .meetingLeft img {
+#reunions-mensuelles .meetingLeft img {
   width: 100%;
   margin: 40px 0;
 }
-#monthly-meeting .meetingLeft #mapMeetings {
+#reunions-mensuelles .meetingLeft #mapMeetings {
   width: 100%;
   height: 300px;
 }
-#monthly-meeting .meetingRight {
+#reunions-mensuelles .meetingRight {
   width: 700px;
 }
-#monthly-meeting .meetingRight p {
+#reunions-mensuelles .meetingRight p {
   font-size: 30px;
   text-align: center;
 }
-#monthly-meeting .meetingRight i {
+#reunions-mensuelles .meetingRight i {
   margin-right: 10px;
 }
-#monthly-meeting .meetingRight,
-#monthly-meeting .meetingLeft {
+#reunions-mensuelles .meetingRight,
+#reunions-mensuelles .meetingLeft {
   opacity: 0;
   transform: translateX(100);
   transition: opacity 0.8s ease, transform 1s ease;
 }
-#monthly-meeting .animate-from-left {
+#reunions-mensuelles .animate-from-left {
   transform-origin: left center;
 }
-#monthly-meeting .animate-from-right {
+#reunions-mensuelles .animate-from-right {
   transform-origin: right center;
 }
-#monthly-meeting .animated {
+#reunions-mensuelles .animated {
   opacity: 1 !important;
   transform: translateX(5%) !important;
 }
-#monthly-meeting .meetingRight.animated {
+#reunions-mensuelles .meetingRight.animated {
   transform: translateX(-5%) !important;
 }
 
@@ -1353,6 +1357,67 @@ footer .footerBloc2 .brand a {
 .mainShow .showRight i {
   color: #F3F4F7;
   margin-right: 10px;
+}
+
+/*** MEMORY DUTY ***/
+#devoir-memoire {
+  background-image: linear-gradient(rgba(1, 1, 1, 0.4), rgba(1, 1, 1, 0.4)), url(../images/wallpaper5.webp);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: #F3F4F7;
+  padding: 100px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#devoir-memoire .all-people {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+#devoir-memoire .all-people .personCard {
+  background-color: #F3F4F7;
+  color: #16171A;
+  box-shadow: #F3F4F7 0px 0px 8px 2px;
+  border-radius: 10px;
+  margin: 20px;
+  padding: 20px;
+  max-width: 550px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+#devoir-memoire .all-people .header h2 {
+  font-size: 25px;
+  margin: 10px;
+}
+#devoir-memoire .all-people .header h2::after {
+  display: none;
+}
+#devoir-memoire .all-people .body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#devoir-memoire .all-people p.description {
+  font-size: 18px;
+  text-align: center;
+  background-color: white;
+  padding: 20px;
+  margin: 10px;
+}
+#devoir-memoire .all-people .pic {
+  width: 260px;
+  height: auto;
+  margin: 20px;
+}
+#devoir-memoire .all-people .pic img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
 }
 
 /********** MEMBERSHIP PAGE **********/
@@ -1676,6 +1741,7 @@ footer .footerBloc2 .brand a {
   /*** SECTIONS OF MAIN DASHBOARD***/
   /*** PREVIOUS TRIPS (DASHBOARD AND PAGE) ***/
   /*** USERS INDEX PAGE ***/
+  /*** MEMORY DUTY PAGE ***/
   /*** RECEIVED MESSAGES PAGE ***/
 }
 .dashboard h1 {
@@ -1959,6 +2025,68 @@ footer .footerBloc2 .brand a {
   display: flex;
   justify-content: space-around;
   width: 90%;
+}
+.dashboard .all-people {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.dashboard .all-people .personCard {
+  background-color: #F3F4F7;
+  box-shadow: #0D121C 0px 0 5px;
+  border-radius: 10px;
+  margin: 20px 10px;
+  padding: 10px;
+  max-width: 600px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+.dashboard .all-people .header h2 {
+  font-size: 25px;
+  margin: 10px;
+}
+.dashboard .all-people .header h2::after {
+  display: none;
+}
+.dashboard .all-people .body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.dashboard .all-people p.description {
+  font-size: 18px;
+  text-align: center;
+  background-color: white;
+  padding: 20px;
+  margin: 10px;
+}
+.dashboard .all-people .pic {
+  width: 260px;
+  padding: 5px;
+  position: relative;
+}
+.dashboard .all-people .pic img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  transition: filter 0.5s ease;
+}
+.dashboard .all-people .pic:hover img {
+  filter: brightness(50%);
+}
+.dashboard .all-people .pic .icon {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #F3F4F7;
+  font-size: 25px;
+  cursor: pointer;
+}
+.dashboard .all-people .pic:hover .icon {
+  display: block;
 }
 .dashboard .receivedMessage {
   width: 60%;

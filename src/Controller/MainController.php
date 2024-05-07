@@ -11,6 +11,7 @@ use App\Repository\MeetingsRepository;
 use App\Repository\PurposesRepository;
 use App\Repository\FutureTripsRepository;
 use App\Repository\MembershipsRepository;
+use App\Repository\MemoryDutyRepository;
 use App\Repository\PostPicturesRepository;
 use App\Repository\TripPicturesRepository;
 use App\Repository\PresentationsRepository;
@@ -35,7 +36,7 @@ class MainController extends AbstractController
 
     #[IsGranted('ROLE_ADMIN')]
     #[Route('/admin', name: 'admin')]
-    public function admin(PresentationsRepository $presentationsRepository, MeetingsRepository $meetingsRepository, PurposesRepository $purposesRepository, MembershipsRepository $membershipsRepository, ContactsRepository $contactsRepository, PreviousTripsRepository $previousTripsRepository, TripPicturesRepository $tripPicturesRepository, FutureTripsRepository $futureTripsRepository, UserRepository $userRepository): Response
+    public function admin(PresentationsRepository $presentationsRepository, MeetingsRepository $meetingsRepository, PurposesRepository $purposesRepository, MembershipsRepository $membershipsRepository, ContactsRepository $contactsRepository, PreviousTripsRepository $previousTripsRepository, TripPicturesRepository $tripPicturesRepository, FutureTripsRepository $futureTripsRepository, UserRepository $userRepository, MemoryDutyRepository $memoryDutyRepository): Response
     {
         return $this->render('main/admin.html.twig', [
             'presentations' => $presentationsRepository->findAll(),
@@ -47,16 +48,18 @@ class MainController extends AbstractController
             'trip_pictures' => $tripPicturesRepository->findAll(),
             'futureTrips' => $futureTripsRepository->findAll(),
             'users' => $userRepository->findAll(),
+            'memory_duties' => $memoryDutyRepository->findAll(),
         ]);
     }
 
     #[Route('/vie-association', name: 'asso')]
-    public function asso(PresentationsRepository $presentationsRepository, MeetingsRepository $meetingsRepository, FutureTripsRepository $futureTripsRepository): Response
+    public function asso(PresentationsRepository $presentationsRepository, MeetingsRepository $meetingsRepository, FutureTripsRepository $futureTripsRepository, MemoryDutyRepository $memoryDutyRepository): Response
     {
         return $this->render('main/asso.html.twig', [
             'presentations' => $presentationsRepository->findAll(),
             'meetings' => $meetingsRepository->findAll(),
             'futureTrips' => $futureTripsRepository->findAll(),
+            'memory_duties' => $memoryDutyRepository->findAll(),
         ]);
     }
 

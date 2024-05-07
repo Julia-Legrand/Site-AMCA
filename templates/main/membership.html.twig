@@ -33,7 +33,7 @@
 		{% for membership in memberships %}
 			<embed src="{{ asset('uploads/' ~ membership.membershipForm) }}" type="application/pdf" alt="Bulletin d'adhésion">
 			<a href="{{ asset('uploads/' ~ membership.membershipForm) }}" download>
-				<i class="fa-solid fa-download icon"></i>Télécharger</a>
+				<i class="fa-solid fa-download icon"></i>Télécharger le bulletin</a>
 
 			<h2>Montant de la cotisation</h2>
 			<p>Cotisation conducteur :
@@ -43,6 +43,16 @@
 				{{ membership.passengerFee }}
 				euros</p>
 		{% endfor %}
+
+		{% if app.user %}
+			<h2>Membres actuels de l'association</h2>
+			{% for membership in memberships %}
+				<embed src="{{ asset('uploads/' ~ membership.trombinoscope) }}" type="application/pdf" alt="Trombinoscope des membres">
+				<a href="{{ asset('uploads/' ~ membership.trombinoscope) }}" download>
+					<i class="fa-solid fa-download icon"></i>Télécharger le trombinoscope</a>
+			{% endfor %}
+		{% endif %}
+
 	</main>
 	{% include "_partials/_footer.html.twig" %}
 {% endblock %}
