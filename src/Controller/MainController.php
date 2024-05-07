@@ -5,13 +5,14 @@ namespace App\Controller;
 use App\Repository\UserRepository;
 use App\Repository\PostsRepository;
 use App\Repository\ThemesRepository;
+use App\Repository\GalleryRepository;
 use App\Repository\CommentsRepository;
 use App\Repository\ContactsRepository;
 use App\Repository\MeetingsRepository;
 use App\Repository\PurposesRepository;
+use App\Repository\MemoryDutyRepository;
 use App\Repository\FutureTripsRepository;
 use App\Repository\MembershipsRepository;
-use App\Repository\MemoryDutyRepository;
 use App\Repository\PostPicturesRepository;
 use App\Repository\TripPicturesRepository;
 use App\Repository\PresentationsRepository;
@@ -36,7 +37,7 @@ class MainController extends AbstractController
 
     #[IsGranted('ROLE_ADMIN')]
     #[Route('/admin', name: 'admin')]
-    public function admin(PresentationsRepository $presentationsRepository, MeetingsRepository $meetingsRepository, PurposesRepository $purposesRepository, MembershipsRepository $membershipsRepository, ContactsRepository $contactsRepository, PreviousTripsRepository $previousTripsRepository, TripPicturesRepository $tripPicturesRepository, FutureTripsRepository $futureTripsRepository, UserRepository $userRepository, MemoryDutyRepository $memoryDutyRepository): Response
+    public function admin(PresentationsRepository $presentationsRepository, MeetingsRepository $meetingsRepository, PurposesRepository $purposesRepository, MembershipsRepository $membershipsRepository, ContactsRepository $contactsRepository, PreviousTripsRepository $previousTripsRepository, TripPicturesRepository $tripPicturesRepository, FutureTripsRepository $futureTripsRepository, UserRepository $userRepository, MemoryDutyRepository $memoryDutyRepository, GalleryRepository $galleryRepository): Response
     {
         return $this->render('main/admin.html.twig', [
             'presentations' => $presentationsRepository->findAll(),
@@ -49,17 +50,19 @@ class MainController extends AbstractController
             'futureTrips' => $futureTripsRepository->findAll(),
             'users' => $userRepository->findAll(),
             'memory_duties' => $memoryDutyRepository->findAll(),
+            'galleries' => $galleryRepository->findAll(),
         ]);
     }
 
     #[Route('/vie-association', name: 'asso')]
-    public function asso(PresentationsRepository $presentationsRepository, MeetingsRepository $meetingsRepository, FutureTripsRepository $futureTripsRepository, MemoryDutyRepository $memoryDutyRepository): Response
+    public function asso(PresentationsRepository $presentationsRepository, MeetingsRepository $meetingsRepository, FutureTripsRepository $futureTripsRepository, MemoryDutyRepository $memoryDutyRepository, GalleryRepository $galleryRepository): Response
     {
         return $this->render('main/asso.html.twig', [
             'presentations' => $presentationsRepository->findAll(),
             'meetings' => $meetingsRepository->findAll(),
             'futureTrips' => $futureTripsRepository->findAll(),
             'memory_duties' => $memoryDutyRepository->findAll(),
+            'galleries' => $galleryRepository->findAll(),
         ]);
     }
 

@@ -600,7 +600,7 @@ footer {
     }
 }
 
-/********** ASSO PAGE **********/
+/********** VIE ASSO PAGE **********/
 /*** MONTHLY MEETING ***/
 #reunions-mensuelles {
     background-color: $darker;
@@ -696,7 +696,11 @@ footer {
 
 /*** FUTURE TRIPS INDEX ***/
 #futures-sorties {
-    background-color: $darker;
+    background-image: linear-gradient(rgb(1, 1, 1, 0.4), rgba(1, 1, 1, 0.4)), url(../images/wallpaper5.webp);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     color: $light;
     padding: 100px 20px;
     display: flex;
@@ -805,13 +809,55 @@ footer {
     }
 }
 
+/*** GALLERY ***/
+#galerie-photos {
+    background-color: $dark;
+    color: $light;
+    padding: 10px 20px 100px 20px;
+    min-height: 90vh;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h2 {
+        margin-top: 80px;
+    }
+
+    .gallery {
+        width: 840px;
+        display: flex;
+        justify-content: center;
+
+        .picture {
+            width: 800px;
+            height: 400px;
+            margin: 20px;
+            box-shadow: $light 0px 0px 10px 5px;
+            border-radius: 10px;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 10px;
+            }
+        }
+
+        .text {
+            width: 100%;
+            margin-top: 40px;
+
+            p {
+                text-align: center;
+            }
+        }
+    }
+}
+
 /*** MEMORY DUTY ***/
 #devoir-memoire {
-    background-image: linear-gradient(rgb(1, 1, 1, 0.4), rgba(1, 1, 1, 0.4)), url(../images/wallpaper5.webp);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-color: $darker;
     color: $light;
     padding: 100px 20px;
     display: flex;
@@ -981,7 +1027,7 @@ footer {
         margin: 20px;
 
         h1 {
-            font-size: 50px;
+            font-size: 40px;
             text-align: left;
             margin-bottom: 30px;
         }
@@ -1490,6 +1536,70 @@ footer {
         .actions a {
             text-decoration: none;
             margin-right: 10px;
+        }
+    }
+
+    /*** GALLERY PAGE ***/
+    .all-pictures {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+
+        .pictureCard {
+            background-color: $light;
+            box-shadow: #0D121C 0px 0 5px;
+            border-radius: 10px;
+            margin: 20px 10px;
+            padding: 10px;
+            max-width: 290px;
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .pic {
+            width: 260px;
+            padding: 5px;
+            position: relative;
+
+            img {
+                width: 100%;
+                height: 100%;
+                transition: filter 0.5s ease;
+            }
+
+            &:hover img {
+                filter: brightness(50%);
+            }
+
+            .icon {
+                display: none;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                color: $light;
+                font-size: 25px;
+                cursor: pointer;
+            }
+
+            &:hover .icon {
+                display: block;
+            }
+        }
+
+        p.description {
+            font-size: 18px;
+            text-align: center;
+            background-color: white;
+            padding: 20px;
+            margin: 10px;
         }
     }
 

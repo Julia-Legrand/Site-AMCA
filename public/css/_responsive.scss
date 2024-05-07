@@ -238,6 +238,18 @@
         }
     }
 
+    /*** GALLERY ***/
+    #galerie-photos {
+
+        .gallery {
+            width: 640px !important;
+
+            .picture {
+                width: 600px !important;
+            }
+        }
+    }
+
     /********** ADMIN PAGES **********/
     /*** MAIN DASHBOARD ***/
     /*** SECTIONS OF MAIN DASHBOARD***/
@@ -350,6 +362,7 @@
 
     /*** FUTURE TRIPS INDEX ***/
     #futures-sorties {
+        background-attachment: scroll !important;
 
         .each-trip {
             width: 500px !important;
@@ -362,6 +375,19 @@
         }
     }
 
+    /*** GALLERY ***/
+    #galerie-photos {
+
+        .gallery {
+            width: 540px !important;
+
+            .picture {
+                width: 500px !important;
+                height: 300px !important;
+            }
+        }
+    }
+
     /*** FUTURE TRIPS SHOW ***/
     .mainShow {
 
@@ -369,11 +395,6 @@
         .showRight {
             width: 500px !important;
         }
-    }
-
-    /*** MEMORY DUTY ***/
-    #devoir-memoire {
-        background-attachment: scroll !important;
     }
 
     /********** ADMIN PAGES **********/
@@ -473,8 +494,6 @@
         }
     }
 
-
-
     /*** FUTURE TRIPS INDEX ***/
     #futures-sorties {
 
@@ -508,6 +527,19 @@
         .showLeft,
         .showRight {
             width: 400px !important;
+        }
+    }
+
+    /*** GALLERY ***/
+    #galerie-photos {
+
+        .gallery {
+            width: 440px !important;
+
+            .picture {
+                width: 400px !important;
+                height: 300px;
+            }
         }
     }
 
@@ -678,8 +710,7 @@
             }
 
             a {
-                padding-top: 0 !important;
-                padding-bottom: 0 !important;
+                padding: 5px !important;
             }
         }
     }
@@ -796,6 +827,19 @@
 
         ul {
             padding: 0 !important;
+        }
+    }
+
+    /*** GALLERY ***/
+    #galerie-photos {
+
+        .gallery {
+            width: 340px !important;
+
+            .picture {
+                width: 300px !important;
+                height: 220px;
+            }
         }
     }
 

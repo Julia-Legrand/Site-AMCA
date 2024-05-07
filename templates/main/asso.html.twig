@@ -65,26 +65,49 @@
 			</div>
 		</section>
 
+		<!--GALLERY-->
+		{% if app.user %}
+			<section id="galerie-photos">
+				<h2>Galerie de photos</h2>
+				<div class="gallery">
+					<div id="carousel" class="carousel slide" data-bs-ride="carousel">
+						<div class="carousel-inner">
+							{% for gallery in galleries %}
+								<div class="carousel-item{% if loop.first %} active{% endif %}">
+									<div class="picture">
+										<img loading="lazy" src="{{ asset('uploads/' ~ gallery.galleryPicture) }}" alt="Photo">
+									</div>
+									<div class="text">
+										<p>{{ gallery.galleryComment }}</p>
+									</div>
+								</div>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+			</section>
+		{% endif %}
+
 		<!--MEMORY DUTY-->
 		<section id="devoir-memoire">
 			<h2>Nos amis motards disparus</h2>
 			<div class="all-people">
-                {% for memory_duty in memory_duties %}
-                    <div class="personCard">
+				{% for memory_duty in memory_duties %}
+					<div class="personCard">
 						<div class="header">
-                            <h2>{{ memory_duty.memoryTitle }}</h2>
-                        </div>
+							<h2>{{ memory_duty.memoryTitle }}</h2>
+						</div>
 						<div class="body">
-                            <div class="pic">
+							<div class="pic">
 								<img loading="lazy" src="{{ asset('uploads/' ~ memory_duty.memoryPicture) }}" alt="Photo de la personne">
 							</div>
-                            <div class="text">
-                                <p class="description">{{ memory_duty.memoryContent }}</p>
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
+							<div class="text">
+								<p class="description">{{ memory_duty.memoryContent }}</p>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
 		</section>
 
 	</main>
@@ -101,7 +124,7 @@ let meetingMarker = L.marker([{{ meeting.meetingLon }}, {{ meeting.meetingLat }}
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(mapMeetings);
 
-meetingMarker.bindPopup("Réunion le             {{ meeting.meetingDate | date('d-m-Y à H:i') }}au             {{ meeting.meetingAddress }}");{% endfor %}
+meetingMarker.bindPopup("Réunion le                                     {{ meeting.meetingDate | date('d-m-Y à H:i') }}au                                     {{ meeting.meetingAddress }}");{% endfor %}
 	</script>
 	<script src="{{ asset('js/displayAgenda.js') }}"></script>
 {% endblock %}

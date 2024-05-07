@@ -2,9 +2,9 @@
 
 namespace App\Controller;
 
-use App\Entity\MemoryDuty;
-use App\Form\MemoryDutyType;
-use App\Repository\MemoryDutyRepository;
+use App\Entity\Gallery;
+use App\Form\GalleryType;
+use App\Repository\GalleryRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,30 +14,29 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[IsGranted('ROLE_ADMIN')]
-#[Route('/devoir-memoire')]
-class MemoryDutyController extends AbstractController
+#[Route('/galerie')]
+class GalleryController extends AbstractController
 {
-
     #[IsGranted('ROLE_ADMIN')]
-    #[Route('/', name: 'app_memory_duty_index', methods: ['GET'])]
-    public function index(MemoryDutyRepository $memoryDutyRepository): Response
+    #[Route('/', name: 'app_gallery_index', methods: ['GET'])]
+    public function index(GalleryRepository $galleryRepository): Response
     {
-        return $this->render('memory_duty/index.html.twig', [
-            'memory_duties' => $memoryDutyRepository->findAll(),
+        return $this->render('gallery/index.html.twig', [
+            'galleries' => $galleryRepository->findAll(),
         ]);
     }
 
     #[IsGranted('ROLE_ADMIN')]
-    #[Route('/nouveau', name: 'app_memory_duty_new', methods: ['GET', 'POST'])]
+    #[Route('/new', name: 'app_gallery_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
-        $memoryDuty = new MemoryDuty();
-        $form = $this->createForm(MemoryDutyType::class, $memoryDuty);
+        $gallery = new Gallery();
+        $form = $this->createForm(GalleryType::class, $gallery);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             // Handling files uploading
-            $imageFile = $form->get('memoryPicture')->getData();
+            $imageFile = $form->get('galleryPicture')->getData();
             if ($imageFile) {
                 $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $safeFilename = $slugger->slug($originalFilename);
@@ -48,16 +47,16 @@ class MemoryDutyController extends AbstractController
                     $newFilename
                 );
 
-                $memoryDuty->setMemoryPicture($newFilename);
+                $gallery->setGalleryPicture($newFilename);
             }
-            $entityManager->persist($memoryDuty);
+            $entityManager->persist($gallery);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_memory_duty_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_gallery_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('memory_duty/new.html.twig', [
-            'memoryDuty' => $memoryDuty,
+        return $this->renderForm('gallery/new.html.twig', [
+            'gallery' => $gallery,
             'form' => $form,
         ]);
     }
@@ -73,15 +72,15 @@ class MemoryDutyController extends AbstractController
     }
 
     #[IsGranted('ROLE_ADMIN')]
-    #[Route('/{id}/modifier', name: 'app_memory_duty_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, MemoryDuty $memoryDuty, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
+    #[Route('/{id}/edit', name: 'app_gallery_edit', methods: ['GET', 'POST'])]
+    public function edit(Request $request, Gallery $gallery, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
-        $form = $this->createForm(MemoryDutyType::class, $memoryDuty);
+        $form = $this->createForm(GalleryType::class, $gallery);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             // Handling files uploading
-            $imageFile = $form->get('memoryPicture')->getData();
+            $imageFile = $form->get('galleryPicture')->getData();
             if ($imageFile) {
                 $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $safeFilename = $slugger->slug($originalFilename);
@@ -92,32 +91,32 @@ class MemoryDutyController extends AbstractController
                     $newFilename
                 );
 
-                $memoryDuty->setMemoryPicture($newFilename);
+                $gallery->setGalleryPicture($newFilename);
             }
 
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_memory_duty_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_gallery_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('memory_duty/edit.html.twig', [
-            'memoryDuty' => $memoryDuty,
+        return $this->renderForm('gallery/edit.html.twig', [
+            'gallery' => $gallery,
             'form' => $form,
         ]);
     }
 
     #[IsGranted('ROLE_ADMIN')]
-    #[Route('/{id}', name: 'app_memory_duty_delete', methods: ['POST'])]
-    public function delete(Request $request, MemoryDuty $memoryDuty, EntityManagerInterface $entityManager): Response
+    #[Route('/{id}', name: 'app_gallery_delete', methods: ['POST'])]
+    public function delete(Request $request, Gallery $gallery, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete' . $memoryDuty->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $gallery->getId(), $request->request->get('_token'))) {
             // Remove the old file before removing the entity
-            $this->removeOldFile($memoryDuty->getMemoryPicture());
+            $this->removeOldFile($gallery->getGalleryPicture());
 
-            $entityManager->remove($memoryDuty);
+            $entityManager->remove($gallery);
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('app_memory_duty_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_gallery_index', [], Response::HTTP_SEE_OTHER);
     }
 }

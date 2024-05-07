@@ -178,6 +178,13 @@
     width: 600px !important;
     height: 400px !important;
   }
+  /*** GALLERY ***/
+  #galerie-photos .gallery {
+    width: 640px !important;
+  }
+  #galerie-photos .gallery .picture {
+    width: 600px !important;
+  }
   /********** ADMIN PAGES **********/
   /*** MAIN DASHBOARD ***/
   /*** SECTIONS OF MAIN DASHBOARD***/
@@ -254,6 +261,9 @@
     height: 400px !important;
   }
   /*** FUTURE TRIPS INDEX ***/
+  #futures-sorties {
+    background-attachment: scroll !important;
+  }
   #futures-sorties .each-trip {
     width: 500px !important;
     margin: 20px !important;
@@ -262,14 +272,18 @@
     width: 400px !important;
     height: 250px !important;
   }
+  /*** GALLERY ***/
+  #galerie-photos .gallery {
+    width: 540px !important;
+  }
+  #galerie-photos .gallery .picture {
+    width: 500px !important;
+    height: 300px !important;
+  }
   /*** FUTURE TRIPS SHOW ***/
   .mainShow .showLeft,
   .mainShow .showRight {
     width: 500px !important;
-  }
-  /*** MEMORY DUTY ***/
-  #devoir-memoire {
-    background-attachment: scroll !important;
   }
   /********** ADMIN PAGES **********/
   /*** MAIN DASHBOARD ***/
@@ -364,6 +378,14 @@
   .mainShow .showLeft,
   .mainShow .showRight {
     width: 400px !important;
+  }
+  /*** GALLERY ***/
+  #galerie-photos .gallery {
+    width: 440px !important;
+  }
+  #galerie-photos .gallery .picture {
+    width: 400px !important;
+    height: 300px;
   }
   /********** FORUM PAGE **********/
   .mainForum {
@@ -489,8 +511,7 @@
     flex-direction: row !important;
   }
   #sidebarResponsive nav a {
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
+    padding: 5px !important;
   }
   /***** FOOTER *****/
   footer .bloc-right {
@@ -571,6 +592,14 @@
   }
   .mainShow ul {
     padding: 0 !important;
+  }
+  /*** GALLERY ***/
+  #galerie-photos .gallery {
+    width: 340px !important;
+  }
+  #galerie-photos .gallery .picture {
+    width: 300px !important;
+    height: 220px;
   }
   /********** ADMIN PAGES **********/
   /*** MAIN DASHBOARD ***/
@@ -1184,7 +1213,7 @@ footer .footerBloc2 .brand a {
   text-shadow: #F3F4F7 0 0 5px;
 }
 
-/********** ASSO PAGE **********/
+/********** VIE ASSO PAGE **********/
 /*** MONTHLY MEETING ***/
 #reunions-mensuelles {
   background-color: #16171A;
@@ -1265,7 +1294,11 @@ footer .footerBloc2 .brand a {
 
 /*** FUTURE TRIPS INDEX ***/
 #futures-sorties {
-  background-color: #16171A;
+  background-image: linear-gradient(rgba(1, 1, 1, 0.4), rgba(1, 1, 1, 0.4)), url(../images/wallpaper5.webp);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   color: #F3F4F7;
   padding: 100px 20px;
   display: flex;
@@ -1359,13 +1392,50 @@ footer .footerBloc2 .brand a {
   margin-right: 10px;
 }
 
+/*** GALLERY ***/
+#galerie-photos {
+  background-color: #25262A;
+  color: #F3F4F7;
+  padding: 10px 20px 100px 20px;
+  min-height: 90vh;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#galerie-photos h2 {
+  margin-top: 80px;
+}
+#galerie-photos .gallery {
+  width: 840px;
+  display: flex;
+  justify-content: center;
+}
+#galerie-photos .gallery .picture {
+  width: 800px;
+  height: 400px;
+  margin: 20px;
+  box-shadow: #F3F4F7 0px 0px 10px 5px;
+  border-radius: 10px;
+}
+#galerie-photos .gallery .picture img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 10px;
+}
+#galerie-photos .gallery .text {
+  width: 100%;
+  margin-top: 40px;
+}
+#galerie-photos .gallery .text p {
+  text-align: center;
+}
+
 /*** MEMORY DUTY ***/
 #devoir-memoire {
-  background-image: linear-gradient(rgba(1, 1, 1, 0.4), rgba(1, 1, 1, 0.4)), url(../images/wallpaper5.webp);
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-color: #16171A;
   color: #F3F4F7;
   padding: 100px 20px;
   display: flex;
@@ -1515,7 +1585,7 @@ footer .footerBloc2 .brand a {
   /*** FORUM SECTIONS ***/
 }
 .mainForum .forum h1 {
-  font-size: 50px;
+  font-size: 40px;
   text-align: left;
   margin-bottom: 30px;
 }
@@ -1740,6 +1810,7 @@ footer .footerBloc2 .brand a {
   margin-left: 13%;
   /*** SECTIONS OF MAIN DASHBOARD***/
   /*** PREVIOUS TRIPS (DASHBOARD AND PAGE) ***/
+  /*** GALLERY PAGE ***/
   /*** USERS INDEX PAGE ***/
   /*** MEMORY DUTY PAGE ***/
   /*** RECEIVED MESSAGES PAGE ***/
@@ -1952,6 +2023,60 @@ footer .footerBloc2 .brand a {
 .dashboard .all-previous-trips .actions a {
   text-decoration: none;
   margin-right: 10px;
+}
+.dashboard .all-pictures {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.dashboard .all-pictures .pictureCard {
+  background-color: #F3F4F7;
+  box-shadow: #0D121C 0px 0 5px;
+  border-radius: 10px;
+  margin: 20px 10px;
+  padding: 10px;
+  max-width: 290px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+.dashboard .all-pictures .body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.dashboard .all-pictures .pic {
+  width: 260px;
+  padding: 5px;
+  position: relative;
+}
+.dashboard .all-pictures .pic img {
+  width: 100%;
+  height: 100%;
+  transition: filter 0.5s ease;
+}
+.dashboard .all-pictures .pic:hover img {
+  filter: brightness(50%);
+}
+.dashboard .all-pictures .pic .icon {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #F3F4F7;
+  font-size: 25px;
+  cursor: pointer;
+}
+.dashboard .all-pictures .pic:hover .icon {
+  display: block;
+}
+.dashboard .all-pictures p.description {
+  font-size: 18px;
+  text-align: center;
+  background-color: white;
+  padding: 20px;
+  margin: 10px;
 }
 .dashboard table {
   background-color: #F3F4F7;

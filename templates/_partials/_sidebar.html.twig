@@ -13,6 +13,11 @@
 					Photos des précédentes sorties</a>
 			</li>
 			<li class="nav-item">
+				<a class="nav-link py-3" href="{{ path('app_gallery_index') }}">
+					<i class="fa-solid fa-images"></i>
+					Galerie de photos</a>
+			</li>
+			<li class="nav-item">
 				<a class="nav-link py-3" href="{{ path('app_user_index') }}">
 					<i class="fa-solid fa-user"></i>
 					Adhérents</a>
@@ -45,9 +50,19 @@
 					<i class="fa-solid fa-image"></i>
 				</a>
 			</li>
+			<li class="nav-item">
+				<a class="nav-link py-3" href="{{ path('app_gallery_index') }}">
+					<i class="fa-solid fa-images"></i>
+				</a>
+			</li>
 			<li>
 				<a href="{{ path('app_user_index') }}" class="nav-link py-3" title="Utilisateurs" data-bs-toggle="tooltip" data-bs-placement="right">
 					<i class="fa-solid fa-user"></i>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link py-3" href="{{ path('app_memory_duty_index') }}">
+					<i class="fa-solid fa-hand-holding-heart"></i>
 				</a>
 			</li>
 			<li class="nav-item">
