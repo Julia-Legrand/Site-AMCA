@@ -38,6 +38,22 @@ class MembershipsType extends AbstractType
             ->add('passengerFee', NumberType::class, [
                 'label' => 'Cotisation passager',
                 'attr' => ['class' => 'custom-form'],
+            ])
+            ->add('trombinoscope', FileType::class, [
+                'label' => 'Trombinoscope',
+                'attr' => ['class' => 'custom-form'],
+                'mapped' => false,
+                'required' => false,
+                'constraints' => [
+                    new File([
+                        'maxSize' => '2000k',
+                        'mimeTypes' => [
+                            'application/pdf',
+                            'application/x-pdf',
+                        ],
+                        'mimeTypesMessage' => 'Document ne répondant pas aux contraintes.',
+                    ])
+                ]
             ]);
     }
 

@@ -103,6 +103,16 @@
 										<embed src="{{ asset('uploads/' ~ membership.membershipForm) }}" width="180" height="255" type="application/pdf">
 									{% endfor %}
 								</div>
+								<div class="doc">
+									{% for membership in memberships %}
+										<small>Trombinoscope
+											<a href="{{ path('app_memberships_edit', {'id': membership.id}) }}" title="Modifier" data-bs-toggle="tooltip" data-bs-placement="right">
+												<i class="fa-solid fa-pencil icon icon-small"></i>
+											</a>
+										</small>
+										<embed src="{{ asset('uploads/' ~ membership.trombinoscope) }}" width="180" height="255" type="application/pdf">
+									{% endfor %}
+								</div>
 							</div>
 						</div>
 					</div>

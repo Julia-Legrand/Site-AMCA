@@ -22,6 +22,9 @@ class Memberships
     #[ORM\Column]
     private ?int $passengerFee = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $trombinoscope = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,6 +62,18 @@ class Memberships
     public function setPassengerFee(int $passengerFee): static
     {
         $this->passengerFee = $passengerFee;
+
+        return $this;
+    }
+
+    public function getTrombinoscope(): ?string
+    {
+        return $this->trombinoscope;
+    }
+
+    public function setTrombinoscope(string $trombinoscope): static
+    {
+        $this->trombinoscope = $trombinoscope;
 
         return $this;
     }

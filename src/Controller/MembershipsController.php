@@ -24,7 +24,7 @@ class MembershipsController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // Handling file uploading
+            // Handling file uploading for membership form
             $imageFile = $form->get('membershipForm')->getData();
             if ($imageFile) {
                 $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
@@ -37,6 +37,21 @@ class MembershipsController extends AbstractController
                 );
 
                 $membership->setMembershipForm($newFilename);
+            }
+
+            // Handling file uploading for trombinoscope
+            $trombinoscopeFile = $form->get('trombinoscope')->getData();
+            if ($trombinoscopeFile) {
+                $originalFilename = pathinfo($trombinoscopeFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename . '.' . $trombinoscopeFile->guessExtension();
+
+                $trombinoscopeFile->move(
+                    $this->getParameter('images_directory'),
+                    $newFilename
+                );
+
+                $membership->setTrombinoscope($newFilename);
             }
 
             $entityManager->flush();
