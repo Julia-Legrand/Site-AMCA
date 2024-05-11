@@ -58,11 +58,12 @@
   }
   /********** INDEX PAGE **********/
   /*** CONTACT ***/
-  #contact-us {
-    flex-direction: column;
+  #contact-us .contact-email,
+  #contact-us .contact-facebook {
+    flex-direction: column !important;
   }
   #contact-us .buttonIndex {
-    margin: 20px !important;
+    margin: 20px 20px 60px 20px !important;
   }
   /********** ASSO PAGE **********/
   /*** FUTURE TRIPS SHOW ***/
@@ -105,13 +106,6 @@
   }
   #our-previous-trips .previous-trip-text {
     margin: 25px 10px 60px 10px !important;
-  }
-  /*** CONTACT ***/
-  #contact-us {
-    flex-direction: column;
-  }
-  #contact-us .buttonIndex {
-    margin: 20px !important;
   }
   /********** FORUM PAGE **********/
   .mainForum {
@@ -234,6 +228,14 @@
     margin-left: 40px;
   }
   /********** INDEX PAGE **********/
+  /*** OUR STORY ***/
+  #our-story .story-text {
+    width: 400px !important;
+  }
+  #our-story .story-picture {
+    width: 400px !important;
+    height: 250px !important;
+  }
   /*** PREVIOUS TRIPS ***/
   #our-previous-trips .previous-trip-picture {
     width: 400px !important;
@@ -336,8 +338,8 @@
     width: 290px !important;
   }
   #our-story .story-picture {
-    width: 250px !important;
-    height: 250px !important;
+    width: 290px !important;
+    height: 180px !important;
   }
   /*** CONTACT ***/
   #contact-us {
@@ -1052,7 +1054,7 @@ footer .footerBloc2 .brand a {
   padding: 100px 20px;
 }
 #our-story .story-picture {
-  width: 400px;
+  width: 600px;
   height: 400px;
   box-shadow: #16171A 0px 0px 20px 10px;
   border-radius: 10px;
@@ -1063,7 +1065,7 @@ footer .footerBloc2 .brand a {
   border-radius: 10px;
 }
 #our-story .story-text {
-  width: 700px;
+  width: 600px;
 }
 #our-story .story-text p {
   text-align: center;
@@ -1179,6 +1181,7 @@ footer .footerBloc2 .brand a {
 #contact-us {
   padding: 100px 20px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-image: linear-gradient(rgba(1, 1, 1, 0.8), rgba(1, 1, 1, 0.8)), url(../images/wallpaper2.webp);
@@ -1187,14 +1190,19 @@ footer .footerBloc2 .brand a {
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
-#contact-us .contactIndex {
+#contact-us .contact-email {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#contact-us .contact-email .contactIndex {
   font-size: 60px;
   margin-top: 10px;
   color: #F3F4F7;
   font-family: "Anton", sans-serif;
   text-align: center;
 }
-#contact-us .buttonIndex {
+#contact-us .contact-email .buttonIndex {
   color: #F3F4F7;
   background-color: rgba(162, 159, 159, 0.8);
   font-size: 60px;
@@ -1208,7 +1216,30 @@ footer .footerBloc2 .brand a {
   opacity: 1;
   transition: all 0.5s ease;
 }
-#contact-us .buttonIndex:hover {
+#contact-us .contact-email .buttonIndex:hover {
+  box-shadow: #F3F4F7 0px 0 10px;
+  text-shadow: #F3F4F7 0 0 5px;
+}
+#contact-us .contact-facebook {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#contact-us .contact-facebook .contactIndex {
+  font-size: 60px;
+  margin-top: 10px;
+  color: #F3F4F7;
+  font-family: "Anton", sans-serif;
+  text-align: center;
+}
+#contact-us .contact-facebook i {
+  color: #F3F4F7;
+  font-size: 60px;
+  margin-left: 40px;
+  opacity: 1;
+  transition: all 0.5s ease;
+}
+#contact-us .contact-facebook .i:hover {
   box-shadow: #F3F4F7 0px 0 10px;
   text-shadow: #F3F4F7 0 0 5px;
 }
@@ -1696,32 +1727,6 @@ footer .footerBloc2 .brand a {
 .mainForum .forum .answersAuthor i {
   font-size: 15px;
   color: #25262A;
-}
-
-/********** CONTACT PAGE **********/
-.mainContact {
-  background-color: #16171A;
-  color: #F3F4F7;
-  padding: 100px 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.mainContact h2 {
-  margin-top: 20px;
-}
-.mainContact .custom-form {
-  background-color: #F3F4F7;
-  opacity: 0.7;
-  border: 1px solid #F3F4F7;
-  border-radius: 5px;
-  margin-bottom: 40px;
-  display: block;
-  width: 100%;
-  padding: 10px;
-}
-.mainContact #contacts_agreeTerms {
-  margin-left: 5px;
 }
 
 /********** LOGIN & REGISTER PAGES **********/

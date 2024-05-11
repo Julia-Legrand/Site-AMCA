@@ -1,4 +1,4 @@
-{{ form_start(form, {'attr': {'onsubmit': 'return showPopup();'}}) }}
+{# {{ form_start(form, {'attr': {'onsubmit': 'return showPopup();'}}) }}
 {{ form_widget(form) }}
 <button class="button">{{ button_label|default('Envoyer') }}</button>
 {{ form_end(form) }}
@@ -15,4 +15,4 @@ return true; // Allow the form submission
 }
 return false; // Prevent the form submission if the user clicks cancel in the popup
 }
-</script>
+</script> #}

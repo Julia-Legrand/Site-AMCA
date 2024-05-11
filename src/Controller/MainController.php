@@ -7,7 +7,6 @@ use App\Repository\PostsRepository;
 use App\Repository\ThemesRepository;
 use App\Repository\GalleryRepository;
 use App\Repository\CommentsRepository;
-use App\Repository\ContactsRepository;
 use App\Repository\MeetingsRepository;
 use App\Repository\PurposesRepository;
 use App\Repository\MemoryDutyRepository;
@@ -37,14 +36,13 @@ class MainController extends AbstractController
 
     #[IsGranted('ROLE_ADMIN')]
     #[Route('/admin', name: 'admin')]
-    public function admin(PresentationsRepository $presentationsRepository, MeetingsRepository $meetingsRepository, PurposesRepository $purposesRepository, MembershipsRepository $membershipsRepository, ContactsRepository $contactsRepository, PreviousTripsRepository $previousTripsRepository, TripPicturesRepository $tripPicturesRepository, FutureTripsRepository $futureTripsRepository, UserRepository $userRepository, MemoryDutyRepository $memoryDutyRepository, GalleryRepository $galleryRepository): Response
+    public function admin(PresentationsRepository $presentationsRepository, MeetingsRepository $meetingsRepository, PurposesRepository $purposesRepository, MembershipsRepository $membershipsRepository, PreviousTripsRepository $previousTripsRepository, TripPicturesRepository $tripPicturesRepository, FutureTripsRepository $futureTripsRepository, UserRepository $userRepository, MemoryDutyRepository $memoryDutyRepository, GalleryRepository $galleryRepository): Response
     {
         return $this->render('main/admin.html.twig', [
             'presentations' => $presentationsRepository->findAll(),
             'meetings' => $meetingsRepository->findAll(),
             'purposes' => $purposesRepository->findAll(),
             'memberships' => $membershipsRepository->findAll(),
-            'contacts' => $contactsRepository->findAll(),
             'previous_trips' => $previousTripsRepository->findAll(),
             'trip_pictures' => $tripPicturesRepository->findAll(),
             'futureTrips' => $futureTripsRepository->findAll(),

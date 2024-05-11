@@ -82,10 +82,14 @@
     /********** INDEX PAGE **********/
     /*** CONTACT ***/
     #contact-us {
-        flex-direction: column;
+
+        .contact-email,
+        .contact-facebook {
+            flex-direction: column !important;
+        }
 
         .buttonIndex {
-            margin: 20px !important;
+            margin: 20px 20px 60px 20px !important;
         }
     }
 
@@ -143,15 +147,6 @@
 
         .previous-trip-text {
             margin: 25px 10px 60px 10px !important;
-        }
-    }
-
-    /*** CONTACT ***/
-    #contact-us {
-        flex-direction: column;
-
-        .buttonIndex {
-            margin: 20px !important;
         }
     }
 
@@ -321,6 +316,19 @@
     }
 
     /********** INDEX PAGE **********/
+    /*** OUR STORY ***/
+    #our-story {
+
+        .story-text {
+            width: 400px !important;
+        }
+
+        .story-picture {
+            width: 400px !important;
+            height: 250px !important;
+        }
+    }
+
     /*** PREVIOUS TRIPS ***/
     #our-previous-trips {
         .previous-trip-picture {
@@ -467,8 +475,8 @@
         }
 
         .story-picture {
-            width: 250px !important;
-            height: 250px !important;
+            width: 290px !important;
+            height: 180px !important;
         }
     }
 

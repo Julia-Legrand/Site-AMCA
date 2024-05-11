@@ -413,7 +413,7 @@ footer {
     padding: 100px 20px;
 
     .story-picture {
-        width: 400px;
+        width: 600px;
         height: 400px;
         box-shadow: $darker 0px 0px 20px 10px;
         border-radius: 10px;
@@ -426,7 +426,7 @@ footer {
     }
 
     .story-text {
-        width: 700px;
+        width: 600px;
 
         p {
             text-align: center;
@@ -562,6 +562,7 @@ footer {
 #contact-us {
     padding: 100px 20px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background-image: linear-gradient(rgb(1, 1, 1, 0.8), rgba(1, 1, 1, 0.8)),
@@ -571,32 +572,65 @@ footer {
     background-repeat: no-repeat;
     background-attachment: fixed;
 
-    .contactIndex {
-        font-size: 60px;
-        margin-top: 10px;
-        color: $light;
-        font-family: 'Anton', sans-serif;
-        text-align: center;
+    .contact-email {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .contactIndex {
+            font-size: 60px;
+            margin-top: 10px;
+            color: $light;
+            font-family: 'Anton', sans-serif;
+            text-align: center;
+        }
+
+        .buttonIndex {
+            color: $light;
+            background-color: rgba(162, 159, 159, 0.8);
+            font-size: 60px;
+            font-family: "Anton", sans-serif;
+            padding: 10px 40px;
+            border-radius: 10px;
+            border: none;
+            margin-left: 60px;
+            width: 482px;
+            text-decoration: none;
+            opacity: 1;
+            transition: all 0.5s ease;
+        }
+
+        .buttonIndex:hover {
+            box-shadow: $light 0px 0 10px;
+            text-shadow: $light 0 0 5px;
+        }
     }
 
-    .buttonIndex {
-        color: $light;
-        background-color: rgba(162, 159, 159, 0.8);
-        font-size: 60px;
-        font-family: "Anton", sans-serif;
-        padding: 10px 40px;
-        border-radius: 10px;
-        border: none;
-        margin-left: 60px;
-        width: 482px;
-        text-decoration: none;
-        opacity: 1;
-        transition: all 0.5s ease;
-    }
+    .contact-facebook {
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
-    .buttonIndex:hover {
-        box-shadow: $light 0px 0 10px;
-        text-shadow: $light 0 0 5px;
+        .contactIndex {
+            font-size: 60px;
+            margin-top: 10px;
+            color: $light;
+            font-family: 'Anton', sans-serif;
+            text-align: center;
+        }
+
+        i {
+            color: $light;
+            font-size: 60px;
+            margin-left: 40px;
+            opacity: 1;
+            transition: all 0.5s ease;
+        }
+
+        .i:hover {
+            box-shadow: $light 0px 0 10px;
+            text-shadow: $light 0 0 5px;
+        }
     }
 }
 
@@ -1161,35 +1195,6 @@ footer {
                 color: $dark;
             }
         }
-    }
-}
-
-/********** CONTACT PAGE **********/
-.mainContact {
-    background-color: $darker;
-    color: $light;
-    padding: 100px 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    h2 {
-        margin-top: 20px;
-    }
-
-    .custom-form {
-        background-color: $light;
-        opacity: 0.7;
-        border: 1px solid $light;
-        border-radius: 5px;
-        margin-bottom: 40px;
-        display: block;
-        width: 100%;
-        padding: 10px;
-    }
-
-    #contacts_agreeTerms {
-        margin-left: 5px;
     }
 }
 
