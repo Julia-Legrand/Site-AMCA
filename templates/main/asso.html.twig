@@ -66,7 +66,7 @@
 		</section>
 
 		<!--GALLERY-->
-		{% if app.user %}
+		{% if app.user and app.user.status == "Validé" %}
 			<section id="galerie-photos">
 				<h2>Galerie de photos</h2>
 				<div class="gallery">
@@ -124,7 +124,7 @@ let meetingMarker = L.marker([{{ meeting.meetingLon }}, {{ meeting.meetingLat }}
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(mapMeetings);
 
-meetingMarker.bindPopup("Réunion le                                     {{ meeting.meetingDate | date('d-m-Y à H:i') }}au                                     {{ meeting.meetingAddress }}");{% endfor %}
+meetingMarker.bindPopup("Réunion le                                      {{ meeting.meetingDate | date('d-m-Y à H:i') }}au                                      {{ meeting.meetingAddress }}");{% endfor %}
 	</script>
 	<script src="{{ asset('js/displayAgenda.js') }}"></script>
 {% endblock %}

@@ -78,7 +78,7 @@ class MainController extends AbstractController
     public function forum(PresentationsRepository $presentationsRepository, ThemesRepository $themesRepository, PostsRepository $postsRepository, PostPicturesRepository $postPicturesRepository, CommentsRepository $commentsRepository): Response
     {
         // Check if the user has the status set to true (validated)
-        if ($this->getUser()->isStatus()) {
+        if ($this->getUser()->getStatus() === 'Validé') {
             return $this->render('main/forum.html.twig', [
                 'presentations' => $presentationsRepository->findAll(),
                 'themes' => $themesRepository->findAll(),

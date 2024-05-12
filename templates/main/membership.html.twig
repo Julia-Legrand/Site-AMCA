@@ -41,7 +41,7 @@
 				euros</p>
 		{% endfor %}
 
-		{% if app.user %}
+		{% if app.user and app.user.status == "Validé" %}
 			<h2>Membres actuels de l'association</h2>
 			{% for membership in memberships %}
 				<embed src="{{ asset('uploads/' ~ membership.trombinoscope) }}" type="application/pdf" alt="Trombinoscope des membres">

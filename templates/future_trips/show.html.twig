@@ -28,14 +28,15 @@
 			<p style="font-weight: bold;">Nombre de places :
 				{{ futureTrip.numberOfPlaces }}</p>
 			<p style="padding: 30px;">{{ futureTrip.futureTripContent }}</p>
-			{% if not app.user %}
-				<small style="padding: 0px;">Les grandes sorties sont réservées aux membres de l'association.</small>
-				<small>Pour y participer, toutes les infos sont ici
+			{% if not app.user or app.user.status == "En attente" or app.user.status == "Archivé" %}
+				<small style="padding: 0px;">Les grandes sorties sont réservées aux membres actifs de l'association.</small>
+				<small>Si vous souhaitez nous rejoindre, toutes les infos sont ici
 					<a href="{{ path('membership') }}">
 						<i class="fa-solid fa-arrow-right"></i>DEVENIR MEMBRE</a>
 				</small>
+				<small>Si votre inscription est en attente de validation, vous pourrez bientôt participer à nos grandes sorties !</small>
 			{% endif %}
-			{% if app.user %}
+			{% if app.user and app.user.status == "Validé" %}
 				{% if futureTrip.presentationSheet is not null %}
 					<a href="{{ asset('uploads/' ~ futureTrip.presentationSheet) }}" download>
 						<i class="fa-solid fa-download icon"></i>Télécharger la fiche de présentation</a>
@@ -59,6 +60,6 @@ let futureTripMarker = L.marker([{{ futureTrip.futureTripLon }}, {{ futureTrip.f
 
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(mapFutureTrip);
 
-futureTripMarker.bindPopup("Voyage prévu :      {{ futureTrip.futureTripName }}du      {{ futureTrip.startDate | date('d-m-Y') }}au                                                  {{ futureTrip.endDate | date('d-m-Y') }}");
+futureTripMarker.bindPopup("Voyage prévu :          {{ futureTrip.futureTripName }}du          {{ futureTrip.startDate | date('d-m-Y') }}au                                                      {{ futureTrip.endDate | date('d-m-Y') }}");
 	</script>
 {% endblock %}
