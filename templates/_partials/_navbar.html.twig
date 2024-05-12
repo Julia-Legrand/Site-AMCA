@@ -9,6 +9,9 @@
 			<a class="nav-item nav-link" href="{{ path('asso') }}">VIE DE L'ASSOCIATION</a>
 			<a class="nav-item nav-link" href="{{ path('membership') }}">DEVENIR MEMBRE</a>
 			<a class="nav-item nav-link" href="{{ path('forum') }}">FORUM</a>
+			{% if is_granted('ROLE_ADMIN') %}
+				<a class="nav-item nav-link" href="{{ path('admin') }}">ADMIN</a>
+			{% endif %}
 			{% if not app.user %}
 				<a class="nav-link" href="{{ path('app_login') }}">
 					<i class="fa-regular fa-user"></i>
