@@ -82,8 +82,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Comments::class)]
     private Collection $comments;
 
-    #[ORM\Column]
-    private ?bool $status = null;
+    #[ORM\Column(length: 100)]
+    private ?string $status = 'En attente';
 
     public function __construct()
     {
@@ -92,7 +92,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->themes = new ArrayCollection();
         $this->posts = new ArrayCollection();
         $this->comments = new ArrayCollection();
-        $this->status = false;
     }
 
     public function getId(): ?int
@@ -402,15 +401,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function isStatus(): ?bool
+    public function getStatus(): ?string
     {
         return $this->status;
     }
 
-    public function setStatus(bool $status): static
+    public function setStatus(string $status): static
     {
         $this->status = $status;
-
         return $this;
     }
 }

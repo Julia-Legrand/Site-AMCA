@@ -10,6 +10,7 @@
 
 		<div class="dashboard">
 			<a class="button" style="margin-top:80px;" href="{{ path('app_register') }}" width="284px">Ajouter un adhérent</a>
+
 			<!--PENDING MEMBERS-->
 			<h1>Liste des adhérents en attente</h1>
 
@@ -31,33 +32,34 @@
 					</tr>
 				</thead>
 				<tbody>
-					{% for user in users %}
-						{% if user.status == 0 %}
-							<tr>
-								<td data-label="N° d'adhérent">{{ user.memberNumber }}</td>
-								<td data-label="Profil">{{ user.assignment ? user.assignment|json_encode : '' }}</td>
-								<td data-label="Prénom">{{ user.firstName }}</td>
-								<td data-label="Nom">{{ user.lastName }}</td>
-								<td data-label="E-mail">{{ user.email }}</td>
-								<td data-label="Téléphone">{{ user.phoneNumber }}</td>
-								<td data-label="Adresse">{{ user.address }}</td>
-								<td data-label="Code postal">{{ user.postCode }}</td>
-								<td data-label="Ville">{{ user.city }}</td>
-								<td data-label="Date de naissance">{{ user.birthdate ? user.birthdate|date('d-m-Y') : '' }}</td>
-								<td data-label="Moto">{{ user.bike }}</td>
-								<td data-label="Modifier">
-									<a href="{{ path('app_user_edit', {'id': user.id}) }}" title="Modifier" data-bs-toggle="tooltip" data-bs-placement="right">
-										<i class="fa-solid fa-pencil icon"></i>
-									</a>
-								</td>
-							</tr>
-							{% if not users|filter(user => user.status == 0)|length %}
+					{% if users|filter(user => user.status == "En attente")|length %}
+						{% for user in users %}
+							{% if user.status == "En attente" %}
 								<tr>
-									<td colspan="15">Aucun adhérent en attente</td>
+									<td data-label="N° d'adhérent">{{ user.memberNumber }}</td>
+									<td data-label="Profil">{{ user.assignment ? user.assignment|json_encode : '' }}</td>
+									<td data-label="Prénom">{{ user.firstName }}</td>
+									<td data-label="Nom">{{ user.lastName }}</td>
+									<td data-label="E-mail">{{ user.email }}</td>
+									<td data-label="Téléphone">{{ user.phoneNumber }}</td>
+									<td data-label="Adresse">{{ user.address }}</td>
+									<td data-label="Code postal">{{ user.postCode }}</td>
+									<td data-label="Ville">{{ user.city }}</td>
+									<td data-label="Date de naissance">{{ user.birthdate ? user.birthdate|date('d-m-Y') : '' }}</td>
+									<td data-label="Moto">{{ user.bike }}</td>
+									<td data-label="Modifier">
+										<a href="{{ path('app_user_edit', {'id': user.id}) }}" title="Modifier" data-bs-toggle="tooltip" data-bs-placement="right">
+											<i class="fa-solid fa-pencil icon"></i>
+										</a>
+									</td>
 								</tr>
 							{% endif %}
-						{% endif %}
-					{% endfor %}
+						{% endfor %}
+					{% else %}
+						<tr>
+							<td colspan="12" style="text-align: center !important;">Aucun adhérent en attente</td>
+						</tr>
+					{% endif %}
 				</tbody>
 			</table>
 
@@ -86,35 +88,89 @@
 					</tr>
 				</thead>
 				<tbody>
-					{% for user in users %}
-						{% if user.status == 1 %}
-							<tr>
-								<td data-label="N° d'adhérent">{{ user.memberNumber }}</td>
-								<td data-label="Profil">{{ user.assignment ? user.assignment|json_encode : '' }}</td>
-								<td data-label="Prénom">{{ user.firstName }}</td>
-								<td data-label="Nom">{{ user.lastName }}</td>
-								<td data-label="E-mail">{{ user.email }}</td>
-								<td data-label="Téléphone">{{ user.phoneNumber }}</td>
-								<td data-label="Adresse">{{ user.address }}</td>
-								<td data-label="Code postal">{{ user.postCode }}</td>
-								<td data-label="Ville">{{ user.city }}</td>
-								<td data-label="Date de naissance">{{ user.birthdate ? user.birthdate|date('d-m-Y') : '' }}</td>
-								<td data-label="Moto">{{ user.bike }}</td>
-								<td data-label="Modifier" class="no-print">
-									<a href="{{ path('app_user_edit', {'id': user.id}) }}" title="Modifier" data-bs-toggle="tooltip" data-bs-placement="right">
-										<i class="fa-solid fa-pencil icon"></i>
-									</a>
-								</td>
-							</tr>
-							{% if not users|filter(user => user.status == 1)|length %}
+					{% if users|filter(user => user.status == "Validé")|length %}
+						{% for user in users %}
+							{% if user.status == "Validé" %}
 								<tr>
-									<td colspan="15">Aucun adhérent validé</td>
+									<td data-label="N° d'adhérent">{{ user.memberNumber }}</td>
+									<td data-label="Profil">{{ user.assignment ? user.assignment|json_encode : '' }}</td>
+									<td data-label="Prénom">{{ user.firstName }}</td>
+									<td data-label="Nom">{{ user.lastName }}</td>
+									<td data-label="E-mail">{{ user.email }}</td>
+									<td data-label="Téléphone">{{ user.phoneNumber }}</td>
+									<td data-label="Adresse">{{ user.address }}</td>
+									<td data-label="Code postal">{{ user.postCode }}</td>
+									<td data-label="Ville">{{ user.city }}</td>
+									<td data-label="Date de naissance">{{ user.birthdate ? user.birthdate|date('d-m-Y') : '' }}</td>
+									<td data-label="Moto">{{ user.bike }}</td>
+									<td data-label="Modifier" class="no-print">
+										<a href="{{ path('app_user_edit', {'id': user.id}) }}" title="Modifier" data-bs-toggle="tooltip" data-bs-placement="right">
+											<i class="fa-solid fa-pencil icon"></i>
+										</a>
+									</td>
 								</tr>
 							{% endif %}
-						{% endif %}
-					{% endfor %}
+						{% endfor %}
+					{% else %}
+						<tr>
+							<td colspan="12" style="text-align: center !important;">Aucun adhérent validé</td>
+						</tr>
+					{% endif %}
 				</tbody>
 			</table>
+
+			<!--ARCHIVED MEMBERS-->
+			<h1>Liste des adhérents archivés</h1>
+
+			<table>
+				<thead>
+					<tr>
+						<th>N° d'adhérent</th>
+						<th>Profil</th>
+						<th>Prénom</th>
+						<th>Nom</th>
+						<th>E-mail</th>
+						<th>Téléphone</th>
+						<th>Adresse</th>
+						<th>Code postal</th>
+						<th>Ville</th>
+						<th>Date de naissance</th>
+						<th>Moto</th>
+						<th>Modifier</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% if users|filter(user => user.status == "Archivé")|length %}
+						{% for user in users %}
+							{% if user.status == "Archivé" %}
+								<tr>
+									<td data-label="N° d'adhérent">{{ user.memberNumber }}</td>
+									<td data-label="Profil">{{ user.assignment ? user.assignment|json_encode : '' }}</td>
+									<td data-label="Prénom">{{ user.firstName }}</td>
+									<td data-label="Nom">{{ user.lastName }}</td>
+									<td data-label="E-mail">{{ user.email }}</td>
+									<td data-label="Téléphone">{{ user.phoneNumber }}</td>
+									<td data-label="Adresse">{{ user.address }}</td>
+									<td data-label="Code postal">{{ user.postCode }}</td>
+									<td data-label="Ville">{{ user.city }}</td>
+									<td data-label="Date de naissance">{{ user.birthdate ? user.birthdate|date('d-m-Y') : '' }}</td>
+									<td data-label="Moto">{{ user.bike }}</td>
+									<td data-label="Modifier">
+										<a href="{{ path('app_user_edit', {'id': user.id}) }}" title="Modifier" data-bs-toggle="tooltip" data-bs-placement="right">
+											<i class="fa-solid fa-pencil icon"></i>
+										</a>
+									</td>
+								</tr>
+							{% endif %}
+						{% endfor %}
+					{% else %}
+						<tr>
+							<td colspan="12" style="text-align: center !important;">Aucun adhérent archivé</td>
+						</tr>
+					{% endif %}
+				</tbody>
+			</table>
+
 		</div>
 	</section>
 

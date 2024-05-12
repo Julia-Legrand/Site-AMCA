@@ -608,7 +608,7 @@
   .dashboard {
     margin-left: 0 !important;
     margin-top: 136px !important;
-    padding: 10px !important;
+    padding: 10px 10px 60px 10px !important;
   }
   .button {
     padding: 10px 15px !important;
@@ -1812,6 +1812,7 @@ footer .footerBloc2 .brand a {
   flex-direction: column;
   align-items: center;
   margin-top: 85px;
+  padding-bottom: 60px;
   margin-left: 13%;
   /*** SECTIONS OF MAIN DASHBOARD***/
   /*** PREVIOUS TRIPS (DASHBOARD AND PAGE) ***/
@@ -2090,7 +2091,6 @@ footer .footerBloc2 .brand a {
   box-shadow: #0D121C 0px 0 5px;
   border: none;
   font-size: small;
-  border-radius: 10px;
 }
 .dashboard table th {
   text-align: center;
