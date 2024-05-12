@@ -36,6 +36,10 @@
 				</small>
 			{% endif %}
 			{% if app.user %}
+				{% if futureTrip.presentationSheet is not null %}
+					<a href="{{ asset('uploads/' ~ futureTrip.presentationSheet) }}" download>
+						<i class="fa-solid fa-download icon"></i>Télécharger la fiche de présentation</a>
+				{% endif %}
 				<small style="padding-top: 20px;">En tant que membre de l'association, vous pouvez envoyer votre demande d'inscription par e-mail à notre vice-président :</small>
 				<a href="mailto:marcgallene@free.fr?cc=gaby.goyal@sfr.fr&subject=Demande%20d'inscription%20à%20la%20sortie%20{{ futureTrip.futureTripName|raw }}">
 					<button class="button">S'inscrire</button>
@@ -55,6 +59,6 @@ let futureTripMarker = L.marker([{{ futureTrip.futureTripLon }}, {{ futureTrip.f
 
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(mapFutureTrip);
 
-futureTripMarker.bindPopup("Voyage prévu :                                           {{ futureTrip.futureTripName }}du                                           {{ futureTrip.startDate | date('d-m-Y') }}au                                           {{ futureTrip.endDate | date('d-m-Y') }}");
+futureTripMarker.bindPopup("Voyage prévu :      {{ futureTrip.futureTripName }}du      {{ futureTrip.startDate | date('d-m-Y') }}au                                                  {{ futureTrip.endDate | date('d-m-Y') }}");
 	</script>
 {% endblock %}

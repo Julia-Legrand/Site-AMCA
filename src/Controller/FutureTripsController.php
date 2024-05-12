@@ -30,7 +30,7 @@ class FutureTripsController extends AbstractController
             $futureTrip->setFutureTripLon($form->get('futureTripLon')->getData());
             $futureTrip->setFutureTripLat($form->get('futureTripLat')->getData());
 
-            // Handling files uploading
+            // Handling files uploading for picture
             $imageFile = $form->get('futureTripPicture')->getData();
             if ($imageFile) {
                 $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
@@ -44,6 +44,22 @@ class FutureTripsController extends AbstractController
 
                 $futureTrip->setFutureTripPicture($newFilename);
             }
+
+            // Handling file uploading for presentation sheet
+            $presentationSheetFile = $form->get('presentationSheet')->getData();
+            if ($presentationSheetFile) {
+                $originalFilename = pathinfo($presentationSheetFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename . '.' . $presentationSheetFile->guessExtension();
+
+                $presentationSheetFile->move(
+                    $this->getParameter('images_directory'),
+                    $newFilename
+                );
+
+                $futureTrip->setPresentationSheet($newFilename);
+            }
+
             $entityManager->persist($futureTrip);
             $entityManager->flush();
 
@@ -54,16 +70,6 @@ class FutureTripsController extends AbstractController
             'futureTrip' => $futureTrip,
             'form' => $form,
         ]);
-    }
-
-    // Function to remove the old file
-    private function removeOldFile(string $filename): void
-    {
-        $filePath = $this->getParameter('images_directory') . '/' . $filename;
-
-        if (file_exists($filePath)) {
-            unlink($filePath);
-        }
     }
 
     #[IsGranted('ROLE_ADMIN')]
@@ -78,7 +84,7 @@ class FutureTripsController extends AbstractController
             $futureTrip->setFutureTripLon($form->get('futureTripLon')->getData());
             $futureTrip->setFutureTripLat($form->get('futureTripLat')->getData());
 
-            // Handling files uploading
+            // Handling files uploading for picture
             $imageFile = $form->get('futureTripPicture')->getData();
             if ($imageFile) {
                 // Remove the old file
@@ -95,6 +101,25 @@ class FutureTripsController extends AbstractController
                 );
 
                 $futureTrip->setFutureTripPicture($newFilename);
+            }
+
+            // Handling files uploading for presentation sheet
+            $presentationSheetFile = $form->get('presentationSheet')->getData();
+            if ($presentationSheetFile) {
+                // Remove the old file
+                $this->removeOldFile($futureTrip->getPresentationSheet());
+
+                // Process the new file
+                $originalFilename = pathinfo($presentationSheetFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename . '.' . $presentationSheetFile->guessExtension();
+
+                $presentationSheetFile->move(
+                    $this->getParameter('images_directory'),
+                    $newFilename
+                );
+
+                $futureTrip->setPresentationSheet($newFilename);
             }
 
             $entityManager->flush();
@@ -122,14 +147,32 @@ class FutureTripsController extends AbstractController
     public function delete(Request $request, FutureTrips $futureTrip, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete' . $futureTrip->getId(), $request->request->get('_token'))) {
-            // Remove the old file before removing the entity
+            // Remove the old files before removing the entity
             $this->removeOldFile($futureTrip->getFutureTripPicture());
+
+            // Check if presentation sheet exists before trying to remove it
+            $presentationSheet = $futureTrip->getPresentationSheet();
+            if ($presentationSheet !== null) {
+                $this->removeOldFile($presentationSheet);
+            }
 
             $entityManager->remove($futureTrip);
             $entityManager->flush();
         }
 
         return $this->redirectToRoute('admin', [], Response::HTTP_SEE_OTHER);
+    }
+
+    // Function to remove the old file
+    private function removeOldFile(?string $filename): void
+    {
+        if ($filename !== null) {
+            $filePath = $this->getParameter('images_directory') . '/' . $filename;
+
+            if (file_exists($filePath)) {
+                unlink($filePath);
+            }
+        }
     }
 
     // #[IsGranted('ROLE_USER')]

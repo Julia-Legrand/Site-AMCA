@@ -1963,6 +1963,7 @@ footer .footerBloc2 .brand a {
 .dashboard .dashboardBloc .all-future-trips .places {
   display: flex;
   flex-direction: column;
+  margin-top: 20px;
 }
 .dashboard .all-previous-trips {
   display: flex;

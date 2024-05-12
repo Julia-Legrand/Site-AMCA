@@ -81,6 +81,22 @@ class FutureTripsType extends AbstractType
                 'choice_attr' => function ($choice, $key, $value) {
                     return ['style' => 'margin-right: 5px;'];
                 },
+            ])
+            ->add('presentationSheet', FileType::class, [
+                'label' => 'Fiche de présentation',
+                'attr' => ['class' => 'custom-form'],
+                'mapped' => false,
+                'required' => false,
+                'constraints' => [
+                    new File([
+                        'maxSize' => '2000k',
+                        'mimeTypes' => [
+                            'application/pdf',
+                            'application/x-pdf',
+                        ],
+                        'mimeTypesMessage' => 'Document ne répondant pas aux contraintes.',
+                    ])
+                ]
             ]);
     }
 

@@ -216,6 +216,10 @@
 							</div>
 							<p>Description de la sortie :</p>
 							<p class="description">{{ futureTrip.futureTripContent }}</p>
+							{% if futureTrip.presentationSheet is not null %}
+								<p>Fiche de présentation :</p>
+								<embed src="{{ asset('uploads/' ~ futureTrip.presentationSheet) }}" width="180" height="255" type="application/pdf">
+							{% endif %}
 							<div class="places">
 								<small>Nombre de places :
 									{{ futureTrip.numberOfPlaces }}</small>

@@ -46,6 +46,9 @@ class FutureTrips
     #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'futureTrips')]
     private Collection $users;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $presentationSheet = null;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
@@ -177,6 +180,18 @@ class FutureTrips
         if (!$this->users->contains($user)) {
             $this->users->add($user);
         }
+
+        return $this;
+    }
+
+    public function getPresentationSheet(): ?string
+    {
+        return $this->presentationSheet;
+    }
+
+    public function setPresentationSheet(?string $presentationSheet): static
+    {
+        $this->presentationSheet = $presentationSheet;
 
         return $this;
     }
