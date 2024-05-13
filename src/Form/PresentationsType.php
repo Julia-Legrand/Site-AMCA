@@ -85,6 +85,33 @@ class PresentationsType extends AbstractType
                         'mimeTypesMessage' => 'Document ne répondant pas aux contraintes.',
                     ])
                 ]
+            ])
+            ->add('otherClubTitle', TextType::class, [
+                'label' => 'Nom du club',
+                'attr' => ['class' => 'custom-form'],
+            ])
+            ->add('otherClubPicture', FileType::class, [
+                'label' => 'Photo du club jumelé',
+                'attr' => ['class' => 'custom-form'],
+                'mapped' => false,
+                'required' => false,
+                'constraints' => [
+                    new File([
+                        'maxSize' => '2000k',
+                        'mimeTypes' => [
+                            'image/*',
+                        ],
+                        'mimeTypesMessage' => 'Image trop lourde',
+                    ])
+                ],
+            ])
+            ->add('otherClubContent', TextareaType::class, [
+                'label' => 'Texte de présentation',
+                'attr' => ['class' => 'custom-form'],
+            ])
+            ->add('otherClubWebsite', TextType::class, [
+                'label' => 'Site internet',
+                'attr' => ['class' => 'custom-form'],
             ]);
     }
 

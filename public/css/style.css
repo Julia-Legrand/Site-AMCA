@@ -107,6 +107,14 @@
   #our-previous-trips .previous-trip-text {
     margin: 25px 10px 60px 10px !important;
   }
+  /*** OTHER CLUB ***/
+  #other-club .club-picture {
+    width: 500px !important;
+    height: 400px !important;
+  }
+  #other-club .club-text {
+    width: 400px !important;
+  }
   /********** FORUM PAGE **********/
   .mainForum {
     flex-direction: column !important;
@@ -124,10 +132,6 @@
   .dashboardBloc .presentation {
     flex-direction: column;
     align-items: center;
-  }
-  /*** RECEIVED MESSAGES PAGE ***/
-  .receivedMessage {
-    width: 80% !important;
   }
   /*** USERS INDEX PAGE ***/
   .dashboard table {
@@ -163,6 +167,21 @@
   }
 }
 @media all and (max-width: 800px) {
+  /********** INDEX PAGE **********/
+  /*** OTHER CLUB ***/
+  #other-club {
+    display: flex;
+    flex-direction: column;
+    padding: 150px 20px;
+  }
+  #other-club .club-picture {
+    width: 600px;
+    height: 400px;
+  }
+  #other-club .club-text {
+    width: 600px;
+    margin-bottom: 60px;
+  }
   /********** ASSO PAGE **********/
   /*** AGENDA ***/
   #agenda h2 {
@@ -318,11 +337,11 @@
   /********** PARTIALS **********/
   /***** HEADERS *****/
   .headerIndex {
-    min-height: 70vh !important;
+    min-height: 90vh !important;
     height: auto;
   }
   .headerIndex h1 {
-    font-size: 50px;
+    font-size: 60px;
   }
   .headerPages {
     background-attachment: scroll !important;
@@ -335,11 +354,22 @@
   /********** INDEX PAGE **********/
   /*** OUR STORY ***/
   #our-story .story-text {
-    width: 290px !important;
+    width: 400px !important;
   }
   #our-story .story-picture {
-    width: 290px !important;
-    height: 180px !important;
+    width: 400px !important;
+    height: 250px !important;
+  }
+  /*** OTHER CLUB ***/
+  #other-club {
+    padding: 100px 0px !important;
+  }
+  #other-club .club-picture {
+    width: 400px !important;
+    height: 300px !important;
+  }
+  #other-club .club-text {
+    width: 400px !important;
   }
   /*** CONTACT ***/
   #contact-us {
@@ -347,7 +377,7 @@
   }
   #contact-us .buttonIndex {
     font-size: 40px !important;
-    margin: 20px !important;
+    margin: 20px 20px 80px 20px !important;
     width: 287px !important;
     padding: 10px !important;
   }
@@ -422,10 +452,14 @@
   /*** MAIN DASHBOARD ***/
   .dashboardBloc {
     /*** PRESENTATION ***/
+    /*** OTHER CLUB ***/
     /*** FUTURE TRIPS ***/
   }
   .dashboardBloc .presentation .asso-text {
     width: 400px !important;
+  }
+  .dashboardBloc .otherClub .pic {
+    width: 300px !important;
   }
   .dashboardBloc .each-trip {
     width: 400px !important;
@@ -527,6 +561,14 @@
     text-align: center;
   }
   /********** INDEX PAGE **********/
+  /*** OUR STORY ***/
+  #our-story .story-text {
+    width: 280px !important;
+  }
+  #our-story .story-picture {
+    width: 280px !important;
+    height: 150px !important;
+  }
   /*** OUR PURPOSES ***/
   #our-purposes {
     background-attachment: scroll !important;
@@ -557,6 +599,14 @@
     height: 184px !important;
   }
   #our-previous-trips .previous-trip-text {
+    width: 280px !important;
+  }
+  /*** OTHER CLUB ***/
+  #other-club .club-picture {
+    width: 280px !important;
+    height: 200px !important;
+  }
+  #other-club .club-text {
     width: 280px !important;
   }
   /********** ASSO PAGE **********/
@@ -617,6 +667,7 @@
   .dashboardBloc {
     /*** PRESENTATION ***/
     /*** MONTHLY MEETING ***/
+    /*** OTHER CLUB ***/
     /*** FUTURE TRIPS ***/
     /***** LIST OF MEMBERS IN ALL PAGES *****/
   }
@@ -630,6 +681,12 @@
     width: 280px !important;
     margin: 20px 0 !important;
   }
+  .dashboardBloc .otherClub p.description {
+    font-size: 16px !important;
+  }
+  .dashboardBloc .otherClub .pic {
+    width: 300px !important;
+  }
   .dashboardBloc .each-trip {
     width: 280px !important;
     margin: 20px 0 !important;
@@ -637,12 +694,6 @@
   .dashboardBloc .user-list {
     -moz-column-count: 1;
          column-count: 1;
-  }
-  /*** RECEIVED MESSAGES PAGE ***/
-  .receivedMessage {
-    width: 100% !important;
-    padding: 10px !important;
-    margin: 10px !important;
   }
   /*** FORMS TO CREATE & EDIT DASHBOARD ELEMENTS ***/
   .editForm .custom-form {
@@ -1055,13 +1106,15 @@ footer .footerBloc2 .brand a {
 }
 #our-story .story-picture {
   width: 600px;
-  height: 400px;
+  height: 350px;
   box-shadow: #16171A 0px 0px 20px 10px;
   border-radius: 10px;
 }
 #our-story .story-picture img {
   width: 100%;
   height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 10px;
 }
 #our-story .story-text {
@@ -1175,6 +1228,40 @@ footer .footerBloc2 .brand a {
 }
 #our-previous-trips .previous-trip .previous-trip-text p {
   font-size: 23px;
+}
+
+/*** OTHER CLUB ***/
+#other-club {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: auto;
+  background-color: #59371E;
+  color: #F3F4F7;
+  padding: 150px 20px;
+}
+#other-club .club-picture {
+  width: 600px;
+  height: 400px;
+  box-shadow: #16171A 0px 0px 20px 10px;
+  border-radius: 10px;
+}
+#other-club .club-picture img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 10px;
+}
+#other-club .club-text {
+  width: 600px;
+}
+#other-club .club-text p {
+  text-align: center;
+}
+#other-club .club-text a,
+#other-club .club-text i {
+  color: #F3F4F7;
 }
 
 /*** CONTACT ***/
@@ -1819,7 +1906,6 @@ footer .footerBloc2 .brand a {
   /*** GALLERY PAGE ***/
   /*** USERS INDEX PAGE ***/
   /*** MEMORY DUTY PAGE ***/
-  /*** RECEIVED MESSAGES PAGE ***/
 }
 .dashboard h1 {
   margin-top: 40px;
@@ -1829,6 +1915,7 @@ footer .footerBloc2 .brand a {
 .dashboard .dashboardBloc {
   /*** PRESENTATION ***/
   /*** MONTHLY MEETING ***/
+  /*** OTHER CLUB ***/
   /*** FUTURE TRIPS ***/
 }
 .dashboard .dashboardBloc .presentation {
@@ -1917,6 +2004,31 @@ footer .footerBloc2 .brand a {
 .dashboard .dashboardBloc .meet-blocs img {
   width: 200px;
   height: 140px;
+}
+.dashboard .dashboardBloc .otherClub {
+  display: flex;
+  flex-direction: column;
+  background-color: #F3F4F7;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: #0D121C 0px 0 5px;
+  padding: 20px;
+}
+.dashboard .dashboardBloc .otherClub .description {
+  max-width: 800px;
+  width: auto;
+  word-wrap: break-word;
+}
+.dashboard .dashboardBloc .otherClub .pic {
+  width: 500px;
+  height: auto;
+  margin: 20px 0px;
+}
+.dashboard .dashboardBloc .otherClub .pic img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .dashboard .dashboardBloc .all-future-trips {
   display: flex;
@@ -2218,33 +2330,6 @@ footer .footerBloc2 .brand a {
 }
 .dashboard .all-people .pic:hover .icon {
   display: block;
-}
-.dashboard .receivedMessage {
-  width: 60%;
-  background-color: #F3F4F7;
-  border-radius: 10px;
-  box-shadow: #0D121C 0px 0 5px;
-  padding: 20px;
-  margin: 20px;
-}
-.dashboard .receivedMessage span {
-  font-weight: bold;
-}
-.dashboard .receivedMessage .blocMessage {
-  margin: 30px 0;
-  padding: 10px;
-  background-color: white;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-}
-.dashboard .receivedMessage .blocMessage .message {
-  font-style: italic;
-}
-.dashboard .receivedMessage .blocActions {
-  display: flex;
-  align-items: center;
-  padding-left: 10px;
 }
 
 /*** FORMS TO CREATE & EDIT DASHBOARD ELEMENTS ***/

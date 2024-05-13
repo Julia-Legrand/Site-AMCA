@@ -154,6 +154,32 @@
 			</div>
 
 			<div class="dashboardBloc">
+				{% for presentation in presentations %}
+					<div class="otherClub">
+						<p>Club jumelé
+							<a href="{{ path('app_presentations_edit', {'id': presentation.id}) }}" title="Modifier" data-bs-toggle="tooltip" data-bs-placement="right">
+								<i class="fa-solid fa-pencil icon"></i>
+							</a>
+						</p>
+						<p>Nom du club :</p>
+						<p class="description">
+							{{ presentation.otherClubTitle }}
+						</p>
+						<p>Description :</p>
+						<p class="description">{{ presentation.otherClubContent }}</p>
+						<div class="pic">
+							<p>Photo :</p>
+							<img loading="lazy" src="{{ asset('uploads/' ~ presentation.otherClubPicture) }}" alt="Photo du club jumelé">
+						</div>
+						<p>Site internet :</p>
+						<p class="description">
+							{{ presentation.otherClubWebsite }}
+						</p>
+					</div>
+				{% endfor %}
+			</div>
+
+			<div class="dashboardBloc">
 				<h1>Sorties précédentes
 					<a href="{{ path('app_previous_trips_new') }}" title="Nouvelle sortie" data-bs-toggle="tooltip" data-bs-placement="right">
 						<i class="fa-solid fa-plus icon" style="font-size: 30px"></i>

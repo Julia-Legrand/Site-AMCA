@@ -5,8 +5,8 @@
 
 {% block body %}
 	<header class="headerIndex">
-		<img loading="lazy" src="{{ asset('images/logo-noir-transparent.webp') }}" alt="Logo de l'association">
 		{% for presentation in presentations %}
+			<img src="{{ asset('images/logo-blanc-transparent.png') }}" alt="Logo de l'AMCA">
 			<h1>{{ presentation.presentationTitle }}</h1>
 		{% endfor %}
 		{% include "_partials/_navbar.html.twig" %}
@@ -43,7 +43,7 @@
 
 		<!--PREVIOUS TRIPS-->
 		<section id="our-previous-trips">
-			<img loading="lazy" class="logo-asso" src="{{ asset('images/logo-noir-transparent.webp') }}" alt="Logo de l'association">
+			<img class="logo-asso" src="{{ asset('images/logo-blanc-transparent.png') }}" alt="Logo de l'AMCA">
 			<h2>Nos précédentes sorties</h2>
 			<div class="previous-trips">
 				{% for previous_trip in previous_trips %}
@@ -66,6 +66,24 @@
 					</div>
 				{% endfor %}
 			</div>
+		</section>
+
+		<!--OTHER CLUB-->
+		<section id="other-club">
+			{% for presentation in presentations %}
+				<div class="club-text">
+					<h2>{{ presentation.otherClubTitle }}</h2>
+					<p>{{ presentation.otherClubContent }}</p>
+					<p>
+						<a href="{{ presentation.otherClubWebsite }}" target="_blank">
+							<i class="fa-regular fa-hand-peace" style="margin-right: 5px;"></i>
+							{{ presentation.otherClubTitle }}</a>
+					</p>
+				</div>
+				<div class="club-picture">
+					<img loading="lazy" src="{{ asset('uploads/' ~ presentation.otherClubPicture) }}" alt="Photo du club jumelé">
+				</div>
+			{% endfor %}
 		</section>
 
 		<!--CONTACT-->

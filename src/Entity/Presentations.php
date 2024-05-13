@@ -32,6 +32,18 @@ class Presentations
     #[ORM\Column(length: 255)]
     private ?string $internalRulesDoc = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $otherClubPicture = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $otherClubContent = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $otherClubWebsite = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $otherClubTitle = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -105,6 +117,54 @@ class Presentations
     public function setInternalRulesDoc(string $internalRulesDoc): static
     {
         $this->internalRulesDoc = $internalRulesDoc;
+
+        return $this;
+    }
+
+    public function getOtherClubPicture(): ?string
+    {
+        return $this->otherClubPicture;
+    }
+
+    public function setOtherClubPicture(?string $otherClubPicture): static
+    {
+        $this->otherClubPicture = $otherClubPicture;
+
+        return $this;
+    }
+
+    public function getOtherClubContent(): ?string
+    {
+        return $this->otherClubContent;
+    }
+
+    public function setOtherClubContent(?string $otherClubContent): static
+    {
+        $this->otherClubContent = $otherClubContent;
+
+        return $this;
+    }
+
+    public function getOtherClubWebsite(): ?string
+    {
+        return $this->otherClubWebsite;
+    }
+
+    public function setOtherClubWebsite(?string $otherClubWebsite): static
+    {
+        $this->otherClubWebsite = $otherClubWebsite;
+
+        return $this;
+    }
+
+    public function getOtherClubTitle(): ?string
+    {
+        return $this->otherClubTitle;
+    }
+
+    public function setOtherClubTitle(?string $otherClubTitle): static
+    {
+        $this->otherClubTitle = $otherClubTitle;
 
         return $this;
     }
