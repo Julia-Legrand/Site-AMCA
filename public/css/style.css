@@ -1,4 +1,11 @@
 @media all and (max-width: 1500px) {
+  /********** PARTIALS **********/
+  /***** MAIN NAVBAR *****/
+  .navbar-expand-lg .navbar-nav .nav-link {
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+    text-align: center;
+  }
   /********** INDEX PAGE **********/
   /*** OUR STORY ***/
   #our-story {
