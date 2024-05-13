@@ -419,6 +419,10 @@
     width: 400px !important;
     height: 300px;
   }
+  /********** PRESS REVIEW PAGE **********/
+  .mainPressReview .all-articles .pic {
+    width: 400px !important;
+  }
   /********** FORUM PAGE **********/
   .mainForum {
     padding: 0 !important;
@@ -652,6 +656,14 @@
   #galerie-photos .gallery .picture {
     width: 300px !important;
     height: 220px;
+  }
+  /********** PRESS REVIEW PAGE **********/
+  .mainPressReview .all-articles .articleCard {
+    margin: 10px 0 !important;
+    padding: 5px !important;
+  }
+  .mainPressReview .all-articles .articleCard .pic {
+    width: 290px !important;
   }
   /********** ADMIN PAGES **********/
   /*** MAIN DASHBOARD ***/
@@ -1608,6 +1620,64 @@ footer .footerBloc2 .brand a {
   border-radius: 50%;
 }
 
+/********** PRESS REVIEW PAGE **********/
+.mainPressReview {
+  background-image: linear-gradient(rgba(1, 1, 1, 0.6), rgba(1, 1, 1, 0.6)), url(../images/wallpaper7.webp);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: #25262A;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px 20px;
+  text-align: center;
+}
+.mainPressReview .all-articles {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.mainPressReview .all-articles .articleCard {
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: #0D121C 0px 0 5px;
+  border-radius: 10px;
+  margin: 20px 10px;
+  padding: 30px 20px;
+  max-width: 600px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+.mainPressReview .all-articles .header h2 {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+.mainPressReview .all-articles .header h2::after {
+  display: none;
+}
+.mainPressReview .all-articles .body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.mainPressReview .all-articles .pic {
+  width: 500px;
+  padding: 5px;
+  margin: 10px;
+}
+.mainPressReview .all-articles .pic img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.mainPressReview .all-articles .text {
+  font-size: 20px;
+  text-align: center;
+}
+
 /********** MEMBERSHIP PAGE **********/
 .mainMembership {
   background-color: #16171A;
@@ -1906,6 +1976,7 @@ footer .footerBloc2 .brand a {
   /*** GALLERY PAGE ***/
   /*** USERS INDEX PAGE ***/
   /*** MEMORY DUTY PAGE ***/
+  /*** PRESS REVIEW PAGE ***/
 }
 .dashboard h1 {
   margin-top: 40px;
@@ -2330,6 +2401,66 @@ footer .footerBloc2 .brand a {
 }
 .dashboard .all-people .pic:hover .icon {
   display: block;
+}
+.dashboard .all-articles {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.dashboard .all-articles .articleCard {
+  background-color: #F3F4F7;
+  box-shadow: #0D121C 0px 0 5px;
+  border-radius: 10px;
+  margin: 20px 10px;
+  padding: 10px;
+  max-width: 500px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+.dashboard .all-articles .header h2 {
+  font-size: 25px;
+  margin: 10px;
+}
+.dashboard .all-articles .header h2::after {
+  display: none;
+}
+.dashboard .all-articles .body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.dashboard .all-articles .pic {
+  width: 280px;
+  position: relative;
+  margin: 10px;
+}
+.dashboard .all-articles .pic img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: filter 0.5s ease;
+}
+.dashboard .all-articles .pic:hover img {
+  filter: brightness(50%);
+}
+.dashboard .all-articles .pic .icon {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #F3F4F7;
+  font-size: 25px;
+  cursor: pointer;
+}
+.dashboard .all-articles .pic:hover .icon {
+  display: block;
+}
+.dashboard .all-articles .text {
+  font-size: 18px;
+  text-align: center;
 }
 
 /*** FORMS TO CREATE & EDIT DASHBOARD ELEMENTS ***/

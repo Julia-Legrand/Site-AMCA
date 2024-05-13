@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Association AMCA 44
+{% endblock %}
+
+{% block body %}
+	<header class="headerPages">
+		<img src="{{ asset('images/logo-blanc-transparent.png') }}" alt="Logo de l'AMCA">
+		<h1>Revue de presse</h1>
+		{% include "_partials/_navbar.html.twig" %}
+	</header>
+
+	<main class="mainPressReview">
+		<div class="all-articles">
+			{% for press_review in press_reviews %}
+				<div class="articleCard">
+					<div class="header">
+						<h2>{{ press_review.pressReviewTitle }}</h2>
+					</div>
+					<div class="body">
+						<div class="pic">
+							<img loading="lazy" src="{{ asset('uploads/' ~ press_review.pressReviewPicture) }}" alt="Image de l'article de presse">
+						</div>
+						<div class="text">
+							<p>{{ press_review.pressReviewDate ? press_review.pressReviewDate|date('Y-m-d') : '' }}</p>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</main>
+	{% include "_partials/_footer.html.twig" %}
+{% endblock %}

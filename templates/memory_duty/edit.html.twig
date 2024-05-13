@@ -1,20 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Modifier les informations{% endblock %}
+{% block title %}Modifier les informations
+{% endblock %}
 
 {% block body %}
-{% include "_partials/_headerAdmin.html.twig" %}
+	{% include "_partials/_headerAdmin.html.twig" %}
 	<section>
 		{% include "_partials/_sidebar.html.twig" %}
 
 		<div class="dashboard editForm">
-            <h1>Modifier les informations</h1>
+			<h1>Modifier les informations</h1>
 
-            {{ include('memory_duty/_form.html.twig') }}
-            <div class="bloc">
+			{{ include('memory_duty/_form.html.twig') }}
+			<div class="bloc">
 				<button class="button" id="customSubmitButton">Valider</button>
-                 {{ include('memory_duty/_delete_form.html.twig') }}
-                 <a class="button" href="{{ path('app_memory_duty_index') }}">Retour</a>
+				{{ include('memory_duty/_delete_form.html.twig') }}
+				<a class="button" href="{{ path('app_memory_duty_index') }}">Retour</a>
 			</div>
 		</div>
 	</section>

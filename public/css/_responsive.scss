@@ -591,6 +591,16 @@
         }
     }
 
+    /********** PRESS REVIEW PAGE **********/
+    .mainPressReview {
+        .all-articles {
+
+            .pic {
+                width: 400px !important;
+            }
+        }
+    }
+
     /********** FORUM PAGE **********/
     .mainForum {
 
@@ -921,6 +931,20 @@
             .picture {
                 width: 300px !important;
                 height: 220px;
+            }
+        }
+    }
+
+    /********** PRESS REVIEW PAGE **********/
+    .mainPressReview {
+        .all-articles {
+            .articleCard {
+                margin: 10px 0 !important;
+                padding: 5px !important;
+
+                .pic {
+                    width: 290px !important;
+                }
             }
         }
     }

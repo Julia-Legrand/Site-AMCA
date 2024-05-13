@@ -14,7 +14,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[IsGranted('ROLE_ADMIN')]
-#[Route('/devoir-memoire')]
+#[Route('/devoir-de-memoire')]
 class MemoryDutyController extends AbstractController
 {
 

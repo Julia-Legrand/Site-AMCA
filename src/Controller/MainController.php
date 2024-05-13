@@ -13,6 +13,7 @@ use App\Repository\MemoryDutyRepository;
 use App\Repository\FutureTripsRepository;
 use App\Repository\MembershipsRepository;
 use App\Repository\PostPicturesRepository;
+use App\Repository\PressReviewsRepository;
 use App\Repository\TripPicturesRepository;
 use App\Repository\PresentationsRepository;
 use App\Repository\PreviousTripsRepository;
@@ -36,7 +37,7 @@ class MainController extends AbstractController
 
     #[IsGranted('ROLE_ADMIN')]
     #[Route('/admin', name: 'admin')]
-    public function admin(PresentationsRepository $presentationsRepository, MeetingsRepository $meetingsRepository, PurposesRepository $purposesRepository, MembershipsRepository $membershipsRepository, PreviousTripsRepository $previousTripsRepository, TripPicturesRepository $tripPicturesRepository, FutureTripsRepository $futureTripsRepository, UserRepository $userRepository, MemoryDutyRepository $memoryDutyRepository, GalleryRepository $galleryRepository): Response
+    public function admin(PresentationsRepository $presentationsRepository, MeetingsRepository $meetingsRepository, PurposesRepository $purposesRepository, MembershipsRepository $membershipsRepository, PreviousTripsRepository $previousTripsRepository, TripPicturesRepository $tripPicturesRepository, FutureTripsRepository $futureTripsRepository, UserRepository $userRepository, MemoryDutyRepository $memoryDutyRepository, GalleryRepository $galleryRepository, PressReviewsRepository $pressReviewsRepository): Response
     {
         return $this->render('main/admin.html.twig', [
             'presentations' => $presentationsRepository->findAll(),
@@ -49,6 +50,7 @@ class MainController extends AbstractController
             'users' => $userRepository->findAll(),
             'memory_duties' => $memoryDutyRepository->findAll(),
             'galleries' => $galleryRepository->findAll(),
+            'press_reviews' => $pressReviewsRepository->findAll(),
         ]);
     }
 
@@ -63,6 +65,18 @@ class MainController extends AbstractController
             'galleries' => $galleryRepository->findAll(),
         ]);
     }
+
+    #[Route('/revue-de-presse', name: 'pressReview')]
+    public function pressReview(PresentationsRepository $presentationsRepository, PressReviewsRepository $pressReviewsRepository): Response
+    {
+        $pressReviews = $pressReviewsRepository->findBy([], ['pressReviewDate' => 'DESC']);
+
+        return $this->render('main/press.html.twig', [
+            'presentations' => $presentationsRepository->findAll(),
+            'press_reviews' => $pressReviews,
+        ]);
+    }
+
 
     #[Route('/devenir-membre', name: 'membership')]
     public function membership(PresentationsRepository $presentationsRepository, MembershipsRepository $membershipsRepository): Response
