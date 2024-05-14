@@ -561,38 +561,49 @@ footer {
 
 /*** OTHER CLUB ***/
 #other-club {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    height: auto;
     background-color: $brown;
     color: $light;
+    display: flex;
+    flex-direction: column;
     padding: 150px 20px;
 
-    .club-picture {
-        width: 600px;
-        height: 400px;
-        box-shadow: $darker 0px 0px 20px 10px;
-        border-radius: 10px;
+    .moto-club {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        margin: 60px 20px;
 
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        &:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+
+        .club-picture {
+            width: 600px;
+            height: 400px;
+            box-shadow: $darker 0px 0px 20px 10px;
             border-radius: 10px;
+            margin: 20px;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 10px;
+            }
         }
-    }
 
-    .club-text {
-        width: 600px;
+        .club-text {
+            width: 600px;
+            margin: 20px;
 
-        p {
-            text-align: center;
-        }
+            p {
+                text-align: center;
+            }
 
-        a,
-        i {
-            color: $light;
+            a,
+            i {
+                color: $light;
+            }
         }
     }
 }
@@ -1302,7 +1313,7 @@ footer {
     }
 }
 
-/********** LOGIN & REGISTER PAGES **********/
+/********** LOGIN PAGE **********/
 .loginForm {
     min-height: 100vh;
     height: auto;
@@ -1524,13 +1535,13 @@ footer {
             padding: 20px;
 
             .description {
-                max-width: 800px;
+                max-width: 600px;
                 width: auto;
                 word-wrap: break-word;
             }
 
             .pic {
-                width: 500px;
+                width: 400px;
                 height: auto;
                 margin: 20px 0px;
 
@@ -2028,6 +2039,13 @@ footer {
         justify-content: space-evenly;
         width: 400px;
         margin: 20px;
+
+        /*** REGISTER PAGE ***/
+        #registration_form_assignment_0,
+        #registration_form_assignment_1 {
+            margin-right: 5px;
+            margin-left: 15px;
+        }
     }
 
     .button {
@@ -2036,5 +2054,32 @@ footer {
 
     .hide-button {
         display: none;
+    }
+
+    /*** REGISTER PAGE ***/
+    .blocActions {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .password-toggle {
+        position: relative;
+    }
+
+    .toggle-password {
+        position: absolute;
+        right: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        color: $dark;
+        font-size: small;
+        margin-right: 5px;
+        transition: all 0.5s ease;
+    }
+
+    .toggle-password:hover {
+        color: $light;
+        text-shadow: $dark 0 0 5px;
     }
 }

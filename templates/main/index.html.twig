@@ -70,19 +70,22 @@
 
 		<!--OTHER CLUB-->
 		<section id="other-club">
-			{% for presentation in presentations %}
-				<div class="club-text">
-					<h2>{{ presentation.otherClubTitle }}</h2>
-					<p>{{ presentation.otherClubContent }}</p>
-					<p>
-						<a href="{{ presentation.otherClubWebsite }}" target="_blank">
-							<i class="fa-regular fa-hand-peace" style="margin-right: 5px;"></i>
-							{{ presentation.otherClubTitle }}</a>
-					</p>
+			{% for other_club in other_clubs %}
+				<div class="moto-club">
+					<div class="club-picture">
+						<img loading="lazy" src="{{ asset('uploads/' ~ other_club.otherClubPicture) }}" alt="Photo du club jumelé">
+					</div>
+					<div class="club-text">
+						<h2>{{ other_club.otherClubTitle }}</h2>
+						<p>{{ other_club.otherClubContent }}</p>
+						<p>
+							<a href="{{ other_club.otherClubWebsite }}" target="_blank">
+								<i class="fa-regular fa-hand-peace" style="margin-right: 5px;"></i>
+								{{ other_club.otherClubTitle }}</a>
+						</p>
+					</div>
 				</div>
-				<div class="club-picture">
-					<img loading="lazy" src="{{ asset('uploads/' ~ presentation.otherClubPicture) }}" alt="Photo du club jumelé">
-				</div>
+
 			{% endfor %}
 		</section>
 

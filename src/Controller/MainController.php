@@ -9,6 +9,7 @@ use App\Repository\GalleryRepository;
 use App\Repository\CommentsRepository;
 use App\Repository\MeetingsRepository;
 use App\Repository\PurposesRepository;
+use App\Repository\OtherClubRepository;
 use App\Repository\MemoryDutyRepository;
 use App\Repository\FutureTripsRepository;
 use App\Repository\MembershipsRepository;
@@ -25,19 +26,20 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class MainController extends AbstractController
 {
     #[Route('/', name: 'home')]
-    public function index(PresentationsRepository $presentationsRepository, PurposesRepository $purposesRepository, PreviousTripsRepository $previousTripsRepository, TripPicturesRepository $tripPicturesRepository): Response
+    public function index(PresentationsRepository $presentationsRepository, PurposesRepository $purposesRepository, PreviousTripsRepository $previousTripsRepository, TripPicturesRepository $tripPicturesRepository, OtherClubRepository $otherClubRepository): Response
     {
         return $this->render('main/index.html.twig', [
             'presentations' => $presentationsRepository->findAll(),
             'purposes' => $purposesRepository->findAll(),
             'previous_trips' => $previousTripsRepository->findAll(),
             'trip_pictures' => $tripPicturesRepository->findAll(),
+            'other_clubs' => $otherClubRepository->findAll(),
         ]);
     }
 
     #[IsGranted('ROLE_ADMIN')]
     #[Route('/admin', name: 'admin')]
-    public function admin(PresentationsRepository $presentationsRepository, MeetingsRepository $meetingsRepository, PurposesRepository $purposesRepository, MembershipsRepository $membershipsRepository, PreviousTripsRepository $previousTripsRepository, TripPicturesRepository $tripPicturesRepository, FutureTripsRepository $futureTripsRepository, UserRepository $userRepository, MemoryDutyRepository $memoryDutyRepository, GalleryRepository $galleryRepository, PressReviewsRepository $pressReviewsRepository): Response
+    public function admin(PresentationsRepository $presentationsRepository, MeetingsRepository $meetingsRepository, PurposesRepository $purposesRepository, MembershipsRepository $membershipsRepository, PreviousTripsRepository $previousTripsRepository, TripPicturesRepository $tripPicturesRepository, FutureTripsRepository $futureTripsRepository, UserRepository $userRepository, MemoryDutyRepository $memoryDutyRepository, GalleryRepository $galleryRepository, PressReviewsRepository $pressReviewsRepository, OtherClubRepository $otherClubRepository): Response
     {
         return $this->render('main/admin.html.twig', [
             'presentations' => $presentationsRepository->findAll(),
@@ -51,6 +53,7 @@ class MainController extends AbstractController
             'memory_duties' => $memoryDutyRepository->findAll(),
             'galleries' => $galleryRepository->findAll(),
             'press_reviews' => $pressReviewsRepository->findAll(),
+            'other_clubs' => $otherClubRepository->findAll(),
         ]);
     }
 

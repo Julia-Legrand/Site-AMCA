@@ -29,7 +29,7 @@ class PressReviewsController extends AbstractController
     }
 
     #[IsGranted('ROLE_ADMIN')]
-    #[Route('/new', name: 'app_press_reviews_new', methods: ['GET', 'POST'])]
+    #[Route('/nouveau', name: 'app_press_reviews_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
         $pressReview = new PressReviews();
@@ -74,7 +74,7 @@ class PressReviewsController extends AbstractController
     }
 
     #[IsGranted('ROLE_ADMIN')]
-    #[Route('/{id}/edit', name: 'app_press_reviews_edit', methods: ['GET', 'POST'])]
+    #[Route('/{id}/modifier', name: 'app_press_reviews_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, PressReviews $pressReview, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
         $form = $this->createForm(PressReviewsType::class, $pressReview);

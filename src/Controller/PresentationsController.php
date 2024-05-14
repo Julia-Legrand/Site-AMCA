@@ -77,19 +77,6 @@ class PresentationsController extends AbstractController
 
                 $presentation->setInternalRulesDoc($newFilename);
             }
-            $imageFile = $form->get('otherClubPicture')->getData();
-            if ($imageFile) {
-                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
-                $safeFilename = $slugger->slug($originalFilename);
-                $newFilename = $safeFilename . '.' . $imageFile->guessExtension();
-
-                $imageFile->move(
-                    $this->getParameter('images_directory'),
-                    $newFilename
-                );
-
-                $presentation->setOtherClubPicture($newFilename);
-            }
 
             $entityManager->flush();
 

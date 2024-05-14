@@ -5,25 +5,26 @@
 
 {% block body %}
 	{% include "_partials/_headerAdmin.html.twig" %}
+	<section>
+		{% include "_partials/_sidebar.html.twig" %}
 
-	<div class="loginForm">
-		{% for message in app.flashes('success') %}
-			<div class="alert alert-success">
-				{{ message }}
-			</div>
-		{% endfor %}
+		<div class="dashboard editForm">
+			{% for message in app.flashes('success') %}
+				<div class="alert alert-success">
+					{{ message }}
+				</div>
+			{% endfor %}
 
-		{% for message in app.flashes('error') %}
-			<div class="alert alert-danger">
-				{{ message }}
-			</div>
-		{% endfor %}
+			{% for message in app.flashes('error') %}
+				<div class="alert alert-danger">
+					{{ message }}
+				</div>
+			{% endfor %}
 
-		<h2>Nouvel adhérent</h2>
+			<h1>Nouvel adhérent</h1>
 
-		{{ form_start(registrationForm) }}
+			{{ form_start(registrationForm) }}
 
-		<div class="bloc">
 			<label for="{{ registrationForm.memberNumber.vars.id }}">Numéro adhérent</label>
 			{{ form_widget(registrationForm.memberNumber, {
                 attr: {
@@ -35,9 +36,7 @@
 			<label for="{{ registrationForm.assignment.vars.id }}">Profil</label>
 			{{ form_widget(registrationForm.assignment, {
             }) }}
-		</div>
 
-		<div class="bloc">
 			<label for="{{ registrationForm.firstName.vars.id }}">Prénom</label>
 			{{ form_widget(registrationForm.firstName, {
                 attr: {
@@ -51,9 +50,7 @@
                     'class': 'custom-form'
                 }
             }) }}
-		</div>
 
-		<div class="bloc">
 			<label for="{{ registrationForm.email.vars.id }}">E-mail</label>
 			{{ form_widget(registrationForm.email, {
                 attr: {
@@ -65,28 +62,24 @@
 			<label for="{{ registrationForm.plainPassword.vars.id }}">Mot de passe</label>
 			<div class="password-toggle">
 				{{ form_widget(registrationForm.plainPassword, {
-            'attr': {
-                'id': 'registration_form_plainPassword',
-                'name': 'registrationPassword',
-                'class': 'form-control',
-                'autocomplete': 'new-password',
-                'required': 'required'
-            }
-        }) }}
+					'attr': {
+						'id': 'registration_form_plainPassword',
+						'name': 'registrationPassword',
+						'class': 'form-control',
+						'autocomplete': 'new-password',
+						'required': 'required'
+					}
+				}) }}
 				<span class="toggle-password">Afficher</span>
 			</div>
-		</div>
 
-		<div class="bloc">
 			<label for="{{ registrationForm.phoneNumber.vars.id }}">Téléphone</label>
 			{{ form_widget(registrationForm.phoneNumber, {
                 attr: {
                     'class': 'custom-form'
                 }
             }) }}
-		</div>
 
-		<div class="bloc">
 			<label for="{{ registrationForm.address.vars.id }}">Adresse</label>
 			{{ form_widget(registrationForm.address, {
                 attr: {
@@ -107,33 +100,28 @@
                     'class': 'custom-form'
                 }
             }) }}
-		</div>
 
-		<div class="bloc">
 			<label for="{{ registrationForm.birthdate.vars.id }}">Date de naissance</label>
 			{{ form_widget(registrationForm.birthdate, {
                 attr: {
                     'class': 'custom-form'
                 }
             }) }}
-		</div>
 
-		<div class="bloc">
 			<label for="{{ registrationForm.bike.vars.id }}">Moto</label>
 			{{ form_widget(registrationForm.bike, {
                 attr: {
                     'class': 'custom-form'
                 }
             }) }}
+
+			<div class="blocActions">
+				<button type="submit" class="button">Valider</button>
+				<a class="button" href="{{ path('app_user_index') }}">Retour</a>
+			</div>
+			{{ form_end(registrationForm) }}
 		</div>
 
-		<div class="blocActions">
-			<button type="submit" class="button">Valider</button>
-			<a class="button" href="{{ path('app_user_index') }}">Retour</a>
-		</div>
-		{{ form_end(registrationForm) }}
-	</div>
-
-	<script src="{{ asset('js/togglePasswordRegister.js') }}"></script>
-	<script src="{{ asset('js/alerts.js') }}"></script>
-{% endblock %}
+		<script src="{{ asset('js/togglePasswordRegister.js') }}"></script>
+		<script src="{{ asset('js/alerts.js') }}"></script>
+	{% endblock %}

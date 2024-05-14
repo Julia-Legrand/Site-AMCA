@@ -160,14 +160,19 @@
 
     /*** OTHER CLUB ***/
     #other-club {
+        padding: 100px 20px !important;
 
-        .club-picture {
-            width: 500px !important;
-            height: 400px !important;
-        }
+        .moto-club {
+            flex-direction: column-reverse !important;
 
-        .club-text {
-            width: 400px !important;
+            .club-picture {
+                width: 500px !important;
+                height: 400px !important;
+            }
+
+            .club-text {
+                width: 400px !important;
+            }
         }
     }
 
@@ -235,24 +240,6 @@
 }
 
 @media all and (max-width:800px) {
-
-    /********** INDEX PAGE **********/
-    /*** OTHER CLUB ***/
-    #other-club {
-        display: flex;
-        flex-direction: column;
-        padding: 150px 20px;
-
-        .club-picture {
-            width: 600px;
-            height: 400px;
-        }
-
-        .club-text {
-            width: 600px;
-            margin-bottom: 60px;
-        }
-    }
 
     /********** ASSO PAGE **********/
     /*** AGENDA ***/
@@ -518,13 +505,15 @@
     #other-club {
         padding: 100px 0px !important;
 
-        .club-picture {
-            width: 400px !important;
-            height: 300px !important;
-        }
+        .moto-club {
+            .club-picture {
+                width: 400px !important;
+                height: 300px !important;
+            }
 
-        .club-text {
-            width: 400px !important;
+            .club-text {
+                width: 400px !important;
+            }
         }
     }
 
@@ -862,14 +851,17 @@
 
     /*** OTHER CLUB ***/
     #other-club {
+        padding: 80px 0px !important;
 
-        .club-picture {
-            width: 280px !important;
-            height: 200px !important;
-        }
+        .moto-club {
+            .club-picture {
+                width: 280px !important;
+                height: 200px !important;
+            }
 
-        .club-text {
-            width: 280px !important;
+            .club-text {
+                width: 280px !important;
+            }
         }
     }
 
@@ -991,13 +983,15 @@
 
         /*** OTHER CLUB ***/
         .otherClub {
+            margin: 10px 0 !important;
+            padding: 10px !important;
 
             p.description {
                 font-size: 16px !important;
             }
 
             .pic {
-                width: 300px !important;
+                width: 270px !important;
             }
         }
 

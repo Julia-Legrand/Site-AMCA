@@ -154,29 +154,33 @@
 			</div>
 
 			<div class="dashboardBloc">
-				{% for presentation in presentations %}
-					<div class="otherClub">
-						<p>Club jumelé
-							<a href="{{ path('app_presentations_edit', {'id': presentation.id}) }}" title="Modifier" data-bs-toggle="tooltip" data-bs-placement="right">
+				<div class="otherClub">
+					<p>Club jumelé
+						<a href="{{ path('app_other_club_new') }}" title="Nouveau" data-bs-toggle="tooltip" data-bs-placement="right">
+							<i class="fa-solid fa-plus icon"></i>
+						</a>
+					</p>
+					{% for other_club in other_clubs %}
+						<p style="margin-top: 15px;">Nom du club
+							<a href="{{ path('app_other_club_edit', {'id': other_club.id}) }}" title="Modifier" data-bs-toggle="tooltip" data-bs-placement="right">
 								<i class="fa-solid fa-pencil icon"></i>
 							</a>
 						</p>
-						<p>Nom du club :</p>
 						<p class="description">
-							{{ presentation.otherClubTitle }}
+							{{ other_club.otherClubTitle }}
 						</p>
 						<p>Description :</p>
-						<p class="description">{{ presentation.otherClubContent }}</p>
+						<p class="description">{{ other_club.otherClubContent }}</p>
 						<div class="pic">
 							<p>Photo :</p>
-							<img loading="lazy" src="{{ asset('uploads/' ~ presentation.otherClubPicture) }}" alt="Photo du club jumelé">
+							<img loading="lazy" src="{{ asset('uploads/' ~ other_club.otherClubPicture) }}" alt="Photo du club jumelé">
 						</div>
 						<p>Site internet :</p>
 						<p class="description">
-							{{ presentation.otherClubWebsite }}
+							{{ other_club.otherClubWebsite }}
 						</p>
-					</div>
-				{% endfor %}
+					{% endfor %}
+				</div>
 			</div>
 
 			<div class="dashboardBloc">
