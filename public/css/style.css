@@ -304,6 +304,10 @@
   .mainShow .showRight {
     width: 500px !important;
   }
+  /********** PRESS REVIEW PAGE **********/
+  .mainPressReview {
+    background-attachment: scroll !important;
+  }
   /********** ADMIN PAGES **********/
   /*** MAIN DASHBOARD ***/
   .dashboardBloc {
@@ -661,7 +665,7 @@
   /********** PRESS REVIEW PAGE **********/
   .mainPressReview .all-articles .articleCard {
     margin: 10px 0 !important;
-    padding: 5px !important;
+    padding: 20px 10px !important;
   }
   .mainPressReview .all-articles .articleCard .pic {
     width: 290px !important;
@@ -687,15 +691,16 @@
   .dashboardBloc .presentation .asso-pic,
   .dashboardBloc .presentation .asso-text,
   .dashboardBloc .presentation .bloc-down {
-    width: 280px !important;
+    width: 300px !important;
     margin: 20px 0 !important;
   }
   .dashboardBloc .asso-meet {
-    width: 280px !important;
+    width: 300px !important;
     margin: 20px 0 !important;
   }
   .dashboardBloc .otherClub {
-    margin: 10px 0 !important;
+    width: 300px !important;
+    margin: 20px 0 !important;
     padding: 10px !important;
   }
   .dashboardBloc .otherClub p.description {
@@ -705,7 +710,7 @@
     width: 270px !important;
   }
   .dashboardBloc .each-trip {
-    width: 280px !important;
+    width: 300px !important;
     margin: 20px 0 !important;
   }
   .dashboardBloc .user-list {

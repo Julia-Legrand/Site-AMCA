@@ -426,6 +426,11 @@
         }
     }
 
+    /********** PRESS REVIEW PAGE **********/
+    .mainPressReview {
+        background-attachment: scroll !important;
+    }
+
     /********** ADMIN PAGES **********/
     /*** MAIN DASHBOARD ***/
     .dashboardBloc {
@@ -940,7 +945,7 @@
         .all-articles {
             .articleCard {
                 margin: 10px 0 !important;
-                padding: 5px !important;
+                padding: 20px 10px !important;
 
                 .pic {
                     width: 290px !important;
@@ -970,20 +975,21 @@
             .asso-pic,
             .asso-text,
             .bloc-down {
-                width: 280px !important;
+                width: 300px !important;
                 margin: 20px 0 !important;
             }
         }
 
         /*** MONTHLY MEETING ***/
         .asso-meet {
-            width: 280px !important;
+            width: 300px !important;
             margin: 20px 0 !important;
         }
 
         /*** OTHER CLUB ***/
         .otherClub {
-            margin: 10px 0 !important;
+            width: 300px !important;
+            margin: 20px 0 !important;
             padding: 10px !important;
 
             p.description {
@@ -997,7 +1003,7 @@
 
         /*** FUTURE TRIPS ***/
         .each-trip {
-            width: 280px !important;
+            width: 300px !important;
             margin: 20px 0 !important;
         }
 
